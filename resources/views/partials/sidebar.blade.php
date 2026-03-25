@@ -1,0 +1,45 @@
+    <!-- Sidebar Navigation -->
+    <aside :class="sidebarOpen ? 'w-60' : 'w-20'" class="bg-white border-r border-slate-200 hidden md:flex flex-col h-screen sticky top-0 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-30 shrink-0 transition-all duration-300">
+        <!-- Logo Area -->
+        <div class="h-16 flex border-b border-slate-100 shrink-0 transition-all duration-300 items-center overflow-hidden" :class="sidebarOpen ? 'justify-start px-6' : 'justify-center px-0'">
+            <a href="/" class="text-xl font-extrabold text-slate-800 tracking-tight flex items-center gap-2.5 group whitespace-nowrap">
+                <div class="bg-gradient-to-tr from-brand-400 to-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center shadow-md shrink-0">GT</div> 
+                <span x-show="sidebarOpen" x-transition.opacity.duration.300ms>Help<span class="text-brand-500">.</span></span>
+            </a>
+        </div>
+        
+        <!-- Navigation Links -->
+        <nav class="flex-1 py-4 space-y-1.5 overflow-y-auto overflow-x-hidden custom-scrollbar" :class="sidebarOpen ? 'px-4' : 'px-2'">
+            <a href="{{ route('dashboard') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('dashboard') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/items/guestbook.webp') }}" alt="Guestbook" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Dashboard</span>
+            </a>
+            
+            <div class="pt-6 pb-2" x-show="sidebarOpen">
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Calculators</p>
+            </div>
+            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
+                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
+            </div>
+            
+            <a href="{{ route('surgery-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('surgery-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/surgery/surg_crate.webp') }}" alt="Surg Crate" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>MSurgs Calculator</span>
+            </a>
+        </nav>
+        
+        <!-- Sidebar Footer Component -->
+        <div class="border-t border-slate-100 shrink-0 overflow-hidden" :class="sidebarOpen ? 'p-4' : 'p-2'">
+            <div class="bg-slate-50 rounded-xl text-center flex flex-col items-center justify-center" :class="sidebarOpen ? 'p-4' : 'p-2 py-4'">
+                <p x-show="sidebarOpen" class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5 truncate w-full">Growtopia Help</p>
+                <div class="flex items-center justify-center text-xs font-semibold text-slate-500" :class="sidebarOpen ? 'gap-1.5' : ''">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" :class="!sidebarOpen ? 'w-2 h-2' : ''"></span>
+                    <span x-show="sidebarOpen">Made by: Sevynix</span>
+                </div>
+            </div>
+        </div>
+    </aside>

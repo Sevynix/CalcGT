@@ -1,90 +1,15 @@
-<!DOCTYPE html>
-<html lang="en">
+@extends('layouts.app')
+@section('title', "Master Surgeon's Tool Calculator")
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Surgery Tools Calculator</title>
-    <!-- Tailwind CSS Compiler -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        brand: {
-                            50: '#f0f9ff',
-                            100: '#e0f2fe',
-                            400: '#38bdf8',
-                            500: '#0ea5e9',
-                            600: '#0284c7',
-                        }
-                    },
-                    boxShadow: {
-                        'glass': '0 4px 30px rgba(0, 0, 0, 0.05)',
-                        'inner-light': 'inset 0 2px 4px 0 rgba(255, 255, 255, 0.4)',
-                    }
-                }
-            }
-        }
-    </script>
-    <!-- Alpine.js -->
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
-    <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: #f8fafc;
-            background-image: radial-gradient(#e2e8f0 1px, transparent 1px);
-            background-size: 20px 20px;
-        }
-
-        .glass-card {
-            background: rgba(255, 255, 255, 0.85);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.05);
-        }
-
-        .input-cool {
-            @apply w-full bg-white border-2 border-slate-300 text-slate-900 text-lg font-bold rounded-xl focus:ring-4 focus:ring-brand-100 focus:border-brand-500 block p-4 outline-none transition-all duration-200 shadow-sm placeholder:font-medium placeholder:text-slate-400;
-        }
-
-        /* Remove arrows from number inputs */
-        input[type=number]::-webkit-inner-spin-button,
-        input[type=number]::-webkit-outer-spin-button {
-            -webkit-appearance: none;
-            margin: 0;
-        }
-
-        input[type=number] {
-            -moz-appearance: textfield;
-        }
-
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 6px;
-            height: 6px;
-        }
-
-        ::-webkit-scrollbar-track {
-            background: #f1f5f9;
-        }
-
-        ::-webkit-scrollbar-thumb {
-            background: #cbd5e1;
-            border-radius: 10px;
-        }
-
-        ::-webkit-scrollbar-thumb:hover {
-            background: #94a3b8;
-        }
-    </style>
-</head>
-
-<body class="min-h-screen text-slate-800 py-10 px-4 md:px-8" x-data="calculator()">
-
+@section('content')
+<div x-data="calculator()" @keydown.window.enter.prevent="
+    let inputs = Array.from(document.querySelectorAll('input'));
+    let idx = inputs.indexOf(document.activeElement);
+    if(idx > -1 && idx < inputs.length - 1) {
+        inputs[idx + 1].focus();
+        if(inputs[idx + 1].select) inputs[idx + 1].select();
+    }
+">
     <div class="max-w-5xl mx-auto space-y-8">
 
         <!-- Header -->
@@ -99,7 +24,7 @@
                     Back to Home
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="/images/surgery/surg_role.webp" alt="Surg_Role"
+                    <img src="{{ asset('images/surgery/surg_role.webp') }}" alt="Surg_Role"
                         class="w-10 h-10 object-contain drop-shadow-sm">
                     Surgery Tools
                     <span
@@ -145,7 +70,7 @@
                 <div class="flex items-center gap-4 mb-8">
                     <div
                         class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="/images/surgery/surg_crate.webp" alt="Surg Crate"
+                        <img src="{{ asset('images/surgery/surg_crate.webp') }}" alt="Surg Crate"
                             class="w-full h-full object-contain drop-shadow-md">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
@@ -188,8 +113,8 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div
-                            class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="/images/lock/worldlock.webp" alt="WL"
+                            class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
+                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -267,7 +192,7 @@
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                            <img :src="item.icon" :alt="item.name"
+                                            <img :src="asset(item.icon)" :alt="item.name"
                                                 class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
                                         <span class="font-bold text-slate-800" x-text="item.name"></span>
@@ -294,16 +219,23 @@
 
                                 <!-- Select Type -->
                                 <td class="px-6 py-4">
-                                    <select x-model="item.type"
-                                        class="bg-white border border-slate-200 text-slate-600 font-medium px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
-                                        <option value="per wl">Items per WL</option>
-                                        <option value="200/?">WL per 200 items</option>
-                                    </select>
+                                    <div class="relative inline-block w-full">
+                                        <select x-model="item.type"
+                                            class="w-full bg-white border border-slate-200 text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
+                                            <option value="per wl">Items per WL</option>
+                                            <option value="200/?">WL per 200 items</option>
+                                        </select>
+                                        <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
+                                            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path>
+                                            </svg>
+                                        </div>
+                                    </div>
                                 </td>
 
                                 <!-- Final Revenue for row -->
                                 <td class="px-6 py-4 text-right">
-                                    <span class="font-extrabold text-lg text-emerald-600 block pt-1"
+                                    <span class="font-bold text-[15px] text-emerald-600 block pt-1"
                                         x-text="getItemRevenue(key) + ' WL'"></span>
                                 </td>
                             </tr>
@@ -314,8 +246,14 @@
         </div>
 
     </div>
+</div>
+@endsection
 
-    <script src="app.js"></script>
-</body>
-
-</html>
+@section('scripts')
+<script>
+    function asset(path) {
+        return path.startsWith('/') ? path : '/' + path;
+    }
+</script>
+<script src="{{ asset('js/surgery-tools.js') }}"></script>
+@endsection
