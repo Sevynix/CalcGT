@@ -21,7 +21,7 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
                         </path>
                     </svg>
-                    Back to Home
+                    Back to Dashboard
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
                     <img src="{{ asset('images/surgery/surg_role.webp') }}" alt="Surg_Role"
@@ -31,7 +31,7 @@
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
                 </h1>
                 <p class="text-slate-500 mt-2 max-w-lg">Easily calculate your expected returns and profit margins from
-                    breaking down MSurg packs.</p>
+                    breaking down MSurg packs</p>
 
                 <div
                     class="mt-3 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 max-w-lg shadow-sm">
