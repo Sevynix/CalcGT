@@ -11,11 +11,11 @@ document.addEventListener('alpine:init', () => {
             firehouse: null,
         },
         items: {
-            helmet: { name: 'Helmet', count: 1, type: 'per wl', icon: '/images/firefighter/helmet.webp' },
-            jacket: { name: 'Jacket', count: 1, type: 'per wl', icon: '/images/firefighter/jacket.webp' },
-            pants: { name: 'Pants', count: 1, type: 'per wl', icon: '/images/firefighter/pants.webp' },
-            boots: { name: 'Boots', count: 1, type: 'per wl', icon: '/images/firefighter/boots.webp' },
-            firehose: { name: 'FireHose', count: 1, type: 'per wl', icon: '/images/firefighter/fire_hose.webp' },
+            helmet: { name: 'Firefighter Helmet - Yellow', count: 1, type: 'per wl', icon: '/images/firefighter/helmet.webp' },
+            jacket: { name: 'Firefighter Jacket - Yellow', count: 1, type: 'per wl', icon: '/images/firefighter/jacket.webp' },
+            pants: { name: 'Firefighter Pants - Yellow', count: 1, type: 'per wl', icon: '/images/firefighter/pants.webp' },
+            boots: { name: 'Firefighter Boots', count: 1, type: 'per wl', icon: '/images/firefighter/boots.webp' },
+            firehose: { name: 'Fire Hose', count: 1, type: 'per wl', icon: '/images/firefighter/fire_hose.webp' },
             firehouse: { name: 'Firehouse', count: 1, type: 'wl/item', icon: '/images/firefighter/firehouse.webp' },
         },
 

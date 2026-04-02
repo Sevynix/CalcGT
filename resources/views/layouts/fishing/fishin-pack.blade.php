@@ -177,7 +177,7 @@
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
-                            <th class="px-6 py-4 uppercase">Fishing Tools</th>
+                            <th class="px-6 py-4 uppercase">Fishing Items</th>
                             <th class="px-6 py-4 uppercase">Total Tools</th>
                             <th class="px-6 py-4 uppercase">Resale Price</th>
                             <th class="px-6 py-4 uppercase">Sales Type</th>
