@@ -213,7 +213,7 @@
                                     <div class="relative max-w-[120px]">
                                         <input type="number" min="0" step="0.01" x-model.number="prices[key]"
                                             class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
-                                            :placeholder="item.type === 'per wl' ? 'Items/WL' : 'WL/200'">
+                                            :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
                                     </div>
                                 </td>
 
@@ -224,6 +224,7 @@
                                             class="w-full bg-white border border-slate-200 text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
                                             <option value="per wl">Items per WL</option>
                                             <option value="200/?">WL per 200 items</option>
+                                            <option value="wl/item">WL per 1 item</option>
                                         </select>
                                         <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-slate-400">
                                             <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">

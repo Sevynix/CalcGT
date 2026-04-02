@@ -47,6 +47,8 @@ document.addEventListener('alpine:init', () => {
                 return Math.floor(totalItems / val);
             } else if (item.type === '200/?') {
                 return Math.floor((totalItems / 200) * val);
+            } else if (item.type === 'wl/item') {
+                return Math.floor(totalItems * val);
             }
             return 0;
         },

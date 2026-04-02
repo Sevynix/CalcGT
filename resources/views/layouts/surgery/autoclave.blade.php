@@ -172,6 +172,7 @@
                                     <select x-model="tool.buyType" class="bg-white border text-center border-slate-200 text-slate-600 font-bold px-2 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 cursor-pointer shadow-sm text-sm">
                                         <option value="per wl">Items / WL</option>
                                         <option value="200/?">WL / 200</option>
+                                        <option value="wl/item">WL / Item</option>
                                     </select>
                                 </div>
                             </div>
@@ -247,6 +248,7 @@
                                     <select x-model="tool.sellType" class="bg-white border text-center border-slate-200 text-slate-600 font-bold px-2 py-2 rounded-xl outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer shadow-sm text-sm" :disabled="getFinalCount(index) === 0" :class="getFinalCount(index) === 0 ? 'opacity-50' : ''">
                                         <option value="per wl">Items / WL</option>
                                         <option value="200/?">WL / 200</option>
+                                        <option value="wl/item">WL / Item</option>
                                     </select>
                                 </div>
                             </div>

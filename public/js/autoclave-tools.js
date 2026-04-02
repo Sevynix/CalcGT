@@ -92,6 +92,8 @@ document.addEventListener('alpine:init', () => {
                         cost += (s / bp);
                     } else if (t.buyType === '200/?') {
                         cost += (s / 200) * bp;
+                    } else if (t.buyType === 'wl/item') {
+                        cost += (s * bp);
                     }
                 }
             });
@@ -112,6 +114,8 @@ document.addEventListener('alpine:init', () => {
                         rev += Math.floor(count / sp);
                     } else if (t.sellType === '200/?') {
                         rev += Math.floor((count / 200) * sp);
+                    } else if (t.sellType === 'wl/item') {
+                        rev += Math.floor(count * sp);
                     }
                 }
             });
