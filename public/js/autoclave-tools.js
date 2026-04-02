@@ -38,7 +38,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         get simulation() {
-            let currentCounts = this.tools.map(t => typeof t.stock === 'number' ? t.stock : 0);
+            let currentCounts = this.tools.map(t => (t.isFuel && typeof t.stock === 'number') ? t.stock : 0);
             let totalCycles = 0;
             let loopLimit = 10000;
             
