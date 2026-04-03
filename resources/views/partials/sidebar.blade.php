@@ -9,7 +9,7 @@
         </div>
         
         <!-- Navigation Links -->
-        <nav class="flex-1 py-4 space-y-1.5 overflow-y-auto overflow-x-hidden custom-scrollbar" :class="sidebarOpen ? 'px-4' : 'px-2'">
+        <nav id="sidebar-nav" class="flex-1 py-4 space-y-1.5 overflow-y-auto overflow-x-hidden custom-scrollbar" :class="sidebarOpen ? 'px-4' : 'px-2'">
             <a href="{{ route('dashboard') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('dashboard') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
                     <img src="{{ asset('images/items/guestbook.webp') }}" alt="Guestbook" class="w-full h-full object-contain">
@@ -50,6 +50,13 @@
                     <img src="{{ asset('images/fishing/fishing_crate.webp') }}" alt="Fishing Pack" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Fishing Pack</span>
+            </a>
+
+            <a href="{{ route('tackle-box') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('tackle-box') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/fishing/fishing_pack/tackle_box.webp') }}" alt="Tackle Box" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Tackle Box</span>
             </a>
 
             <a href="{{ route('firefighter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('firefighter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
@@ -93,6 +100,20 @@
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>B.O.O. Pack</span>
             </a>
+
+            <a href="{{ route('crime-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('crime-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/crime/crime_crate.webp') }}" alt="Crime Wave" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Crime Pack</span>
+            </a>
+
+            <a href="{{ route('painter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('painter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/paint/red.webp') }}" alt="Painter Pack" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Painter Pack</span>
+            </a>
         </nav>
         
         <!-- Sidebar Footer Component -->
@@ -106,3 +127,22 @@
             </div>
         </div>
     </aside>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const nav = document.getElementById('sidebar-nav');
+            if (nav) {
+                const scrollpos = sessionStorage.getItem('sidebar-scroll');
+                if (scrollpos) {
+                    // Slight delay to ensure Alpine has finished rendering classes that affect layout
+                    setTimeout(() => {
+                        nav.scrollTop = parseInt(scrollpos, 10);
+                    }, 50);
+                }
+                
+                nav.addEventListener('scroll', () => {
+                    sessionStorage.setItem('sidebar-scroll', nav.scrollTop);
+                });
+            }
+        });
+    </script>

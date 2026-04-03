@@ -16,7 +16,7 @@ document.addEventListener('alpine:init', () => {
             fishingRod: { name: 'Fishing Rod', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/fishing_rod.webp' },
             fishTank: { name: 'Fish Tank', count: 10, type: 'per wl', icon: '/images/fishing/fishing_pack/Fish_Tank.webp' },
             fishTankPort: { name: 'Fish Tank Port', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Fish_Tank_Port.webp' },
-            worm: { name: 'Wiggly Worm', count: 5, type: 'per wl', icon: '/images/fishing/fishing_pack/Worm.webp' },
+            worm: { name: 'Wiggly Worm', count: 5, type: 'per wl', icon: '/images/fishing/bait/Worm.webp' },
             waterBucket: { name: 'Water Bucket', count: 5, type: 'per wl', icon: '/images/fishing/fishing_pack/Water_Bucket.webp' },
             detonator: { name: 'Nuclear Detonator', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Detonator.webp' },
             handDrill: { name: 'Hand Drill', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Hand_Drill.webp' },
