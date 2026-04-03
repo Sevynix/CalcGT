@@ -14,3 +14,5 @@ Route::get('/firefighter-pack', function () { return view('layouts.firefighter.f
 Route::get('/city-pack', function () { return view('layouts.city.city-pack'); })->name('city-pack');
 Route::get('/farm-pack', function () { return view('layouts.farm.farm-pack'); })->name('farm-pack');
 Route::get('/paleontologist-kit', function () { return view('layouts.paleontologist.paleontologist-kit'); })->name('paleontologist-kit');
+Route::get('/science-kit', function () { return view('layouts.science.science-kit'); })->name('science-kit');
+Route::get('/boo-pack', function () { return view('layouts.boo.boo-pack'); })->name('boo-pack');
