@@ -19,4 +19,4 @@ Route::get('/boo-pack', function () { return view('layouts.boo.boo-pack'); })->n
 Route::get('/crime-pack', function () { return view('layouts.crime.crime-pack'); })->name('crime-pack');
 Route::get('/ssp-pack', function () { return view('layouts.ssp.ssp-pack'); })->name('ssp-pack');
 Route::get('/tackle-box', function () { return view('layouts.fishing.tackle-box'); })->name('tackle-box');
-Route::get('/painter-pack', function () { return view('layouts.paint.painter-pack'); })->name('painter-pack');
+Route::get('/painter-pack', function () { return view('layouts.paint.painter-pack'); })->name('painter-pack');Route::get('/bbm-provider', function () { return view('layouts.bbm.bbm-provider'); })->name('bbm-provider');

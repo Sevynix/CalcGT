@@ -43,6 +43,18 @@
         <h2 class="text-[20px] font-extrabold text-slate-800 mb-5 px-1">Pinned Calculators</h2>
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             
+            <!-- BBM Card -->
+            <a href="{{ route('bbm-provider') }}" class="group bg-white rounded-[32px] p-1 border border-slate-200 shadow-sm hover:shadow-md transition-all block overflow-hidden">
+                <div class="bg-slate-50 rounded-[28px] h-36 flex items-center justify-center mb-1 group-hover:bg-[#E2EFFF] transition-colors relative overflow-hidden">
+                    <img src="{{ asset('images/bbm/bbm.webp') }}" class="w-16 h-16 object-contain z-10 group-hover:scale-110 transition-transform duration-300 drop-shadow-md" alt="BBM">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-brand-400/5 to-transparent z-0"></div>
+                </div>
+                <div class="p-5">
+                    <h3 class="font-extrabold text-slate-800 text-lg mb-1 group-hover:text-brand-600 transition-colors">BBM Provider</h3>
+                    <p class="text-[13px] text-slate-500 font-medium leading-snug">Track Building Blocks Machine item returns.</p>
+                </div>
+            </a>
+            
             <!-- Surgery Tools Card -->
             <a href="{{ route('surgery-tools') }}" class="group bg-white rounded-[32px] p-1 border border-slate-200 shadow-sm hover:shadow-md transition-all block overflow-hidden">
                 <div class="bg-slate-50 rounded-[28px] h-36 flex items-center justify-center mb-1 group-hover:bg-[#E2EFFF] transition-colors relative overflow-hidden">
@@ -71,3 +83,4 @@
 
 </div>
 @endsection
+
