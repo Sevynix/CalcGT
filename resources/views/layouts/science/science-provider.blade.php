@@ -194,7 +194,7 @@
                                         <td class="px-6 py-4">
                                             <div class="flex items-center gap-3">
                                                 <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                                    <span class="text-lg">🧪</span>
+                                                    <img src="{{ asset('images/science/chem/m.png') }}" alt="Mysterious Chemical" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                                 </div>
                                                 <span class="font-bold text-slate-800">Mysterious Chemical</span>
                                             </div>

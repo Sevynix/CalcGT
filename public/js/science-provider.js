@@ -26,10 +26,10 @@ document.addEventListener('alpine:init', () => {
 
         recipes: {
             slime: { name: 'Slime', chemg: 15, chemr: 0, chemb: 4, chemy: 0, chemp: 2, chemm: 0, icon: '/images/science/slime.png' },
-            chemm: { name: 'Mysterious Chemical', chemg: 0, chemr: 0, chemb: 10, chemy: 20, chemp: 5, chemm: 0, icon: '/images/science/chemm.png' },
+            chemm: { name: 'Mysterious Chemical', chemg: 0, chemr: 0, chemb: 10, chemy: 20, chemp: 5, chemm: 0, icon: '/images/science/chem/m.png' },
             forcefield: { name: 'Forcefield', chemg: 20, chemr: 10, chemb: 0, chemy: 0, chemp: 0, chemm: 1, icon: '/images/science/forcefield.png' },
-            fuelpack: { name: 'Fuel Pack', chemg: 0, chemr: 10, chemb: 2, chemy: 0, chemp: 0, chemm: 1, icon: '/images/science/fuelpack.png' },
-            blockglue: { name: 'Block Glue', chemg: 0, chemr: 1, chemb: 0, chemy: 0, chemp: 1, chemm: 1, icon: '/images/science/blockglue.png' },
+            fuelpack: { name: 'Fuel Pack', chemg: 0, chemr: 10, chemb: 2, chemy: 0, chemp: 0, chemm: 1, icon: '/images/science/fuel_pack.png' },
+            blockglue: { name: 'Block Glue', chemg: 0, chemr: 1, chemb: 0, chemy: 0, chemp: 1, chemm: 1, icon: '/images/science/glue.png' },
         },
 
         selectedCraftItem: null,
