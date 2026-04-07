@@ -18,5 +18,8 @@ Route::get('/science-kit', function () { return view('layouts.science.science-ki
 Route::get('/boo-pack', function () { return view('layouts.boo.boo-pack'); })->name('boo-pack');
 Route::get('/crime-pack', function () { return view('layouts.crime.crime-pack'); })->name('crime-pack');
 Route::get('/ssp-pack', function () { return view('layouts.ssp.ssp-pack'); })->name('ssp-pack');
+Route::get('/rsp-pack', function () { return view('layouts.rsp.rsp-pack'); })->name('rsp-pack');
 Route::get('/tackle-box', function () { return view('layouts.fishing.tackle-box'); })->name('tackle-box');
-Route::get('/painter-pack', function () { return view('layouts.paint.painter-pack'); })->name('painter-pack');Route::get('/bbm-provider', function () { return view('layouts.bbm.bbm-provider'); })->name('bbm-provider');
+Route::get('/painter-pack', function () { return view('layouts.paint.painter-pack'); })->name('painter-pack');
+Route::get('/bbm-provider', function () { return view('layouts.bbm.bbm-provider'); })->name('bbm-provider');
+Route::get('/science-provider', function () { return view('layouts.science.science-provider'); })->name('science-provider');

@@ -89,7 +89,7 @@
 
             <a href="{{ route('science-kit') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-kit') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/science/chem/r.webp') }}" alt="Chemical R" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/science/chem/r.png') }}" alt="Chemical R" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Kit</span>
             </a>
@@ -115,6 +115,13 @@
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>SSP</span>
             </a>
 
+            <a href="{{ route('rsp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('rsp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/rsp/280.png') }}" alt="Rare Seed Pack" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>RSP</span>
+            </a>
+
             <a href="{{ route('bbm-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('bbm-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
                     <img src="{{ asset('images/bbm/bbm.png') }}" alt="Building Blocks Machine" class="w-full h-full object-contain">
@@ -127,6 +134,13 @@
                     <img src="{{ asset('images/paint/red.webp') }}" alt="Painter Pack" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Painter Pack</span>
+            </a>
+
+            <a href="{{ route('science-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-full h-full object-contain">
+                </span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Station</span>
             </a>
         </nav>
         
@@ -160,6 +174,7 @@
             }
         });
     </script>
+
 
 
 
