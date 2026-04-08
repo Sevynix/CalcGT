@@ -132,112 +132,102 @@
 
             <!-- Crafted Items Table (Only shows when one recipe is selected) -->
             <template x-if="selectedCraftItem">
-                <div>
-                    <div class="p-6 border-b border-slate-100 bg-white/40 flex justify-between items-center">
-                        <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                            <span class="p-1.5 bg-amber-100 text-amber-600 rounded-lg">⚗️</span> <span x-text="`${recipes[selectedCraftItem].name} Requirements`"></span>
-                        </h2>
-                        <p class="text-sm text-slate-500">(If all chemicals are used)</p>
-                    </div>
+                <div class="p-6 bg-white/40 border-t border-slate-100 flex flex-col lg:flex-row gap-6">
+                    
+                    <!-- Recipe Info -->
+                    <div class="flex-1 bg-white border border-slate-100 rounded-[24px] p-6 shadow-sm relative overflow-hidden group">
+                        <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-400/5 rounded-full blur-2xl group-hover:bg-brand-400/10 transition duration-500 pointer-events-none"></div>
+                        
+                        <div class="flex items-center gap-4 mb-5 relative z-10">
+                            <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center p-2.5 shadow-sm">
+                                <img :src="asset(recipes[selectedCraftItem].icon)" :alt="recipes[selectedCraftItem].name" class="w-full h-full object-contain drop-shadow-sm">
+                            </div>
+                            <div>
+                                <h3 class="text-[18px] font-extrabold text-slate-800" x-text="recipes[selectedCraftItem].name"></h3>
+                                <p class="text-[13px] font-medium text-slate-500">Crafting Requirements & Output</p>
+                            </div>
+                        </div>
 
-                    <div class="overflow-x-auto">
-                        <table class="w-full text-left text-sm whitespace-nowrap">
-                            <thead>
-                                <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
-                                    <th class="px-6 py-4 uppercase">Chemical</th>
-                                    <th class="px-6 py-4 uppercase">Needed Per Item</th>
-                                    <th class="px-6 py-4 uppercase">Total Needed</th>
-                                    <th class="px-6 py-4 uppercase">Current Stock</th>
-                                    <th class="px-6 py-4 uppercase text-right">Can Make</th>
-                                </tr>
-                            </thead>
-                            <tbody class="divide-y divide-slate-100">
-                                <template x-for="(item, key) in items" :key="key">
-                                    <template x-if="recipes[selectedCraftItem][key] > 0">
-                                        <tr class="hover:bg-slate-50/50 transition-colors group">
-                                            <!-- Chemical Name & Icon -->
-                                            <td class="px-6 py-4">
-                                                <div class="flex items-center gap-3">
-                                                    <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                                        <img :src="asset(item.icon)" :alt="item.name" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-                                                    </div>
-                                                    <span class="font-bold text-slate-800" x-text="item.name"></span>
-                                                </div>
-                                            </td>
-
-                                            <!-- Per Item -->
-                                            <td class="px-6 py-4">
-                                                <span class="font-bold text-slate-800" x-text="recipes[selectedCraftItem][key]"></span>
-                                            </td>
-
-                                            <!-- Total Needed -->
-                                            <td class="px-6 py-4">
-                                                <span class="font-bold text-slate-800" x-text="recipes[selectedCraftItem][key] * canCraftItem(selectedCraftItem)"></span>
-                                            </td>
-
-                                            <!-- Current Stock -->
-                                            <td class="px-6 py-4">
-                                                <span class="font-bold text-slate-800" x-text="stocks[key] || 0"></span>
-                                            </td>
-
-                                            <!-- Can Make -->
-                                            <td class="px-6 py-4 text-right">
-                                                <span class="font-bold text-[15px] text-emerald-600 block pt-1" x-text="Math.floor((stocks[key] || 0) / recipes[selectedCraftItem][key])"></span>
-                                            </td>
-                                        </tr>
+                        <!-- Ingredients List -->
+                        <div class="bg-slate-50 rounded-[16px] p-4 border border-slate-100 mt-2 relative z-10">
+                            <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">Recipe Requirements</p>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="(needed, chem) in recipes[selectedCraftItem]" :key="chem">
+                                    <template x-if="needed > 0 && chem !== 'name' && chem !== 'icon' && chem !== 'yield'">
+                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm rounded-lg py-1.5 px-3" :title="items[chem] ? items[chem].name : (recipes[chem] ? recipes[chem].name : '')">
+                                            <img :src="asset(items[chem] ? items[chem].icon : recipes[chem].icon)" class="w-5 h-5 object-contain">
+                                            <span class="text-[13px] font-bold text-slate-700" x-text="needed + 'x'"></span>
+                                        </div>
                                     </template>
                                 </template>
-                                
-                                <!-- Mysterious Chemical if needed -->
-                                <template x-if="recipes[selectedCraftItem].chemm > 0">
-                                    <tr class="hover:bg-slate-50/50 transition-colors group">
-                                        <td class="px-6 py-4">
-                                            <div class="flex items-center gap-3">
-                                                <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                                    <img src="{{ asset('images/science/chem/m.png') }}" alt="Mysterious Chemical" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-                                                </div>
-                                                <span class="font-bold text-slate-800">Mysterious Chemical</span>
-                                            </div>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span class="font-bold text-slate-800" x-text="recipes[selectedCraftItem].chemm"></span>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span class="font-bold text-slate-800" x-text="recipes[selectedCraftItem].chemm * canCraftItem(selectedCraftItem)"></span>
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            <span class="font-bold text-slate-800" x-text="canCraftChemM()"></span>
-                                        </td>
-                                        <td class="px-6 py-4 text-right">
-                                            <span class="font-bold text-[15px] text-emerald-600 block pt-1" x-text="Math.floor(canCraftChemM() / recipes[selectedCraftItem].chemm)"></span>
-                                        </td>
-                                    </tr>
+                            </div>
+                        </div>
+
+                        <!-- Leftover Stock -->
+                        <div class="bg-slate-50 rounded-[16px] p-4 border border-slate-100 mt-3 relative z-10">
+                            <div class="flex justify-between items-center mb-3">
+                                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Leftover Base Stock</p>
+                                <span class="text-[9px] text-slate-500 font-bold tracking-wider uppercase bg-white px-2 py-0.5 rounded-md shadow-sm border border-slate-200">After Max Craft</span>
+                            </div>
+                            <div class="flex flex-wrap gap-2">
+                                <template x-for="(left, chem) in getLeftoverBaseChemicals(selectedCraftItem)" :key="chem">
+                                    <template x-if="left > 0 && items[chem]">
+                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm rounded-lg py-1 px-2.5" :title="items[chem].name">
+                                            <img :src="asset(items[chem].icon)" class="w-4 h-4 object-contain opacity-70">
+                                            <span class="text-[12px] font-bold text-slate-600" x-text="left"></span>
+                                        </div>
+                                    </template>
                                 </template>
-                            </tbody>
-                        </table>
+                                <template x-if="!Object.values(getLeftoverBaseChemicals(selectedCraftItem)).some(v => v > 0)">
+                                    <span class="text-slate-400 text-[12px] font-medium italic">All chemicals consumed or 0 stock entered.</span>
+                                </template>
+                            </div>
+                        </div>
                     </div>
 
-                    <!-- Summary Footer -->
-                    <div class="p-6 border-t border-slate-100 bg-white/40">
-                        <div class="grid grid-cols-3 gap-4">
-                            <div class="bg-slate-50 border border-slate-100 rounded-lg p-4 text-center">
-                                <p class="text-xs text-slate-500 uppercase font-semibold mb-2">Items You Can Make</p>
-                                <p class="text-3xl font-extrabold text-brand-600" x-text="canCraftItem(selectedCraftItem)"></p>
-                            </div>
-                            
+                    <!-- Summary Area -->
+                    <div class="lg:w-[350px] flex flex-col gap-4">
+                        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm">
                             <div>
-                                <label class="text-slate-600 font-bold text-xs mb-2 block uppercase">Selling Price Per Item</label>
-                                <div class="flex items-center bg-white border border-slate-200 rounded-lg px-3 py-2 focus-within:ring-2 focus-within:ring-brand-400 focus-within:border-brand-400">
+                                <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Max You Can Craft</p>
+                                <p class="text-[32px] font-extrabold text-slate-800 leading-none" x-text="canCraftItem(selectedCraftItem)"></p>
+                            </div>
+                            <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center shadow-inner border border-emerald-100/50 shrink-0">
+                                <img :src="asset(recipes[selectedCraftItem].icon)" class="w-8 h-8 object-contain drop-shadow-md">
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm">
+                            <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">Selling Estimation</label>
+                            
+                            <div class="flex flex-col gap-3">
+                                <!-- Price Input -->
+                                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-[14px] px-3 py-2.5 focus-within:bg-white focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all shadow-sm">
                                     <input type="number" min="0" step="0.01" x-model.number="craftingPrices[selectedCraftItem]"
-                                        class="bg-transparent text-slate-800 font-bold outline-none flex-1 p-0 m-0 text-sm"
-                                        placeholder="0">
-                                    <span class="text-slate-500 font-bold text-sm ml-2">WL</span>
+                                        class="bg-transparent text-slate-800 text-[18px] font-bold outline-none flex-1 p-0 m-0 w-full"
+                                        :placeholder="craftingPriceTypes[selectedCraftItem] === 'per wl' ? 'Items/WL' : (craftingPriceTypes[selectedCraftItem] === '200/?' ? 'WL/200' : '0')">
+                                </div>
+
+                                <!-- Unit Select -->
+                                <div class="relative w-full border border-slate-200 rounded-[14px] overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-brand-100 focus-within:border-brand-400 transition-all group">
+                                    <select x-model="craftingPriceTypes[selectedCraftItem]"
+                                        class="w-full bg-slate-50 text-slate-600 font-bold px-3 py-2.5 pr-8 outline-none group-hover:bg-white cursor-pointer appearance-none text-[14px] transition-colors">
+                                        <option value="per wl">Items per WL</option>
+                                        <option value="200/?">WL per 200 items</option>
+                                        <option value="wl/item">WL per 1 item</option>
+                                    </select>
+                                    <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-3 text-slate-400">
+                                        <svg class="h-4 w-4 drop-shadow-sm" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="bg-gradient-to-br from-blue-50 to-indigo-50 border border-blue-200 rounded-lg p-4 text-center">
-                                <p class="text-xs text-blue-700 font-semibold uppercase tracking-wide mb-2">Total Profit</p>
-                                <p class="text-2xl font-extrabold text-blue-600" x-text="formatCraftingProfit(selectedCraftItem)"></p>
+                        <div class="bg-gradient-to-br from-emerald-500 to-teal-500 rounded-[20px] p-5 text-white shadow-md relative overflow-hidden group">
+                            <div class="absolute -right-4 -bottom-4 w-24 h-24 bg-white/20 rounded-full blur-xl group-hover:scale-150 transition duration-700 pointer-events-none"></div>
+                            <div class="relative z-10">
+                                <p class="text-[11px] font-bold text-emerald-100 uppercase tracking-widest mb-1">Projected Profit</p>
+                                <p class="text-[32px] font-extrabold text-white leading-none tracking-tight whitespace-nowrap" x-text="formatCraftingProfit(selectedCraftItem)"></p>
                             </div>
                         </div>
                     </div>

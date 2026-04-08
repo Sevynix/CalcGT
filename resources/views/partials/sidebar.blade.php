@@ -18,6 +18,20 @@
             </a>
             
             <div class="pt-6 pb-2" x-show="sidebarOpen">
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Player Tools</p>
+            </div>
+            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
+                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
+            </div>
+            
+            <a href="{{ route('level-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('level-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Level Calculator</span>
+            </a>
+            
+            <div class="pt-6 pb-2" x-show="sidebarOpen">
                 <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Calculators</p>
             </div>
             <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">

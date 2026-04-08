@@ -23,3 +23,4 @@ Route::get('/tackle-box', function () { return view('layouts.fishing.tackle-box'
 Route::get('/painter-pack', function () { return view('layouts.paint.painter-pack'); })->name('painter-pack');
 Route::get('/bbm-provider', function () { return view('layouts.bbm.bbm-provider'); })->name('bbm-provider');
 Route::get('/science-provider', function () { return view('layouts.science.science-provider'); })->name('science-provider');
+Route::get('/level-calculator', function () { return view('layouts.player.level-calculator'); })->name('level-calculator');
