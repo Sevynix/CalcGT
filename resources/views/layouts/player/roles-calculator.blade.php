@@ -1,0 +1,410 @@
+@extends('layouts.app')
+@section('title', "Roles Calculator")
+
+@section('content')
+<div x-data="rolesCalculator()" @keydown.window.enter.prevent="
+    let inputs = Array.from(document.querySelectorAll('input:not([type=radio]):not([type=checkbox])'));
+    let idx = inputs.indexOf(document.activeElement);
+    if(idx > -1) {
+        if(idx < inputs.length - 1) {
+            inputs[idx + 1].focus();
+            if(inputs[idx + 1].select) inputs[idx + 1].select();
+        } else {
+            inputs[idx].blur();
+        }
+    }
+">
+    <div class="max-w-5xl mx-auto space-y-8">
+
+        <!-- Header -->
+        <div class="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
+            <div>
+                <a href="/"
+                    class="inline-flex items-center text-slate-500 hover:text-brand-600 transition font-medium mb-3 text-sm">
+                    <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7">
+                        </path>
+                    </svg>
+                    Back to Dashboard
+                </a>
+                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+                    <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator"
+                        class="w-10 h-10 object-contain drop-shadow-sm">
+                    Roles Calculator
+                    <span
+                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Player Tools</span>
+                </h1>
+                <p class="text-slate-500 mt-2 max-w-lg">Calculate Role Points and estimate the total amount of quests needed to reach the max level.</p>
+
+            </div>
+
+            <!-- Quick Actions -->
+            <div class="flex gap-3">
+                <button @click="currentLevel = 0; targetLevel = 10; currentPoints = 0; buffs.daily=false; buffs.jack=false; buffs.cape=false;"
+                    class="bg-white border border-slate-200 hover:border-slate-300 text-slate-700 px-4 py-2 rounded-xl font-medium transition shadow-sm text-sm flex items-center gap-2 active:scale-95">
+                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                    Reset
+                </button>
+            </div>
+        </div>
+
+        <!-- Role Selection Area -->
+        <div class="glass-card rounded-[32px] p-6 lg:p-8 shadow-sm border border-slate-100 relative overflow-hidden group">
+            <div class="relative z-10 flex flex-col h-full">
+                <div class="flex items-center justify-between mb-5">
+                    <h2 class="text-[20px] font-extrabold text-slate-800 tracking-tight flex items-center gap-2">
+                        <span>Select Role Target</span>
+                        <span class="text-xs font-bold text-slate-500 bg-slate-100 px-2 py-0.5 rounded-md" x-text="getSelectedRole().type === 'supplier' ? 'Supplier Class' : 'Crafter Class'"></span>
+                    </h2>
+                </div>
+                
+                <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
+                    <template x-for="role in rolesList" :key="role.id">
+                        <label class="relative flex flex-col items-center justify-center p-3 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden"
+                            :class="selectedRoleId === role.id ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            
+                            <input type="radio" name="selectedRole" :value="role.id" x-model="selectedRoleId" class="sr-only">
+                            
+                            <div x-show="selectedRoleId === role.id" class="absolute top-2 right-2 text-brand-500" style="display: none;">
+                                <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                            </div>
+
+                            <img :src="asset('images/roles/' + role.img)" :alt="role.name"
+                                class="w-12 h-12 object-contain mb-2 transition-transform duration-300 drop-shadow-md" 
+                                :class="selectedRoleId === role.id ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            
+                            <span class="text-[12px] font-bold text-center leading-tight mb-1 text-slate-700" 
+                                  x-text="role.name"></span>
+                        </label>
+                    </template>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dashboard Cards -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+            <!-- Input Card -->
+            <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1 flex flex-col h-full">
+                <div class="flex items-center gap-4 mb-8">
+                    <div
+                        class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2 text-2xl">
+                        ⚙️
+                    </div>
+                    <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Setup</h2>
+                </div>
+
+                <div class="space-y-6 flex-grow">
+                    <div class="flex flex-col">
+                        <label class="text-slate-600 font-bold text-[15px] mb-2">Current Role Level</label>
+                        <div
+                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            <input type="number" min="0" max="9" step="1" x-model="currentLevel"
+                                class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
+                                placeholder="0">
+                            <span class="text-slate-500 font-bold text-[15px] ml-2 shrink-0">/ 9</span>
+                        </div>
+                    </div>
+                    
+                    <div class="flex flex-col">
+                        <label class="text-slate-600 font-bold text-[15px] mb-2">Target Role Level</label>
+                        <div
+                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            <input type="number" min="1" max="10" step="1" x-model="targetLevel"
+                                class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
+                                placeholder="10">
+                            <span class="text-slate-500 font-bold text-[15px] ml-2 shrink-0">/ 10</span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="text-slate-600 font-bold text-[15px] mb-2">Current Points</label>
+                        <div
+                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            <input type="number" min="0" step="1" x-model="currentPoints"
+                                class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
+                                placeholder="0">
+                            <span class="text-slate-500 font-bold text-[13px] ml-2 shrink-0">Pts / <span x-text="formatNumber(getPointsForNextLevel(Number(currentLevel)))"></span></span>
+                        </div>
+                    </div>
+
+                    <div class="flex flex-col">
+                        <label class="text-slate-600 font-bold text-[15px] mb-2">Quests Per Day</label>
+                        <div
+                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            <input type="number" min="1" max="10" step="1" x-model="questsPerDay"
+                                class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
+                                placeholder="1">
+                            <span class="text-slate-500 font-bold text-[13px] ml-2 shrink-0">Max 10</span>
+                        </div>
+                        <p class="text-[11px] text-slate-400 font-medium mt-1">Cost multiplier applied after the 1st free quest.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Summary Card -->
+            <div
+                class="bg-white rounded-[32px] p-8 lg:col-span-2 shadow-sm border border-slate-100 flex flex-col justify-between relative overflow-hidden group">
+
+                <!-- Background Decoration -->
+                <div
+                    class="absolute -right-20 -top-20 w-64 h-64 bg-gradient-to-br from-brand-400/10 to-blue-400/10 rounded-full blur-3xl group-hover:scale-110 transition-transform duration-700 pointer-events-none">
+                </div>
+
+                <div class="relative z-10 flex flex-col h-full">
+                    <!-- Header -->
+                    <div class="flex items-center justify-between mb-6">
+                        <div class="flex items-center gap-4">
+                            <div
+                                class="bg-brand-50 rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2 text-2xl">
+                                📊
+                            </div>
+                            <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Progress Calculation</h2>
+                        </div>
+                    </div>
+
+                    <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+
+                        <!-- Total Points Needed -->
+                        <div class="bg-brand-50 border border-brand-100 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden md:col-span-2">
+                            <p class="text-[13px] font-bold uppercase tracking-widest mb-1.5 relative z-10 text-brand-500">Total Points Needed</p>
+                            <div class="flex items-center gap-2 relative z-10">
+                                <p class="text-[36px] lg:text-[42px] font-extrabold leading-none text-brand-700" x-text="formatNumber(calculateTotalPointsNeeded())"></p>
+                                <span class="bg-white/60 text-[13px] font-bold px-2 py-0.5 rounded-full text-brand-600 shadow-sm">Pts</span>
+                            </div>
+                            <p class="text-[13px] mt-2 font-medium relative z-10 text-brand-600/70">To push your <span x-text="getSelectedRole().name"></span> role from level <span x-text="currentLevel"></span> to <span x-text="targetLevel"></span></p>
+                        </div>
+
+                        <!-- Total Quests Needed -->
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-[20px] p-5 flex flex-col justify-center transform transition hover:-translate-y-1 text-left relative">
+                            <div class="absolute top-4 right-4" x-show="getMultiplier() > 1.0" style="display: none;">
+                                <span class="bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-emerald-200" x-text="'x' + getMultiplier().toFixed(2)"></span>
+                            </div>
+                            <p class="text-[12px] font-bold text-emerald-500 uppercase tracking-widest mb-1.5">Total Quests Needed</p>
+                            <div class="flex items-end gap-2">
+                                <p class="text-[28px] font-extrabold leading-none text-emerald-700" x-text="formatNumber(calculateTotalQuestsNeeded())"></p>
+                                <p class="text-[14px] font-bold text-emerald-600/70 mb-1">Quests</p>
+                            </div>
+                            <p class="text-[12px] text-emerald-600/70 mt-2 font-medium leading-tight whitespace-nowrap overflow-hidden text-ellipsis" x-text="getMultiplier() > 1.0 ? 'Active bonus reducing quest requirements' : 'Standard 1x progression rate'"></p>
+                        </div>
+
+                        <!-- Daily Gem Cost -->
+                        <div class="bg-orange-50 border border-orange-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-orange-500 uppercase tracking-widest mb-1.5">Daily Gem Cost</p>
+                            <p class="text-[24px] font-extrabold leading-none text-orange-700" x-text="formatNumber(getDailyGemCost(Number(questsPerDay)))"></p>
+                            <p class="text-[12px] text-orange-600/70 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
+                        </div>
+
+                        <!-- Est Days Needed -->
+                        <div class="bg-violet-50 border border-violet-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-violet-500 uppercase tracking-widest mb-1.5">Total Days Required</p>
+                            <p class="text-[24px] font-extrabold leading-none text-violet-700" x-text="formatNumber(calculateTotalDaysNeeded())"></p>
+                            <p class="text-[12px] text-violet-600/70 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
+                        </div>
+                        
+                        <!-- Est Gem Cost -->
+                        <div class="bg-rose-50 border border-rose-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-rose-500 uppercase tracking-widest mb-1.5">Total Gem Cost</p>
+                            <p class="text-[24px] font-extrabold leading-none text-rose-700" x-text="formatNumber(calculateTotalGemCost())"></p>
+                            <p class="text-[12px] text-rose-600/70 mt-2 font-medium leading-tight">Daily cost × <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bonus Settings Area -->
+        <div x-data="{ openBonuses: false }" class="glass-card rounded-[32px] overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
+            <!-- Accordion Header -->
+            <button @click="openBonuses = !openBonuses" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 hover:bg-white/60 transition-colors text-left focus:outline-none">
+                <div class="flex items-center gap-4">
+                    <div class="bg-amber-50 rounded-2xl w-12 h-12 flex items-center justify-center shadow-inner-light p-2 text-xl shrink-0 text-amber-500">
+                        ⭐
+                    </div>
+                    <div>
+                        <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Active Multipliers</h2>
+                        <p class="text-[13px] text-slate-500 font-medium">Equip Capes or Daily factors to speed up your quest points.</p>
+                    </div>
+                </div>
+                <div class="p-2 rounded-full bg-slate-100 text-slate-500 transition-transform duration-300" :class="openBonuses ? 'rotate-180' : ''">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Expanded Content -->
+            <div x-show="openBonuses"
+                 x-transition:enter="transition ease-out duration-300 transform"
+                 x-transition:enter-start="opacity-0 -translate-y-4"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-200 transform"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-4"
+                 class="border-t border-slate-100 bg-white/30"
+                 style="display: none;">
+                
+                <div class="p-6 lg:p-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+                        
+                        <!-- Role of the Day -->
+                        <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
+                            :class="buffs.daily ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            <input type="checkbox" x-model="buffs.daily" class="sr-only">
+                            <img :src="asset('images/roles/' + getSelectedRole().img)" alt="Role" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.daily ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <div class="flex-grow">
+                                <span class="text-[15px] font-bold block mb-1 text-slate-800">Role of the Day</span>
+                                <span class="text-[12px] font-medium text-slate-500">25% Bonus to <span x-text="getSelectedRole().name"></span> Points</span>
+                            </div>
+                            <div class="flex-shrink-0 ml-3">
+                                <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+25%</span>
+                            </div>
+                        </label>
+
+                        <!-- Jack's Set -->
+                        <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
+                            :class="buffs.jack ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            <input type="checkbox" x-model="buffs.jack" class="sr-only">
+                            <img src="{{ asset('images/roles/item/jack_hat.png') }}" alt="Jack's Set" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.jack ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <div class="flex-grow">
+                                <span class="text-[15px] font-bold block mb-1 text-slate-800">Jack's Set</span>
+                                <span class="text-[12px] font-medium text-slate-500">Full Hat, Vest, Jeans, & Shoes</span>
+                            </div>
+                            <div class="flex-shrink-0 ml-3">
+                                <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+3%</span>
+                            </div>
+                        </label>
+
+                        <!-- Role Cape -->
+                        <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
+                            :class="buffs.cape ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            <input type="checkbox" x-model="buffs.cape" class="sr-only">
+                            <img src="{{ asset('images/roles/item/supplier_cape.png') }}" alt="Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <div class="flex-grow">
+                                <span class="text-[15px] font-bold block mb-1 text-slate-800"><span x-text="getSelectedRole().type === 'supplier' ? 'Supplier' : 'Crafter'"></span> Cape</span>
+                                <span class="text-[12px] font-medium text-slate-500">Wearing the appropriate class cape</span>
+                            </div>
+                            <div class="flex-shrink-0 ml-3">
+                                <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+5%</span>
+                            </div>
+                        </label>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- The Table Area -->
+        <div x-data="{ openTable: false }" class="glass-card rounded-[32px] overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
+            <!-- Accordion Header -->
+            <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 hover:bg-white/60 transition-colors text-left focus:outline-none">
+                <div class="flex items-center gap-4">
+                    <div class="bg-blue-50 rounded-2xl w-12 h-12 flex items-center justify-center shadow-inner-light p-2 text-xl shrink-0 text-blue-500">
+                        📈
+                    </div>
+                    <div>
+                        <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Progression Breakdown</h2>
+                        <p class="text-[13px] text-slate-500 font-medium">Per-level points and quest estimations perfectly mapped out.</p>
+                    </div>
+                </div>
+                <div class="p-2 rounded-full bg-slate-100 text-slate-500 transition-transform duration-300" :class="openTable ? 'rotate-180' : ''">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                </div>
+            </button>
+
+            <!-- Expanded Content -->
+            <div x-show="openTable"
+                 x-transition:enter="transition ease-out duration-300 transform"
+                 x-transition:enter-start="opacity-0 -translate-y-4"
+                 x-transition:enter-end="opacity-100 translate-y-0"
+                 x-transition:leave="transition ease-in duration-200 transform"
+                 x-transition:leave-start="opacity-100 translate-y-0"
+                 x-transition:leave-end="opacity-0 -translate-y-4"
+                 class="border-t border-slate-100 bg-white/30"
+                 style="display: none;">
+                
+                <div class="overflow-x-auto">
+                <table class="w-full text-left text-sm whitespace-nowrap">
+                    <thead>
+                        <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
+                            <th class="px-6 py-4 uppercase">Target Level</th>
+                            <th class="px-6 py-4 uppercase">Points Needed</th>
+                            <th class="px-6 py-4 uppercase">Est. Quests</th>
+                            <th class="px-6 py-4 uppercase">Days / Gems</th>
+                            <th class="px-6 py-4 uppercase text-right">Cumulative Total</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-slate-100">
+                        <template x-for="(req, index) in getVisibleBreakdown()" :key="req.levelTo">
+                            <tr class="hover:bg-slate-50/50 transition-colors group bg-white">
+                                
+                                <td class="px-6 py-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded-full bg-slate-100 text-slate-600 font-bold flex items-center justify-center text-[12px] border border-slate-200">
+                                            <span x-text="req.levelTo"></span>
+                                        </div>
+                                        <span class="font-bold text-slate-800">Level <span x-text="req.levelTo"></span></span>
+                                    </div>
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    <div class="flex flex-col">
+                                        <span class="font-extrabold text-slate-700 text-[14px]">
+                                            <span x-text="formatNumber(req.pointsNeeded)"></span> Pts
+                                        </span>
+                                        <span class="text-[11px] font-bold opacity-60 flex items-center gap-1" :class="'text-' + getSelectedRole().color + '-600'">
+                                            +<span x-text="formatNumber(req.questYield)"></span> pts/quest
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-700 px-3 py-1 rounded-lg font-bold text-[13px]">
+                                        <span x-text="formatNumber(req.questsNeeded)"></span> Quests
+                                    </span>
+                                </td>
+
+                                <td class="px-6 py-4">
+                                    <div class="flex flex-col">
+                                        <span class="font-bold text-slate-700 text-[13px]">
+                                            <span x-text="formatNumber(req.daysNeeded)"></span> Days
+                                        </span>
+                                        <span class="font-bold text-[11px]" :class="req.gemCost > 0 ? 'text-rose-500' : 'text-slate-400'">
+                                            <span x-text="formatNumber(req.gemCost)"></span> Gems
+                                        </span>
+                                    </div>
+                                </td>
+
+                                <td class="px-6 py-4 text-right">
+                                    <span class="font-bold text-[14.5px] text-slate-800 block pt-1"
+                                        x-text="formatNumber(req.cumulativePhaseCost) + ' Pts'"></span>
+                                </td>
+                            </tr>
+                        </template>
+                        <tr x-show="getVisibleBreakdown().length === 0">
+                            <td colspan="5" class="px-6 py-8 text-center text-slate-500 font-medium">
+                                Your target level must be higher than your current level to see the progression mapped out.
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<script>
+    function asset(path) {
+        return path.startsWith('/') ? path : '/' + path;
+    }
+</script>
+@endsection
+
+@section('scripts')
+<script src="{{ asset('js/roles-calc.js') }}"></script>
+@endsection

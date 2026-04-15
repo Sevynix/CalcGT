@@ -30,6 +30,34 @@
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Level Calculator</span>
             </a>
+
+            <a href="{{ route('backpack-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('backpack-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/items/backpack_uprgrade.png') }}" alt="Backpack Upgrade" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Backpack Upgrades</span>
+            </a>
+
+            <a href="{{ route('roles-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('roles-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Roles Calculator</span>
+            </a>
+
+            <div class="pt-6 pb-2" x-show="sidebarOpen">
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Guild Tools</p>
+            </div>
+            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
+                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
+            </div>
+            
+            <a href="{{ route('guild-level') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('guild-level') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Tools" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Level Calculator</span>
+            </a>
             
             <div class="pt-6 pb-2" x-show="sidebarOpen">
                 <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Calculators</p>
@@ -57,6 +85,13 @@
                     <img src="{{ asset('images/startopia/startopia_crate.webp') }}" alt="Startopia" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Galactic Tools</span>
+            </a>
+
+            <a href="/nanoforge" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('nanoforge') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <span class="text-lg">⚙️</span>
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Nanoforge</span>
             </a>
 
             <a href="{{ route('fishin-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('fishin-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
