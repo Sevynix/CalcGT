@@ -24,7 +24,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="{{ asset('images/paleontologist/rock_hammer.webp') }}" alt="rock hammer"
+                    <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="rock hammer"
                         class="w-10 h-10 object-contain drop-shadow-sm">
                     Paleontologist's Kit
                     <span
@@ -70,7 +70,7 @@
                 <div class="flex items-center gap-4 mb-8">
                     <div
                         class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="{{ asset('images/paleontologist/rock_hammer.webp') }}" alt="Rock Hammer"
+                        <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="Rock Hammer"
                             class="w-full h-full object-contain drop-shadow-md">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
@@ -114,7 +114,7 @@
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>

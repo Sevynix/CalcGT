@@ -13,14 +13,14 @@ document.addEventListener('alpine:init', () => {
             handdrill: null,
         },
         items: {
-            fishingRod: { name: 'Fishing Rod', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/fishing_rod.webp' },
-            fishTank: { name: 'Fish Tank', count: 10, type: 'per wl', icon: '/images/fishing/fishing_pack/Fish_Tank.webp' },
-            fishTankPort: { name: 'Fish Tank Port', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Fish_Tank_Port.webp' },
-            worm: { name: 'Wiggly Worm', count: 5, type: 'per wl', icon: '/images/fishing/bait/Worm.webp' },
-            waterBucket: { name: 'Water Bucket', count: 5, type: 'per wl', icon: '/images/fishing/fishing_pack/Water_Bucket.webp' },
-            detonator: { name: 'Nuclear Detonator', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Detonator.webp' },
-            handDrill: { name: 'Hand Drill', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/Hand_Drill.webp' },
-            tackle: { name: 'Tackle Box', count: 1, type: 'wl/item', icon: '/images/fishing/fishing_pack/Tackle_box.webp' },
+            fishingRod: { name: 'Fishing Rod', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/rod.png' },
+            fishTank: { name: 'Fish Tank', count: 10, type: 'per wl', icon: '/images/fishing/fishing_pack/tank.png' },
+            fishTankPort: { name: 'Fish Tank Port', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/port.png' },
+            worm: { name: 'Wiggly Worm', count: 5, type: 'per wl', icon: '/images/fishing/bait/worm.png' },
+            waterBucket: { name: 'Water Bucket', count: 5, type: 'per wl', icon: '/images/fishing/fishing_pack/water.png' },
+            detonator: { name: 'Nuclear Detonator', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/deto.png' },
+            handDrill: { name: 'Hand Drill', count: 1, type: 'per wl', icon: '/images/fishing/fishing_pack/drill.png' },
+            tackle: { name: 'Tackle Box', count: 1, type: 'wl/item', icon: '/images/fishing/fishing_pack/tackle.png' },
         },
 
         get totalCost() {

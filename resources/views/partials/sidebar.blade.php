@@ -12,11 +12,97 @@
         <nav id="sidebar-nav" class="flex-1 py-4 space-y-1.5 overflow-y-auto overflow-x-hidden custom-scrollbar" :class="sidebarOpen ? 'px-4' : 'px-2'">
             <a href="{{ route('dashboard') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('dashboard') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/items/guestbook.webp') }}" alt="Guestbook" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/items/guestbook.png') }}" alt="Guestbook" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Dashboard</span>
             </a>
             
+            <!-- STORE (POPULAR SEARCH/DEMAND) Section -->
+            <div class="pt-6 pb-2" x-show="sidebarOpen">
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Popular Search</p>
+            </div>
+            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
+                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
+            </div>
+
+            <a href="{{ route('surgery-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('surgery-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="Surg Crate" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>MSurg Tools</span>
+            </a>
+
+            <a href="{{ route('gala-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('gala-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/startopia/crate.png') }}" alt="Startopia" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Startopia Tools</span>
+            </a>
+            
+            <a href="{{ route('crime-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('crime-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/crime/crate.png') }}" alt="Crime Wave" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Crime Pack</span>
+            </a>
+
+             <a href="{{ route('ssp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('ssp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/ssp/ssp.png') }}" alt="Small Seed Pack" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>SSP</span>
+            </a>
+
+            <a href="{{ route('rsp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('rsp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/rsp/2010.png') }}" alt="Rare Seed Pack" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>RSP</span>
+            </a>
+
+            <a href="{{ route('autoclave') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('autoclave') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Autoclave</span>
+            </a>
+
+            <a href="/nanoforge" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('nanoforge') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Nanoforge</span>
+            </a>
+
+             <!-- PROVIDER Section -->
+            <div class="pt-6 pb-2" x-show="sidebarOpen">
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Provider</p>
+            </div>
+            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
+                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
+            </div>
+
+            <a href="{{ route('bbm-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('bbm-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/bbm/bbm.png') }}" alt="Building Blocks Machine" class="w-full h-full object-contain">
+                </span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>BBM</span>
+            </a>
+
+            <a href="{{ route('science-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-full h-full object-contain">
+                </span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Station</span>
+            </a>
+
+            <a href="{{ route('tackle-box') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('tackle-box') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="Tackle Box" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Tackle Box</span>
+            </a>
+
             <div class="pt-6 pb-2" x-show="sidebarOpen">
                 <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Player Tools</p>
             </div>
@@ -28,14 +114,7 @@
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
                     <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-full h-full object-contain">
                 </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Level Calculator</span>
-            </a>
-
-            <a href="{{ route('backpack-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('backpack-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/items/backpack_uprgrade.png') }}" alt="Backpack Upgrade" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Backpack Upgrades</span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Player Level</span>
             </a>
 
             <a href="{{ route('roles-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('roles-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
@@ -43,6 +122,13 @@
                     <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Roles Calculator</span>
+            </a>
+
+            <a href="{{ route('backpack-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('backpack-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/items/backpack_uprgrade.png') }}" alt="Backpack Upgrade" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Backpack Upgrades</span>
             </a>
 
             <div class="pt-6 pb-2" x-show="sidebarOpen">
@@ -56,82 +142,55 @@
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
                     <img src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Tools" class="w-full h-full object-contain">
                 </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Level Calculator</span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Guild Level</span>
             </a>
-            
+
+            <!-- STORE (LOW DEMAND) Section -->
             <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Calculators</p>
+                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Store</p>
             </div>
             <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
                 <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
             </div>
-            
-            <a href="{{ route('surgery-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('surgery-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/surgery/surg_crate.webp') }}" alt="Surg Crate" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>MSurg Tools</span>
-            </a>
-
-            <a href="{{ route('autoclave') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('autoclave') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/surgery/autoclave.webp') }}" alt="Autoclave" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Autoclave</span>
-            </a>
-
-            <a href="{{ route('gala-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('gala-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/startopia/startopia_crate.webp') }}" alt="Startopia" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Galactic Tools</span>
-            </a>
-
-            <a href="/nanoforge" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('nanoforge') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <span class="text-lg">⚙️</span>
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Nanoforge</span>
-            </a>
 
             <a href="{{ route('fishin-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('fishin-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/fishing/fishing_crate.webp') }}" alt="Fishing Pack" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/fishing/crate.png') }}" alt="Fishing Pack" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Fishing Pack</span>
             </a>
 
-            <a href="{{ route('tackle-box') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('tackle-box') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+            <a href="{{ route('painter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('painter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/fishing/fishing_pack/tackle_box.webp') }}" alt="Tackle Box" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/paint/red.png') }}" alt="Painter Pack" class="w-full h-full object-contain">
                 </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Tackle Box</span>
-            </a>
-
-            <a href="{{ route('firefighter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('firefighter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/firefighter/firehouse.webp') }}" alt="Firehouse" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Firefighter Pack</span>
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Painter Pack</span>
             </a>
 
             <a href="{{ route('city-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('city-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/city/atm.webp') }}" alt="City Pack" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/city/atm.png') }}" alt="City Pack" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>City Pack</span>
             </a>
 
+            <a href="{{ route('firefighter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('firefighter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
+                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
+                    <img src="{{ asset('images/firefighter/house.png') }}" alt="Firehouse" class="w-full h-full object-contain">
+                </span> 
+                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Firefighter Pack</span>
+            </a>
+
             <a href="{{ route('farm-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('farm-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/farm/tractor.webp') }}" alt="Farm Pack" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/farm/tractor.png') }}" alt="Farm Pack" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Farm Pack</span>
             </a>
 
             <a href="{{ route('paleontologist-kit') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('paleontologist-kit') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/paleontologist/rock_hammer.webp') }}" alt="Rock Hammer" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="Rock Hammer" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Paleontologist Kit</span>
             </a>
@@ -145,52 +204,11 @@
 
             <a href="{{ route('boo-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('boo-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
                 <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/boo/jar.webp') }}" alt="Ghost Jar" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/boo/jar.png') }}" alt="Ghost Jar" class="w-full h-full object-contain">
                 </span> 
                 <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>B.O.O. Pack</span>
             </a>
 
-            <a href="{{ route('crime-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('crime-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/crime/crime_crate.webp') }}" alt="Crime Wave" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Crime Pack</span>
-            </a>
-
-            <a href="{{ route('ssp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('ssp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/ssp/ssp.webp') }}" alt="Small Seed Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>SSP</span>
-            </a>
-
-            <a href="{{ route('rsp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('rsp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/rsp/280.png') }}" alt="Rare Seed Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>RSP</span>
-            </a>
-
-            <a href="{{ route('bbm-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('bbm-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/bbm/bbm.png') }}" alt="Building Blocks Machine" class="w-full h-full object-contain">
-                </span>
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>BBM</span>
-            </a>
-
-            <a href="{{ route('painter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('painter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/paint/red.webp') }}" alt="Painter Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Painter Pack</span>
-            </a>
-
-            <a href="{{ route('science-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-full h-full object-contain">
-                </span>
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Station</span>
-            </a>
         </nav>
         
         <!-- Sidebar Footer Component -->

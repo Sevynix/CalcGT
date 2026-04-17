@@ -24,7 +24,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="{{ asset('images/surgery/surg_role.webp') }}" alt="Surg_Role"
+                    <img src="{{ asset('images/roles/surgeon.png') }}" alt="Surg_Role"
                         class="w-10 h-10 object-contain drop-shadow-sm">
                     Surgery Tools
                     <span
@@ -70,7 +70,7 @@
                 <div class="flex items-center gap-4 mb-8">
                     <div
                         class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="{{ asset('images/surgery/surg_crate.webp') }}" alt="Surg Crate"
+                        <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="Surg Crate"
                             class="w-full h-full object-contain drop-shadow-md">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
@@ -114,7 +114,7 @@
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -164,6 +164,37 @@
             </div>
         </div>
 
+        <!-- Holiday & Event Modifiers -->
+        <div class="mb-8 p-6 bg-white/60 border border-slate-100 rounded-[28px] shadow-sm">
+            <div class="mb-4">
+                <h3 class="text-[17px] font-bold text-slate-800 tracking-tight">Holiday & Event Modifiers</h3>
+                <p class="text-[13px] font-medium text-slate-500 mt-1">Select the event-specific items to mark them as active. Selected events will map their items below.</p>
+            </div>
+            
+            <div x-show="availableCategories.length > 0" class="flex flex-wrap gap-3">
+                <template x-for="cat in availableCategories" :key="cat">
+                    <button @click="enabledCategories[cat] = !enabledCategories[cat]" 
+                         class="w-24 sm:w-28 rounded-[20px] aspect-square sm:aspect-auto sm:min-h-[110px] border-2 transition-all flex flex-col items-center justify-center p-2.5 sm:p-3 relative group outline-none"
+                         :title="cat"
+                         :class="enabledCategories[cat] ? 'border-brand-400 bg-brand-50 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200 grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
+                        
+                        <div class="h-10 sm:h-12 w-full flex items-center justify-center mb-1.5">
+                            <img :src="asset(getCategoryStats(cat).icon)" class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
+                                 :class="enabledCategories[cat] ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
+                        </div>
+                        
+                        <span class="text-[10px] sm:text-[11px] font-bold leading-tight text-center w-full whitespace-normal transition-colors duration-300"
+                              :class="enabledCategories[cat] ? 'text-brand-700' : 'text-slate-500 group-hover:text-slate-700'"
+                              x-text="cat"></span>
+                        
+                        <div x-show="enabledCategories[cat] && getCategoryStats(cat).rev > 0" 
+                             class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[10px] font-bold px-1.5 py-0.5 rounded-full border-2 border-white shadow-sm truncate max-w-[60px]"
+                             x-text="'+' + getCategoryStats(cat).rev"></div>
+                    </button>
+                </template>
+            </div>
+        </div>
+
         <!-- The Table Area -->
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
             <div class="p-6 border-b border-slate-100 bg-white/40 flex justify-between items-center">
@@ -186,7 +217,7 @@
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         <template x-for="(item, key) in items" :key="key">
-                            <tr class="hover:bg-slate-50/50 transition-colors group">
+                            <tr class="hover:bg-slate-50/50 transition-colors group" x-show="!item.category || enabledCategories[item.category]">
                                 <!-- Tool Name & Icon -->
                                 <td class="px-6 py-4">
                                     <div class="flex items-center gap-3">

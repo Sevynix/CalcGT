@@ -85,7 +85,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL" class="w-full h-full object-contain drop-shadow-md">
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>
@@ -140,7 +140,7 @@
                         :class="tool.isTarget ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isFuel ? 'ring-2 ring-brand-400 border-brand-400 bg-brand-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isTarget"
                         :title="tool.isTarget ? 'Selected as Target' : tool.name">
-                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/gala_role.webp'" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain drop-shadow-sm">
                     </button>
                 </template>
             </div>
@@ -154,7 +154,7 @@
                         
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
                             <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center p-1.5 shrink-0">
-                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/gala_role.webp'" class="w-full h-full object-contain">
+                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
                         </div>
@@ -211,7 +211,7 @@
                         :class="tool.isFuel ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isTarget ? 'ring-2 ring-emerald-400 border-emerald-400 bg-emerald-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isFuel"
                         :title="tool.isFuel ? 'Selected as Fuel' : tool.name">
-                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/gala_role.webp'" class="w-8 h-8 object-contain">
+                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain">
                         <!-- Little Yield Badge Preview inside icon -->
                         <span x-show="getFinalCount(index) > 0" class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[11px] font-bold px-2 py-[2px] rounded-full shadow-md z-10" x-transition.scale x-text="getFinalCount(index)"></span>
                     </button>
@@ -227,7 +227,7 @@
 
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
                             <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center p-1.5 shrink-0">
-                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/gala_role.webp'" class="w-full h-full object-contain mb-0">
+                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain mb-0">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
                         </div>

@@ -24,7 +24,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="{{ asset('images/startopia/gala_role.webp') }}" alt="Gala_Role"
+                    <img src="{{ asset('images/roles/startopia.png') }}" alt="Gala_Role"
                         class="w-10 h-10 object-contain drop-shadow-sm">
                     Startopia Tools
                     <span
@@ -70,7 +70,7 @@
                 <div class="flex items-center gap-4 mb-8">
                     <div
                         class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="{{ asset('images/startopia/startopia_crate.webp') }}" alt="Startopia Crate"
+                        <img src="{{ asset('images/startopia/crate.png') }}" alt="Startopia Crate"
                             class="w-full h-full object-contain drop-shadow-md">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
@@ -114,7 +114,7 @@
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>

@@ -114,7 +114,7 @@
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -195,17 +195,31 @@
                                             <img :src="asset(item.icon)" :alt="item.name"
                                                 class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
-                                        <span class="font-bold text-slate-800" x-text="item.name"></span>
+                                        <div class="flex items-center gap-2">
+                                            <span class="font-bold text-slate-800" x-text="item.name"></span>
+                                            <template x-if="item.isRng">
+                                                <span class="text-[10px] text-slate-400 font-bold uppercase tracking-wider bg-slate-100 px-1.5 py-0.5 rounded-md">Choice</span>
+                                            </template>
+                                        </div>
                                     </div>
                                 </td>
 
                                 <!-- Total Count -->
                                 <td class="px-6 py-4">
-                                    <span
-                                        class="inline-flex items-center gap-1 bg-slate-100 text-slate-600 px-3 py-1 rounded-lg font-semibold text-xs">
-                                        <span x-text="(numPacks || 0) * item.count"></span>
-                                        <span>units</span>
-                                    </span>
+                                    <template x-if="!item.isRng">
+                                        <span
+                                            class="inline-flex items-center gap-1 bg-slate-100 text-slate-600 px-3 py-1 rounded-lg font-semibold text-xs mt-1.5">
+                                            <span x-text="(numPacks || 0) * item.count"></span>
+                                            <span>units</span>
+                                        </span>
+                                    </template>
+                                    <template x-if="item.isRng">
+                                        <div class="relative max-w-[100px]">
+                                            <input type="number" min="0" x-model.number="stocks[key]"
+                                                class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
+                                                placeholder="0">
+                                        </div>
+                                    </template>
                                 </td>
 
                                 <!-- Price Input -->

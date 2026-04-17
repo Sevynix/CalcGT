@@ -18,19 +18,19 @@ document.addEventListener('alpine:init', () => {
             teleporterCharge: null,
         },
         items: {
-            starFuel: { name: 'Star Fuel', count: 25, type: 'per wl', icon: '/images/startopia/gala_tools/StarFuel.webp' },
-            aiBrain: { name: 'AI Brain', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/AIBrain.webp' },
-            cyborgDiplomat: { name: 'Cyborg Diplomat', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Cyborg.webp' },
-            galactibolt: { name: 'Galactibolt', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Galactibolt.webp' },
-            gigablaster: { name: 'Gigablaster', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Gigablaster.webp' },
-            growtonTorpedo: { name: 'Growton Torpedo', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Torpedo.webp' },
-            hyperShields: { name: 'HyperShields', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/HyperShields.webp' },
-            quadriscanner: { name: 'Quadriscanner', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Quadscanner.webp' },
-            spaceMeds: { name: 'Space Meds', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/SpaceMeds.webp' },
-            starSupplies: { name: 'Star Supplies', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/StarSupplies.webp' },
-            stellarDocuments: { name: 'Stellar Documents', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/Documents.webp' },
-            tacticalDrone: { name: 'Tactical Drone', count: 5, type: 'per wl', icon: '/images/startopia/gala_tools/TacticalDrone.webp' },
-            teleporterCharge: { name: 'Teleporter Charge', count: 5, type: '200/?', icon: '/images/startopia/gala_tools/Teleporter.webp' }
+            starFuel: { name: 'Star Fuel', count: 25, type: 'per wl', icon: '/images/startopia/startopia_tools/StarFuel.png' },
+            aiBrain: { name: 'AI Brain', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/AI.png' },
+            cyborgDiplomat: { name: 'Cyborg Diplomat', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Cyborg.png' },
+            galactibolt: { name: 'Galactibolt', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/bolt.png' },
+            gigablaster: { name: 'Gigablaster', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Giga.png' },
+            growtonTorpedo: { name: 'Growton Torpedo', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Torpedo.png' },
+            hyperShields: { name: 'HyperShields', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Shield.png' },
+            quadriscanner: { name: 'Quadriscanner', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Qscan.png' },
+            spaceMeds: { name: 'Space Meds', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Meds.png' },
+            starSupplies: { name: 'Star Supplies', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Supplies.png' },
+            stellarDocuments: { name: 'Stellar Documents', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Doc.png' },
+            tacticalDrone: { name: 'Tactical Drone', count: 5, type: 'per wl', icon: '/images/startopia/startopia_tools/Tac.png' },
+            teleporterCharge: { name: 'Teleporter Charge', count: 5, type: '200/?', icon: '/images/startopia/startopia_tools/tele.png' }
         },
 
         get totalCost() {

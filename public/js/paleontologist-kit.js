@@ -10,11 +10,11 @@ document.addEventListener('alpine:init', () => {
             fossilPrep: null,
         },
         items: {
-            fossilBrush: { name: 'Fossil Brush', count: 1, type: 'per wl', icon: '/images/paleontologist/fossil_brush.webp' },
-            rockHammer: { name: 'Rock Hammer', count: 1, type: 'per wl', icon: '/images/paleontologist/rock_hammer.webp' },
-            rockChisel: { name: 'Rock Chisel', count: 1, type: 'per wl', icon: '/images/paleontologist/rock_chisel.webp' },
-            hardhat: { name: 'BlueHardhat', count: 1, type: 'per wl', icon: '/images/paleontologist/hardhat.webp' },
-            fossilPrep: { name: 'Fossil Prep Station', count: 1, type: 'wl/item', icon: '/images/paleontologist/fossil_prep.webp' },
+            fossilBrush: { name: 'Fossil Brush', count: 5, type: 'per wl', icon: '/images/paleontologist/brush.png' },
+            rockHammer: { name: 'Rock Hammer', count: 1, type: 'per wl', icon: '/images/paleontologist/hammer.png' },
+            rockChisel: { name: 'Rock Chisel', count: 1, type: 'per wl', icon: '/images/paleontologist/chisel.png' },
+            hardhat: { name: 'BlueHardhat', count: 1, type: 'per wl', icon: '/images/paleontologist/hat.png' },
+            fossilPrep: { name: 'Fossil Prep Station', count: 1, type: 'wl/item', icon: '/images/paleontologist/prep.png' },
         },
 
         get totalCost() {

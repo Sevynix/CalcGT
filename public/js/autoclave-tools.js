@@ -19,8 +19,9 @@ document.addEventListener('alpine:init', () => {
         ],
 
         getAssetPath(name) {
-            const formatted = name.toLowerCase().replace(' ', '');
-            return `/images/surgery/surg_tools/${formatted}.webp`;
+            let formatted = name.toLowerCase().replace(' ', '');
+            if (formatted === 'defibrillator') formatted = 'defi';
+            return `/images/surgery/surg_tool/${formatted}.png`;
         },
 
         formatWL(val) {

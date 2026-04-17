@@ -9,10 +9,10 @@ document.addEventListener('alpine:init', () => {
             jar: null,
         },
         items: {
-            goggles: { name: 'Spectral Goggles', count: 1, type: 'wl/item', icon: '/images/boo/goggles.webp' },
-            gun: { name: 'Neutron Gun', count: 1, type: 'wl/item', icon: '/images/boo/gun.webp' },
-            pack: { name: 'Neutron Pack', count: 1, type: 'wl/item', icon: '/images/boo/pack.webp' },
-            jar: { name: 'Ghost Jar', count: 10, type: 'wl/item', icon: '/images/boo/jar.webp' },
+            goggles: { name: 'Spectral Goggles', count: 1, type: 'wl/item', icon: '/images/boo/goggles.png' },
+            gun: { name: 'Neutron Gun', count: 1, type: 'wl/item', icon: '/images/boo/gun.png' },
+            pack: { name: 'Neutron Pack', count: 1, type: 'wl/item', icon: '/images/boo/pack.png' },
+            jar: { name: 'Ghost Jar', count: 10, type: 'wl/item', icon: '/images/boo/jar.png' },
         },
 
         get totalCost() {

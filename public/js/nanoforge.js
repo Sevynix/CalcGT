@@ -11,7 +11,6 @@ document.addEventListener('alpine:init', () => {
             { name: 'HyperShields', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Quadriscanner', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Space Meds', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
-            { name: 'Star Fuel', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Star Supplies', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Stellar Documents', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Tactical Drone', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
@@ -20,21 +19,20 @@ document.addEventListener('alpine:init', () => {
 
         getAssetPath(name) {
             const map = {
-                'AI Brain': 'AIBrain',
-                'Cyborg Diplomat': 'Cyborg',
-                'Galactibolt': 'Galactibolt',
-                'Gigablaster': 'Gigablaster',
-                'Growton Torpedo': 'Torpedo',
-                'HyperShields': 'HyperShields',
-                'Quadriscanner': 'Quadscanner',
-                'Space Meds': 'SpaceMeds',
-                'Star Fuel': 'StarFuel',
-                'Star Supplies': 'StarSupplies',
-                'Stellar Documents': 'Documents',
-                'Tactical Drone': 'TacticalDrone',
-                'Teleporter Charge': 'Teleporter'
+                'AI Brain': 'ai',
+                'Cyborg Diplomat': 'cyborg',
+                'Galactibolt': 'bolt',
+                'Gigablaster': 'giga',
+                'Growton Torpedo': 'torpedo',
+                'HyperShields': 'shield',
+                'Quadriscanner': 'qscan',
+                'Space Meds': 'meds',
+                'Star Supplies': 'supplies',
+                'Stellar Documents': 'doc',
+                'Tactical Drone': 'tac',
+                'Teleporter Charge': 'tele'
             };
-            return `/images/startopia/gala_tools/${map[name] || name}.webp`;
+            return `/images/startopia/startopia_tools/${map[name] || name}.png`;
         },
 
         formatWL(val) {
@@ -68,7 +66,7 @@ document.addEventListener('alpine:init', () => {
                         let cyclesAvailable = Math.floor(currentCounts[i] / 20);
                         currentCounts[i] -= (cyclesAvailable * 20);
                         
-                        // Add 1 to all other 12 tools
+                        // Add 1 to all other tools
                         for(let j=0; j < this.tools.length; j++) {
                             if(i !== j) {
                                 currentCounts[j] += cyclesAvailable;

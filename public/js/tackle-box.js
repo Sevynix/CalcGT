@@ -19,13 +19,13 @@ document.addEventListener('alpine:init', () => {
             uranium: null,
         },
         items: {
-            worm: { name: 'Wiggly Worm', type: 'per wl', icon: '/images/fishing/bait/worm.webp' },
-            shiny: { name: 'Shiny Flashy Thing', type: 'per wl', icon: '/images/fishing/bait/shiny.webp' },
-            salmon: { name: 'Salmon Eggs', type: 'per wl', icon: '/images/fishing/bait/salmon.webp' },
-            fishingFly: { name: 'Fishing Fly', type: 'per wl', icon: '/images/fishing/bait/fishing_fly.webp' },
-            megaPellet: { name: 'Mega-Pellet Bait', type: 'per wl', icon: '/images/fishing/bait/megapellet.webp' },
-            uranium: { name: 'Uranium Glowing Lure', type: 'per wl', icon: '/images/fishing/bait/uranium.webp' },
-            shrimp: { name: 'Shrimp Lure', type: 'wl/item', icon: '/images/fishing/bait/shrimp.webp' },
+            worm: { name: 'Wiggly Worm', type: 'per wl', icon: '/images/fishing/bait/worm.png' },
+            shiny: { name: 'Shiny Flashy Thing', type: 'per wl', icon: '/images/fishing/bait/shiny.png' },
+            salmon: { name: 'Salmon Eggs', type: 'per wl', icon: '/images/fishing/bait/salmon.png' },
+            fishingFly: { name: 'Fishing Fly', type: 'per wl', icon: '/images/fishing/bait/fishing.png' },
+            megaPellet: { name: 'Mega-Pellet Bait', type: 'per wl', icon: '/images/fishing/bait/mega.png' },
+            uranium: { name: 'Uranium Glowing Lure', type: 'per wl', icon: '/images/fishing/bait/ura.png' },
+            shrimp: { name: 'Shrimp Lure', type: 'wl/item', icon: '/images/fishing/bait/shrimp.png' },
         },
 
         getItemRevenue(key) {

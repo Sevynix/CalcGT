@@ -24,7 +24,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="{{ asset('images/ssp/ssp.webp') }}" alt="Small Seed Pack"
+                    <img src="{{ asset('images/ssp/ssp.png') }}" alt="Small Seed Pack"
                         class="w-10 h-10 object-contain drop-shadow-sm">
                     Small Seed Pack
                     <span
@@ -70,7 +70,7 @@
                 <div class="flex items-center gap-4 mb-8">
                     <div
                         class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="{{ asset('images/ssp/ssp.webp') }}" alt="Small Seed Pack"
+                        <img src="{{ asset('images/ssp/ssp.png') }}" alt="Small Seed Pack"
                             class="w-full h-full object-contain drop-shadow-md">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
@@ -150,7 +150,7 @@
                     <div class="flex items-center gap-4 mb-6">
                         <div
                             class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.webp') }}" alt="WL"
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
                                 class="w-full h-full object-contain drop-shadow-md">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -245,26 +245,12 @@
                             <tr class="hover:bg-slate-50/50 transition-colors group">
                                 <!-- Tool Name & Icon -->
                                 <td class="px-6 py-4 border-r border-slate-50">
-                                    <div class="flex items-center gap-3 w-80 whitespace-normal">
-                                        <div class="flex items-center gap-1.5 shrink-0">
-                                            <!-- Block Image -->
-                                            <div
-                                                class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                                <img :src="asset(item.icon.replace('/seed/', '/block/'))" :alt="item.name + ' Block'"
-                                                    class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-                                            </div>
-
-                                            <!-- Arrow -->
-                                            <svg class="w-4 h-4 text-slate-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 5l7 7-7 7"></path>
-                                            </svg>
-
-                                            <!-- Seed Image -->
-                                            <div
-                                                class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5 bg-green-50/50">
-                                                <img :src="asset(item.icon)" :alt="item.name"
-                                                    class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
-                                            </div>
+                                    <div class="flex items-center gap-3">
+                                        <!-- Seed Image -->
+                                        <div
+                                            class="w-10 h-10 shrink-0 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5 bg-green-50/50">
+                                            <img :src="asset(item.icon)" :alt="item.name"
+                                                class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
                                         <span class="font-bold text-slate-800 leading-tight" x-text="item.name"></span>
                                     </div>

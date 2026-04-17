@@ -2,6 +2,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
         wlCostPerPack: 0,
+        stocks: {},
         prices: {
             scienceStation: null,
             laboratory: null,
@@ -19,8 +20,8 @@ document.addEventListener('alpine:init', () => {
             scienceStation: { name: 'Science Station', count: 1, type: 'wl/item', icon: '/images/science/science_station.png' },
             laboratory: { name: 'Laboratory', count: 1, type: 'per wl', icon: '/images/science/laboratory.png' },
             labCoat: { name: 'Lab Coat', count: 1, type: 'per wl', icon: '/images/science/lab_coat.png' },
-            combover: { name: 'Combover', count: 1, type: 'per wl', icon: '/images/science/combover.png' },
-            mad_scientist: { name: 'Mad Scientist Hair', count: 1, type: 'per wl', icon: '/images/science/mad_scientist_hair.png' },
+            combover: { name: 'Combover', count: 1, type: 'per wl', icon: '/images/science/combover.png', isRng: true },
+            mad_scientist: { name: 'Mad Scientist Hair', count: 1, type: 'per wl', icon: '/images/science/mad_scientist_hair.png', isRng: true },
             zeGoggles: { name: 'Ze Goggles', count: 1, type: 'per wl', icon: '/images/science/ze_goggles.png' },
             deathRay: { name: 'Death Ray', count: 1, type: 'wl/item', icon: '/images/science/death_ray.png' },
             chemR: { name: 'Chemical R', count: 5, type: 'per wl', icon: '/images/science/chem/r.png' },
@@ -39,7 +40,14 @@ document.addEventListener('alpine:init', () => {
             let val = parseFloat(this.prices[key]);
             if (!val || val <= 0) return 0;
 
-            let totalItems = (this.numPacks || 0) * item.count;
+            let totalItems;
+            if (item.isRng) {
+                 totalItems = this.stocks[key] || 0;
+            } else {
+                 totalItems = (this.numPacks || 0) * item.count;
+            }
+
+            if (totalItems <= 0) return 0;
             if (item.type === 'per wl') {
                 return Math.floor(totalItems / val);
             } else if (item.type === '200/?') {
@@ -86,6 +94,7 @@ document.addEventListener('alpine:init', () => {
             this.numPacks = 1;
             this.wlCostPerPack = 0;
             this.prices = {};
+            this.stocks = {};
             for (let key in this.items) {
                 this.items[key].type = (key === 'teleporterCharge') ? '200/?' : 'per wl';
             }
