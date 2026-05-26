@@ -99,41 +99,7 @@
                     </div>
                 </div>
 
-                <!-- Spacer, Gauge -->
-                <div class="mt-auto pt-8">
-                    
-                    <!-- ROI Visualizer -->
-                    <div class="bg-slate-50/50 rounded-2xl p-5 border border-slate-100 shadow-inner-light">
-                        <div class="flex justify-between items-end mb-3">
-                            <h4 class="text-[12px] font-bold text-slate-500 uppercase tracking-widest flex items-center gap-1.5">
-                                <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"></path>
-                                </svg>
-                                ROI Health
-                            </h4>
-                            <span class="text-[15px] font-extrabold" :class="getHealthColorClass()" x-text="profitPercentage"></span>
-                        </div>
-                        
-                        <div class="relative w-full h-2.5 bg-slate-200/60 rounded-full overflow-hidden mb-1.5 shadow-inner">
-                            <div class="absolute inset-0 bg-gradient-to-r from-red-400 via-amber-400 to-emerald-400 opacity-90"></div>
-                        </div>
-                        
-                        <!-- Indicator Arrow -->
-                        <div class="relative w-full h-3">
-                            <div class="absolute top-0 -ml-1.5 transition-all duration-500 ease-out flex flex-col items-center" :style="'left: ' + getHealthPercentage() + '%;'">
-                                <svg class="w-3.5 h-3.5 drop-shadow-sm" :class="getHealthColorClass()" fill="currentColor" viewBox="0 0 24 24">
-                                    <path d="M12 2L22 20H2L12 2Z"></path>
-                                </svg>
-                            </div>
-                        </div>
-                        
-                        <div class="flex justify-between text-[10px] text-slate-400 font-bold uppercase mt-1">
-                            <span>Loss</span>
-                            <span>Avg</span>
-                            <span>Great</span>
-                        </div>
-                    </div>
-                </div>
+
             </div>
 
             <!-- Summary Card -->
@@ -255,7 +221,7 @@
         </div>
 
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100 mb-6">
-            <div class="p-6 border-b border-slate-100 bg-white/40 flex justify-between items-center">
+            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-0">
                 <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                     <span class="p-1.5 bg-brand-100 text-brand-600 rounded-lg">📦</span> Expected Drops
                 </h2>

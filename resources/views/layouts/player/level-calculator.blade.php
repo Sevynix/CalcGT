@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Level Calculator")
+@section('meta_description', 'Calculate XP requirements and EXP potion usage to reach your desired player level in Growtopia.')
 
 @section('content')
 <div x-data="levelCalculator()" @keydown.window.enter.prevent="
@@ -23,9 +24,8 @@
                     </svg>
                     Back to Dashboard
                 </a>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
-                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion"
-                        class="w-10 h-10 object-contain drop-shadow-sm">
+                <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
+                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-10 h-10 object-contain drop-shadow-sm">
                     Level Calculator
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Player Tools</span>
@@ -36,14 +36,14 @@
 
             <!-- Quick Actions -->
             <div class="flex gap-3">
-                <button @click="currentLevel = 0; targetLevel = 125; currentExp = 0;"
-                    class="bg-white border border-slate-200 hover:border-slate-300 text-slate-700 px-4 py-2 rounded-xl font-medium transition shadow-sm text-sm flex items-center gap-2 active:scale-95">
-                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button @click="$store.modal.show('This will clear all your inputs and saved data.', () => { currentLevel = 0; targetLevel = 125; currentExp = 0; })"
+                    class="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-md text-sm flex items-center gap-2 active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
                         </path>
                     </svg>
-                    Reset
+                    Reset All
                 </button>
             </div>
         </div>
@@ -54,10 +54,8 @@
             <!-- Input Card -->
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1">
                 <div class="flex items-center gap-4 mb-8">
-                    <div
-                        class="bg-[#E2EFFF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Settings"
-                            class="w-full h-full object-contain drop-shadow-md">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Settings" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Level Settings</h2>
                 </div>
@@ -110,10 +108,9 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div
-                            class="bg-[#F0F5FF] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2 text-2xl">
-                            📊
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
+                    </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">EXP Overview</h2>
                     </div>
 
@@ -156,8 +153,8 @@
             <!-- Accordion Header -->
             <button @click="openGhosts = !openGhosts" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 hover:bg-white/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
-                    <div class="bg-[#F3E8FF] rounded-2xl w-12 h-12 flex items-center justify-center shadow-inner-light p-2 text-xl shrink-0">
-                        👻
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/boo/jar.png') }}" alt="Ghost Jar" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Ghost Capturing Mode</h2>
@@ -326,8 +323,8 @@
             <!-- Accordion Header -->
             <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 hover:bg-white/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
-                    <div class="bg-blue-50 rounded-2xl w-12 h-12 flex items-center justify-center shadow-inner-light p-2 text-xl shrink-0 text-blue-500">
-                        📈
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Level Breakdown Table</h2>

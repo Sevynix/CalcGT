@@ -14,6 +14,37 @@ document.addEventListener('alpine:init', () => {
             pack: { name: 'Neutron Pack', count: 1, type: 'wl/item', icon: '/images/boo/pack.png' },
             jar: { name: 'Ghost Jar', count: 10, type: 'wl/item', icon: '/images/boo/jar.png' },
         },
+        init() {
+            const key = 'gthelp-boo-pack';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                }
+            } catch(e) {}
+            // Save every second —  doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                }));
+            } catch(e) {}
+        },
 
         get totalCost() {
             return (this.numPacks || 0) * (this.wlCostPerPack || 0);
@@ -67,7 +98,13 @@ document.addEventListener('alpine:init', () => {
             return `${this.netProfit.toFixed(1).replace(/\.0$/, '')} WL`;
         },
 
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+        },
+
         resetCalculator() {
+            try { localStorage.removeItem('gthelp-boo-pack'); } catch(e) {}
             this.numPacks = 1;
             this.wlCostPerPack = 0;
             this.prices = {};

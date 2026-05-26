@@ -1,220 +1,80 @@
-    <!-- Sidebar Navigation -->
+    <!-- ===================== -->
+    <!-- MOBILE NAVIGATION DRAWER -->
+    <!-- ===================== -->
+
+    <!-- Backdrop -->
+    <div
+        x-show="mobileNavOpen"
+        @click="mobileNavOpen = false"
+        x-transition:enter="transition ease-out duration-200"
+        x-transition:enter-start="opacity-0"
+        x-transition:enter-end="opacity-100"
+        x-transition:leave="transition ease-in duration-150"
+        x-transition:leave-start="opacity-100"
+        x-transition:leave-end="opacity-0"
+        class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm md:hidden"
+        style="display:none;"
+    ></div>
+
+    <!-- Drawer Panel -->
+    <div
+        x-show="mobileNavOpen"
+        x-transition:enter="transition ease-out duration-300"
+        x-transition:enter-start="-translate-x-full"
+        x-transition:enter-end="translate-x-0"
+        x-transition:leave="transition ease-in duration-200"
+        x-transition:leave-start="translate-x-0"
+        x-transition:leave-end="-translate-x-full"
+        class="fixed top-0 left-0 h-full w-72 max-w-[85vw] bg-white z-50 flex flex-col shadow-2xl md:hidden transform"
+        style="display:none;"
+    >
+        <!-- Drawer Header -->
+        <div class="h-16 flex items-center justify-between px-5 border-b border-slate-100 shrink-0">
+            <a href="/" class="flex items-center">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain">
+            </a>
+            <button @click="mobileNavOpen = false" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Close Navigation">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+        </div>
+
+        <!-- Drawer Nav Links -->
+        <nav class="flex-1 py-4 space-y-1 overflow-y-auto px-3">
+            @include('partials.nav-links', ['isMobile' => true])
+        </nav>
+
+        <!-- Drawer Footer -->
+        <div class="border-t border-slate-100 p-4 shrink-0">
+            <div class="bg-slate-50 rounded-xl p-3 text-center">
+                <p class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1">Growtopia Calculator</p>
+                <div class="flex items-center justify-center gap-1.5 text-xs font-semibold text-slate-500">
+                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                    <span>Made by: Sevynix</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===================== -->
+    <!-- DESKTOP SIDEBAR       -->
+    <!-- ===================== -->
     <aside :class="sidebarOpen ? 'w-60' : 'w-20'" class="bg-white border-r border-slate-200 hidden md:flex flex-col h-screen sticky top-0 shadow-[4px_0_24px_rgba(0,0,0,0.02)] z-30 shrink-0 transition-all duration-300">
         <!-- Logo Area -->
-        <div class="h-16 flex border-b border-slate-100 shrink-0 transition-all duration-300 items-center overflow-hidden" :class="sidebarOpen ? 'justify-start px-6' : 'justify-center px-0'">
-            <a href="/" class="text-xl font-extrabold text-slate-800 tracking-tight flex items-center gap-2.5 group whitespace-nowrap">
-                <div class="bg-gradient-to-tr from-brand-400 to-blue-600 text-white w-8 h-8 rounded-lg flex items-center justify-center shadow-md shrink-0">GT</div> 
-                <span x-show="sidebarOpen" x-transition.opacity.duration.300ms>Help<span class="text-brand-500">.</span></span>
+        <div class="h-16 flex border-b border-slate-100 shrink-0 transition-all duration-300 items-center overflow-hidden w-full" :class="sidebarOpen ? 'justify-start px-6' : 'justify-center'">
+            <a href="/" class="flex items-center group whitespace-nowrap">
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain transition-all duration-300" :class="sidebarOpen ? 'max-w-[160px]' : 'max-w-[50px]'">
             </a>
         </div>
         
         <!-- Navigation Links -->
         <nav id="sidebar-nav" class="flex-1 py-4 space-y-1.5 overflow-y-auto overflow-x-hidden custom-scrollbar" :class="sidebarOpen ? 'px-4' : 'px-2'">
-            <a href="{{ route('dashboard') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('dashboard') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/items/guestbook.png') }}" alt="Guestbook" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Dashboard</span>
-            </a>
-            
-            <!-- STORE (POPULAR SEARCH/DEMAND) Section -->
-            <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Popular Search</p>
-            </div>
-            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
-                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
-            </div>
-
-            <a href="{{ route('surgery-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('surgery-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="Surg Crate" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>MSurg Tools</span>
-            </a>
-
-            <a href="{{ route('gala-tools') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('gala-tools') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/startopia/crate.png') }}" alt="Startopia" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Startopia Tools</span>
-            </a>
-            
-            <a href="{{ route('crime-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('crime-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/crime/crate.png') }}" alt="Crime Wave" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Crime Pack</span>
-            </a>
-
-             <a href="{{ route('ssp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('ssp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/ssp/ssp.png') }}" alt="Small Seed Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>SSP</span>
-            </a>
-
-            <a href="{{ route('rsp-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('rsp-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/rsp/2010.png') }}" alt="Rare Seed Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>RSP</span>
-            </a>
-
-            <a href="{{ route('autoclave') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('autoclave') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Autoclave</span>
-            </a>
-
-            <a href="/nanoforge" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('nanoforge') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Nanoforge</span>
-            </a>
-
-             <!-- PROVIDER Section -->
-            <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Provider</p>
-            </div>
-            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
-                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
-            </div>
-
-            <a href="{{ route('bbm-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('bbm-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/bbm/bbm.png') }}" alt="Building Blocks Machine" class="w-full h-full object-contain">
-                </span>
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>BBM</span>
-            </a>
-
-            <a href="{{ route('science-provider') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-provider') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-full h-full object-contain">
-                </span>
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Station</span>
-            </a>
-
-            <a href="{{ route('tackle-box') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('tackle-box') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="Tackle Box" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Tackle Box</span>
-            </a>
-
-            <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Player Tools</p>
-            </div>
-            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
-                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
-            </div>
-            
-            <a href="{{ route('level-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('level-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Player Level</span>
-            </a>
-
-            <a href="{{ route('roles-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('roles-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Roles Calculator</span>
-            </a>
-
-            <a href="{{ route('backpack-calculator') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('backpack-calculator') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/items/backpack_uprgrade.png') }}" alt="Backpack Upgrade" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Backpack Upgrades</span>
-            </a>
-
-            <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Guild Tools</p>
-            </div>
-            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
-                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
-            </div>
-            
-            <a href="{{ route('guild-level') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('guild-level') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Tools" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Guild Level</span>
-            </a>
-
-            <!-- STORE (LOW DEMAND) Section -->
-            <div class="pt-6 pb-2" x-show="sidebarOpen">
-                <p class="px-3 text-[11px] font-bold text-slate-400 uppercase tracking-widest truncate">Store</p>
-            </div>
-            <div class="pt-6 pb-2 flex justify-center" x-show="!sidebarOpen">
-                <div class="w-6 border-t-[3px] rounded-full border-slate-200"></div>
-            </div>
-
-            <a href="{{ route('fishin-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('fishin-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/fishing/crate.png') }}" alt="Fishing Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Fishing Pack</span>
-            </a>
-
-            <a href="{{ route('painter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('painter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/paint/red.png') }}" alt="Painter Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Painter Pack</span>
-            </a>
-
-            <a href="{{ route('city-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('city-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/city/atm.png') }}" alt="City Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>City Pack</span>
-            </a>
-
-            <a href="{{ route('firefighter-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('firefighter-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/firefighter/house.png') }}" alt="Firehouse" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Firefighter Pack</span>
-            </a>
-
-            <a href="{{ route('farm-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('farm-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/farm/tractor.png') }}" alt="Farm Pack" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Farm Pack</span>
-            </a>
-
-            <a href="{{ route('paleontologist-kit') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('paleontologist-kit') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="Rock Hammer" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Paleontologist Kit</span>
-            </a>
-
-            <a href="{{ route('science-kit') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('science-kit') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/science/chem/r.png') }}" alt="Chemical R" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>Science Kit</span>
-            </a>
-
-            <a href="{{ route('boo-pack') }}" class="flex items-center rounded-xl transition duration-200 group relative overflow-hidden whitespace-nowrap {{ request()->routeIs('boo-pack') ? 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm' : 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium' }}" :class="sidebarOpen ? 'gap-3 px-3 py-2.5' : 'justify-center p-3'">
-                <span class="opacity-90 group-hover:opacity-100 transition-opacity shrink-0 flex items-center justify-center w-5 h-5">
-                    <img src="{{ asset('images/boo/jar.png') }}" alt="Ghost Jar" class="w-full h-full object-contain">
-                </span> 
-                <span class="text-[14.5px]" x-show="sidebarOpen" x-transition.opacity.duration.300ms>B.O.O. Pack</span>
-            </a>
-
+            @include('partials.nav-links', ['isMobile' => false])
         </nav>
         
         <!-- Sidebar Footer Component -->
         <div class="border-t border-slate-100 shrink-0 overflow-hidden" :class="sidebarOpen ? 'p-4' : 'p-2'">
             <div class="bg-slate-50 rounded-xl text-center flex flex-col items-center justify-center" :class="sidebarOpen ? 'p-4' : 'p-2 py-4'">
-                <p x-show="sidebarOpen" class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5 truncate w-full">Growtopia Help</p>
+                <p x-show="sidebarOpen" class="text-[10px] uppercase font-bold text-slate-400 tracking-widest mb-1.5 truncate w-full">Growtopia Calculator</p>
                 <div class="flex items-center justify-center text-xs font-semibold text-slate-500" :class="sidebarOpen ? 'gap-1.5' : ''">
                     <span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse shrink-0" :class="!sidebarOpen ? 'w-2 h-2' : ''"></span>
                     <span x-show="sidebarOpen">Made by: Sevynix</span>
@@ -229,7 +89,6 @@
             if (nav) {
                 const scrollpos = sessionStorage.getItem('sidebar-scroll');
                 if (scrollpos) {
-                    // Slight delay to ensure Alpine has finished rendering classes that affect layout
                     setTimeout(() => {
                         nav.scrollTop = parseInt(scrollpos, 10);
                     }, 50);
@@ -241,7 +100,3 @@
             }
         });
     </script>
-
-
-
-

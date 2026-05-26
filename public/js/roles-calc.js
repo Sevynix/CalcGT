@@ -22,6 +22,23 @@ document.addEventListener('alpine:init', () => {
         },
 
         init() {
+
+            const key = 'gthelp-roles-calc';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const d = JSON.parse(saved);
+                    if (d.selectedRoleId !== undefined) this.selectedRoleId = d.selectedRoleId;
+                    if (d.currentLevel !== undefined) this.currentLevel = d.currentLevel;
+                    if (d.targetLevel !== undefined) this.targetLevel = d.targetLevel;
+                    if (d.currentPoints !== undefined) this.currentPoints = d.currentPoints;
+                    if (d.questsPerDay !== undefined) this.questsPerDay = d.questsPerDay;
+                    if (d.buffs) Object.assign(this.buffs, d.buffs);
+                }
+            } catch(e) {}
+            setInterval(() => {
+                try { localStorage.setItem(key, JSON.stringify({ selectedRoleId: this.selectedRoleId, currentLevel: this.currentLevel, targetLevel: this.targetLevel, currentPoints: this.currentPoints, questsPerDay: this.questsPerDay, buffs: this.buffs })); } catch(e) {}
+            }, 1000);
             this.$watch('currentLevel', (value) => {
                 if (value === '') return;
                 let lvl = Number(value);

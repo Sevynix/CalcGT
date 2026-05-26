@@ -11,6 +11,19 @@ document.addEventListener('alpine:init', () => {
         init() {
             this.generateUpgradeData();
 
+            const key = 'gthelp-backpack-calc';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const d = JSON.parse(saved);
+                    if (d.currentSlots !== undefined) this.currentSlots = d.currentSlots;
+                    if (d.targetSlots !== undefined) this.targetSlots = d.targetSlots;
+                }
+            } catch(e) {}
+            setInterval(() => {
+                try { localStorage.setItem(key, JSON.stringify({ currentSlots: this.currentSlots, targetSlots: this.targetSlots })); } catch(e) {}
+            }, 1000);
+
             // Validate currentSlots
             this.$watch('currentSlots', (value) => {
                 if (value === '') return;
@@ -50,7 +63,6 @@ document.addEventListener('alpine:init', () => {
                 }
             });
         },
-
         generateUpgradeData() {
             // Index 0 represents the state at 16 slots (0 upgrades)
             this.costs = [0, 100];

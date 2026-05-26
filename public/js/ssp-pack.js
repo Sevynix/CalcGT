@@ -462,6 +462,40 @@ document.addEventListener('alpine:init', () => {
             return ((this.numPacks || 0) / 200) * (this.wlCostPerPack || 0);
         },
 
+        init() {
+            const key = 'gthelp-ssp-pack';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
+                }
+            } catch(e) {}
+            // Save every second —  doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                    stocks: this.stocks,
+                }));
+            } catch(e) {}
+        },
+
         getItemRevenue(key) {
             let item = this.items[key];
             let val = parseFloat(this.prices[key]);
@@ -538,7 +572,13 @@ document.addEventListener('alpine:init', () => {
             return `${min} WL - ${max} WL`;
         },
 
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+        },
+
         resetCalculator() {
+            try { localStorage.removeItem('gthelp-ssp-pack'); } catch(e) {}
             this.numPacks = 0;
             this.wlCostPerPack = 0;
             this.stocks = {};

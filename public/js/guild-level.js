@@ -43,6 +43,20 @@ document.addEventListener('alpine:init', () => {
         ],
 
         init() {
+
+            const key = 'gthelp-guild-level';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const d = JSON.parse(saved);
+                    if (d.currentLevel !== undefined) this.currentLevel = d.currentLevel;
+                    if (d.targetLevel !== undefined) this.targetLevel = d.targetLevel;
+                    if (d.currentExp !== undefined) this.currentExp = d.currentExp;
+                }
+            } catch(e) {}
+            setInterval(() => {
+                try { localStorage.setItem(key, JSON.stringify({ currentLevel: this.currentLevel, targetLevel: this.targetLevel, currentExp: this.currentExp })); } catch(e) {}
+            }, 1000);
             // Keep target level valid
             this.$watch('currentLevel', (value) => {
                 if (value === '') return;

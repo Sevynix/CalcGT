@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', 'Nanoforge Calculator')
+@section('meta_description', 'Plan Nanoforge upgrades and track all material requirements for your Startopia progression in Growtopia.')
 
 @section('content')
 <div x-data="nanoforgeSim()" @keydown.window.enter.prevent="
@@ -21,7 +22,7 @@
                     </svg>
                     Back to Dashboard
                 </a>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+                <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
                     <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-10 h-10 object-contain drop-shadow-sm">
                     Nanoforge
                     <span class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
@@ -42,11 +43,11 @@
             
             <!-- Quick Actions -->
             <div class="flex gap-3">
-                <button @click="resetData()" class="bg-white border border-slate-200 hover:border-slate-300 text-slate-700 px-4 py-2 rounded-xl font-medium transition shadow-sm text-sm flex items-center gap-2 active:scale-95">
-                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <button @click="$store.modal.show('This will clear all your inputs and saved data.', () => resetData())" class="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-md text-sm flex items-center gap-2 active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"></path>
                     </svg>
-                    Reset
+                    Reset All
                 </button>
             </div>
         </div>
@@ -57,8 +58,8 @@
             <!-- Simulation Stats Card -->
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="bg-[#FFF4E2] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                        <span class="text-2xl">⚙️</span>
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Nanoforge Cycles</h2>
                 </div>
@@ -84,9 +85,9 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-full h-full object-contain drop-shadow-md">
-                        </div>
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                    </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>
 
@@ -128,15 +129,15 @@
         <!-- FUEL BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <span class="bg-orange-100 text-orange-500 rounded-lg p-1 text-sm">🔥</span> 1. Select Fuel Tools
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200"><img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm"></div> 1. Select Fuel Tools
             </h2>
             <p class="text-sm text-slate-500 mb-6">Click the tools below to mark them as Nanoforge Fuel. Selected tools will show inputs for Quantity & Price.</p>
 
             <!-- Dynamic Selected Fuel Toggles -->
-            <div class="flex flex-wrap items-center gap-2.5 mb-6 border-b border-slate-100 pb-6">
+            <div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-13 gap-2.5 mb-6 border-b border-slate-100 pb-6">
                 <template x-for="(tool, index) in tools" :key="'toggle_fuel_'+index">
                     <button @click="if(!tool.isTarget) tool.isFuel = !tool.isFuel" 
-                        class="rounded-[14px] p-2 w-16 h-16 flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
+                        class="rounded-[14px] p-2 w-full aspect-square flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
                         :class="tool.isTarget ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isFuel ? 'ring-2 ring-brand-400 border-brand-400 bg-brand-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isTarget"
                         :title="tool.isTarget ? 'Selected as Target' : tool.name">
@@ -188,7 +189,7 @@
         <!-- TARGET BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <span class="bg-emerald-100 text-emerald-500 rounded-lg p-1 text-sm">🎯</span> 2. Select Target Tools
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200"><img src="{{ asset('images/items/forsale.png') }}" alt="For sale Sign" class="w-8 h-8 object-contain drop-shadow-sm"></div> 2. Select Target Tools
             </h2>
             <p class="text-sm text-slate-500 mb-4">Click the rare tools you want to sell. They will evaluate their compound yield directly from the Fuel tools above.</p>
 
@@ -204,10 +205,10 @@
             </div>
 
             <!-- Dynamic Selected Target Toggles -->
-            <div class="flex flex-wrap items-center gap-2.5 mb-6 border-b border-slate-100 pb-6">
+            <div class="grid grid-cols-5 sm:grid-cols-7 md:grid-cols-9 lg:grid-cols-13 gap-2.5 mb-6 border-b border-slate-100 pb-6">
                 <template x-for="(tool, index) in tools" :key="'toggle_target_'+index">
                     <button @click="if(!tool.isFuel) tool.isTarget = !tool.isTarget" 
-                        class="rounded-[14px] p-2 w-16 h-16 flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
+                        class="rounded-[14px] p-2 w-full aspect-square flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
                         :class="tool.isFuel ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isTarget ? 'ring-2 ring-emerald-400 border-emerald-400 bg-emerald-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isFuel"
                         :title="tool.isFuel ? 'Selected as Fuel' : tool.name">

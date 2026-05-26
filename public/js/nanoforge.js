@@ -92,6 +92,29 @@ document.addEventListener('alpine:init', () => {
         get totalCyclesRun() {
             return this.simulation.cycles;
         },
+        init() {
+            const key = 'gthelp-nanoforge';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                }
+            } catch(e) {}
+            // Save every second —  doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                }));
+            } catch(e) {}
+        },
 
         get totalCost() {
             let cost = 0;

@@ -165,14 +165,17 @@
 
         <!-- The Table Area -->
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
-            <div class="p-6 border-b border-slate-100 bg-white/40 flex justify-between items-center">
+            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-0">
                 <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
                     <span class="p-1.5 bg-yellow-100 text-yellow-500 rounded-lg">🎨</span> Resale Paints
                 </h2>
                 <p class="text-sm text-slate-500">Manually input your stock and set prices to calculate margins.</p>
             </div>
 
-            <div class="overflow-x-auto">
+            <!-- ================================ -->
+            <!-- DESKTOP: Table layout (>= md)    -->
+            <!-- ================================ -->
+            <div class="hidden md:block w-full overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
@@ -242,6 +245,54 @@
                         </template>
                     </tbody>
                 </table>
+            </div>
+
+            <!-- ================================ -->
+            <!-- MOBILE: Card layout (< md)       -->
+            <!-- ================================ -->
+            <div class="md:hidden divide-y divide-slate-100">
+                <template x-for="(item, key) in items" :key="key">
+                    <div class="p-4 flex flex-col gap-3 hover:bg-slate-50/50 transition-colors">
+                        <!-- Item name + revenue -->
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
+                                    <img :src="asset(item.icon)" :alt="item.name"
+                                        class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+                                </div>
+                                <span class="font-bold text-slate-800 text-sm leading-tight" x-text="item.name"></span>
+                            </div>
+                            <span class="font-bold text-[15px] text-emerald-600 shrink-0 ml-2" x-text="getItemRevenue(key) + ' WL'"></span>
+                        </div>
+                        <!-- Inputs row -->
+                        <div class="grid grid-cols-3 gap-2 mt-1">
+                            <div class="flex flex-col gap-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Stock</label>
+                                <input type="number" min="0" x-model.number="stocks[key]"
+                                    class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm h-[38px]"
+                                    placeholder="0">
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Price</label>
+                                <input type="number" min="0" step="0.01" x-model.number="prices[key]"
+                                    class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm h-[38px]"
+                                    :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
+                            </div>
+                            <div class="flex flex-col gap-1 relative">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Type</label>
+                                <select x-model="item.type"
+                                    class="w-full bg-white border border-slate-200 text-slate-600 font-medium px-1.5 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-[13px] appearance-none h-[38px]">
+                                    <option value="per wl">Items/WL</option>
+                                    <option value="200/?">WL/200</option>
+                                    <option value="wl/item">WL/Item</option>
+                                </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-1 top-4 flex items-center px-1 text-slate-400">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
         </div>
 

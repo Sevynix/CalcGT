@@ -768,6 +768,40 @@ document.addEventListener('alpine:init', () => {
             gatewayToAdventure: { name: 'Gateway To Adventure', type: 'per wl', icon: '/images/rsp/1682.png' }
         },
 
+        init() {
+            const key = 'gthelp-rsp-pack';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
+                }
+            } catch(e) {}
+            // Save every second —  doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                    stocks: this.stocks,
+                }));
+            } catch(e) {}
+        },
+
         getItemRevenue(key) {
             let item = this.items[key];
             let val = parseFloat(this.prices[key]);
@@ -848,11 +882,19 @@ document.addEventListener('alpine:init', () => {
             return `${min} WL - ${max} WL`;
         },
 
-        reset() {
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+            try { localStorage.removeItem('gthelp-rsp-pack'); } catch(e) {}
+        },
+
+        resetCalculator() {
             this.numPacks = 0;
             this.wlCostPerPack = 0;
-            for (let key in this.stocks) this.stocks[key] = null;
-            for (let key in this.prices) this.prices[key] = null;
+            this.stocks = {};
+            this.prices = {};
+            for (let key in this.items) { this.items[key].type = 'per wl'; }
+            try { localStorage.removeItem('gthelp-rsp-pack'); } catch(e) {}
         }
     }));
 });

@@ -28,6 +28,42 @@ document.addEventListener('alpine:init', () => {
             shrimp: { name: 'Shrimp Lure', type: 'wl/item', icon: '/images/fishing/bait/shrimp.png' },
         },
 
+        init() {
+            const key = 'gthelp-tackle-box';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
+                    if (data.enabledCategories) Object.assign(this.enabledCategories, data.enabledCategories);
+                }
+            } catch(e) {}
+            // Save every second — $watch doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                    stocks: this.stocks || {},
+                    enabledCategories: this.enabledCategories || {},
+                }));
+            } catch(e) {}
+        },
+
         getItemRevenue(key) {
             let item = this.items[key];
             let val = parseFloat(this.prices[key]);
@@ -58,7 +94,13 @@ document.addEventListener('alpine:init', () => {
             return `${this.totalRevenue.toFixed(1).replace(/\.0$/, '')} WL`;
         },
 
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+        },
+
         resetCalculator() {
+            try { localStorage.removeItem('gthelp-tackle-box'); } catch(e) {}
             this.stocks = {};
             this.prices = {};
             for (let key in this.items) {

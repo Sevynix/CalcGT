@@ -28,3 +28,5 @@ Route::get('/level-calculator', function () { return view('layouts.player.level-
 Route::get('/backpack-calculator', function () { return view('layouts.player.backpack-calculator'); })->name('backpack-calculator');
 Route::get('/roles-calculator', function () { return view('layouts.player.roles-calculator'); })->name('roles-calculator');
 Route::get('/guild-level', function () { return view('layouts.guild.level-calculator'); })->name('guild-level');
+
+Route::get('/about', function () { return view('about'); })->name('about');

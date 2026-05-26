@@ -75,6 +75,37 @@ document.addEventListener('alpine:init', () => {
             superSpeed: { name: 'Superpower - Super Speed', type: 'per wl', icon: '/images/crime/muscle/speed.png' },
             superStrength: { name: 'Superpower - Super Strength', type: 'per wl', icon: '/images/crime/muscle/strength.png' },
         },
+        init() {
+            const key = 'gthelp-crime-pack';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                }
+            } catch(e) {}
+            // Save every second —  doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                }));
+            } catch(e) {}
+        },
 
         get totalCost() {
             return (this.numPacks || 0) * (this.wlCostPerPack || 0);
@@ -130,7 +161,13 @@ document.addEventListener('alpine:init', () => {
             return `${this.netProfit.toFixed(1).replace(/\.0$/, '')} WL`;
         },
 
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+        },
+
         resetCalculator() {
+            try { localStorage.removeItem('gthelp-crime-pack'); } catch(e) {}
             this.numPacks = 1;
             this.wlCostPerPack = 0;
             this.stocks = {};

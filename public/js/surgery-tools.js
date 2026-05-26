@@ -2,6 +2,7 @@ document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
         wlCostPerPack: 0,
+        stocks: {},
         prices: {
             surgE: null,
             stitches: null,
@@ -34,6 +35,42 @@ document.addEventListener('alpine:init', () => {
             transfusion: { name: 'Surgical Transfusion', count: 20, type: 'per wl', icon: '/images/surgery/surg_tool/transfusion.png' },
             ultrasound: { name: 'Surgical Ultrasound', count: 20, type: 'per wl', icon: '/images/surgery/surg_tool/ultrasound.png' },
             loveMallet: { name: 'Love Mallet', count: 10, type: 'wl/item', icon: '/images/surgery/surg_tool/mallet.png', category: 'Valentine\'s Week' }
+        },
+
+        init() {
+            const key = 'gthelp-surgery-tools';
+            try {
+                const saved = localStorage.getItem(key);
+                if (saved) {
+                    const data = JSON.parse(saved);
+                    if (data.items) {
+                        for (let k in data.items) {
+                            if (this.items && this.items[k] && data.items[k].type !== undefined) {
+                                this.items[k].type = data.items[k].type;
+                            }
+                        }
+                    }
+                    if (data.numPacks !== undefined) this.numPacks = data.numPacks;
+                    if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
+                    if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
+                    if (data.enabledCategories) Object.assign(this.enabledCategories, data.enabledCategories);
+                }
+            } catch(e) {}
+            // Save every second — $watch doesn't detect deep object changes
+            setInterval(() => this._save(key), 1000);
+        },
+        _save(key) {
+            try {
+                localStorage.setItem(key, JSON.stringify({
+                    items: this.items,
+                    numPacks: this.numPacks,
+                    wlCostPerPack: this.wlCostPerPack,
+                    prices: this.prices,
+                    stocks: this.stocks || {},
+                    enabledCategories: this.enabledCategories || {},
+                }));
+            } catch(e) {}
         },
 
         enabledCategories: {},
@@ -119,7 +156,13 @@ document.addEventListener('alpine:init', () => {
             return `${this.netProfit.toFixed(1).replace(/\.0$/, '')} WL`;
         },
 
+        resetTable() {
+            this.prices = {};
+            this.stocks = {};
+        },
+
         resetCalculator() {
+            try { localStorage.removeItem('gthelp-surgery-tools'); } catch(e) {}
             this.numPacks = 1;
             this.wlCostPerPack = 0;
             this.prices = {};
