@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Building Blocks Machine Calculator")
+@section('meta_description', 'Calculate Building Blocks Machine (BBM) outputs and track your provider profits in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Tackle Box Calculator")
+@section('meta_description', 'Manage your Tackle Box returns and optimize your fishing profits in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

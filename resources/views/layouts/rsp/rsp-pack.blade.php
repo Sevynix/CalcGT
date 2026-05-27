@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Rare Seed Pack Calculator")
+@section('meta_description', 'Calculate Rare Seed Pack (RSP) costs, drops, and expected profit margins in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

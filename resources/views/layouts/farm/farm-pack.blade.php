@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Farm Pack")
+@section('meta_description', 'Analyze Farm Pack returns and optimize your farming setup in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

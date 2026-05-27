@@ -10,6 +10,9 @@
     {{-- Page Title --}}
     <title>@yield('title', 'Growtopia Calculator') — Growtopia Calculator</title>
 
+    {{-- Canonical URL --}}
+    <link rel="canonical" href="{{ url()->current() }}">
+
     {{-- Meta Description (per-page or default) --}}
     <meta name="description" content="@yield('meta_description', 'Growtopia Calculator — Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
 
@@ -67,7 +70,7 @@
     </script>
 
     {{-- Alpine.js (pinned version for reliable caching) --}}
-    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.14.1/dist/cdn.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js" integrity="sha512-ytM6hP1K9BkRTjUQZpxZKFjJ2TvE4QXaK7phVymsm7NimaI5H09TWWW6f2JMbonLp4ftYU6xfwQGoe3C8jta9A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false }">
 

@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "City Pack")
+@section('meta_description', 'Calculate City Pack costs, drops, and projected profit margins in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

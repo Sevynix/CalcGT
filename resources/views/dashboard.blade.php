@@ -40,13 +40,13 @@ function promoCarousel() {
             </div>
 
             {{-- RIGHT: Two stacked small banners (Spans 1 column) --}}
-            <div class="md:col-span-1 flex flex-col gap-4 w-full h-full">
+            <div class="md:col-span-1 flex flex-row md:flex-col items-start md:items-stretch gap-3 md:gap-4 w-full h-full">
                 {{-- Top Right --}}
-                <div class="flex-1 relative rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex">
+                <div class="flex-1 w-full relative rounded-[20px] md:rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group block">
                     <img src="{{ asset('images/promos/surg.png') }}" loading="lazy" alt="Surgery Tools" class="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover transition-transform duration-500 group-hover:scale-[1.03]" draggable="false">
                 </div>
                 {{-- Bottom Right --}}
-                <div class="flex-1 relative rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex">
+                <div class="flex-1 w-full relative rounded-[20px] md:rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group block">
                     <img src="{{ asset('images/promos/ssp2.png') }}" loading="lazy" alt="Featured Tools" class="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover transition-transform duration-500 group-hover:scale-[1.03]" draggable="false">
                 </div>
             </div>
@@ -54,7 +54,7 @@ function promoCarousel() {
 
         {{-- Promote Link --}}
         <div class="mt-3 flex justify-start px-1">
-            <a href="https://discord.gg/zzg7bJjzDH" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-brand-50 hover:bg-brand-500 text-brand-600 hover:text-white rounded-full text-[12px] font-black uppercase tracking-wider transition-all duration-300 shadow-sm border border-brand-200 hover:border-brand-500">
+            <a href="https://discord.gg/QuFkQyAnJ8" target="_blank" rel="noopener noreferrer" class="inline-flex items-center gap-1.5 px-4 py-1.5 bg-brand-50 hover:bg-brand-500 text-brand-600 hover:text-white rounded-full text-[12px] font-black uppercase tracking-wider transition-all duration-300 shadow-sm border border-brand-200 hover:border-brand-500">
                 <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke-width="2.5" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" d="M10.34 15.84c-.688-.06-1.386-.09-2.09-.09H7.5a4.5 4.5 0 1 1 0-9h.75c.704 0 1.402-.03 2.09-.09m0 9.18c.253.962.584 1.892.985 2.783.247.55.06 1.21-.463 1.511l-.657.38c-.551.318-1.26.117-1.527-.461a20.845 20.845 0 0 1-1.44-4.282m3.102.069a18.03 18.03 0 0 1-.59-4.59c0-1.586.205-3.124.59-4.59m0 9.18a23.848 23.848 0 0 1 8.835 2.535M10.34 6.66a23.847 23.847 0 0 0 8.835-2.535m0 0A23.74 23.74 0 0 0 18.795 3m.38 1.125a23.91 23.91 0 0 1 1.014 5.395m-1.014 8.855c-.118.38-.245.754-.38 1.125m.38-1.125a23.91 23.91 0 0 0 1.014-5.395m0-3.46c.495.413.811 1.035.811 1.73 0 .695-.316 1.317-.811 1.73m0-3.46a24.347 24.347 0 0 1 0 3.46" /></svg>
                 Promote banner here!
             </a>

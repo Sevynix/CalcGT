@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Painter Pack Calculator")
+@section('meta_description', 'Track Painter Pack openings and optimize profit margins in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

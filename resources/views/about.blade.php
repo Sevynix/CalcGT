@@ -90,7 +90,7 @@
                 
                 <div class="mt-6 pt-6 border-t border-slate-100">
                     <p class="text-sm text-slate-400">
-                        Last updated: {{ date('F j, Y') }}
+                        Last updated: May 27, 2026
                     </p>
                 </div>
             </div>

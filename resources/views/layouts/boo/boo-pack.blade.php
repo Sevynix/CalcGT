@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "B.O.O. Training Pack")
+@section('meta_description', 'Analyze B.O.O. Pack drops and track your spooky returns in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

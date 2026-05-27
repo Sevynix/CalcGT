@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Paleontologist's Kit")
+@section('meta_description', 'Calculate costs and expected returns from Paleontologist Kits in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="

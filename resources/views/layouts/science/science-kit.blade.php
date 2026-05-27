@@ -1,5 +1,6 @@
 @extends('layouts.app')
 @section('title', "Mad Science Kit")
+@section('meta_description', 'Track your Science Kit openings and calculate expected chemical yields in Growtopia.')
 
 @section('content')
 <div x-data="calculator()" @keydown.window.enter.prevent="
