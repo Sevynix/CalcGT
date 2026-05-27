@@ -33,22 +33,50 @@ function promoCarousel() {
             <h1 class="text-xl md:text-2xl font-black text-slate-800 tracking-tight uppercase">Featured &amp; Recommended</h1>
         </div>
         
+        @php
+            $now = now();
+            // Fetch currently active rentals
+            $banners = \App\Models\Banner::where('is_active', true)
+                ->where('starts_at', '<=', $now)
+                ->where('ends_at', '>=', $now)
+                ->get();
+            $slot1 = $banners->where('position', 1)->first();
+            $slot2 = $banners->where('position', 2)->first();
+            $slot3 = $banners->where('position', 3)->first();
+            
+            $defaultImage = asset('images/promos/banner.png');
+            $defaultLink = 'https://discord.gg/QuFkQyAnJ8';
+        @endphp
+        
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4" style="min-height: 320px;">
             {{-- LEFT: Large hero banner (Spans 2 columns) --}}
-            <div class="md:col-span-2 relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group w-full flex">
-                <img src="{{ asset('images/promos/ssp.png') }}" loading="eager" alt="SSP Tools" class="w-full h-auto object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
-            </div>
+            @php
+                $s1Image = $slot1 && $slot1->image_path ? asset($slot1->image_path) : $defaultImage;
+                $s1Link = $slot1 ? $slot1->link_url : $defaultLink;
+            @endphp
+            <a @if($s1Link) href="{{ $s1Link }}" target="_blank" rel="noopener noreferrer" @endif class="md:col-span-2 relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group w-full block aspect-[3/2]">
+                <img src="{{ $s1Image }}" loading="eager" alt="Slot 1 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+            </a>
 
-            {{-- RIGHT: Two stacked small banners (Spans 1 column) --}}
+            {{-- RIGHT: Two smaller stacked banners (Span 1 column) --}}
             <div class="md:col-span-1 flex flex-row md:flex-col items-start md:items-stretch gap-3 md:gap-4 w-full h-full">
-                {{-- Top Right --}}
-                <div class="flex-1 w-full relative rounded-[20px] md:rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group block">
-                    <img src="{{ asset('images/promos/surg.png') }}" loading="lazy" alt="Surgery Tools" class="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover transition-transform duration-500 group-hover:scale-[1.03]" draggable="false">
-                </div>
-                {{-- Bottom Right --}}
-                <div class="flex-1 w-full relative rounded-[20px] md:rounded-[28px] overflow-hidden shadow-glass border border-slate-200 bg-white group block">
-                    <img src="{{ asset('images/promos/ssp2.png') }}" loading="lazy" alt="Featured Tools" class="block w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover transition-transform duration-500 group-hover:scale-[1.03]" draggable="false">
-                </div>
+                {{-- Slot 2 (Top small) --}}
+                @php
+                    $s2Image = $slot2 && $slot2->image_path ? asset($slot2->image_path) : $defaultImage;
+                    $s2Link = $slot2 ? $slot2->link_url : $defaultLink;
+                @endphp
+                <a @if($s2Link) href="{{ $s2Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
+                    <img src="{{ $s2Image }}" loading="eager" alt="Slot 2 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                </a>
+
+                {{-- Slot 3 (Bottom small) --}}
+                @php
+                    $s3Image = $slot3 && $slot3->image_path ? asset($slot3->image_path) : $defaultImage;
+                    $s3Link = $slot3 ? $slot3->link_url : $defaultLink;
+                @endphp
+                <a @if($s3Link) href="{{ $s3Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
+                    <img src="{{ $s3Image }}" loading="eager" alt="Slot 3 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                </a>
             </div>
         </div>
 
