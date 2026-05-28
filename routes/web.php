@@ -62,8 +62,38 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::delete('/feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('feedback.destroy');
 });
 
-// Temporary route to fix broken images on live server
+// Temporary route to debug and fix broken images on live server
 Route::get('/fix-images', function () {
-    \Illuminate\Support\Facades\Artisan::call('storage:link');
-    return 'Image folder linked successfully! You can go back to the dashboard now and the images will show up.';
+    $output = [];
+    $publicStorage = public_path('storage');
+    
+    if (file_exists($publicStorage)) {
+        if (is_link($publicStorage)) {
+            $output[] = 'public/storage is a valid symlink pointing to: ' . readlink($publicStorage);
+        } else {
+            $output[] = 'WARNING: public/storage is a regular folder, not a shortcut! Deleting it...';
+            if (is_dir($publicStorage)) {
+                \Illuminate\Support\Facades\File::deleteDirectory($publicStorage);
+            } else {
+                @unlink($publicStorage);
+            }
+            \Illuminate\Support\Facades\Artisan::call('storage:link');
+            $output[] = 'Deleted the old folder and successfully created the symlink!';
+        }
+    } else {
+        $output[] = 'public/storage did not exist. Creating it now...';
+        \Illuminate\Support\Facades\Artisan::call('storage:link');
+        $output[] = 'Symlink created!';
+    }
+    
+    // Check files
+    $storageBanners = storage_path('app/public/banners');
+    if (file_exists($storageBanners)) {
+        $files = array_diff(scandir($storageBanners), ['.', '..']);
+        $output[] = 'Found ' . count($files) . ' banner images actually saved on the server.';
+    } else {
+        $output[] = 'No banners folder found in storage (meaning no images have been uploaded yet).';
+    }
+
+    return implode('<br><br>', $output);
 });
