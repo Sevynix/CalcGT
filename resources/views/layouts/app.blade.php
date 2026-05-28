@@ -85,6 +85,22 @@
             <!-- Where individual blade views render -->
             <div class="min-h-[calc(100vh-8rem)] w-full p-6 md:p-8">
                 @yield('content')
+
+                <!-- Google AdSense: Banner Bawah -->
+                <div class="mt-8 w-full overflow-hidden flex justify-center">
+                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3028975789015323"
+                         crossorigin="anonymous"></script>
+                    <!-- banner bawah -->
+                    <ins class="adsbygoogle"
+                         style="display:block; width:100%; text-align:center;"
+                         data-ad-client="ca-pub-3028975789015323"
+                         data-ad-slot="2132986110"
+                         data-ad-format="auto"
+                         data-full-width-responsive="true"></ins>
+                    <script>
+                         (adsbygoogle = window.adsbygoogle || []).push({});
+                    </script>
+                </div>
             </div>
             
             @include('partials.footer')
