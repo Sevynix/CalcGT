@@ -1,2 +1,1 @@
-# ads.txt
-# Insert your authorized digital sellers here.
+google.com, pub-3028975789015323, DIRECT, f08c47fec0942fa0
