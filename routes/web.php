@@ -61,3 +61,9 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::put('/feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'update'])->name('feedback.update');
     Route::delete('/feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('feedback.destroy');
 });
+
+// Temporary route to fix broken images on live server
+Route::get('/fix-images', function () {
+    \Illuminate\Support\Facades\Artisan::call('storage:link');
+    return 'Image folder linked successfully! You can go back to the dashboard now and the images will show up.';
+});
