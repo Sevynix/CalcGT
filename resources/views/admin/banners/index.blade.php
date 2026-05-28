@@ -237,8 +237,8 @@
                                 </td>
                                 <td class="py-3 px-4 text-xs font-medium text-slate-600">
                                     <div class="flex flex-col gap-1">
-                                        <span class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>{{ $banner->starts_at->format('M j, Y') }}</span>
-                                        <span class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-red-400"></div>{{ $banner->ends_at->format('M j, Y') }}</span>
+                                        <span class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-emerald-400"></div>{{ $banner->starts_at?->format('M j, Y') ?? 'N/A' }}</span>
+                                        <span class="flex items-center gap-1.5"><div class="w-1.5 h-1.5 rounded-full bg-red-400"></div>{{ $banner->ends_at?->format('M j, Y') ?? 'N/A' }}</span>
                                     </div>
                                 </td>
                                 <td class="py-3 px-4">
