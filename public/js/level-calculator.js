@@ -44,25 +44,28 @@ document.addEventListener('alpine:init', () => {
             }, 1000);
             // Keep target level valid
             this.$watch('currentLevel', (value) => {
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let cl = Number(value);
-                if (cl < 0 || isNaN(cl)) this.currentLevel = 0;
-                if (cl > 124) this.currentLevel = 124;
+                if (cl < 0) { this.currentLevel = 0; return; }
+                if (cl > 124) { this.currentLevel = 124; return; }
                 if (Number(this.targetLevel) <= this.currentLevel && this.currentLevel < 125) {
                     this.targetLevel = Number(this.currentLevel) + 1;
                 }
             });
 
             this.$watch('targetLevel', (value) => {
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let tl = Number(value);
-                if (tl < 1 || isNaN(tl)) this.targetLevel = 1;
-                if (tl > 125) this.targetLevel = 125;
+                if (tl < 1) { this.targetLevel = 1; return; }
+                if (tl > 125) { this.targetLevel = 125; return; }
             });
             
             this.$watch('currentExp', (value) => {
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let ce = Number(value);
                 let needed = this.getExpNeededForNextLevel();
-                if (ce < 0 || isNaN(ce)) this.currentExp = 0;
-                if (ce > needed) this.currentExp = needed;
+                if (ce < 0) { this.currentExp = 0; return; }
+                if (ce > needed) { this.currentExp = needed; return; }
             });
         },
 

@@ -34,12 +34,6 @@ function promoCarousel() {
         </div>
         
         @php
-            $now = now();
-            // Fetch currently active rentals
-            $banners = \App\Models\Banner::where('is_active', true)
-                ->where('starts_at', '<=', $now)
-                ->where('ends_at', '>=', $now)
-                ->get();
             $slot1 = $banners->where('position', 1)->first();
             $slot2 = $banners->where('position', 2)->first();
             $slot3 = $banners->where('position', 3)->first();
@@ -276,7 +270,7 @@ function promoCarousel() {
                 </div>
             </a>
             <!-- Nanoforge -->
-            <a href="/nanoforge" x-show="currentCategory === 'popular'" style="display:block"
+            <a href="{{ route('nanoforge') }}" x-show="currentCategory === 'popular'" style="display:block"
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">

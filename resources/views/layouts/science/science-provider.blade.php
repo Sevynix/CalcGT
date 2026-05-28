@@ -241,7 +241,7 @@
                         <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
-                        <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Resale Items</h2>
+                        <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
                         <p class="text-[13px] text-slate-500 font-medium">Manually input your stock and set prices to calculate margins.</p>
                     </div>
                 </div>
@@ -310,7 +310,7 @@
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
                             <th class="px-6 py-4 uppercase">Chemical</th>
                             <th class="px-6 py-4 uppercase">Stock</th>
-                            <th class="px-6 py-4 uppercase">Resale Price</th>
+                            <th class="px-6 py-4 uppercase">Sell Price</th>
                             <th class="px-6 py-4 uppercase">Sales Type</th>
                             <th class="px-6 py-4 uppercase text-right">Projected Revenue</th>
                         </tr>

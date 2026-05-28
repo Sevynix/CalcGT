@@ -26,7 +26,7 @@ document.addEventListener('alpine:init', () => {
 
             // Validate currentSlots
             this.$watch('currentSlots', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let slots = Number(value);
                 
                 // Snap to round UP to the next 10 with base 16 (e.g. 16, 26, 36)
@@ -34,8 +34,8 @@ document.addEventListener('alpine:init', () => {
                     slots = 16 + Math.ceil((slots - 16) / 10) * 10;
                 }
 
-                if (slots < 16 || isNaN(slots)) slots = 16;
-                if (slots > 386) slots = 386;
+                if (slots < 16) { slots = 16; }
+                if (slots > 386) { slots = 386; }
                 
                 if (Number(this.currentSlots) !== slots) {
                     this.currentSlots = slots;
@@ -48,15 +48,15 @@ document.addEventListener('alpine:init', () => {
 
             // Validate targetSlots
             this.$watch('targetSlots', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let slots = Number(value);
                 
                 if ((slots - 16) % 10 !== 0) {
                     slots = 16 + Math.ceil((slots - 16) / 10) * 10;
                 }
 
-                if (slots < 26 || isNaN(slots)) slots = 26;
-                if (slots > 396) slots = 396;
+                if (slots < 26) { slots = 26; }
+                if (slots > 396) { slots = 396; }
                 
                 if (Number(this.targetSlots) !== slots) {
                     this.targetSlots = slots;

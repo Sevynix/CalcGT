@@ -16,7 +16,7 @@ class DatabaseSeeder extends Seeder
         User::factory()->create([
             'name' => 'Admin',
             'email' => 'midoriau3@gmail.com',
-            'password' => Hash::make('iforgor'),
+            'password' => Hash::make(env('ADMIN_PASSWORD', 'default_secret_password')),
         ]);
         
         // Let's also create 3 default banner slots so the user has something to edit

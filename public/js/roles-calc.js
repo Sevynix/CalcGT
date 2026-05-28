@@ -16,9 +16,9 @@ document.addEventListener('alpine:init', () => {
         questsPerDay: 1,
 
         buffs: {
-            daily: false,
             jack: false,
-            cape: false
+            supplier_cape: false,
+            crafter_cape: false
         },
 
         init() {
@@ -40,10 +40,10 @@ document.addEventListener('alpine:init', () => {
                 try { localStorage.setItem(key, JSON.stringify({ selectedRoleId: this.selectedRoleId, currentLevel: this.currentLevel, targetLevel: this.targetLevel, currentPoints: this.currentPoints, questsPerDay: this.questsPerDay, buffs: this.buffs })); } catch(e) {}
             }, 1000);
             this.$watch('currentLevel', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let lvl = Number(value);
-                if (lvl < 0 || isNaN(lvl)) this.currentLevel = 0;
-                if (lvl > 9) this.currentLevel = 9;
+                if (lvl < 0) { this.currentLevel = 0; return; }
+                if (lvl > 9) { this.currentLevel = 9; return; }
                 
                 if (Number(this.targetLevel) <= this.currentLevel) {
                     this.targetLevel = Number(this.currentLevel) + 1;
@@ -52,24 +52,24 @@ document.addEventListener('alpine:init', () => {
             });
 
             this.$watch('targetLevel', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let lvl = Number(value);
-                if (lvl < 1 || isNaN(lvl)) this.targetLevel = 1;
-                if (lvl > 10) this.targetLevel = 10;
+                if (lvl < 1) { this.targetLevel = 1; return; }
+                if (lvl > 10) { this.targetLevel = 10; return; }
             });
 
             this.$watch('currentPoints', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let pts = Number(value);
-                if (pts < 0 || isNaN(pts)) this.currentPoints = 0;
+                if (pts < 0) { this.currentPoints = 0; return; }
                 this.validatePoints();
             });
 
             this.$watch('questsPerDay', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let q = Number(value);
-                if (q < 1 || isNaN(q)) this.questsPerDay = 1;
-                if (q > 10) this.questsPerDay = 10;
+                if (q < 1) { this.questsPerDay = 1; return; }
+                if (q > 10) { this.questsPerDay = 10; return; }
             });
             
             // Re-validate points bounds when role changes
@@ -91,9 +91,12 @@ document.addEventListener('alpine:init', () => {
 
         getMultiplier() {
             let mult = 1.00;
-            if (this.buffs.daily) mult += 0.25;
             if (this.buffs.jack) mult += 0.03;
-            if (this.buffs.cape) mult += 0.05;
+            
+            let role = this.getSelectedRole();
+            if (this.buffs.supplier_cape && role.type === 'supplier') mult += 0.05;
+            if (this.buffs.crafter_cape && role.type === 'crafter') mult += 0.05;
+            
             return mult;
         },
 

@@ -17,6 +17,14 @@ class TrackPageViews
      */
     public function handle(Request $request, Closure $next): Response
     {
+        return $next($request);
+    }
+
+    /**
+     * Handle tasks after the response has been sent to the browser.
+     */
+    public function terminate(Request $request, Response $response): void
+    {
         // Don't track admin routes, assets, or api
         if (!$request->is('admin*') && !$request->is('_debugbar*')) {
             $route = $request->path() === '/' ? 'home' : $request->path();
@@ -28,10 +36,8 @@ class TrackPageViews
                     ['views' => \DB::raw('views + 1')]
                 );
             } catch (\Exception $e) {
-                // Ignore DB errors so page still loads for users
+                // Ignore DB errors
             }
         }
-        
-        return $next($request);
     }
 }

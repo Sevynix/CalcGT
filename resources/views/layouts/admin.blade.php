@@ -30,9 +30,6 @@
     <meta name="twitter:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players.')">
     <meta name="twitter:image"       content="{{ asset('images/logo.png') }}">
 
-    {{-- Favicon --}}
-    <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}">
-
     {{-- Resource Hints: warm up CDN connections early --}}
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

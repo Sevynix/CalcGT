@@ -75,14 +75,29 @@
                 </section>
 
                 <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. Data Security</h3>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">3. Feedback and User Submissions</h3>
                     <p>
-                        Since we do not transmit or store your personal data on our servers, there is no risk of your personal data being leaked from our database. All calculations happen entirely within your browser. 
+                        If you choose to use our Feedback system to report bugs or suggest features, we collect the information you voluntarily provide. This includes the name you provide, the content of your message, and any optional screenshots you upload. 
+                        This data is securely stored in our database solely for the purpose of improving Growtopia Calculator and is never shared with third parties. We ask that you do not include sensitive personal information in your feedback submissions.
                     </p>
                 </section>
 
                 <section>
-                    <h3 class="text-lg font-bold text-slate-800 mb-2">4. Contact Us</h3>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">4. External Links and Community Promotions</h3>
+                    <p>
+                        Our website features community banners and promotions that link to external websites (such as Discord servers or other platforms). We do not control these third-party sites and are not responsible for their content or privacy practices. Once you click a promotional banner and leave our site, you are subject to the privacy policy of that specific destination.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">5. Data Security</h3>
+                    <p>
+                        All calculator computations happen entirely within your browser—none of your calculator data is transmitted to our servers. Data that is transmitted to our servers (such as feedback submissions) is stored securely. While no system is 100% secure, we implement standard security measures to protect your submissions.
+                    </p>
+                </section>
+
+                <section>
+                    <h3 class="text-lg font-bold text-slate-800 mb-2">6. Contact Us</h3>
                     <p>
                         If you have any questions or concerns regarding this privacy policy or the website in general, please contact us via email at <strong>admin@yourdomain.com</strong> or through our community channels.
                     </p>
@@ -90,7 +105,7 @@
                 
                 <div class="mt-6 pt-6 border-t border-slate-100">
                     <p class="text-sm text-slate-400">
-                        Last updated: May 27, 2026
+                        Last updated: May 28, 2026
                     </p>
                 </div>
             </div>

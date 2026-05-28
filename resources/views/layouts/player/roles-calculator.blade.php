@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('title', "Roles Calculator")
-@section('meta_description', 'Plan role progressions, XP requirements, and perk unlock milestones for Growtopia's role system.')
+@section('meta_description', "Plan role progressions, XP requirements, and perk unlock milestones for Growtopia's role system.")
 
 @section('content')
 <div x-data="rolesCalculator()" @keydown.window.enter.prevent="
@@ -40,7 +40,7 @@
 
             <!-- Quick Actions -->
             <div class="flex gap-3">
-                <button @click="$store.modal.show('This will clear all your inputs and saved data.', () => { currentLevel = 0; targetLevel = 10; currentPoints = 0; buffs.daily=false; buffs.jack=false; buffs.cape=false; })"
+                <button @click="$store.modal.show('This will clear all your inputs and saved data.', () => { currentLevel = 0; targetLevel = 10; currentPoints = 0; buffs.jack=false; buffs.supplier_cape=false; buffs.crafter_cape=false; })"
                     class="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-md text-sm flex items-center gap-2 active:scale-95">
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -254,20 +254,6 @@
                 <div class="p-6 lg:p-8">
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                         
-                        <!-- Role of the Day -->
-                        <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
-                            :class="buffs.daily ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
-                            <input type="checkbox" x-model="buffs.daily" class="sr-only">
-                            <img :src="asset('images/roles/' + getSelectedRole().img)" alt="Role" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.daily ? 'scale-110' : 'grayscale-[20%] opacity-80'">
-                            <div class="flex-grow">
-                                <span class="text-[15px] font-bold block mb-1 text-slate-800">Role of the Day</span>
-                                <span class="text-[12px] font-medium text-slate-500">25% Bonus to <span x-text="getSelectedRole().name"></span> Points</span>
-                            </div>
-                            <div class="flex-shrink-0 ml-3">
-                                <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+25%</span>
-                            </div>
-                        </label>
-
                         <!-- Jack's Set -->
                         <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
                             :class="buffs.jack ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
@@ -282,14 +268,28 @@
                             </div>
                         </label>
 
-                        <!-- Role Cape -->
+                        <!-- Supplier's Cape -->
                         <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
-                            :class="buffs.cape ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
-                            <input type="checkbox" x-model="buffs.cape" class="sr-only">
-                            <img src="{{ asset('images/roles/item/supplier_cape.png') }}" alt="Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            :class="buffs.supplier_cape ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            <input type="checkbox" x-model="buffs.supplier_cape" class="sr-only">
+                            <img src="{{ asset('images/roles/item/supplier_cape.png') }}" alt="Supplier's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.supplier_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
                             <div class="flex-grow">
-                                <span class="text-[15px] font-bold block mb-1 text-slate-800"><span x-text="getSelectedRole().type === 'supplier' ? 'Supplier' : 'Crafter'"></span> Cape</span>
-                                <span class="text-[12px] font-medium text-slate-500">Wearing the appropriate class cape</span>
+                                <span class="text-[15px] font-bold block mb-1 text-slate-800">Supplier's Cape</span>
+                                <span class="text-[12px] font-medium text-slate-500">+5% for Supplier quests</span>
+                            </div>
+                            <div class="flex-shrink-0 ml-3">
+                                <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+5%</span>
+                            </div>
+                        </label>
+
+                        <!-- Crafter's Cape -->
+                        <label class="relative flex flex-row items-center p-4 bg-white border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
+                            :class="buffs.crafter_cape ? 'border-brand-400 bg-brand-50/30 ring-1 ring-brand-400' : 'border-slate-200 hover:border-slate-300 hover:bg-slate-50'">
+                            <input type="checkbox" x-model="buffs.crafter_cape" class="sr-only">
+                            <img src="{{ asset('images/roles/item/crafter_cape.png') }}" alt="Crafter's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.crafter_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <div class="flex-grow">
+                                <span class="text-[15px] font-bold block mb-1 text-slate-800">Crafter's Cape</span>
+                                <span class="text-[12px] font-medium text-slate-500">+5% for Crafter quests</span>
                             </div>
                             <div class="flex-shrink-0 ml-3">
                                 <span class="text-[12px] font-bold px-2.5 py-1 rounded-lg text-center bg-slate-100 text-slate-500">+5%</span>

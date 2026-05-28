@@ -3,18 +3,18 @@ document.addEventListener('alpine:init', () => {
         // isFuel tracks what goes into the autoclave
         // isTarget tracks what we calculate profit ON
         tools: [
-            { name: 'Anesthetic', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
-            { name: 'Antibiotics', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
-            { name: 'Antiseptic', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
+            { name: 'Anesthetic', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
+            { name: 'Antibiotics', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
+            { name: 'Antiseptic', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Clamp', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
-            { name: 'Defibrillator', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
-            { name: 'Lab Kit', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
+            { name: 'Defibrillator', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
+            { name: 'Lab Kit', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Pins', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Scalpel', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
-            { name: 'Splint', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
+            { name: 'Splint', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Sponge', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
-            { name: 'Transfusion', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
-            { name: 'Ultrasound', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
+            { name: 'Transfusion', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
+            { name: 'Ultrasound', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: 'per wl' },
             { name: 'Stitches', isFuel: false, isTarget: false, stock: '', buyPrice: '', buyType: 'per wl', sellPrice: '', sellType: '200/?' },
         ],
 
@@ -42,33 +42,33 @@ document.addEventListener('alpine:init', () => {
             let currentCounts = this.tools.map(t => (t.isFuel && typeof t.stock === 'number') ? t.stock : 0);
             let totalCycles = 0;
             let loopLimit = 10000;
-            
+
             let changed = true;
             let iters = 0;
-            while(changed && iters < loopLimit) {
+            while (changed && iters < loopLimit) {
                 changed = false;
                 iters++;
-                
-                for(let i=0; i < this.tools.length; i++) {
+
+                for (let i = 0; i < this.tools.length; i++) {
                     // Autoclave any tool that is NOT a Target. 
                     // This includes explicit Fuel tools, AND byproducts generated during the process.
-                    if(!this.tools[i].isTarget && currentCounts[i] >= 20) {
+                    if (!this.tools[i].isTarget && currentCounts[i] >= 20) {
                         let cyclesAvailable = Math.floor(currentCounts[i] / 20);
                         currentCounts[i] -= (cyclesAvailable * 20);
-                        
+
                         // Add to all other 12 tools
-                        for(let j=0; j < this.tools.length; j++) {
-                            if(i !== j) {
+                        for (let j = 0; j < this.tools.length; j++) {
+                            if (i !== j) {
                                 currentCounts[j] += cyclesAvailable;
                             }
                         }
-                        
+
                         totalCycles += cyclesAvailable;
                         changed = true;
                     }
                 }
             }
-            
+
             return {
                 finalCounts: currentCounts,
                 cycles: totalCycles
@@ -92,8 +92,8 @@ document.addEventListener('alpine:init', () => {
                     if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
                     if (data.prices) Object.assign(this.prices, data.prices);
                 }
-            } catch(e) {}
-            // Save every second —  doesn't detect deep object changes
+            } catch (e) { }
+            // Save every second ï¿½  doesn't detect deep object changes
             setInterval(() => this._save(key), 1000);
         },
         _save(key) {
@@ -103,7 +103,7 @@ document.addEventListener('alpine:init', () => {
                     wlCostPerPack: this.wlCostPerPack,
                     prices: this.prices,
                 }));
-            } catch(e) {}
+            } catch (e) { }
         },
 
         get totalCost() {
@@ -111,8 +111,8 @@ document.addEventListener('alpine:init', () => {
             this.tools.forEach(t => {
                 let s = typeof t.stock === 'number' ? t.stock : 0;
                 let bp = parseFloat(t.buyPrice);
-                if(t.isFuel && s > 0 && bp > 0) {
-                    if(t.buyType === 'per wl') {
+                if (t.isFuel && s > 0 && bp > 0) {
+                    if (t.buyType === 'per wl') {
                         cost += (s / bp);
                     } else if (t.buyType === '200/?') {
                         cost += (s / 200) * bp;
@@ -127,14 +127,14 @@ document.addEventListener('alpine:init', () => {
         get totalRevenue() {
             let rev = 0;
             let finalCounts = this.simulation.finalCounts;
-            
+
             this.tools.forEach((t, i) => {
                 const count = Math.floor(finalCounts[i]);
                 const sp = parseFloat(t.sellPrice);
-                
-                if(t.isTarget && count > 0 && sp > 0) {
+
+                if (t.isTarget && count > 0 && sp > 0) {
                     // Match MSurg calculation natively: floor the resulting revenue
-                    if(t.sellType === 'per wl') {
+                    if (t.sellType === 'per wl') {
                         rev += Math.floor(count / sp);
                     } else if (t.sellType === '200/?') {
                         rev += Math.floor((count / 200) * sp);

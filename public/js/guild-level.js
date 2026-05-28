@@ -59,28 +59,28 @@ document.addEventListener('alpine:init', () => {
             }, 1000);
             // Keep target level valid
             this.$watch('currentLevel', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let cl = Number(value);
-                if (cl < 1 || isNaN(cl)) this.currentLevel = 1;
-                if (cl > 14) this.currentLevel = 14;
+                if (cl < 1) { this.currentLevel = 1; return; }
+                if (cl > 14) { this.currentLevel = 14; return; }
                 if (Number(this.targetLevel) <= this.currentLevel && this.currentLevel < 15) {
                     this.targetLevel = Number(this.currentLevel) + 1;
                 }
             });
 
             this.$watch('targetLevel', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let tl = Number(value);
-                if (tl < 1 || isNaN(tl)) this.targetLevel = 1;
-                if (tl > 15) this.targetLevel = 15;
+                if (tl < 1) { this.targetLevel = 1; return; }
+                if (tl > 15) { this.targetLevel = 15; return; }
             });
             
             this.$watch('currentExp', (value) => {
-                if (value === '') return;
+                if (value === '' || value === null || Number.isNaN(value)) return;
                 let ce = Number(value);
                 let needed = this.getExpNeededForNextLevel();
-                if (ce < 0 || isNaN(ce)) this.currentExp = 0;
-                if (ce > needed) this.currentExp = needed;
+                if (ce < 0) { this.currentExp = 0; return; }
+                if (ce > needed) { this.currentExp = needed; return; }
             });
         },
 

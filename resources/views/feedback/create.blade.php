@@ -33,7 +33,7 @@
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-1.5">Your Name</label>
                     <input type="text" name="name" value="{{ old('name') }}" required
-                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" placeholder="e.g. Player">
+                        class="w-full px-4 py-3 bg-slate-50 border border-slate-200 rounded-xl focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-all font-medium placeholder:font-normal placeholder:text-slate-400" placeholder="e.g. User">
                     @error('name')<p class="text-red-500 text-xs font-bold mt-1.5">{{ $message }}</p>@enderror
                 </div>
 

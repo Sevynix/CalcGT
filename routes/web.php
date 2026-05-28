@@ -4,7 +4,14 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 
 // Public Tool Routes
-Route::get('/', function () { return view('dashboard'); })->name('dashboard');
+Route::get('/', function () { 
+    $now = now();
+    $banners = \App\Models\Banner::where('is_active', true)
+        ->where('starts_at', '<=', $now)
+        ->where('ends_at', '>=', $now)
+        ->get();
+    return view('dashboard', compact('banners')); 
+})->name('dashboard');
 Route::get('/surgery-tools', function () { return view('layouts.surgery.msurg-packs'); })->name('surgery-tools');
 Route::get('/autoclave', function () { return view('layouts.surgery.autoclave'); })->name('autoclave');
 Route::get('/gala-tools', function () { return view('layouts.galactic.gala-tools'); })->name('gala-tools');
@@ -32,11 +39,11 @@ Route::get('/about', function () { return view('about'); })->name('about');
 // Public Feedback Routes
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback.index');
 Route::get('/feedback/submit', [\App\Http\Controllers\FeedbackController::class, 'create'])->name('feedback.create');
-Route::post('/feedback/submit', [\App\Http\Controllers\FeedbackController::class, 'store'])->name('feedback.store');
+Route::post('/feedback/submit', [\App\Http\Controllers\FeedbackController::class, 'store'])->middleware('throttle:3,5')->name('feedback.store');
 
 // Admin Auth Routes
 Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin.login');
-Route::post('/admin/login', [AuthController::class, 'login'])->name('admin.login.submit');
+Route::post('/admin/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('admin.login.submit');
 Route::post('/admin/logout', [AuthController::class, 'logout'])->name('admin.logout');
 
 // Protected Admin Routes

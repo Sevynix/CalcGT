@@ -50,14 +50,14 @@
 
             <!-- Quick Actions -->
             <div class="flex gap-3">
-                <button @click="resetCalculator()"
-                    class="bg-white border border-slate-200 hover:border-slate-300 text-slate-700 px-4 py-2 rounded-xl font-medium transition shadow-sm text-sm flex items-center gap-2 active:scale-95">
-                    <svg class="w-4 h-4 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                <button @click="$store.modal.show('This will clear all your inputs and saved data.', () => resetCalculator())"
+                    class="bg-red-500 hover:bg-red-600 active:bg-red-700 text-white px-5 py-2.5 rounded-xl font-bold transition shadow-md text-sm flex items-center gap-2 active:scale-95">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
                             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
                         </path>
                     </svg>
-                    Reset
+                    Reset All
                 </button>
             </div>
         </div>
@@ -77,10 +77,8 @@
                 <div class="relative z-10 flex flex-col h-full items-center text-center">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div
-                            class="bg-[#E2FBE9] rounded-2xl w-14 h-14 flex items-center justify-center shadow-inner-light p-2">
-                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL"
-                                class="w-full h-full object-contain drop-shadow-md">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                         </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Revenue Overview</h2>
                     </div>
@@ -95,11 +93,25 @@
 
         <!-- The Table Area -->
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
-            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-col md:flex-row justify-between items-start md:items-center gap-2 md:gap-0">
-                <h2 class="text-lg font-bold text-slate-800 flex items-center gap-2">
-                    <span class="p-1.5 bg-blue-100 text-blue-500 rounded-lg">🐟</span> Resale Baits
-                </h2>
-                <p class="text-sm text-slate-500">Manually input your stock and set prices to calculate margins.</p>
+            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-wrap justify-between items-center gap-3">
+                <div class="flex items-center gap-4">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
+                    </div>
+                    <div>
+                        <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
+                        <p class="text-[13px] text-slate-500 font-medium">Manually input your stock and set prices to calculate margins.</p>
+                    </div>
+                </div>
+                <button @click="$store.modal.show('This will clear all prices and stock values.', () => resetTable(), 'table')"
+                    class="bg-amber-500 hover:bg-amber-600 active:bg-amber-700 text-white px-4 py-2 rounded-xl font-bold transition shadow-sm text-sm flex items-center gap-2 active:scale-95 shrink-0">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"
+                            d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15">
+                        </path>
+                    </svg>
+                    Reset Table
+                </button>
             </div>
 
             <!-- ================================ -->
@@ -111,7 +123,7 @@
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
                             <th class="px-6 py-4 uppercase">Bait Type</th>
                             <th class="px-6 py-4 uppercase">Stock</th>
-                            <th class="px-6 py-4 uppercase">Resale Price</th>
+                            <th class="px-6 py-4 uppercase">Sell Price</th>
                             <th class="px-6 py-4 uppercase">Sales Type</th>
                             <th class="px-6 py-4 uppercase text-right">Projected Revenue</th>
                         </tr>

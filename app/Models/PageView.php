@@ -6,5 +6,5 @@ use Illuminate\Database\Eloquent\Model;
 
 class PageView extends Model
 {
-    protected $guarded = [];
+    protected $fillable = ['route', 'date', 'views'];
 }
