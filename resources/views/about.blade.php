@@ -99,7 +99,7 @@
                 <section>
                     <h3 class="text-lg font-bold text-slate-800 mb-2">6. Contact Us</h3>
                     <p>
-                        If you have any questions or concerns regarding this privacy policy or the website in general, please contact us via email at <strong>admin@yourdomain.com</strong> or through our community channels.
+                        If you have any questions or concerns regarding this privacy policy or the website in general, please contact us via email at <strong>sevynix@growtopiacalculator.com</strong> or through our community channels.
                     </p>
                 </section>
                 
