@@ -92,8 +92,6 @@
 
                 <!-- Google AdSense: Banner Bawah -->
                 <div class="mt-8 w-full overflow-hidden flex justify-center">
-                    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3028975789015323"
-                         crossorigin="anonymous"></script>
                     <!-- banner bawah -->
                     <ins class="adsbygoogle"
                          style="display:block; width:100%; text-align:center;"
