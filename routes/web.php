@@ -3,6 +3,52 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
 
+// Sitemap
+Route::get('/sitemap.xml', function () {
+    $urls = [
+        ['loc' => 'https://growtopiacalculator.com/',                    'changefreq' => 'daily',   'priority' => '1.0'],
+        ['loc' => 'https://growtopiacalculator.com/surgery-tools',        'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/autoclave',            'changefreq' => 'weekly',  'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/gala-tools',           'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/nanoforge',            'changefreq' => 'weekly',  'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/fishin-pack',          'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/firefighter-pack',     'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/city-pack',            'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/farm-pack',            'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/paleontologist-kit',   'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/science-kit',          'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/boo-pack',             'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/crime-pack',           'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/ssp-pack',             'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/rsp-pack',             'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/tackle-box',           'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/painter-pack',         'changefreq' => 'weekly',  'priority' => '0.9'],
+        ['loc' => 'https://growtopiacalculator.com/level-calculator',     'changefreq' => 'monthly', 'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/backpack-calculator',  'changefreq' => 'monthly', 'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/roles-calculator',     'changefreq' => 'monthly', 'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/bbm-provider',         'changefreq' => 'weekly',  'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/science-provider',     'changefreq' => 'weekly',  'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/guild-level',          'changefreq' => 'monthly', 'priority' => '0.8'],
+        ['loc' => 'https://growtopiacalculator.com/feedback',             'changefreq' => 'weekly',  'priority' => '0.7'],
+        ['loc' => 'https://growtopiacalculator.com/about',                'changefreq' => 'monthly', 'priority' => '0.5'],
+    ];
+
+    $xml = '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
+    $xml .= '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";
+    foreach ($urls as $url) {
+        $xml .= "  <url>\n";
+        $xml .= "    <loc>{$url['loc']}</loc>\n";
+        $xml .= "    <changefreq>{$url['changefreq']}</changefreq>\n";
+        $xml .= "    <priority>{$url['priority']}</priority>\n";
+        $xml .= "  </url>\n";
+    }
+    $xml .= '</urlset>';
+
+    return response($xml, 200)
+        ->header('Content-Type', 'application/xml; charset=utf-8')
+        ->header('Cache-Control', 'public, max-age=3600');
+});
+
 // Public Tool Routes
 Route::get('/', function () { 
     $now = now();
