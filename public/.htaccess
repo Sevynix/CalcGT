@@ -27,3 +27,49 @@
     RewriteCond %{REQUEST_FILENAME} !-f
     RewriteRule ^ index.php [L]
 </IfModule>
+
+# ─── Browser Cache: Static Assets ───────────────────────────────────────────
+<IfModule mod_expires.c>
+    ExpiresActive On
+
+    # Images — 1 year (fingerprinted by Vite / content-addressed)
+    ExpiresByType image/webp        "access plus 1 year"
+    ExpiresByType image/png         "access plus 1 year"
+    ExpiresByType image/jpeg        "access plus 1 year"
+    ExpiresByType image/gif         "access plus 1 year"
+    ExpiresByType image/svg+xml     "access plus 1 year"
+    ExpiresByType image/x-icon      "access plus 1 year"
+    ExpiresByType image/vnd.microsoft.icon "access plus 1 year"
+
+    # Fonts — 1 year
+    ExpiresByType font/woff2        "access plus 1 year"
+    ExpiresByType font/woff         "access plus 1 year"
+    ExpiresByType font/ttf          "access plus 1 year"
+    ExpiresByType application/font-woff2 "access plus 1 year"
+
+    # JS & CSS (Vite adds content hash) — 1 year
+    ExpiresByType text/javascript   "access plus 1 year"
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/css          "access plus 1 year"
+
+    # HTML — no cache (dynamic)
+    ExpiresByType text/html         "access plus 0 seconds"
+</IfModule>
+
+# ─── Cache-Control headers ───────────────────────────────────────────────────
+<IfModule mod_headers.c>
+    # Immutable for Vite build assets (they have content hash in filename)
+    <FilesMatch "\.(js|css)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+
+    # Long cache for images
+    <FilesMatch "\.(webp|png|jpg|jpeg|gif|svg|ico)$">
+        Header set Cache-Control "public, max-age=31536000"
+    </FilesMatch>
+
+    # Fonts
+    <FilesMatch "\.(woff2|woff|ttf|eot)$">
+        Header set Cache-Control "public, max-age=31536000, immutable"
+    </FilesMatch>
+</IfModule>

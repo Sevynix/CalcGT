@@ -42,6 +42,9 @@
     {{-- Compiled CSS + JS via Vite (Tailwind v4, no CDN) --}}
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 
+    {{-- Per-page preload hints (e.g. LCP images) --}}
+    @yield('preload')
+
     {{-- Global confirm modal store (must run before Alpine initialises) --}}
     <script>
         document.addEventListener('alpine:init', () => {

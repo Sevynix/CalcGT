@@ -2,6 +2,16 @@
 @section('title', 'Dashboard')
 @section('meta_description', 'Growtopia Calculator dashboard — browse all calculators and tools for MSurg, SSP, RSP, farming packs, player levels, guild tools and more.')
 
+@section('preload')
+@php
+    $preloadBanner = $banners->where('position', 1)->first();
+    $preloadSrc = $preloadBanner && $preloadBanner->image_path
+        ? asset($preloadBanner->image_path)
+        : asset('images/promos/banner.webp');
+@endphp
+<link rel="preload" as="image" href="{{ $preloadSrc }}" fetchpriority="high">
+@endsection
+
 @section('content')
 <script>
 function promoCarousel() {
@@ -49,7 +59,7 @@ function promoCarousel() {
                 $s1Link = $slot1 ? $slot1->link_url : $defaultLink;
             @endphp
             <a @if($s1Link) href="{{ $s1Link }}" target="_blank" rel="noopener noreferrer" @endif class="md:col-span-2 relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group w-full block aspect-[3/2]">
-                <img src="{{ $s1Image }}" loading="eager" alt="Slot 1 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                <img src="{{ $s1Image }}" loading="eager" fetchpriority="high" alt="Slot 1 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
             </a>
 
             {{-- RIGHT: Two smaller stacked banners (Span 1 column) --}}
@@ -60,7 +70,7 @@ function promoCarousel() {
                     $s2Link = $slot2 ? $slot2->link_url : $defaultLink;
                 @endphp
                 <a @if($s2Link) href="{{ $s2Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
-                    <img src="{{ $s2Image }}" loading="eager" alt="Slot 2 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                    <img src="{{ $s2Image }}" loading="lazy" alt="Slot 2 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
                 </a>
 
                 {{-- Slot 3 (Bottom small) --}}
@@ -69,7 +79,7 @@ function promoCarousel() {
                     $s3Link = $slot3 ? $slot3->link_url : $defaultLink;
                 @endphp
                 <a @if($s3Link) href="{{ $s3Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
-                    <img src="{{ $s3Image }}" loading="eager" alt="Slot 3 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                    <img src="{{ $s3Image }}" loading="lazy" alt="Slot 3 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
                 </a>
             </div>
         </div>
