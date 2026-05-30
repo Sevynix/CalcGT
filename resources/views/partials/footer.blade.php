@@ -7,12 +7,12 @@
                     </div>
 
                     <!-- Right: Links -->
-                    <div class="flex items-center gap-4 text-sm font-semibold text-slate-400">
+                    <div class="flex items-center gap-4 text-sm font-semibold text-slate-500">
                         <a href="{{ route('dashboard') }}" class="hover:text-brand-500 transition-colors duration-200">Home</a>
-                        <span class="text-slate-200">|</span>
+                        <span class="text-slate-300">|</span>
                         <a href="https://discord.gg/QuFkQyAnJ8" target="_blank" rel="noopener noreferrer" class="hover:text-brand-500 transition-colors duration-200">Discord</a>
-                        <span class="text-slate-200">|</span>
-                        <span class="text-slate-400">Made by <span class="font-bold text-slate-500">Sevynix</span></span>
+                        <span class="text-slate-300">|</span>
+                        <span class="text-slate-500">Made by <span class="font-bold text-slate-600">Sevynix</span></span>
                     </div>
                 </div>
             </footer>

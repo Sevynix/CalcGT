@@ -38,7 +38,7 @@ function promoCarousel() {
             $slot2 = $banners->where('position', 2)->first();
             $slot3 = $banners->where('position', 3)->first();
             
-            $defaultImage = asset('images/promos/banner.png');
+            $defaultImage = asset('images/promos/banner.webp');
             $defaultLink = 'https://discord.gg/QuFkQyAnJ8';
         @endphp
         
@@ -112,7 +112,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/surgery/surg_crate.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -124,7 +124,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">MSurg Tools</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">MSurg Tools</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Compute MSurg packs, cost breakdowns, and surgical profit margins instantly.</p>
                     </div>
                     
@@ -139,7 +139,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/startopia/crate.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/startopia/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -151,7 +151,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Startopia Tools</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Startopia Tools</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Explore Startopia simulations and optimize your intergalactic economy.</p>
                     </div>
                     
@@ -166,7 +166,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/crime/crate.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/crime/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -178,7 +178,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Crime Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Crime Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Analyze crime pack openings and calculate overall net worth gains per run.</p>
                     </div>
                     
@@ -193,7 +193,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/ssp/ssp.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/ssp/ssp.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -205,7 +205,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">SSP</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">SSP</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate costs and returns for the Small Seed Pack to determine true profit margins.</p>
                     </div>
                     
@@ -220,7 +220,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/rsp/2010.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/rsp/2010.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -232,7 +232,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">RSP</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">RSP</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track and calculate costs and returns for the Rare Seed Pack.</p>
                     </div>
                     
@@ -247,7 +247,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/surgery/autoclave.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/surgery/autoclave.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -259,7 +259,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Autoclave</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Autoclave</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate requirements and simulate autoclave operations for surgery.</p>
                     </div>
                     
@@ -274,7 +274,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/startopia/nanoforge.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -286,7 +286,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Nanoforge</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Nanoforge</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Plan your Nanoforge upgrades and track material requirements.</p>
                     </div>
                     
@@ -301,7 +301,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/bbm/bbm.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/bbm/bbm.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -313,7 +313,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">BBM</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">BBM</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track Building Blocks Machine item returns and calculate precise profit breakdowns.</p>
                     </div>
                     
@@ -328,7 +328,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/science/science_station.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/science/science_station.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -340,7 +340,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Science Station</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Science Station</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Monitor Science Station outputs and track your chemical harvesting profits.</p>
                     </div>
                     
@@ -355,7 +355,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -367,7 +367,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Tackle Box</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Tackle Box</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Manage your Tackle Box returns and optimize your fishing profits.</p>
                     </div>
                     
@@ -382,7 +382,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/items/exp_potion.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -394,7 +394,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Player Level</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Player Level</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate XP requirements to reach your desired player level.</p>
                     </div>
                     
@@ -409,7 +409,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/roles/farmer.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/roles/farmer.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -421,7 +421,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Roles Calculator</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Roles Calculator</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Plan role progressions, XP requirements, and perk unlock milestones.</p>
                     </div>
                     
@@ -436,7 +436,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/items/backpack_upgrade.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/items/backpack_upgrade.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -448,7 +448,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Backpack Upgrades</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Backpack Upgrades</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track backpack upgrade costs and inventory expansion milestones.</p>
                     </div>
                     
@@ -463,7 +463,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/lock/guild_lock.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/lock/guild_lock.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -475,7 +475,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Guild Level</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Guild Level</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Estimate guild XP requirements per level and manage contribution goals.</p>
                     </div>
                     
@@ -490,7 +490,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/fishing/crate.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/fishing/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -502,7 +502,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Fishing Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Fishing Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Analyze fishing pack openings and calculate returns.</p>
                     </div>
                     
@@ -517,7 +517,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/paint/red.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/paint/red.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -529,7 +529,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Painter Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Painter Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track painter pack openings and optimize profit margins.</p>
                     </div>
                     
@@ -544,7 +544,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/city/atm.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -556,7 +556,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">City Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">City Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate costs and expected items from City Pack openings.</p>
                     </div>
                     
@@ -571,7 +571,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/firefighter/house.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/firefighter/house.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -583,7 +583,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Firefighter Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Firefighter Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Simulate Firefighter pack openings and track your drops.</p>
                     </div>
                     
@@ -598,7 +598,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/farm/tractor.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/farm/tractor.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -610,7 +610,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Farm Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Farm Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Analyze farm pack returns and optimize your farming setup.</p>
                     </div>
                     
@@ -625,7 +625,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/paleontologist/hammer.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -637,7 +637,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Paleontologist Kit</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Paleontologist Kit</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate costs and expected returns from Paleontologist Kits.</p>
                     </div>
                     
@@ -652,7 +652,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/science/chem/r.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/science/chem/r.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -664,7 +664,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">Science Kit</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Science Kit</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track your Science Kit openings and calculate expected chemical yields.</p>
                     </div>
                     
@@ -679,7 +679,7 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/boo/jar.png') }}" class="w-full h-full object-contain">
+                    <img src="{{ asset('images/boo/jar.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
@@ -691,7 +691,7 @@ function promoCarousel() {
                     </div>
                     
                     <div class="mt-3">
-                        <h3 class="text-lg font-black text-slate-800 tracking-tight">B.O.O. Pack</h3>
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">B.O.O. Pack</h2>
                         <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Analyze B.O.O. Pack drops and track your spooky returns.</p>
                     </div>
                     

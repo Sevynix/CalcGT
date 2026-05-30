@@ -25,7 +25,7 @@
                 </a>
                 @endunless
                 <!-- Feedback Board -->
-                <a href="{{ route('feedback.index') }}" class="flex items-center gap-1.5 text-xs font-bold text-white bg-brand-500 hover:bg-brand-600 px-4 py-1.5 rounded-lg transition-all duration-200 shadow-sm shadow-brand-500/20 active:scale-95">
+                <a href="{{ route('feedback.index') }}" aria-label="Feedback Board" class="flex items-center gap-1.5 text-xs font-bold text-white bg-brand-500 hover:bg-brand-600 px-4 py-1.5 rounded-lg transition-all duration-200 shadow-sm shadow-brand-500/20 active:scale-95">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z"></path>
                     </svg>
@@ -33,7 +33,7 @@
                 </a>
 
                 <!-- About Us / Policy Link -->
-                <a href="{{ route('about') }}" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-600 bg-slate-50 border border-slate-200 hover:border-brand-200 hover:bg-brand-50 px-3 py-1.5 rounded-lg transition-all duration-200">
+                <a href="{{ route('about') }}" aria-label="About & Policy" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-600 bg-slate-50 border border-slate-200 hover:border-brand-200 hover:bg-brand-50 px-3 py-1.5 rounded-lg transition-all duration-200">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                     </svg>
