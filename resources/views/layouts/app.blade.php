@@ -1,32 +1,35 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     {{-- Favicon --}}
-    <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon.png') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon.png') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('images/logo2.png') }}">
 
     {{-- Page Title --}}
-    <title>@yield('title', 'Growtopia Calculator') — Growtopia Calculator</title>
+    <title>@yield('title', 'Growtopia Calculator') â€” Growtopia Calculator</title>
 
     {{-- Canonical URL --}}
     <link rel="canonical" href="{{ url()->current() }}">
 
     {{-- Meta Description (per-page or default) --}}
-    <meta name="description" content="@yield('meta_description', 'Growtopia Calculator — Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
+    <meta name="description" content="@yield('meta_description', 'Growtopia Calculator â€” Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
 
     {{-- Open Graph / Social Sharing --}}
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="Growtopia Calculator">
-    <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') — Growtopia Calculator">
+    <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') â€” Growtopia Calculator">
     <meta property="og:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
     <meta property="og:url"         content="{{ url()->current() }}">
     <meta property="og:image"       content="{{ asset('images/logo.png') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card"        content="summary">
-    <meta name="twitter:title"       content="@yield('title', 'Growtopia Calculator') — Growtopia Calculator">
+    <meta name="twitter:title"       content="@yield('title', 'Growtopia Calculator') â€” Growtopia Calculator">
     <meta name="twitter:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players.')">
     <meta name="twitter:image"       content="{{ asset('images/logo.png') }}">
 
@@ -192,3 +195,4 @@
 
 </body>
 </html>
+

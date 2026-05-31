@@ -10,13 +10,13 @@
    Tailwind v4 Theme — Custom Design Tokens
    =================================================== */
 @theme {
-    /* Brand colour scale (sky-blue) */
-    --color-brand-50:  #f0f9ff;
-    --color-brand-100: #e0f2fe;
-    --color-brand-400: #38bdf8;
-    --color-brand-500: #0ea5e9;
-    --color-brand-600: #0284c7;
-    --color-brand-700: #0369a1;
+    /* Brand colour scale (based on #0e59c3 logo) */
+    --color-brand-50:  #edf4fc;
+    --color-brand-100: #dbe8f9;
+    --color-brand-400: #6f9fe6;
+    --color-brand-500: #4b84e0;
+    --color-brand-600: #0e59c3;
+    --color-brand-700: #0b479c;
 
     /* Custom shadow tokens */
     --shadow-glass:       0 4px 30px rgba(0, 0, 0, 0.05);

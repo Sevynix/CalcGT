@@ -149,8 +149,10 @@ document.addEventListener('alpine:init', () => {
         getDailyGemCost(quests) {
             if (quests <= 1) return 0;
             let cost = 0;
+            let role = this.getSelectedRole();
+            let baseCost = (role.id === 'chef' || role.id === 'builder') ? 4000 : 3000;
             for (let q = 2; q <= quests; q++) {
-                cost += Math.pow(q - 1, 2) * 3000;
+                cost += Math.pow(q - 1, 2) * baseCost;
             }
             return cost;
         },

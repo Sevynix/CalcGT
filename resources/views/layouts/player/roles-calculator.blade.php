@@ -168,53 +168,53 @@
                     <div class="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
 
                         <!-- Total Points Needed -->
-                        <div class="bg-brand-50 border border-brand-100 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden md:col-span-2">
-                            <p class="text-[13px] font-bold uppercase tracking-widest mb-1.5 relative z-10 text-brand-500">Total Points Needed</p>
+                        <div class="bg-emerald-50 border border-emerald-100 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden md:col-span-2">
+                            <p class="text-[13px] font-bold uppercase tracking-widest mb-1.5 relative z-10 text-emerald-500">Total Points Needed</p>
                             <div class="flex items-center gap-2 relative z-10">
-                                <p class="text-[36px] lg:text-[42px] font-extrabold leading-none text-brand-700" x-text="formatNumber(calculateTotalPointsNeeded())"></p>
-                                <span class="bg-white/60 text-[13px] font-bold px-2 py-0.5 rounded-full text-brand-600 shadow-sm">Pts</span>
+                                <p class="text-[36px] lg:text-[42px] font-extrabold leading-none text-emerald-700" x-text="formatNumber(calculateTotalPointsNeeded())"></p>
+                                <span class="bg-white/60 text-[13px] font-bold px-2 py-0.5 rounded-full text-emerald-600 shadow-sm">Pts</span>
                             </div>
-                            <p class="text-[13px] mt-2 font-medium relative z-10 text-brand-600/70">To push your <span x-text="getSelectedRole().name"></span> role from level <span x-text="currentLevel"></span> to <span x-text="targetLevel"></span></p>
+                            <p class="text-[13px] mt-2 font-medium relative z-10 text-emerald-600/70">To push your <span class="text-emerald-700 font-bold" x-text="getSelectedRole().name"></span> role from level <span class="text-emerald-700 font-bold" x-text="currentLevel"></span> to <span class="text-emerald-700 font-bold" x-text="targetLevel"></span></p>
                         </div>
 
                         <!-- Total Quests Needed -->
-                        <div class="bg-emerald-50 border border-emerald-100 rounded-[20px] p-5 flex flex-col justify-center transform transition hover:-translate-y-1 text-left relative">
+                        <div class="bg-brand-50 border border-brand-100 rounded-[20px] p-5 flex flex-col justify-center transform transition hover:-translate-y-1 text-left relative">
                             <div class="absolute top-4 right-4" x-show="getMultiplier() > 1.0" style="display: none;">
-                                <span class="bg-emerald-100 text-emerald-700 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-emerald-200" x-text="'x' + getMultiplier().toFixed(2)"></span>
+                                <span class="bg-brand-100 text-brand-700 text-[11px] font-bold px-2.5 py-1 rounded-lg border border-brand-200" x-text="'x' + getMultiplier().toFixed(2)"></span>
                             </div>
-                            <p class="text-[12px] font-bold text-emerald-500 uppercase tracking-widest mb-1.5">Total Quests Needed</p>
+                            <p class="text-[12px] font-bold text-brand-500 uppercase tracking-widest mb-1.5">Total Quests Needed</p>
                             <div class="flex items-end gap-2">
-                                <p class="text-[28px] font-extrabold leading-none text-emerald-700" x-text="formatNumber(calculateTotalQuestsNeeded())"></p>
-                                <p class="text-[14px] font-bold text-emerald-600/70 mb-1">Quests</p>
+                                <p class="text-[28px] font-extrabold leading-none text-brand-700" x-text="formatNumber(calculateTotalQuestsNeeded())"></p>
+                                <p class="text-[14px] font-bold text-brand-600/70 mb-1">Quests</p>
                             </div>
-                            <p class="text-[12px] text-emerald-600/70 mt-2 font-medium leading-tight whitespace-nowrap overflow-hidden text-ellipsis" x-text="getMultiplier() > 1.0 ? 'Active bonus reducing quest requirements' : 'Standard 1x progression rate'"></p>
+                            <p class="text-[12px] text-brand-600/70 mt-2 font-medium leading-tight whitespace-nowrap overflow-hidden text-ellipsis" x-text="getMultiplier() > 1.0 ? 'Active bonus reducing quest requirements' : 'Standard 1x progression rate'"></p>
                         </div>
 
                         <!-- Daily Gem Cost -->
-                        <div class="bg-orange-50 border border-orange-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
-                            <p class="text-[12px] font-bold text-orange-500 uppercase tracking-widest mb-1.5">Daily Gem Cost</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Daily Gem Cost</p>
                             <div class="flex items-center gap-2">
-                                <p class="text-[24px] font-extrabold leading-none text-orange-700" x-text="formatNumber(getDailyGemCost(Number(questsPerDay)))"></p>
+                                <p class="text-[24px] font-extrabold leading-none text-slate-700" x-text="formatNumber(getDailyGemCost(Number(questsPerDay)))"></p>
                                 <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
-                            <p class="text-[12px] text-orange-600/70 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
+                            <p class="text-[12px] text-slate-500 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
                         </div>
 
                         <!-- Est Days Needed -->
-                        <div class="bg-violet-50 border border-violet-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
-                            <p class="text-[12px] font-bold text-violet-500 uppercase tracking-widest mb-1.5">Total Days Required</p>
-                            <p class="text-[24px] font-extrabold leading-none text-violet-700" x-text="formatNumber(calculateTotalDaysNeeded())"></p>
-                            <p class="text-[12px] text-violet-600/70 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
+                        <div class="bg-slate-50 border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Total Days Required</p>
+                            <p class="text-[24px] font-extrabold leading-none text-slate-700" x-text="formatNumber(calculateTotalDaysNeeded())"></p>
+                            <p class="text-[12px] text-slate-500 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
                         </div>
                         
                         <!-- Est Gem Cost -->
-                        <div class="bg-rose-50 border border-rose-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
-                            <p class="text-[12px] font-bold text-rose-500 uppercase tracking-widest mb-1.5">Total Gem Cost</p>
+                        <div class="bg-brand-50 border border-brand-100 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            <p class="text-[12px] font-bold text-brand-500 uppercase tracking-widest mb-1.5">Total Gem Cost</p>
                             <div class="flex items-center gap-2">
-                                <p class="text-[24px] font-extrabold leading-none text-rose-700" x-text="formatNumber(calculateTotalGemCost())"></p>
+                                <p class="text-[24px] font-extrabold leading-none text-brand-700" x-text="formatNumber(calculateTotalGemCost())"></p>
                                 <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
-                            <p class="text-[12px] text-rose-600/70 mt-2 font-medium leading-tight">Daily cost × <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
+                            <p class="text-[12px] text-brand-600/70 mt-2 font-medium leading-tight">Daily cost × <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
                         </div>
 
                     </div>
