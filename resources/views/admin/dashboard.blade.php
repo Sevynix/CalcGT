@@ -17,7 +17,11 @@
             <div class="flex justify-between items-start relative z-10">
                 <div>
                     <p class="text-sm font-bold text-slate-500 uppercase tracking-wider mb-1">Total Page Views</p>
-                    @php $totalViews = \App\Models\PageView::sum('views'); @endphp
+                    @php 
+                        $totalViews = \App\Models\PageView::sum('views'); 
+                        $todayViews = \App\Models\PageView::where('date', \Carbon\Carbon::today()->toDateString())->sum('views');
+                        $weekViews = \App\Models\PageView::where('date', '>=', \Carbon\Carbon::now()->startOfWeek()->toDateString())->sum('views');
+                    @endphp
                     <h3 class="text-4xl font-black text-slate-900">{{ number_format($totalViews) }}</h3>
                 </div>
                 <div class="w-12 h-12 bg-brand-100 rounded-2xl flex items-center justify-center text-brand-600">
@@ -25,12 +29,21 @@
                 </div>
             </div>
             
-            <div class="mt-4 flex items-center gap-2 text-sm font-semibold relative z-10">
-                <span class="text-emerald-600 bg-emerald-50 px-2 py-0.5 rounded-md flex items-center gap-1">
-                    <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 10l7-7m0 0l7 7m-7-7v18"/></svg>
-                    Active
-                </span>
-                <span class="text-slate-500">Tracking all time</span>
+            <div class="mt-4 flex flex-col gap-3 relative z-10 border-t border-slate-100 pt-4">
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-slate-500 font-medium flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                        Today
+                    </span>
+                    <span class="font-bold text-slate-700 bg-slate-50 px-2.5 py-0.5 rounded-md border border-slate-100">{{ number_format($todayViews) }}</span>
+                </div>
+                <div class="flex justify-between items-center text-sm">
+                    <span class="text-slate-500 font-medium flex items-center gap-1.5">
+                        <span class="w-2 h-2 rounded-full bg-blue-500"></span>
+                        This Week
+                    </span>
+                    <span class="font-bold text-slate-700 bg-slate-50 px-2.5 py-0.5 rounded-md border border-slate-100">{{ number_format($weekViews) }}</span>
+                </div>
             </div>
         </div>
 
