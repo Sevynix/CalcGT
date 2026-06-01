@@ -8,7 +8,7 @@
     <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
 
     {{-- Page Title --}}
-    <title>@yield('title', 'Growtopia Calculator') — Growtopia Calculator</title>
+    <title>@yield('title', 'Growtopia Calculator') - Growtopia Calculator</title>
 
     {{-- Canonical URL --}}
     <link rel="canonical" href="{{ url()->current() }}">

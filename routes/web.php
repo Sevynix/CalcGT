@@ -80,12 +80,27 @@ Route::get('/level-calculator', function () { return view('layouts.player.level-
 Route::get('/backpack-calculator', function () { return view('layouts.player.backpack-calculator'); })->name('backpack-calculator');
 Route::get('/roles-calculator', function () { return view('layouts.player.roles-calculator'); })->name('roles-calculator');
 Route::get('/guild-level', function () { return view('layouts.guild.level-calculator'); })->name('guild-level');
+Route::get('/summerfest-pack', function () { return view('layouts.event.summerfest-pack'); })->name('summerfest-pack');
+Route::get('/valentine-pack', function () { return view('layouts.event.valentine-pack'); })->name('valentine-pack');
+Route::get('/stpatrick-pack', function () { return view('layouts.event.stpatrick-pack'); })->name('stpatrick-pack');
+Route::get('/easter-pack', function () { return view('layouts.event.easter-pack'); })->name('easter-pack');
+Route::get('/cinco-pack', function () { return view('layouts.event.cinco-pack'); })->name('cinco-pack');
+Route::get('/atm-calc', function () { return view('layouts.providers.atm-calc'); })->name('atm-calc');
+Route::get('/updates', function () {
+    $patchNotes = \App\Models\PatchNote::where('is_published', true)->orderBy('created_at', 'desc')->get();
+    return view('updates', compact('patchNotes'));
+})->name('updates');
 Route::get('/about', function () { return view('about'); })->name('about');
 
 // Public Feedback Routes
 Route::get('/feedback', [\App\Http\Controllers\FeedbackController::class, 'index'])->name('feedback.index');
 Route::get('/feedback/submit', [\App\Http\Controllers\FeedbackController::class, 'create'])->name('feedback.create');
 Route::post('/feedback/submit', [\App\Http\Controllers\FeedbackController::class, 'store'])->middleware('throttle:3,5')->name('feedback.store');
+
+// Public Community Opinions Routes
+Route::get('/opinions', [\App\Http\Controllers\CommunityOpinionController::class, 'index'])->name('opinions.index');
+Route::get('/opinions/{communityPost}', [\App\Http\Controllers\CommunityOpinionController::class, 'show'])->name('opinions.show');
+Route::post('/opinions/{communityPost}/submit', [\App\Http\Controllers\CommunityOpinionController::class, 'store'])->middleware('throttle:3,5')->name('opinions.store');
 
 // Admin Auth Routes
 Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin.login');
@@ -106,4 +121,13 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/feedback', [\App\Http\Controllers\Admin\FeedbackController::class, 'index'])->name('feedback.index');
     Route::put('/feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'update'])->name('feedback.update');
     Route::delete('/feedback/{feedback}', [\App\Http\Controllers\Admin\FeedbackController::class, 'destroy'])->name('feedback.destroy');
+    
+    // Patch Notes
+    Route::resource('/patch-notes', \App\Http\Controllers\Admin\PatchNoteController::class)->except(['show']);
+
+    // Community Opinions
+    Route::resource('/community-posts', \App\Http\Controllers\Admin\CommunityPostController::class)->except(['show']);
+    Route::get('/community-opinions', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'index'])->name('community-opinions.index');
+    Route::put('/community-opinions/{communityOpinion}', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'update'])->name('community-opinions.update');
+    Route::delete('/community-opinions/{communityOpinion}', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'destroy'])->name('community-opinions.destroy');
 });

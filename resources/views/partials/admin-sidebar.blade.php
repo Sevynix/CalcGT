@@ -45,6 +45,9 @@
                     ['route' => 'admin.dashboard', 'label' => 'Admin Dashboard', 'img' => 'images/items/guestbook.png', 'alt' => 'Admin'],
                     ['route' => 'admin.banners.index', 'label' => 'Banners', 'img' => 'images/items/bulletin.png', 'alt' => 'Banners'],
                     ['route' => 'admin.feedback.index', 'label' => 'Feedback', 'img' => 'images/items/letter.png', 'alt' => 'Feedback'],
+                    ['route' => 'admin.patch-notes.index', 'label' => 'Patch Notes', 'img' => 'images/items/guestbook.png', 'alt' => 'Updates'],
+                    ['route' => 'admin.community-posts.index', 'label' => 'Community Topics', 'img' => 'images/items/megaphone.png', 'alt' => 'Topics'],
+                    ['route' => 'admin.community-opinions.index', 'label' => 'User Opinions', 'img' => 'images/items/pencil.png', 'alt' => 'Opinions'],
                 ];
                 $activeClass = 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm';
                 $inactiveClass = 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium';
@@ -91,6 +94,9 @@
                     ['route' => 'admin.dashboard', 'label' => 'Admin Dashboard', 'img' => 'images/items/guestbook.png', 'alt' => 'Admin'],
                     ['route' => 'admin.banners.index', 'label' => 'Banners', 'img' => 'images/items/bulletin.png', 'alt' => 'Banners'],
                     ['route' => 'admin.feedback.index', 'label' => 'Feedback', 'img' => 'images/items/letter.png', 'alt' => 'Feedback'],
+                    ['route' => 'admin.patch-notes.index', 'label' => 'Patch Notes', 'img' => 'images/items/guestbook.png', 'alt' => 'Updates'],
+                    ['route' => 'admin.community-posts.index', 'label' => 'Community Topics', 'img' => 'images/items/megaphone.png', 'alt' => 'Topics'],
+                    ['route' => 'admin.community-opinions.index', 'label' => 'User Opinions', 'img' => 'images/items/pencil.png', 'alt' => 'Opinions'],
                 ];
                 $activeClass = 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm';
                 $inactiveClass = 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium';

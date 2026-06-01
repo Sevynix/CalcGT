@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Server Error — Growtopia Calculator</title>
+    <title>Server Error - Growtopia Calculator</title>
     <meta name="description" content="Something went wrong on our end. Please try again shortly.">
     <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">

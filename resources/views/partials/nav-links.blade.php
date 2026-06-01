@@ -35,6 +35,7 @@
                 ['route' => 'bbm-provider',       'label' => 'BBM',                'img' => 'images/bbm/bbm.png',                     'alt' => 'Building Blocks Machine'],
                 ['route' => 'science-provider',   'label' => 'Science Station',    'img' => 'images/science/science_station.png',     'alt' => 'Science Station'],
                 ['route' => 'tackle-box',         'label' => 'Tackle Box',         'img' => 'images/fishing/fishing_pack/tackle.png', 'alt' => 'Tackle Box'],
+                ['route' => 'atm-calc',           'label' => 'ATM Machine',        'img' => 'images/city/atm.png',                    'alt' => 'ATM'],
             ],
         ],
         [
@@ -52,11 +53,21 @@
             ],
         ],
         [
+            'group'  => 'Event',
+            'items'  => [
+                ['route' => 'valentine-pack',     'label' => 'Valentine\'s Week',  'img' => 'images/event/valentine/valentine_card.png', 'alt' => 'Valentine'],
+                ['route' => 'stpatrick-pack',     'label' => 'St. Patrick\'s Week', 'img' => 'images/items/clover.png', 'alt' => 'St. Patrick'],
+                ['route' => 'easter-pack',        'label' => 'Easter Week',        'img' => 'images/event/easter/crate.png', 'alt' => 'Easter'],
+                ['route' => 'cinco-pack',         'label' => 'Cinco De Mayo Week', 'img' => 'images/event/cinco/whistle.png', 'alt' => 'Cinco'],
+                ['route' => 'summerfest-pack',    'label' => 'SummerFest',         'img' => 'images/event/summer/fireworks.png',      'alt' => 'SummerFest'],
+            ],
+        ],
+        [
             'group'  => 'Store',
             'items'  => [
                 ['route' => 'fishin-pack',        'label' => 'Fishing Pack',       'img' => 'images/fishing/crate.png',               'alt' => 'Fishing'],
                 ['route' => 'painter-pack',       'label' => 'Painter Pack',       'img' => 'images/paint/red.png',                   'alt' => 'Painter'],
-                ['route' => 'city-pack',          'label' => 'City Pack',          'img' => 'images/city/atm.png',                    'alt' => 'City'],
+                ['route' => 'city-pack',          'label' => 'City Pack',          'img' => 'images/city/hedge.png',                  'alt' => 'City'],
                 ['route' => 'firefighter-pack',   'label' => 'Firefighter Pack',   'img' => 'images/firefighter/house.png',           'alt' => 'Firehouse'],
                 ['route' => 'farm-pack',          'label' => 'Farm Pack',          'img' => 'images/farm/tractor.png',                'alt' => 'Farm'],
                 ['route' => 'paleontologist-kit', 'label' => 'Paleontologist Kit', 'img' => 'images/paleontologist/hammer.png',       'alt' => 'Paleo'],

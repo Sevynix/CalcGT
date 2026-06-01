@@ -32,6 +32,27 @@
                     <span class="hidden sm:inline">Feedback</span>
                 </a>
 
+                <!-- Community Opinions Link -->
+                @php
+                    $hasCommunityPosts = \App\Models\CommunityPost::where('is_published', true)->exists();
+                @endphp
+                @if($hasCommunityPosts)
+                    <a href="{{ route('opinions.index') }}" aria-label="Community Opinions" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-600 bg-slate-50 border border-slate-200 hover:border-brand-200 hover:bg-brand-50 px-3 py-1.5 rounded-lg transition-all duration-200">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"></path>
+                        </svg>
+                        <span class="hidden sm:inline">Community</span>
+                    </a>
+                @endif
+
+                <!-- Updates Link -->
+                <a href="{{ route('updates') }}" aria-label="Updates & Patch Notes" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-600 bg-slate-50 border border-slate-200 hover:border-brand-200 hover:bg-brand-50 px-3 py-1.5 rounded-lg transition-all duration-200">
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9.5a2.5 2.5 0 00-2.5-2.5H15"></path>
+                    </svg>
+                    <span class="hidden sm:inline">Updates</span>
+                </a>
+
                 <!-- About Us / Policy Link -->
                 <a href="{{ route('about') }}" aria-label="About & Policy" class="flex items-center gap-1.5 text-xs font-semibold text-slate-500 hover:text-brand-600 bg-slate-50 border border-slate-200 hover:border-brand-200 hover:bg-brand-50 px-3 py-1.5 rounded-lg transition-all duration-200">
                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

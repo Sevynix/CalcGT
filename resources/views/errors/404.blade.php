@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Page Not Found — Growtopia Calculator</title>
+    <title>Page Not Found - Growtopia Calculator</title>
     <meta name="description" content="The page you were looking for could not be found.">
     <link rel="icon" type="image/png" href="{{ asset('images/logo2.png') }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
