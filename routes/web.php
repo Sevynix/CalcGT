@@ -130,4 +130,8 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     Route::get('/community-opinions', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'index'])->name('community-opinions.index');
     Route::put('/community-opinions/{communityOpinion}', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'update'])->name('community-opinions.update');
     Route::delete('/community-opinions/{communityOpinion}', [\App\Http\Controllers\Admin\CommunityOpinionController::class, 'destroy'])->name('community-opinions.destroy');
+
+    // Settings
+    Route::get('/settings/whats-new', [\App\Http\Controllers\Admin\SettingController::class, 'editWhatsNew'])->name('settings.whats-new');
+    Route::post('/settings/whats-new', [\App\Http\Controllers\Admin\SettingController::class, 'updateWhatsNew'])->name('settings.whats-new.update');
 });
