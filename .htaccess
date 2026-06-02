@@ -1,4 +1,10 @@
 <IfModule mod_rewrite.c>
     RewriteEngine On
+    
+    # 1. Force www and HTTPS FIRST (before touching the public folder)
+    RewriteCond %{HTTP_HOST} ^growtopiacalculator\.com [NC]
+    RewriteRule ^(.*)$ https://www.growtopiacalculator.com/$1 [L,R=301]
+
+    # 2. Silently route everything to the public folder
     RewriteRule ^(.*)$ public/$1 [L]
 </IfModule>
