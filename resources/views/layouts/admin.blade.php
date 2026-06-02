@@ -10,8 +10,8 @@
     {{-- Page Title --}}
     <title>@yield('title', 'Growtopia Calculator') - Growtopia Calculator</title>
 
-    {{-- Canonical URL --}}
-    <link rel="canonical" href="{{ url()->current() }}">
+    {{-- Canonical URL (always use www) --}}
+    <link rel="canonical" href="{{ str_replace('://growtopiacalculator.com', '://www.growtopiacalculator.com', url()->current()) }}">
 
     {{-- Meta Description (per-page or default) --}}
     <meta name="description" content="@yield('meta_description', 'Growtopia Calculator — Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
@@ -21,7 +21,7 @@
     <meta property="og:site_name"   content="Growtopia Calculator">
     <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') — Growtopia Calculator">
     <meta property="og:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
-    <meta property="og:url"         content="{{ url()->current() }}">
+    <meta property="og:url"         content="{{ str_replace('://growtopiacalculator.com', '://www.growtopiacalculator.com', url()->current()) }}">
     <meta property="og:image"       content="{{ asset('images/logo.png') }}">
 
     {{-- Twitter Card --}}

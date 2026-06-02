@@ -9,6 +9,10 @@
     RewriteCond %{HTTPS} off
     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
+    # Redirect non-www to www (301 permanent)
+    RewriteCond %{HTTP_HOST} ^growtopiacalculator\.com$ [NC]
+    RewriteRule ^ https://www.growtopiacalculator.com%{REQUEST_URI} [L,R=301]
+
     # Handle Authorization Header
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
