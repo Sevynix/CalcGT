@@ -48,7 +48,7 @@
                     ['route' => 'admin.patch-notes.index', 'label' => 'Patch Notes', 'img' => 'images/items/guestbook.png', 'alt' => 'Updates'],
                     ['route' => 'admin.community-posts.index', 'label' => 'Community Topics', 'img' => 'images/items/megaphone.png', 'alt' => 'Topics'],
                     ['route' => 'admin.community-opinions.index', 'label' => 'User Opinions', 'img' => 'images/items/pencil.png', 'alt' => 'Opinions'],
-                    ['route' => 'admin.settings.whats-new', 'label' => 'Modal Settings', 'img' => 'images/items/menu_button.png', 'alt' => 'Settings'],
+                    ['route' => 'admin.settings.whats-new', 'label' => 'Modal Settings', 'img' => 'images/items/Menu_button.png', 'alt' => 'Settings'],
                 ];
                 $activeClass = 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm';
                 $inactiveClass = 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium';
@@ -98,7 +98,7 @@
                     ['route' => 'admin.patch-notes.index', 'label' => 'Patch Notes', 'img' => 'images/items/guestbook.png', 'alt' => 'Updates'],
                     ['route' => 'admin.community-posts.index', 'label' => 'Community Topics', 'img' => 'images/items/megaphone.png', 'alt' => 'Topics'],
                     ['route' => 'admin.community-opinions.index', 'label' => 'User Opinions', 'img' => 'images/items/pencil.png', 'alt' => 'Opinions'],
-                    ['route' => 'admin.settings.whats-new', 'label' => 'Modal Settings', 'img' => 'images/items/menu_button.png', 'alt' => 'Settings'],
+                    ['route' => 'admin.settings.whats-new', 'label' => 'Modal Settings', 'img' => 'images/items/Menu_button.png', 'alt' => 'Settings'],
                 ];
                 $activeClass = 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm';
                 $inactiveClass = 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium';
