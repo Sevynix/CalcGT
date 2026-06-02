@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Force Laravel to stop adding /public to the URLs it generates
+        if (\Str::contains(request()->server('SCRIPT_NAME'), '/public/index.php')) {
+            $cleanUrl = str_replace('/public', '', request()->root());
+            \Illuminate\Support\Facades\URL::forceRootUrl($cleanUrl);
+        }
     }
 }
