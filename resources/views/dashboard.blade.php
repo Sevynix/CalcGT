@@ -718,4 +718,38 @@ function promoCarousel() {
 
 </div>
 
+    {{-- ============================================================ --}}
+    {{-- SEO: Crawlable links for all tool pages                      --}}
+    {{-- Hidden from users (sr-only), always visible to Googlebot     --}}
+    {{-- Fixes "Duplicate, Google chose different canonical" issue     --}}
+    {{-- caused by Alpine.js x-show hiding non-popular category cards --}}
+    {{-- ============================================================ --}}
+    <nav aria-label="All tools index" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0;">
+        {{-- Provider Tools --}}
+        <a href="{{ route('bbm-provider') }}">BBM Provider Calculator — Building Blocks Machine profit tracker for Growtopia</a>
+        <a href="{{ route('science-provider') }}">Science Station Provider Calculator — track chemical harvesting profits in Growtopia</a>
+        <a href="{{ route('tackle-box') }}">Tackle Box Provider Calculator — fishing returns and profit margins in Growtopia</a>
+
+        {{-- Player Tools --}}
+        <a href="{{ route('level-calculator') }}">Player Level Calculator — XP requirements to reach your desired Growtopia level</a>
+        <a href="{{ route('roles-calculator') }}">Roles Calculator — plan role progressions and XP milestones in Growtopia</a>
+        <a href="{{ route('backpack-calculator') }}">Backpack Upgrade Calculator — inventory expansion costs for Growtopia</a>
+
+        {{-- Guild Tools --}}
+        <a href="{{ route('guild-level') }}">Guild Level Calculator — estimate guild XP requirements per level in Growtopia</a>
+
+        {{-- Store / Pack Tools --}}
+        <a href="{{ route('fishin-pack') }}">Fishing Pack Calculator — analyze pack openings and calculate Growtopia returns</a>
+        <a href="{{ route('painter-pack') }}">Painter Pack Calculator — track painter pack openings and profit in Growtopia</a>
+        <a href="{{ route('city-pack') }}">City Pack Calculator — costs and expected items from City Pack openings</a>
+        <a href="{{ route('farm-pack') }}">Farm Pack Calculator — Growtopia farm pack profit and return tracker</a>
+        <a href="{{ route('firefighter-pack') }}">Firefighter Pack Calculator — firefighter pack returns for Growtopia</a>
+        <a href="{{ route('boo-pack') }}">B.O.O. Pack Calculator — analyze B.O.O. Pack drops in Growtopia</a>
+        <a href="{{ route('crime-pack') }}">Crime Pack Calculator — analyze crime pack openings in Growtopia</a>
+        <a href="{{ route('ssp-pack') }}">SSP Calculator — Small Seed Pack profit margins for Growtopia</a>
+        <a href="{{ route('rsp-pack') }}">RSP Calculator — Rare Seed Pack costs and returns for Growtopia</a>
+        <a href="{{ route('science-kit') }}">Science Kit Calculator — Growtopia science kit tools</a>
+        <a href="{{ route('paleontologist-kit') }}">Paleontologist Kit Calculator — Growtopia paleontologist kit tracker</a>
+    </nav>
+
 @endsection

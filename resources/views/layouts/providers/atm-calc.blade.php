@@ -152,7 +152,7 @@
 
                         <!-- Days to ROI -->
                         <div class="rounded-[20px] p-5 text-white shadow-md flex flex-col justify-center transform transition hover:-translate-y-1 bg-slate-800">
-                            <p class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Estimated Time to ROI</p>
+                            <p class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Break-Even Day</p>
                             <p class="text-[28px] font-extrabold leading-none text-emerald-400" x-text="formatDaysToRoi()"></p>
                         </div>
 
