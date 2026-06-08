@@ -137,7 +137,7 @@ document.addEventListener('alpine:init', () => {
             return `${sign}${p.toFixed(1).replace(/\.0$/, '')} WL`;
         },
         resetCalculator() {
-            try { localStorage.removeItem('gthelp-summerfest-pack'); } catch(e) {}
+            try { localStorage.removeItem('gthelp-summerfest-pack'); } catch (e) { }
             this.numPacks = 1;
             this.gemsInput = 20000;
             this.wlCostPerPack = 0;
@@ -145,9 +145,9 @@ document.addEventListener('alpine:init', () => {
             this.stocks.beachBlast = 1;
             this.stocks.summerSurprise = 1;
             this.stocks.fireworks = 100;
-            if(this.items && this.items.beachBlast) this.items.beachBlast.type = 'wl/item';
-            if(this.items && this.items.summerSurprise) this.items.summerSurprise.type = 'wl/item';
-            if(this.items && this.items.fireworks) this.items.fireworks.type = 'per wl';
+            if (this.items && this.items.beachBlast) this.items.beachBlast.type = 'wl/item';
+            if (this.items && this.items.summerSurprise) this.items.summerSurprise.type = 'wl/item';
+            if (this.items && this.items.fireworks) this.items.fireworks.type = 'per wl';
         },
         resetTable() {
             for (let key in this.prices) this.prices[key] = null;
@@ -157,9 +157,9 @@ document.addEventListener('alpine:init', () => {
                 this.stocks.summerSurprise = n * 1;
                 this.stocks.fireworks = n * 100;
             }
-            if(this.items && this.items.beachBlast) this.items.beachBlast.type = 'wl/item';
-            if(this.items && this.items.summerSurprise) this.items.summerSurprise.type = 'wl/item';
-            if(this.items && this.items.fireworks) this.items.fireworks.type = 'per wl';
+            if (this.items && this.items.beachBlast) this.items.beachBlast.type = 'wl/item';
+            if (this.items && this.items.summerSurprise) this.items.summerSurprise.type = 'wl/item';
+            if (this.items && this.items.fireworks) this.items.fireworks.type = 'per wl';
         }
     }));
 });

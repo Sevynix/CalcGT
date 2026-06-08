@@ -4,6 +4,7 @@
 
 @section('styles')
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.css">
 <style>
     /* Add any custom Flatpickr styling here if needed */
     .flatpickr-calendar {
@@ -102,7 +103,7 @@
 
                     <div>
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Upload Banner Image</label>
-                        <input type="file" name="image" accept="image/*" required @change="handleCreateImagePreview"
+                        <input type="file" name="image" accept="image/*" required @change="handleFileSelect($event, 'create')"
                             class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors file:cursor-pointer cursor-pointer">
                     </div>
                 </div>
@@ -360,7 +361,13 @@
 
                                 <div>
                                     <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Update Image</label>
-                                    <input type="file" name="image" accept="image/*" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors file:cursor-pointer cursor-pointer p-1.5 border border-dashed border-slate-200 rounded-xl">
+                                    <input type="file" name="image" accept="image/*" @change="handleFileSelect($event, 'edit')" class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-xs file:font-bold file:bg-blue-50 file:text-blue-700 hover:file:bg-blue-100 transition-colors file:cursor-pointer cursor-pointer p-1.5 border border-dashed border-slate-200 rounded-xl">
+                                    <template x-if="editPreview">
+                                        <p class="mt-2 text-xs font-bold text-emerald-600 flex items-center gap-1.5">
+                                            <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                                            New image cropped &amp; ready (1200 &times; 800px)
+                                        </p>
+                                    </template>
                                 </div>
 
                                 <div class="grid grid-cols-2 gap-4">
@@ -475,12 +482,72 @@
             </div>
         </div>
     </div>
+
+    <!-- ══════════════════════════════════════
+         Image Crop Modal  (teleported to <body> to escape stacking context)
+    ══════════════════════════════════════ -->
+    <template x-teleport="body">
+    <div x-show="isCropModalOpen" class="relative" role="dialog" aria-modal="true">
+        <!-- Backdrop -->
+        <div x-show="isCropModalOpen"
+             x-transition:enter="ease-out duration-200"
+             x-transition:enter-start="opacity-0"
+             x-transition:enter-end="opacity-100"
+             x-transition:leave="ease-in duration-150"
+             x-transition:leave-start="opacity-100"
+             x-transition:leave-end="opacity-0"
+             class="fixed inset-0 bg-slate-900/80 backdrop-blur-sm transition-opacity" style="z-index: 9998;"></div>
+
+        <div class="fixed inset-0 flex items-center justify-center p-4" style="z-index: 9999;">
+            <div x-show="isCropModalOpen"
+                 x-transition:enter="ease-out duration-200"
+                 x-transition:enter-start="opacity-0 scale-95"
+                 x-transition:enter-end="opacity-100 scale-100"
+                 x-transition:leave="ease-in duration-150"
+                 x-transition:leave-start="opacity-100 scale-100"
+                 x-transition:leave-end="opacity-0 scale-95"
+                 class="bg-white rounded-3xl shadow-2xl border border-slate-200/60 w-full max-w-2xl overflow-hidden flex flex-col"
+                 style="max-height: 90vh;">
+
+                <!-- Header -->
+                <div class="p-5 sm:p-6 border-b border-slate-100 flex items-center justify-between shrink-0">
+                    <div>
+                        <h3 class="text-lg font-extrabold text-slate-900">Crop Banner Image</h3>
+                        <p class="text-xs font-medium text-slate-500 mt-0.5">Drag to reposition &middot; Resize handles to crop &middot; Locked to 3:2 ratio</p>
+                    </div>
+                    <button type="button" @click="cancelCrop()" class="text-slate-400 hover:text-red-500 hover:bg-red-50 p-2 rounded-xl transition-colors">
+                        <svg class="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+                    </button>
+                </div>
+
+                <!-- Cropper Canvas Area -->
+                <div class="bg-slate-950 flex-1 overflow-hidden" style="min-height: 280px; max-height: 440px;">
+                    <img id="cropperImage" src="" alt="Image to crop" style="display: block; max-width: 100%;">
+                </div>
+
+                <!-- Footer -->
+                <div class="p-4 sm:p-5 border-t border-slate-100 bg-slate-50 flex items-center justify-between gap-3 shrink-0 rounded-b-3xl">
+                    <p class="text-xs font-medium text-slate-400">Output: 1200 &times; 800px &middot; JPEG 92%</p>
+                    <div class="flex gap-2.5">
+                        <button type="button" @click="cancelCrop()" class="px-4 py-2 rounded-xl border border-slate-300 bg-white text-sm font-bold text-slate-700 hover:bg-slate-50 transition-colors">
+                            Cancel
+                        </button>
+                        <button type="button" @click="confirmCrop()" class="px-4 py-2 rounded-xl bg-blue-600 hover:bg-blue-700 text-sm font-bold text-white transition-colors flex items-center gap-2 shadow-sm">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+                            Crop &amp; Use
+                        </button>
+                    </div>
+                </div>
+            </div>
+    </div>
+    </template>
 </div>
 
 @endsection
 
 @section('scripts')
 <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+<script src="https://cdn.jsdelivr.net/npm/cropperjs@1.5.13/dist/cropper.min.js"></script>
 <script>
     window.AdminBanners = @json($banners);
     
@@ -503,6 +570,11 @@
             currentMonth: new Date().getMonth(),
             currentYear: new Date().getFullYear(),
             allBanners: window.AdminBanners || [],
+
+            isCropModalOpen: false,
+            cropSource: null,
+            cropperInstance: null,
+            editPreview: '',
             
             init() {
                 // Initialize the flatpickr for the create form
@@ -524,6 +596,7 @@
             
             openEditModal(bannerData) {
                 this.editBanner = bannerData;
+                this.editPreview = '';
                 this.isEditModalOpen = true;
                 this.$nextTick(() => {
                     this.initEditCalendar();
@@ -549,15 +622,77 @@
                 });
             },
             
-            handleCreateImagePreview(event) {
+            handleFileSelect(event, source) {
                 const file = event.target.files[0];
-                if (file) {
-                    const reader = new FileReader();
-                    reader.onload = (e) => {
-                        this.createPreview = e.target.result;
-                    };
-                    reader.readAsDataURL(file);
+                if (!file) return;
+
+                // GIFs can't be cropped (canvas loses animation) — pass through directly
+                if (file.type === 'image/gif') {
+                    const previewUrl = URL.createObjectURL(file);
+                    if (source === 'create') this.createPreview = previewUrl;
+                    else if (source === 'edit') this.editPreview = previewUrl;
+                    return;
                 }
+
+                this.cropSource = source;
+                this._pendingInput = event.target;
+                const reader = new FileReader();
+                reader.onload = (e) => {
+                    this.isCropModalOpen = true;
+                    this.$nextTick(() => {
+                        const img = document.getElementById('cropperImage');
+                        if (this.cropperInstance) {
+                            this.cropperInstance.destroy();
+                            this.cropperInstance = null;
+                        }
+                        img.onload = () => {
+                            this.cropperInstance = new Cropper(img, {
+                                aspectRatio: 3 / 2,
+                                viewMode: 1,
+                                autoCropArea: 1,
+                                responsive: true,
+                                background: false,
+                                dragMode: 'move',
+                            });
+                        };
+                        img.src = e.target.result;
+                    });
+                };
+                reader.readAsDataURL(file);
+            },
+
+            confirmCrop() {
+                if (!this.cropperInstance) return;
+                const canvas = this.cropperInstance.getCroppedCanvas({ width: 1200, height: 800 });
+                canvas.toBlob((blob) => {
+                    const originalName = this._pendingInput?.files[0]?.name || 'banner.jpg';
+                    const croppedFile = new File([blob], originalName, { type: 'image/jpeg' });
+                    const dt = new DataTransfer();
+                    dt.items.add(croppedFile);
+                    this._pendingInput.files = dt.files;
+                    const previewUrl = URL.createObjectURL(blob);
+                    if (this.cropSource === 'create') {
+                        this.createPreview = previewUrl;
+                    } else if (this.cropSource === 'edit') {
+                        this.editPreview = previewUrl;
+                    }
+                    this.closeCropModal();
+                }, 'image/jpeg', 0.92);
+            },
+
+            cancelCrop() {
+                if (this._pendingInput) this._pendingInput.value = '';
+                this.closeCropModal();
+            },
+
+            closeCropModal() {
+                if (this.cropperInstance) {
+                    this.cropperInstance.destroy();
+                    this.cropperInstance = null;
+                }
+                this.isCropModalOpen = false;
+                this.cropSource = null;
+                this._pendingInput = null;
             },
             
             showRow(slot, status) {
