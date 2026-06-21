@@ -35,7 +35,7 @@
                     breaking down BBM</p>
 
                 <div
-                    class="mt-3 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 max-w-lg shadow-sm">
+                    class="mt-3 bg-amber-50 dark:bg-amber-900/30 border border-amber-200/60 dark:border-amber-700/50 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 dark:text-amber-400 max-w-lg shadow-sm">
                     <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
@@ -69,7 +69,7 @@
             <!-- Input Card -->
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100 flex flex-col h-full">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/bbm/bbm.png') }}" alt="Building Blocks Machine" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Purchase Details</h2>
@@ -79,7 +79,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Number of BBM</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" x-model.number="numPacks"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -89,7 +89,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">WL Cost Per BBM</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" step="0.01" x-model.number="wlCostPerPack"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -113,7 +113,7 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -151,31 +151,31 @@
 
                         <!-- Margin -->
                         <div
-                            class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
+                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
                             <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin
                             </p>
                             <p class="text-[28px] font-extrabold leading-none"
-                                :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-black')"
+                                :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-slate-800 dark:text-slate-200')"
                                 x-text="profitPercentage"></p>
                         </div>
 
                     </div>
 
                     <!-- Clean Profit Estimate Banner -->
-                    <div class="mt-4 bg-gradient-to-r from-emerald-50 to-teal-50 border border-emerald-100 rounded-[20px] p-5 shadow-sm relative overflow-hidden group/clean transition hover:border-emerald-200">
-                        <div class="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-emerald-100/30 to-transparent pointer-events-none transition group-hover/clean:opacity-75"></div>
+                    <div class="mt-4 bg-gradient-to-r from-emerald-50 dark:from-emerald-900/30 to-teal-50 dark:to-teal-900/30 border border-emerald-100 dark:border-emerald-700/50 rounded-[20px] p-5 shadow-sm relative overflow-hidden group/clean transition hover:border-emerald-200">
+                        <div class="absolute right-0 top-0 h-full w-32 bg-gradient-to-l from-emerald-100/30 dark:from-emerald-700/20 to-transparent pointer-events-none transition group-hover/clean:opacity-75"></div>
                         <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 relative z-10">
                             <div>
-                                <h3 class="text-[13px] font-bold text-emerald-800 uppercase tracking-widest mb-1 flex items-center gap-2">
+                                <h3 class="text-[13px] font-bold text-emerald-800 dark:text-emerald-400 uppercase tracking-widest mb-1 flex items-center gap-2">
                                     <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
                                     </svg>
-                                    Clean Profit <span class="normal-case font-semibold text-emerald-700/70 ml-1 text-[11px] bg-white/70 px-2 py-0.5 rounded-md">(Est. 60-80%)</span>
+                                    Clean Profit <span class="normal-case font-semibold text-emerald-700/70 dark:text-emerald-400/80 ml-1 text-[11px] bg-white/70 dark:bg-[#151b2b]/70 px-2 py-0.5 rounded-md">(Est. 60-80%)</span>
                                 </h3>
-                                <p class="text-[12.5px] text-emerald-700/80 font-medium ml-6">Realistic expectation after discarding trash seeds</p>
+                                <p class="text-[12.5px] text-emerald-700/80 dark:text-emerald-400/80 font-medium ml-6">Realistic expectation after discarding trash seeds</p>
                             </div>
                             <div class="text-left sm:text-right ml-6 sm:ml-0 pt-1 sm:pt-0">
-                                <p class="text-[22px] sm:text-[24px] font-extrabold text-emerald-600 whitespace-nowrap" x-text="formatCleanProfitRange()"></p>
+                                <p class="text-[22px] sm:text-[24px] font-extrabold text-emerald-600 dark:text-emerald-400 whitespace-nowrap" x-text="formatCleanProfitRange()"></p>
                             </div>
                         </div>
                     </div>
@@ -184,7 +184,7 @@
         </div>
 
         <!-- The Table Area -->
-        <div class="mb-8 p-6 bg-white/60 border border-slate-100 rounded-[28px] shadow-sm">
+        <div class="mb-8 p-6 bg-white/60 dark:bg-[#151b2b]/60 border border-slate-100 dark:border-[#1c2438] rounded-[28px] shadow-sm">
             <div class="mb-4">
                 <h3 class="text-[17px] font-bold text-slate-800 tracking-tight">Holiday & Event Modifiers</h3>
                 <p class="text-[13px] font-medium text-slate-500 mt-1">Select the event-specific items to mark them as active. Selected events will map their items below.</p>
@@ -195,7 +195,7 @@
                     <button @click="enabledCategories[cat] = !enabledCategories[cat]" 
                          class="w-full rounded-[20px] aspect-square sm:aspect-auto sm:min-h-[110px] border-2 transition-all flex flex-col items-center justify-center p-2.5 sm:p-3 relative group outline-none"
                          :title="cat"
-                         :class="enabledCategories[cat] ? 'border-brand-400 bg-brand-50 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200 grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
+                         :class="enabledCategories[cat] ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                         
                         <div class="h-10 sm:h-12 w-full flex items-center justify-center mb-1.5">
                             <img :src="asset(getCategoryStats(cat).icon)" class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
@@ -203,7 +203,7 @@
                         </div>
                         
                         <span class="text-[10px] sm:text-[11px] font-bold leading-tight text-center w-full whitespace-normal transition-colors duration-300"
-                              :class="enabledCategories[cat] ? 'text-brand-700' : 'text-slate-500 group-hover:text-slate-700'"
+                              :class="enabledCategories[cat] ? 'text-brand-700 dark:text-brand-300' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200'"
                               x-text="cat"></span>
                         
                         <div x-show="enabledCategories[cat] && getCategoryStats(cat).rev > 0" 
@@ -218,9 +218,9 @@
         </div>
 
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100 mb-6">
-            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-wrap justify-between items-center gap-3">
+            <div class="p-6 border-b border-slate-100 bg-white/40 dark:bg-[#151b2b]/40 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
@@ -243,22 +243,22 @@
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
-                                <th class="px-6 py-4 uppercase">Building Blocks Machine</th>
-                                <th class="px-6 py-4 uppercase">Stock</th>
-                                <th class="px-6 py-4 uppercase">Sell Price</th>
-                                <th class="px-6 py-4 uppercase">Sales Type</th>
-                                <th class="px-6 py-4 uppercase text-right">Projected Revenue</th>
+                                <th class="px-4 py-3 uppercase">Building Blocks Machine</th>
+                                <th class="px-4 py-3 uppercase">Stock</th>
+                                <th class="px-4 py-3 uppercase">Sell Price</th>
+                                <th class="px-4 py-3 uppercase">Sales Type</th>
+                                <th class="px-4 py-3 uppercase text-right">Projected Revenue</th>
                             </tr>
                         </thead>
                         <template x-for="(groupItems, groupName) in categorizedItems" :key="groupName">
                             <tbody class="divide-y divide-slate-100" x-show="Object.keys(groupItems).length > 0">
                                 <!-- Category sub-header row -->
                                 <template x-if="groupName !== 'Base Items'">
-                                    <tr class="bg-brand-50/20">
-                                        <td colspan="5" class="px-6 py-2.5 border-y border-brand-100/50">
+                                    <tr class="bg-brand-50/20 dark:bg-brand-500/10">
+                                        <td colspan="5" class="px-6 py-2.5 border-y border-brand-100/50 dark:border-brand-500/20">
                                             <div class="flex items-center gap-2.5">
                                                 <div class="w-1.5 h-3.5 bg-brand-400 rounded-full"></div>
-                                                <span class="font-bold text-[11px] text-brand-700 tracking-wider uppercase" x-text="groupName"></span>
+                                                <span class="font-bold text-[11px] text-brand-700 dark:text-brand-400 tracking-wider uppercase" x-text="groupName"></span>
                                             </div>
                                         </td>
                                     </tr>
@@ -267,7 +267,7 @@
                                 <template x-for="(item, key) in groupItems" :key="key">
                                     <tr class="hover:bg-slate-50/50 transition-colors group">
                                 <!-- Tool Name & Icon -->
-                                <td class="px-6 py-4 border-r border-slate-50">
+                                <td class="px-4 py-3">
                                     <div class="flex items-center gap-3">
                                         <div class="flex items-center gap-1.5 shrink-0">
                                             <!-- Block Image -->
@@ -282,28 +282,28 @@
                                 </td>
 
                                 <!-- Stock Input -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative w-24">
                                         <input type="number" min="0" x-model.number="stocks[key]"
-                                            class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
+                                            class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
                                             placeholder="0">
                                     </div>
                                 </td>
 
                                 <!-- Price Input -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative w-24">
                                         <input type="number" min="0" step="0.01" x-model.number="prices[key]"
-                                            class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
+                                            class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
                                             :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
                                     </div>
                                 </td>
 
                                 <!-- Select Type -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative inline-block w-40">
                                         <select x-model="item.type"
-                                            class="w-full bg-white border border-slate-200 text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
+                                            class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
                                             <option value="per wl">Items per WL</option>
                                             <option value="200/?">WL per 200 items</option>
                                             <option value="wl/item">WL per 1 item</option>
@@ -317,8 +317,8 @@
                                 </td>
 
                                 <!-- Final Revenue for row -->
-                                <td class="px-6 py-4 text-right">
-                                    <span class="font-bold text-[15px] text-emerald-600 w-24 inline-block pt-1"
+                                <td class="px-4 py-3 text-right">
+                                    <span class="font-bold text-[15px] text-emerald-600 pt-1"
                                         x-text="getItemRevenue(key) + ' WL'"></span>
                                 </td>
                             </tr>

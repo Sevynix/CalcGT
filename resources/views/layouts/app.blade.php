@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" id="html-root">
+<script>if(localStorage.getItem('gtcalc-dark')==='true')document.getElementById('html-root').classList.add('dark');</script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -80,7 +81,7 @@
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3028975789015323"
      crossorigin="anonymous"></script>
 </head>
-<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false }">
+<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false, darkMode: localStorage.getItem('gtcalc-dark') === 'true' }" x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); document.getElementById('html-root').classList.toggle('dark', v); })">
 
     @include('partials.sidebar')
 

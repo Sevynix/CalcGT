@@ -31,7 +31,7 @@
                     Convert 20 of one tool into 1 of each of the other 12 tools, and repeat until no further conversions can be made
                 </p>
 
-                <div class="mt-3 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 max-w-lg shadow-sm">
+                <div class="mt-3 bg-amber-50 dark:bg-amber-900/30 border border-amber-200/60 dark:border-amber-700/50 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 dark:text-amber-400 max-w-lg shadow-sm">
                     <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                     </svg>
@@ -58,7 +58,7 @@
             <!-- Simulation Stats Card -->
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Autoclave Cycles</h2>
@@ -85,7 +85,7 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -113,10 +113,10 @@
                         </div>
 
                         <!-- Margin -->
-                        <div class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
+                        <div class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
                             <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin</p>
                             <p class="text-[28px] font-extrabold leading-none"
-                                :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-black')"
+                                :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-slate-800 dark:text-slate-200')"
                                 x-text="profitPercentage"></p>
                         </div>
                     </div>
@@ -129,7 +129,7 @@
         <!-- FUEL BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                     <img src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="w-8 h-8 object-contain drop-shadow-sm">
                 </div> 
                 1. Select Fuel Tools
@@ -141,7 +141,7 @@
                 <template x-for="(tool, index) in tools" :key="'toggle_fuel_'+index">
                     <button @click="if(!tool.isTarget) tool.isFuel = !tool.isFuel" 
                         class="rounded-[14px] p-2 w-full aspect-square flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
-                        :class="tool.isTarget ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isFuel ? 'ring-2 ring-brand-400 border-brand-400 bg-brand-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
+                        :class="tool.isTarget ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isFuel ? 'ring-2 ring-brand-400 border-brand-400 bg-brand-50 dark:bg-brand-500/20 hover:scale-105' : 'bg-white border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-slate-500 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isTarget"
                         :title="tool.isTarget ? 'Selected as Target' : tool.name">
                         <img :src="getAssetPath(tool.name)" onerror="this.src='/images/roles/surgeon.png'" class="w-8 h-8 object-contain drop-shadow-sm">
@@ -153,11 +153,11 @@
             <div class="space-y-4" x-show="tools.some(t => t.isFuel)" x-transition>
                 <template x-for="(tool, index) in tools" :key="'form_fuel_'+index">
                     <div x-show="tool.isFuel" x-transition.opacity
-                        class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50/50 p-4 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                        class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50/50 dark:bg-[#111622] p-4 rounded-2xl border border-slate-100 dark:border-[#2a3449] shadow-sm relative overflow-hidden group">
                         <div class="absolute left-0 top-0 bottom-0 w-1 bg-brand-400 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
                         
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
-                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center p-1.5 shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 dark:border-[#2a3449] flex items-center justify-center p-1.5 shrink-0">
                                 <img :src="getAssetPath(tool.name)" onerror="this.src='/images/roles/surgeon.png'" class="w-full h-full object-contain">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
@@ -166,13 +166,13 @@
                         <div class="flex-1 flex flex-wrap gap-4 items-center">
                             <div class="flex flex-col">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Bought Quantity</label>
-                                <input type="number" min="0" x-model.number="tool.stock" class="w-28 bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 transition shadow-sm" placeholder="0">
+                                <input type="number" min="0" x-model.number="tool.stock" class="w-28 bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 transition shadow-sm" placeholder="0">
                             </div>
                             
                             <div class="flex flex-col">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Buy Price</label>
                                 <div class="flex items-center gap-1.5">
-                                    <input type="number" min="0" step="0.01" x-model.number="tool.buyPrice" class="w-24 bg-white border border-slate-200 text-slate-600 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 transition shadow-sm" placeholder="0">
+                                    <input type="number" min="0" step="0.01" x-model.number="tool.buyPrice" class="w-24 bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 transition shadow-sm" placeholder="0">
                                     <select x-model="tool.buyType" class="bg-white border text-center border-slate-200 text-slate-600 font-bold px-2 py-2 rounded-xl outline-none focus:ring-2 focus:ring-brand-400 cursor-pointer shadow-sm text-sm">
                                         <option value="per wl">Items / WL</option>
                                         <option value="200/?">WL / 200</option>
@@ -192,7 +192,7 @@
         <!-- TARGET BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-3">
-                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                     <img src="{{ asset('images/items/forsale.png') }}" alt="For sale Sign" class="w-8 h-8 object-contain drop-shadow-sm">
                 </div> 
                 2. Select Target Tools
@@ -201,7 +201,7 @@
 
             <!-- Warning for Locked Inputs -->
             <div x-show="tools.some(t => t.isTarget) && totalCyclesRun === 0" x-transition.opacity
-                class="mb-6 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 shadow-sm">
+                class="mb-6 bg-amber-50 dark:bg-amber-900/30 border border-amber-200/60 dark:border-amber-700/50 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 dark:text-amber-400 shadow-sm">
                 <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path>
                 </svg>
@@ -215,7 +215,7 @@
                 <template x-for="(tool, index) in tools" :key="'toggle_target_'+index">
                     <button @click="if(!tool.isFuel) tool.isTarget = !tool.isTarget" 
                         class="rounded-[14px] p-2 w-full aspect-square flex flex-col items-center justify-center transition-all border shadow-sm transform relative"
-                        :class="tool.isFuel ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isTarget ? 'ring-2 ring-emerald-400 border-emerald-400 bg-emerald-50 hover:scale-105' : 'bg-white border-slate-200 hover:border-slate-300 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
+                        :class="tool.isFuel ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isTarget ? 'ring-2 ring-emerald-400 border-emerald-400 bg-emerald-50 dark:bg-emerald-500/20 hover:scale-105' : 'bg-white border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-slate-500 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isFuel"
                         :title="tool.isFuel ? 'Selected as Fuel' : tool.name">
                         <img :src="getAssetPath(tool.name)" onerror="this.src='/images/roles/surgeon.png'" class="w-8 h-8 object-contain">
@@ -229,11 +229,11 @@
             <div class="space-y-4" x-show="tools.some(t => t.isTarget)" x-transition>
                 <template x-for="(tool, index) in tools" :key="'form_target_'+index">
                     <div x-show="tool.isTarget" x-transition.opacity
-                        class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50/50 p-4 rounded-2xl border border-slate-100 shadow-sm relative overflow-hidden group">
+                        class="flex flex-col sm:flex-row items-start sm:items-center gap-4 bg-slate-50/50 dark:bg-[#111622] p-4 rounded-2xl border border-slate-100 dark:border-[#2a3449] shadow-sm relative overflow-hidden group">
                         <div class="absolute left-0 top-0 bottom-0 w-1 bg-emerald-400 rounded-l-2xl opacity-0 group-hover:opacity-100 transition-opacity"></div>
 
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
-                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 flex items-center justify-center p-1.5 shrink-0">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 dark:border-[#2a3449] flex items-center justify-center p-1.5 shrink-0">
                                 <img :src="getAssetPath(tool.name)" onerror="this.src='/images/roles/surgeon.png'" class="w-full h-full object-contain mb-0">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
@@ -242,8 +242,8 @@
                         <div class="flex-1 flex flex-wrap gap-6 items-center">
                             <div class="flex flex-col">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Machine Yield</label>
-                                <span class="inline-flex items-center justify-center bg-white border border-slate-200 text-emerald-600 font-extrabold px-3 py-2 rounded-xl shadow-sm w-24 h-10"
-                                    :class="getFinalCount(index) > 0 ? 'bg-emerald-50 border-emerald-200 text-emerald-700' : 'opacity-70'">
+                                <span class="inline-flex items-center justify-center bg-white border border-slate-200 dark:border-[#2a3449] text-emerald-600 font-extrabold px-3 py-2 rounded-xl shadow-sm w-24 h-10"
+                                    :class="getFinalCount(index) > 0 ? 'bg-emerald-50 dark:bg-emerald-500/20 border-emerald-200 dark:border-emerald-500/30 text-emerald-700 dark:text-emerald-400' : 'opacity-70'">
                                     <span x-text="getFinalCount(index)"></span>
                                 </span>
                             </div>
@@ -251,7 +251,7 @@
                             <div class="flex flex-col">
                                 <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Desired Sell Price</label>
                                 <div class="flex items-center gap-1.5">
-                                    <input type="number" min="0" step="0.01" x-model.number="tool.sellPrice" class="w-24 bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-emerald-400 transition shadow-sm" placeholder="0" :disabled="getFinalCount(index) === 0" :class="getFinalCount(index) === 0 ? 'opacity-50' : ''">
+                                    <input type="number" min="0" step="0.01" x-model.number="tool.sellPrice" class="w-24 bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-xl outline-none focus:ring-2 focus:ring-emerald-400 transition shadow-sm" placeholder="0" :disabled="getFinalCount(index) === 0" :class="getFinalCount(index) === 0 ? 'opacity-50' : ''">
                                     <select x-model="tool.sellType" class="bg-white border text-center border-slate-200 text-slate-600 font-bold px-2 py-2 rounded-xl outline-none focus:ring-2 focus:ring-emerald-400 cursor-pointer shadow-sm text-sm" :disabled="getFinalCount(index) === 0" :class="getFinalCount(index) === 0 ? 'opacity-50' : ''">
                                         <option value="per wl">Items / WL</option>
                                         <option value="200/?">WL / 200</option>

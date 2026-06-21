@@ -86,6 +86,7 @@ Route::get('/stpatrick-pack', function () { return view('layouts.event.stpatrick
 Route::get('/easter-pack', function () { return view('layouts.event.easter-pack'); })->name('easter-pack');
 Route::get('/cinco-pack', function () { return view('layouts.event.cinco-pack'); })->name('cinco-pack');
 Route::get('/atm-calc', function () { return view('layouts.providers.atm-calc'); })->name('atm-calc');
+Route::get('/awkward-unicorn', function () { return view('layouts.providers.awkward-unicorn'); })->name('awkward-unicorn');
 Route::get('/updates', function () {
     $patchNotes = \App\Models\PatchNote::where('is_published', true)->orderBy('created_at', 'desc')->get();
     return view('updates', compact('patchNotes'));

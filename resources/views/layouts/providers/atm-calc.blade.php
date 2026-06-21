@@ -34,7 +34,7 @@
                 <p class="text-slate-500 mt-2 max-w-lg">Calculate your estimated daily gems, daily profit, and how many days it will take to break even on your ATM farm.</p>
 
                 <div
-                    class="mt-3 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 max-w-lg shadow-sm">
+                    class="mt-3 bg-amber-50 dark:bg-amber-900/30 border border-amber-200/60 dark:border-amber-700/50 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 dark:text-amber-400 max-w-lg shadow-sm">
                     <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z">
@@ -66,7 +66,7 @@
             <!-- Input Card -->
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100 flex flex-col justify-center">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/gems.png') }}" alt="Inputs" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Farm Details</h2>
@@ -76,7 +76,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Number of ATMs</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" x-model.number="numATMs"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -87,7 +87,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Cost Per ATM</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" step="0.1" x-model.number="costPerATM"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -98,7 +98,7 @@
                     <div class="flex flex-col pt-2 border-t border-slate-100">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Current Gems Rate</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="1" x-model.number="gemsRate"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -120,7 +120,7 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
@@ -145,7 +145,7 @@
                         </div>
 
                         <!-- Daily WL Profit -->
-                        <div class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1">
+                        <div class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1">
                             <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Daily WL Profit</p>
                             <p class="text-[28px] font-extrabold text-slate-800" x-text="formatWlsPerDay()"></p>
                         </div>

@@ -97,19 +97,19 @@ function promoCarousel() {
         
         <!-- Modern Category Tabs -->
         <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 scrollbar-hide text-sm font-black uppercase tracking-wider">
-            <button @click="currentCategory = 'popular'" :class="currentCategory === 'popular' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:bg-slate-100'" class="px-5 py-2.5 rounded-full transition-colors whitespace-nowrap shadow-sm border border-slate-200">
+            <button @click="currentCategory = 'popular'" :class="currentCategory === 'popular' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Popular Search
             </button>
-            <button @click="currentCategory = 'provider'" :class="currentCategory === 'provider' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:bg-slate-100'" class="px-5 py-2.5 rounded-full transition-colors whitespace-nowrap shadow-sm border border-slate-200">
+            <button @click="currentCategory = 'provider'" :class="currentCategory === 'provider' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Provider
             </button>
-            <button @click="currentCategory = 'player'" :class="currentCategory === 'player' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:bg-slate-100'" class="px-5 py-2.5 rounded-full transition-colors whitespace-nowrap shadow-sm border border-slate-200">
+            <button @click="currentCategory = 'player'" :class="currentCategory === 'player' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Player Tools
             </button>
-            <button @click="currentCategory = 'guild'" :class="currentCategory === 'guild' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:bg-slate-100'" class="px-5 py-2.5 rounded-full transition-colors whitespace-nowrap shadow-sm border border-slate-200">
+            <button @click="currentCategory = 'guild'" :class="currentCategory === 'guild' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Guild Tools
             </button>
-            <button @click="currentCategory = 'store'" :class="currentCategory === 'store' ? 'bg-slate-800 text-white' : 'bg-white text-slate-500 hover:bg-slate-100'" class="px-5 py-2.5 rounded-full transition-colors whitespace-nowrap shadow-sm border border-slate-200">
+            <button @click="currentCategory = 'store'" :class="currentCategory === 'store' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Store
             </button>
         </div>

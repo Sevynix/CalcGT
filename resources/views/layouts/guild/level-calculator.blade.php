@@ -54,7 +54,7 @@
             <!-- Input Card -->
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1">
                 <div class="flex items-center gap-4 mb-8">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/downarrow.png') }}" alt="Down Arrow" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Level Settings</h2>
@@ -64,7 +64,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Current Guild Level</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="1" max="14" x-model.number="currentLevel"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="1">
@@ -75,7 +75,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Target Guild Level</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="2" max="15" x-model.number="targetLevel"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="15">
@@ -86,7 +86,7 @@
                     <div class="flex flex-col">
                         <label class="text-slate-600 font-bold text-[15px] mb-2 truncate" title="Current EXP">Current EXP Progress</label>
                         <div
-                            class="flex items-center bg-white border border-slate-200 rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
+                            class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" x-model.number="currentExp"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="0">
@@ -108,7 +108,7 @@
                 <div class="relative z-10 flex flex-col h-full">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Progression Overview</h2>
@@ -119,31 +119,31 @@
 
                         <!-- Total EXP Needed -->
                         <div
-                            class="bg-brand-50 border border-brand-100 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden">
-                            <p class="text-[13px] font-bold text-brand-500 uppercase tracking-widest mb-1.5 relative z-10">Total EXP Needed
+                            class="bg-brand-50 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-700/50 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden">
+                            <p class="text-[13px] font-bold text-brand-500 dark:text-brand-400 uppercase tracking-widest mb-1.5 relative z-10">Total EXP Needed
                             </p>
-                            <p class="text-[28px] lg:text-[32px] font-extrabold text-brand-700 leading-none relative z-10" x-text="formatNumber(calculateTotalExpNeeded())"></p>
-                            <p class="text-[12px] text-brand-600/70 mt-2 font-medium relative z-10">To reach Level <span x-text="targetLevel"></span></p>
+                            <p class="text-[28px] lg:text-[32px] font-extrabold text-brand-700 dark:text-brand-300 leading-none relative z-10" x-text="formatNumber(calculateTotalExpNeeded())"></p>
+                            <p class="text-[12px] text-brand-600/70 dark:text-brand-400/70 mt-2 font-medium relative z-10">To reach Level <span x-text="targetLevel"></span></p>
                         </div>
                         
                         <!-- Total Gems Needed -->
                         <div
-                            class="bg-violet-50 border border-violet-100 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden">
+                            class="bg-violet-50 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-700/50 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden">
                             <div class="absolute opacity-10 blur-sm right-0 top-0">
                                 <img src="{{ asset('images/lock/guild_lock.png') }}" class="w-24 h-24">
                             </div>
-                            <p class="text-[13px] font-bold text-violet-500 uppercase tracking-widest mb-1.5 relative z-10">Total Gems Needed
+                            <p class="text-[13px] font-bold text-violet-500 dark:text-violet-400 uppercase tracking-widest mb-1.5 relative z-10">Total Gems Needed
                             </p>
                             <div class="flex items-center gap-2 relative z-10">
-                                <p class="text-[28px] lg:text-[32px] font-extrabold text-violet-700 leading-none" x-text="formatNumber(calculateTotalGemsNeeded())"></p>
+                                <p class="text-[28px] lg:text-[32px] font-extrabold text-violet-700 dark:text-violet-300 leading-none" x-text="formatNumber(calculateTotalGemsNeeded())"></p>
                                 <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
-                            <p class="text-[12px] text-violet-600/70 mt-2 font-medium relative z-10">To reach Level <span x-text="targetLevel"></span></p>
+                            <p class="text-[12px] text-violet-600/70 dark:text-violet-400/70 mt-2 font-medium relative z-10">To reach Level <span x-text="targetLevel"></span></p>
                         </div>
 
                         <!-- To Next Level EXP -->
                         <div
-                            class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
                             <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">EXP to Next Level
                             </p>
                             <p class="text-[24px] font-extrabold leading-none text-slate-800" x-text="formatNumber(calculateExpToNextLevel())"></p>
@@ -152,7 +152,7 @@
                         
                         <!-- To Next Level Gems -->
                         <div
-                            class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
+                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-left">
                             <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Gems to Next Level
                             </p>
                             <div class="flex items-center gap-2">
@@ -170,9 +170,9 @@
         <!-- The Table Area -->
         <div x-data="{ openTable: true }" class="glass-card rounded-[32px] overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
             <!-- Accordion Header -->
-            <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 hover:bg-white/60 transition-colors text-left focus:outline-none">
+            <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
@@ -180,7 +180,7 @@
                         <p class="text-[13px] text-slate-500 font-medium">EXP and Gems requirements mapped out perfectly.</p>
                     </div>
                 </div>
-                <div class="p-2 rounded-full bg-slate-100 text-slate-500 transition-transform duration-300" :class="openTable ? 'rotate-180' : ''">
+                <div class="p-2 rounded-full bg-slate-100 dark:bg-[#0b0f19] text-slate-500 transition-transform duration-300" :class="openTable ? 'rotate-180' : ''">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
                 </div>
             </button>
@@ -193,49 +193,49 @@
                  x-transition:leave="transition ease-in duration-200 transform"
                  x-transition:leave-start="opacity-100 translate-y-0"
                  x-transition:leave-end="opacity-0 -translate-y-4"
-                 class="border-t border-slate-100 bg-white/30"
+                 class="border-t border-slate-100 dark:border-[#1c2438] bg-white/30 dark:bg-[#151b2b]/30"
                  style="display: none;">
                 
                 <div class="overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
-                            <th class="px-6 py-4 uppercase">Level</th>
-                            <th class="px-6 py-4 uppercase">EXP Required</th>
-                            <th class="px-6 py-4 uppercase">Gems Required</th>
-                            <th class="px-6 py-4 uppercase text-right">Cumulative EXP</th>
-                            <th class="px-6 py-4 uppercase text-right">Cumulative Gems</th>
+                            <th class="px-4 py-3 uppercase">Level</th>
+                            <th class="px-4 py-3 uppercase">EXP Required</th>
+                            <th class="px-4 py-3 uppercase">Gems Required</th>
+                            <th class="px-4 py-3 uppercase text-right">Cumulative EXP</th>
+                            <th class="px-4 py-3 uppercase text-right">Cumulative Gems</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         <template x-for="(req, index) in getVisibleBreakdown()" :key="index + currentLevel + 1">
-                            <tr class="hover:bg-slate-50/50 transition-colors group bg-white">
-                                <td class="px-6 py-4">
+                            <tr class="hover:bg-slate-50/50 dark:hover:bg-[#111622]/50 transition-colors group bg-white dark:bg-[#151b2b]">
+                                <td class="px-4 py-3">
                                     <div class="flex items-center gap-3">
-                                        <div class="w-auto px-3 h-8 rounded-full bg-slate-100 text-slate-600 font-bold flex items-center justify-center text-xs border border-slate-200">
+                                        <div class="w-auto px-3 h-8 rounded-full bg-slate-100 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 border-transparent dark:border-[#2a3449] font-bold flex items-center justify-center text-xs border border-slate-200 dark:border-[#2a3449]">
                                             <span x-text="req.levelFrom + ' → ' + req.levelTo"></span>
                                         </div>
                                     </div>
                                 </td>
 
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center gap-1 bg-brand-50 text-brand-700 px-3 py-1 rounded-lg font-bold text-[13px]">
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center gap-1 bg-brand-50 dark:bg-brand-500/20 text-brand-700 dark:text-brand-300 px-3 py-1 rounded-lg font-bold text-[13px]">
                                         +<span x-text="formatNumber(req.expNeeded)"></span> EXP
                                     </span>
                                 </td>
 
-                                <td class="px-6 py-4">
-                                    <span class="inline-flex items-center gap-1 bg-violet-50 text-violet-700 px-3 py-1 rounded-lg font-bold text-[13px]">
+                                <td class="px-4 py-3">
+                                    <span class="inline-flex items-center gap-1 bg-violet-50 dark:bg-violet-500/20 text-violet-700 dark:text-violet-300 px-3 py-1 rounded-lg font-bold text-[13px]">
                                         +<span x-text="formatNumber(req.gemsNeeded)"></span> Gems
                                     </span>
                                 </td>
 
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-4 py-3 text-right">
                                     <span class="font-bold text-[14.5px] text-slate-800 block pt-1"
                                         x-text="formatNumber(req.totalEXP)"></span>
                                 </td>
 
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-4 py-3 text-right">
                                     <span class="font-bold text-[14.5px] text-slate-800 block pt-1"
                                         x-text="formatNumber(req.totalGems)"></span>
                                 </td>

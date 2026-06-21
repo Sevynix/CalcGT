@@ -34,7 +34,7 @@
                     breaking down Science Stations</p>
 
                 <div
-                    class="mt-3 bg-amber-50 border border-amber-200/60 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 max-w-lg shadow-sm">
+                    class="mt-3 bg-amber-50 dark:bg-amber-900/30 border border-amber-200/60 dark:border-amber-700/50 rounded-xl p-3 flex items-start gap-2.5 text-amber-700 dark:text-amber-400 max-w-lg shadow-sm">
                     <svg class="w-5 h-5 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z">
@@ -77,14 +77,14 @@
                 <div class="relative z-10 flex flex-col h-full items-center text-center">
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
-                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Revenue Overview</h2>
                     </div>
 
-                    <div class="bg-emerald-50 border border-emerald-100 rounded-[20px] p-6 max-w-sm w-full mx-auto shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1">
-                        <p class="text-[14px] font-bold text-emerald-600 uppercase tracking-widest mb-2">Total Expected Revenue</p>
+                    <div class="bg-emerald-50 dark:bg-emerald-900/30 border border-emerald-100 dark:border-emerald-700/50 rounded-[20px] p-6 max-w-sm w-full mx-auto shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1">
+                        <p class="text-[14px] font-bold text-emerald-600 dark:text-emerald-400 uppercase tracking-widest mb-2">Total Expected Revenue</p>
                         <p class="text-[36px] font-extrabold text-slate-800 leading-none" x-text="formatTotalRevenue()"></p>
                     </div>
                 </div>
@@ -94,7 +94,7 @@
         <!-- Crafting Section with Combined Toggle & Table -->
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
             <!-- Header with Toggle Buttons -->
-            <div class="mb-8 p-6 bg-white/60 border-b border-slate-100 rounded-t-[28px]">
+            <div class="mb-8 p-6 bg-white/60 dark:bg-[#151b2b]/60 border-b border-slate-100 dark:border-[#1c2438] rounded-t-[28px]">
                 <div class="mb-6">
                     <h3 class="text-[17px] font-bold text-slate-800 tracking-tight">Crafting Opportunities</h3>
                     <p class="text-[13px] font-medium text-slate-500 mt-1">Select a recipe to craft valuable items from your chemicals.</p>
@@ -105,7 +105,7 @@
                         <button @click="selectedCraftItem = selectedCraftItem === recipeKey ? null : recipeKey" 
                              class="w-full rounded-[20px] aspect-square sm:aspect-auto sm:min-h-[110px] border-2 transition-all flex flex-col items-center justify-center p-2.5 sm:p-3 relative group outline-none"
                              :title="recipe.name"
-                             :class="selectedCraftItem === recipeKey ? 'border-brand-400 bg-brand-50 shadow-sm' : 'border-slate-100 bg-white hover:border-slate-200 grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
+                             :class="selectedCraftItem === recipeKey ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                             
                             <div class="h-10 sm:h-12 w-full flex items-center justify-center mb-1.5">
                                 <img :src="asset(recipe.icon)" :alt="recipe.name"
@@ -114,7 +114,7 @@
                             </div>
                             
                             <span class="text-[10px] sm:text-[11px] font-bold leading-tight text-center w-full whitespace-normal transition-colors duration-300"
-                                  :class="selectedCraftItem === recipeKey ? 'text-brand-700' : 'text-slate-500 group-hover:text-slate-700'"
+                                  :class="selectedCraftItem === recipeKey ? 'text-brand-700 dark:text-brand-300' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200'"
                                   x-text="recipe.name"></span>
                             
                             <div x-show="selectedCraftItem === recipeKey && canCraftItem(recipeKey) > 0" 
@@ -130,14 +130,14 @@
 
             <!-- Crafted Items Table (Only shows when one recipe is selected) -->
             <template x-if="selectedCraftItem">
-                <div class="p-6 bg-white/40 border-t border-slate-100 flex flex-col lg:flex-row gap-6">
+                <div class="p-6 bg-white/40 dark:bg-[#151b2b]/40 border-t border-slate-100 dark:border-[#1c2438] flex flex-col lg:flex-row gap-6">
                     
                     <!-- Recipe Info -->
-                    <div class="flex-1 bg-white border border-slate-100 rounded-[24px] p-6 shadow-sm relative overflow-hidden group">
+                    <div class="flex-1 bg-white dark:bg-[#151b2b] border border-slate-100 dark:border-[#2a3449] rounded-[24px] p-6 shadow-sm relative overflow-hidden group">
                         <div class="absolute -right-10 -top-10 w-32 h-32 bg-brand-400/5 rounded-full blur-2xl group-hover:bg-brand-400/10 transition duration-500 pointer-events-none"></div>
                         
                         <div class="flex items-center gap-4 mb-5 relative z-10">
-                            <div class="w-14 h-14 bg-slate-50 border border-slate-100 rounded-2xl flex items-center justify-center p-2.5 shadow-sm">
+                            <div class="w-14 h-14 bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-[#2a3449] rounded-2xl flex items-center justify-center p-2.5 shadow-sm">
                                 <img :src="asset(recipes[selectedCraftItem].icon)" :alt="recipes[selectedCraftItem].name" class="w-full h-full object-contain drop-shadow-sm">
                             </div>
                             <div>
@@ -147,12 +147,12 @@
                         </div>
 
                         <!-- Ingredients List -->
-                        <div class="bg-slate-50 rounded-[16px] p-4 border border-slate-100 mt-2 relative z-10">
+                        <div class="bg-slate-50 dark:bg-[#111622] rounded-[16px] p-4 border border-slate-100 dark:border-[#2a3449] mt-2 relative z-10">
                             <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3">Recipe Requirements</p>
                             <div class="flex flex-wrap gap-2">
                                 <template x-for="(needed, chem) in recipes[selectedCraftItem]" :key="chem">
                                     <template x-if="needed > 0 && chem !== 'name' && chem !== 'icon' && chem !== 'yield'">
-                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm rounded-lg py-1.5 px-3" :title="items[chem] ? items[chem].name : (recipes[chem] ? recipes[chem].name : '')">
+                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 dark:border-[#2a3449] shadow-sm rounded-lg py-1.5 px-3" :title="items[chem] ? items[chem].name : (recipes[chem] ? recipes[chem].name : '')">
                                             <img :src="asset(items[chem] ? items[chem].icon : recipes[chem].icon)" class="w-5 h-5 object-contain">
                                             <span class="text-[13px] font-bold text-slate-700" x-text="needed + 'x'"></span>
                                         </div>
@@ -162,15 +162,15 @@
                         </div>
 
                         <!-- Leftover Stock -->
-                        <div class="bg-slate-50 rounded-[16px] p-4 border border-slate-100 mt-3 relative z-10">
+                        <div class="bg-slate-50 dark:bg-[#111622] rounded-[16px] p-4 border border-slate-100 dark:border-[#2a3449] mt-3 relative z-10">
                             <div class="flex justify-between items-center mb-3">
                                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest">Leftover Base Stock</p>
-                                <span class="text-[9px] text-slate-500 font-bold tracking-wider uppercase bg-white px-2 py-0.5 rounded-md shadow-sm border border-slate-200">After Max Craft</span>
+                                <span class="text-[9px] text-slate-500 font-bold tracking-wider uppercase bg-white dark:bg-[#151b2b] px-2 py-0.5 rounded-md shadow-sm border border-slate-200 dark:border-[#2a3449]">After Max Craft</span>
                             </div>
                             <div class="flex flex-wrap gap-2">
                                 <template x-for="(left, chem) in getLeftoverBaseChemicals(selectedCraftItem)" :key="chem">
                                     <template x-if="left > 0 && items[chem]">
-                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 shadow-sm rounded-lg py-1 px-2.5" :title="items[chem].name">
+                                        <div class="inline-flex items-center gap-2 bg-white border border-slate-200 dark:border-[#2a3449] shadow-sm rounded-lg py-1 px-2.5" :title="items[chem].name">
                                             <img :src="asset(items[chem].icon)" class="w-4 h-4 object-contain opacity-70">
                                             <span class="text-[12px] font-bold text-slate-600" x-text="left"></span>
                                         </div>
@@ -185,31 +185,31 @@
 
                     <!-- Summary Area -->
                     <div class="lg:w-[350px] flex flex-col gap-4">
-                        <div class="flex items-center justify-between bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm">
+                        <div class="flex items-center justify-between bg-white dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm">
                             <div>
                                 <p class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-1">Max You Can Craft</p>
                                 <p class="text-[32px] font-extrabold text-slate-800 leading-none" x-text="canCraftItem(selectedCraftItem)"></p>
                             </div>
-                            <div class="w-14 h-14 bg-emerald-50 rounded-2xl flex items-center justify-center shadow-inner border border-emerald-100/50 shrink-0">
+                            <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center shadow-inner border border-emerald-100/50 dark:border-emerald-700/50 shrink-0">
                                 <img :src="asset(recipes[selectedCraftItem].icon)" class="w-8 h-8 object-contain drop-shadow-md">
                             </div>
                         </div>
                         
-                        <div class="bg-white border border-slate-200 rounded-[20px] p-5 shadow-sm">
+                        <div class="bg-white dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm">
                             <label class="text-[11px] font-bold text-slate-400 uppercase tracking-widest mb-3 block">Selling Estimation</label>
                             
                             <div class="flex flex-col gap-3">
                                 <!-- Price Input -->
-                                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-[14px] px-3 py-2.5 focus-within:bg-white focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all shadow-sm">
+                                <div class="flex items-center bg-slate-50 dark:bg-[#111622] border border-slate-200 dark:border-[#2a3449] rounded-[14px] px-3 py-2.5 focus-within:bg-white focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all shadow-sm">
                                     <input type="number" min="0" step="0.01" x-model.number="craftingPrices[selectedCraftItem]"
                                         class="bg-transparent text-slate-800 text-[18px] font-bold outline-none flex-1 p-0 m-0 w-full"
                                         :placeholder="craftingPriceTypes[selectedCraftItem] === 'per wl' ? 'Items/WL' : (craftingPriceTypes[selectedCraftItem] === '200/?' ? 'WL/200' : '0')">
                                 </div>
 
                                 <!-- Unit Select -->
-                                <div class="relative w-full border border-slate-200 rounded-[14px] overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-brand-100 focus-within:border-brand-400 transition-all group">
+                                <div class="relative w-full border border-slate-200 dark:border-[#2a3449] rounded-[14px] overflow-hidden shadow-sm focus-within:ring-2 focus-within:ring-brand-100 focus-within:border-brand-400 transition-all group">
                                     <select x-model="craftingPriceTypes[selectedCraftItem]"
-                                        class="w-full bg-slate-50 text-slate-600 font-bold px-3 py-2.5 pr-8 outline-none group-hover:bg-white cursor-pointer appearance-none text-[14px] transition-colors">
+                                        class="w-full bg-slate-50 dark:bg-[#111622] text-slate-600 font-bold px-3 py-2.5 pr-8 outline-none group-hover:bg-white dark:group-hover:bg-[#151b2b] cursor-pointer appearance-none text-[14px] transition-colors">
                                         <option value="per wl">Items per WL</option>
                                         <option value="200/?">WL per 200 items</option>
                                         <option value="wl/item">WL per 1 item</option>
@@ -235,9 +235,9 @@
 
         <!-- The Table Area -->
         <div class="glass-card rounded-3xl overflow-hidden shadow-inner-light shadow-sm border border-slate-100">
-            <div class="p-6 border-b border-slate-100 bg-white/40 flex flex-wrap justify-between items-center gap-3">
+            <div class="p-6 border-b border-slate-100 bg-white/40 dark:bg-[#151b2b]/40 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center gap-4">
-                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                    <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                         <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
@@ -278,19 +278,19 @@
                             <div class="flex flex-col gap-1">
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Stock</label>
                                 <input type="number" min="0" x-model.number="stocks[key]"
-                                    class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
+                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
                                     placeholder="0">
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Price</label>
                                 <input type="number" min="0" step="0.01" x-model.number="prices[key]"
-                                    class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
+                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
                                     :placeholder="item.type === 'per wl' ? 'Per WL' : (item.type === '200/?' ? 'WL/200' : 'WL/1')">
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Type</label>
                                 <select x-model="item.type"
-                                    class="w-full bg-white border border-slate-200 text-slate-600 font-medium px-1 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-xs">
+                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-1 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-xs">
                                     <option value="per wl">Per WL</option>
                                     <option value="200/?">WL/200</option>
                                     <option value="wl/item">WL/Item</option>
@@ -308,18 +308,18 @@
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
-                            <th class="px-6 py-4 uppercase">Chemical</th>
-                            <th class="px-6 py-4 uppercase">Stock</th>
-                            <th class="px-6 py-4 uppercase">Sell Price</th>
-                            <th class="px-6 py-4 uppercase">Sales Type</th>
-                            <th class="px-6 py-4 uppercase text-right">Projected Revenue</th>
+                            <th class="px-4 py-3 uppercase">Chemical</th>
+                            <th class="px-4 py-3 uppercase">Stock</th>
+                            <th class="px-4 py-3 uppercase">Sell Price</th>
+                            <th class="px-4 py-3 uppercase">Sales Type</th>
+                            <th class="px-4 py-3 uppercase text-right">Projected Revenue</th>
                         </tr>
                     </thead>
                     <tbody class="divide-y divide-slate-100">
                         <template x-for="(item, key) in items" :key="key">
                             <tr class="hover:bg-slate-50/50 transition-colors group">
                                 <!-- Tool Name & Icon -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
@@ -331,28 +331,28 @@
                                 </td>
 
                                 <!-- Stock Input -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative max-w-[100px]">
                                         <input type="number" min="0" x-model.number="stocks[key]"
-                                            class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
+                                            class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
                                             placeholder="0">
                                     </div>
                                 </td>
 
                                 <!-- Price Input -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative max-w-[120px]">
                                         <input type="number" min="0" step="0.01" x-model.number="prices[key]"
-                                            class="w-full bg-white border border-slate-200 text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
+                                            class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-3 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 focus:border-brand-400 transition"
                                             :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
                                     </div>
                                 </td>
 
                                 <!-- Select Type -->
-                                <td class="px-6 py-4">
+                                <td class="px-4 py-3">
                                     <div class="relative inline-block w-full">
                                         <select x-model="item.type"
-                                            class="w-full min-w-[140px] bg-white border border-slate-200 text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
+                                            class="w-full min-w-[140px] bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-3 py-2 pr-8 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer appearance-none">
                                             <option value="per wl">Items per WL</option>
                                             <option value="200/?">WL per 200 items</option>
                                             <option value="wl/item">WL per 1 item</option>
@@ -366,7 +366,7 @@
                                 </td>
 
                                 <!-- Final Revenue for row -->
-                                <td class="px-6 py-4 text-right">
+                                <td class="px-4 py-3 text-right">
                                     <span class="font-bold text-[15px] text-emerald-600 block pt-1"
                                         x-text="getItemRevenue(key) + ' WL'"></span>
                                 </td>

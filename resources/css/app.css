@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@custom-variant dark (&:is(.dark *));
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -13,10 +14,14 @@
     /* Brand colour scale (based on #0e59c3 logo) */
     --color-brand-50:  #edf4fc;
     --color-brand-100: #dbe8f9;
+    --color-brand-200: #c1d6f5;
+    --color-brand-300: #9fc1f0;
     --color-brand-400: #6f9fe6;
     --color-brand-500: #4b84e0;
     --color-brand-600: #0e59c3;
     --color-brand-700: #0b479c;
+    --color-brand-800: #083678;
+    --color-brand-900: #05224a;
 
     /* Custom shadow tokens */
     --shadow-glass:       0 4px 30px rgba(0, 0, 0, 0.05);
@@ -98,3 +103,100 @@ input[type=number] {
    Prevent Alpine Flash of Unstyled Content
    =================================================== */
 [x-cloak] { display: none !important; }
+
+/* ===================================================
+   Smooth Dark Mode Transition
+   =================================================== */
+*, *::before, *::after {
+    transition-property: background-color, border-color, color, box-shadow;
+    transition-duration: 150ms;
+    transition-timing-function: ease;
+}
+/* But don't animate transforms or opacity (breaks Alpine animations) */
+[x-transition], [x-show] {
+    transition: none !important;
+}
+
+/* ===================================================
+   Dark Mode Overrides
+   =================================================== */
+
+/* Body */
+html.dark body {
+    background-color: #0b0f19;
+    background-image: radial-gradient(rgba(28,36,56,0.5) 1px, transparent 1px);
+    color: #f1f5f9;
+}
+
+/* Header */
+html.dark header {
+    background-color: rgba(11, 15, 25, 0.85) !important;
+    border-bottom-color: #151b2b !important;
+}
+html.dark header h2 { color: #f1f5f9 !important; }
+
+/* Sidebar */
+html.dark aside,
+html.dark nav[aria-label] {
+    background-color: #0b0f19 !important;
+    border-right-color: #151b2b !important;
+}
+
+/* Cards — white backgrounds */
+html.dark .bg-white {
+    background-color: #151b2b !important;
+}
+html.dark .bg-slate-50,
+html.dark .hover\:bg-slate-50:hover,
+html.dark .group:hover .group-hover\:bg-slate-50 {
+    background-color: #111622 !important;
+}
+html.dark .bg-slate-100,
+html.dark .hover\:bg-slate-100:hover,
+html.dark .group:hover .group-hover\:bg-slate-100 {
+    background-color: #1c2438 !important;
+}
+html.dark .bg-slate-200,
+html.dark .hover\:bg-slate-200:hover,
+html.dark .group:hover .group-hover\:bg-slate-200 {
+    background-color: #2a3449 !important;
+}
+
+/* Glass card */
+html.dark .glass-card {
+    background: rgba(21, 27, 43, 0.85) !important;
+    border-color: rgba(42, 52, 73, 0.5) !important;
+}
+
+/* Borders */
+html.dark .border-slate-100 { border-color: #1c2438 !important; }
+html.dark .border-slate-200 { border-color: #2a3449 !important; }
+
+/* Text */
+html.dark .text-slate-900 { color: #ffffff !important; }
+html.dark .text-slate-800 { color: #f1f5f9 !important; }
+html.dark .text-slate-700 { color: #cbd5e1 !important; }
+html.dark .text-slate-600 { color: #94a3b8 !important; }
+html.dark .text-slate-500 { color: #94a3b8 !important; }
+
+/* Inputs */
+html.dark input[type="number"]:not(.bg-transparent),
+html.dark input[type="text"]:not(.bg-transparent),
+html.dark select:not(.bg-transparent),
+html.dark textarea:not(.bg-transparent) {
+    background-color: #0b0f19 !important;
+    border-color: #2a3449 !important;
+    color: #f1f5f9 !important;
+}
+html.dark input::placeholder { color: #64748b !important; }
+
+/* Table */
+html.dark table { color: #f1f5f9 !important; }
+html.dark thead tr { background-color: #111622 !important; }
+html.dark tbody tr:hover { background-color: rgba(28, 36, 56, 0.5) !important; }
+html.dark .divide-slate-100 > * + * { border-color: #1c2438 !important; }
+
+/* Scrollbar dark */
+html.dark ::-webkit-scrollbar-track { background: #151b2b; }
+html.dark ::-webkit-scrollbar-thumb { background: #2a3449; }
+html.dark ::-webkit-scrollbar-thumb:hover { background: #475569; }

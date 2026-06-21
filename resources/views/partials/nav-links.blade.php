@@ -36,6 +36,7 @@
                 ['route' => 'science-provider',   'label' => 'Science Station',    'img' => 'images/science/science_station.png',     'alt' => 'Science Station'],
                 ['route' => 'tackle-box',         'label' => 'Tackle Box',         'img' => 'images/fishing/fishing_pack/tackle.png', 'alt' => 'Tackle Box'],
                 ['route' => 'atm-calc',           'label' => 'ATM Machine',        'img' => 'images/city/atm.png',                    'alt' => 'ATM'],
+                ['route' => 'awkward-unicorn',    'label' => 'Awkward Unicorn',    'img' => 'images/unicorn/image_2.png',             'alt' => 'Awkward Unicorn'],
             ],
         ],
         [
@@ -97,8 +98,8 @@
     @foreach ($section['items'] as $item)
         @php
             $isActive = request()->routeIs($item['route']);
-            $activeClass = 'bg-[#f0f9ff] text-slate-800 font-bold shadow-sm';
-            $inactiveClass = 'text-slate-500 hover:bg-slate-50 hover:text-slate-700 font-medium';
+            $activeClass = 'bg-[#f0f9ff] dark:bg-brand-500/20 text-slate-800 dark:text-brand-200 font-bold shadow-sm';
+            $inactiveClass = 'text-slate-500 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 hover:text-slate-700 dark:hover:text-slate-200 font-medium';
         @endphp
 
         @if ($isMobile ?? false)
