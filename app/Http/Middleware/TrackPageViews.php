@@ -31,10 +31,11 @@ class TrackPageViews
             $date = Carbon::today()->toDateString();
             
             try {
-                PageView::updateOrCreate(
+                $pageView = PageView::firstOrCreate(
                     ['route' => $route, 'date' => $date],
-                    ['views' => \DB::raw('views + 1')]
+                    ['views' => 0]
                 );
+                $pageView->increment('views');
             } catch (\Exception $e) {
                 // Ignore DB errors
             }
