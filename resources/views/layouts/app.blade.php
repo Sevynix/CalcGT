@@ -26,13 +26,13 @@
     <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') - Growtopia Calculator">
     <meta property="og:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
     <meta property="og:url"         content="{{ str_replace('://growtopiacalculator.com', '://www.growtopiacalculator.com', url()->current()) }}">
-    <meta property="og:image"       content="{{ asset('images/logo.png') }}">
+    <meta property="og:image"       content="{{ asset('images/logofix.png') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card"        content="summary">
     <meta name="twitter:title"       content="@yield('title', 'Growtopia Calculator') - Growtopia Calculator">
     <meta name="twitter:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players.')">
-    <meta name="twitter:image"       content="{{ asset('images/logo.png') }}">
+    <meta name="twitter:image"       content="{{ asset('images/logofix.png') }}">
 
 
     {{-- Resource Hints: warm up CDN connections early --}}
