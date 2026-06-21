@@ -31,7 +31,7 @@
         <!-- Drawer Header -->
         <div class="h-16 flex items-center justify-between px-5 border-b border-slate-100 shrink-0">
             <a href="/" class="flex items-center">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain">
+                <img src="{{ asset('images/logofix.png') }}" alt="Logo" class="h-10 w-auto object-contain">
             </a>
             <button @click="mobileNavOpen = false" class="p-2 rounded-lg text-slate-400 hover:text-slate-700 hover:bg-slate-100 transition" aria-label="Close Navigation">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
@@ -84,7 +84,7 @@
         <!-- Logo Area -->
         <div class="h-16 flex border-b border-slate-100 shrink-0 transition-all duration-300 items-center overflow-hidden w-full" :class="sidebarOpen ? 'justify-start px-6' : 'justify-center'">
             <a href="/" class="flex items-center group whitespace-nowrap">
-                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="h-10 w-auto object-contain transition-all duration-300" :class="sidebarOpen ? 'max-w-[160px]' : 'max-w-[50px]'">
+                <img src="{{ asset('images/logofix.png') }}" alt="Logo" class="h-10 w-auto object-contain transition-all duration-300" :class="sidebarOpen ? 'max-w-[160px]' : 'max-w-[50px]'">
             </a>
         </div>
         
