@@ -109,6 +109,9 @@ function promoCarousel() {
             <button @click="currentCategory = 'guild'" :class="currentCategory === 'guild' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Guild Tools
             </button>
+            <button @click="currentCategory = 'event'" :class="currentCategory === 'event' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
+                Event
+            </button>
             <button @click="currentCategory = 'store'" :class="currentCategory === 'store' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Store
             </button>
@@ -711,6 +714,174 @@ function promoCarousel() {
                     </div>
                 </div>
             </a>
+            <!-- ATM Machine -->
+            <a href="{{ route('atm-calc') }}" x-show="currentCategory === 'provider'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/city/atm.png') }}" alt="ATM" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">ATM Machine</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track your ATM daily gem yields and optimize gem farming.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- Awkward Unicorn -->
+            <a href="{{ route('awkward-unicorn') }}" x-show="currentCategory === 'provider'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/unicorn/image_2.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/unicorn/image_2.png') }}" alt="Awkward Unicorn" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Awkward Unicorn</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate output ratios and profits for Awkward Friendly Unicorn provider.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- SummerFest Pack -->
+            <a href="{{ route('summerfest-pack') }}" x-show="currentCategory === 'event'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/event/summer/fireworks.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/event/summer/fireworks.png') }}" alt="SummerFest" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">SummerFest Pack</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate Beach Blast Bingo pack returns and path profits during SummerFest.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- Valentine Pack -->
+            <a href="{{ route('valentine-pack') }}" x-show="currentCategory === 'event'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="Valentine" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Valentine Pack</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate returns and profit margins from breaking Golden Booty Chests.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- Easter Pack -->
+            <a href="{{ route('easter-pack') }}" x-show="currentCategory === 'event'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/event/easter/crate.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/event/easter/crate.png') }}" alt="Easter" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Easter Pack</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Track Easter Crate costs, drops, and projected profits from magic eggs.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- St Patrick Pack -->
+            <a href="{{ route('stpatrick-pack') }}" x-show="currentCategory === 'event'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="St Patrick" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">St Patrick Pack</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate Blarney Box returns and evaluate profit margins.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+            <!-- Cinco De Mayo -->
+            <a href="{{ route('cinco-pack') }}" x-show="currentCategory === 'event'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img src="{{ asset('images/event/cinco/whistle.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img src="{{ asset('images/event/cinco/whistle.png') }}" alt="Cinco" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
+                    </div>
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Cinco Pack</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Analyze Cinco De Mayo pack openings and calculate overall net worth gains.</p>
+                    </div>
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
 
         </div>
 
@@ -729,6 +900,8 @@ function promoCarousel() {
         <a href="{{ route('bbm-provider') }}">BBM Provider Calculator — Building Blocks Machine profit tracker for Growtopia</a>
         <a href="{{ route('science-provider') }}">Science Station Provider Calculator — track chemical harvesting profits in Growtopia</a>
         <a href="{{ route('tackle-box') }}">Tackle Box Provider Calculator — fishing returns and profit margins in Growtopia</a>
+        <a href="{{ route('atm-calc') }}">ATM Machine Calculator — daily gem yields and farming profit for Growtopia</a>
+        <a href="{{ route('awkward-unicorn') }}">Awkward Unicorn Provider Calculator — calculate ratios and profit margins in Growtopia</a>
 
         {{-- Player Tools --}}
         <a href="{{ route('level-calculator') }}">Player Level Calculator — XP requirements to reach your desired Growtopia level</a>
@@ -750,6 +923,13 @@ function promoCarousel() {
         <a href="{{ route('rsp-pack') }}">RSP Calculator — Rare Seed Pack costs and returns for Growtopia</a>
         <a href="{{ route('science-kit') }}">Science Kit Calculator — Growtopia science kit tools</a>
         <a href="{{ route('paleontologist-kit') }}">Paleontologist Kit Calculator — Growtopia paleontologist kit tracker</a>
+
+        {{-- Event Pack Tools --}}
+        <a href="{{ route('summerfest-pack') }}">SummerFest Pack Calculator — Beach Blast Bingo pack returns and path profits in Growtopia</a>
+        <a href="{{ route('valentine-pack') }}">Valentine Pack Calculator — Golden Booty Chest drops and margins in Growtopia</a>
+        <a href="{{ route('stpatrick-pack') }}">St Patrick Pack Calculator — Blarney Box returns and profit in Growtopia</a>
+        <a href="{{ route('easter-pack') }}">Easter Pack Calculator — Easter Crate costs and projected profits from magic eggs in Growtopia</a>
+        <a href="{{ route('cinco-pack') }}">Cinco De Mayo Pack Calculator — analyze Cinco De Mayo pack openings in Growtopia</a>
     </nav>
 
 @endsection

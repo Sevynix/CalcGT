@@ -24,12 +24,12 @@
                     </svg>
                     Back to Dashboard
                 </a>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex flex-wrap items-center gap-2 sm:gap-3">
                     <img src="{{ asset('images/unicorn/image_2.png') }}" alt="Awkward Friendly Unicorn"
-                        class="w-10 h-10 object-contain drop-shadow-sm">
-                    Awkward Friendly Unicorn
+                        class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain drop-shadow-sm shrink-0">
+                    <span class="break-words leading-tight">Awkward Friendly Unicorn</span>
                     <span
-                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
+                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shadow-sm shrink-0 whitespace-nowrap">Calculator</span>
                 </h1>
                 <p class="text-slate-500 mt-2 max-w-lg">Easily calculate your expected returns and profit margins from
                     harvesting Awkward Friendly Unicorns</p>
@@ -122,20 +122,15 @@
                     <div class="flex-grow grid grid-cols-2 gap-4">
 
                         <!-- Cost -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Cost
-                            </p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalCost()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Cost</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalCost()"></p>
                         </div>
 
                         <!-- Revenue -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Revenue</p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalRevenue()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Revenue</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalRevenue()"></p>
                         </div>
 
                         <!-- Net Profit -->
@@ -149,11 +144,9 @@
                         </div>
 
                         <!-- Margin -->
-                        <div
-                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin
-                            </p>
-                            <p class="text-[28px] font-extrabold leading-none"
+                        <div class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin</p>
+                            <p class="text-[20px] sm:text-[28px] font-extrabold leading-tight sm:leading-none break-words"
                                 :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-slate-800 dark:text-slate-200')"
                                 x-text="profitPercentage"></p>
                         </div>
@@ -186,7 +179,10 @@
                 </button>
             </div>
 
-            <div class="overflow-x-auto">
+            <!-- ================================ -->
+            <!-- DESKTOP: Table layout (>= md)    -->
+            <!-- ================================ -->
+            <div class="hidden md:block w-full overflow-x-auto">
                 <table class="w-full text-left text-sm whitespace-nowrap">
                     <thead>
                         <tr class="bg-slate-50 text-slate-500 font-semibold tracking-wide text-xs">
@@ -259,6 +255,54 @@
                     </template>
                 </tbody>
             </table>
+        </div>
+
+        <!-- ================================ -->
+        <!-- MOBILE: Card layout (< md)       -->
+        <!-- ================================ -->
+        <div class="md:hidden divide-y divide-slate-100">
+            <template x-for="(item, key) in items" :key="key">
+                <div class="p-4 flex flex-col gap-3 hover:bg-slate-50/50 transition-colors">
+                    <!-- Item name + revenue -->
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center gap-3">
+                            <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
+                                <img :src="asset(item.icon)" :alt="item.name"
+                                    class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+                            </div>
+                            <span class="font-bold text-slate-800 text-sm leading-tight" x-text="item.name"></span>
+                        </div>
+                        <span class="font-bold text-[15px] text-emerald-600 shrink-0 ml-2" x-text="getItemRevenue(key) + ' WL'"></span>
+                    </div>
+                    <!-- Inputs row -->
+                    <div class="grid grid-cols-3 gap-2 mt-1">
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Stock</label>
+                            <input type="number" min="0" x-model.number="stocks[key]"
+                                class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
+                                placeholder="0">
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Price</label>
+                            <input type="number" min="0" step="0.01" x-model.number="prices[key]"
+                                class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
+                                :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
+                        </div>
+                        <div class="flex flex-col gap-1 relative">
+                            <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Type</label>
+                            <select x-model="item.type"
+                                class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-1.5 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-[13px] appearance-none">
+                                <option value="per wl">Items/WL</option>
+                                <option value="200/?">WL/200</option>
+                                <option value="wl/item">WL/Item</option>
+                            </select>
+                            <div class="pointer-events-none absolute inset-y-0 right-1 top-4 flex items-center px-1 text-slate-400">
+                                <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </template>
         </div>
     </div>
 

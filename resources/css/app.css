@@ -104,19 +104,7 @@ input[type=number] {
    =================================================== */
 [x-cloak] { display: none !important; }
 
-/* ===================================================
-   Smooth Dark Mode Transition
-   =================================================== */
-*, *::before, *::after {
-    transition-property: background-color, border-color, color, box-shadow;
-    transition-duration: 150ms;
-    transition-timing-function: ease;
-}
-/* But don't animate transforms or opacity (breaks Alpine animations) */
-[x-transition], [x-show] {
-    transition: none !important;
-}
-
+/* Smooth Dark Mode Transition is now handled by the View Transitions API in app.blade.php */
 /* ===================================================
    Dark Mode Overrides
    =================================================== */
@@ -184,7 +172,7 @@ html.dark input[type="number"]:not(.bg-transparent),
 html.dark input[type="text"]:not(.bg-transparent),
 html.dark select:not(.bg-transparent),
 html.dark textarea:not(.bg-transparent) {
-    background-color: #0b0f19 !important;
+    background-color: #1c2438 !important;
     border-color: #2a3449 !important;
     color: #f1f5f9 !important;
 }

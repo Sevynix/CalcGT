@@ -6,8 +6,8 @@
 <div class="max-w-2xl mx-auto space-y-8">
     
     <div class="text-center space-y-4">
-        <div class="w-16 h-16 bg-brand-50 rounded-2xl flex items-center justify-center mx-auto border border-brand-100 shadow-inner">
-            <svg class="w-8 h-8 text-brand-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
+        <div class="w-16 h-16 bg-brand-50 dark:bg-slate-800 rounded-2xl flex items-center justify-center mx-auto border border-brand-100 dark:border-slate-700 shadow-inner">
+            <svg class="w-8 h-8 text-brand-500 dark:text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0 01-3.417.592l-2.147-6.15M18 13a3 3 0 100-6M5.436 13.683A4.001 4.001 0 017 6h1.832c4.1 0 7.625-1.234 9.168-3v14c-1.543-1.766-5.067-3-9.168-3H7a3.988 3.988 0 01-1.564-.317z"/></svg>
         </div>
         <div>
             <h1 class="text-3xl font-extrabold tracking-tight text-slate-900">Send Feedback</h1>
@@ -24,8 +24,8 @@
     @else
         <div class="bg-white rounded-3xl border border-slate-200/60 shadow-sm p-6 md:p-8 relative overflow-hidden">
             <!-- Decorative blobs -->
-            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-50 rounded-full blur-3xl opacity-50"></div>
-            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-blue-50 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -top-12 -right-12 w-32 h-32 bg-brand-50 dark:bg-brand-900/20 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -bottom-12 -left-12 w-32 h-32 bg-blue-50 dark:bg-blue-900/20 rounded-full blur-3xl opacity-50"></div>
 
             <form action="{{ route('feedback.store') }}" method="POST" enctype="multipart/form-data" class="relative z-10 space-y-5">
                 @csrf
@@ -39,19 +39,43 @@
 
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-1.5">Feedback Type</label>
-                    <div class="grid grid-cols-2 gap-4">
-                        <label class="relative">
-                            <input type="radio" name="type" value="bug" class="peer sr-only" required {{ old('type') == 'bug' ? 'checked' : '' }}>
-                            <div class="p-4 border-2 border-slate-200 rounded-xl cursor-pointer peer-checked:border-[#0e59c3] peer-checked:bg-[#0e59c3]/5 hover:bg-slate-80 transition-all text-center">
-                                <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation Mark" class="w-16 h-16 mb-2 mx-auto">
-                                <span class="font-bold text-slate-700 peer-checked:text-[#0e59c3]">Bug Report</span>
+                    <div class="grid grid-cols-2 gap-4" x-data="{ selectedType: '{{ old('type', '') }}' }">
+                        <label class="relative outline-none group cursor-pointer" @click="selectedType = 'bug'">
+                            <input type="radio" name="type" value="bug" class="sr-only" required x-model="selectedType">
+                            <div class="w-full rounded-[20px] border-2 transition-all flex flex-col items-center justify-center p-4 relative"
+                                 :class="selectedType === 'bug' 
+                                    ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' 
+                                    : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
+                                
+                                <div class="h-16 w-full flex items-center justify-center mb-2">
+                                    <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation Mark" 
+                                         class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
+                                         :class="selectedType === 'bug' ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
+                                </div>
+                                
+                                <span class="font-bold leading-tight text-center w-full transition-colors duration-300"
+                                      :class="selectedType === 'bug' ? 'text-brand-700 dark:text-brand-300' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200'">
+                                    Bug Report
+                                </span>
                             </div>
                         </label>
-                        <label class="relative">
-                            <input type="radio" name="type" value="suggestion" class="peer sr-only" required {{ old('type') == 'suggestion' ? 'checked' : '' }}>
-                            <div class="p-4 border-2 border-slate-200 rounded-xl cursor-pointer peer-checked:border-[#0e59c3] peer-checked:bg-[#0e59c3]/5 hover:bg-slate-80 transition-all text-center">
-                                <img src="{{ asset('images/items/letter.png') }}" alt="Letter" class="w-16 h-16 mb-2 mx-auto">
-                                <span class="font-bold text-slate-700 peer-checked:text-[#0e59c3]">Suggestion</span>
+                        <label class="relative outline-none group cursor-pointer" @click="selectedType = 'suggestion'">
+                            <input type="radio" name="type" value="suggestion" class="sr-only" required x-model="selectedType">
+                            <div class="w-full rounded-[20px] border-2 transition-all flex flex-col items-center justify-center p-4 relative"
+                                 :class="selectedType === 'suggestion' 
+                                    ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' 
+                                    : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
+                                
+                                <div class="h-16 w-full flex items-center justify-center mb-2">
+                                    <img src="{{ asset('images/items/letter.png') }}" alt="Suggestion Letter" 
+                                         class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
+                                         :class="selectedType === 'suggestion' ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
+                                </div>
+                                
+                                <span class="font-bold leading-tight text-center w-full transition-colors duration-300"
+                                      :class="selectedType === 'suggestion' ? 'text-brand-700 dark:text-brand-300' : 'text-slate-500 dark:text-slate-400 group-hover:text-slate-700 dark:group-hover:text-slate-200'">
+                                    Suggestion
+                                </span>
                             </div>
                         </label>
                     </div>
@@ -67,17 +91,39 @@
 
                 <div>
                     <label class="block text-sm font-bold text-slate-700 mb-1.5">Attach Screenshot (Optional)</label>
-                    <div x-data="{ fileName: '' }" class="border-2 border-dashed border-slate-200 rounded-xl p-4 bg-slate-50 text-center hover:bg-slate-100 transition-colors cursor-pointer relative">
+                    <div x-data="{ fileName: '', previewUrl: '' }" class="border-2 border-dashed border-slate-200 dark:border-slate-700 rounded-xl p-4 bg-slate-50 dark:bg-[#151b2b] text-center hover:bg-slate-100 dark:hover:bg-[#1c2438] transition-colors cursor-pointer relative group overflow-hidden">
                         <input type="file" name="image" accept="image/*" 
-                            @change="fileName = $event.target.files.length > 0 ? $event.target.files[0].name : ''"
-                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer">
-                        <svg class="w-8 h-8 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            @change="
+                                if ($event.target.files.length > 0) {
+                                    fileName = $event.target.files[0].name;
+                                    previewUrl = URL.createObjectURL($event.target.files[0]);
+                                } else {
+                                    fileName = '';
+                                    previewUrl = '';
+                                }
+                            "
+                            class="absolute inset-0 w-full h-full opacity-0 cursor-pointer z-10">
                         
-                        <span x-show="!fileName" class="text-sm font-bold text-slate-600">Click to upload or drag and drop</span>
-                        <span x-show="fileName" x-text="fileName" class="text-sm font-bold text-[#0e59c3] break-all" style="display: none;"></span>
-                        
-                        <p x-show="!fileName" class="text-xs text-slate-400 mt-1 font-medium">PNG, JPG, up to 5MB</p>
-                        <p x-show="fileName" class="text-xs text-slate-400 mt-1 font-medium">Image ready to upload</p>
+                        <!-- State 1: No File -->
+                        <div x-show="!previewUrl" class="py-2">
+                            <svg class="w-8 h-8 text-slate-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/></svg>
+                            <span class="text-sm font-bold text-slate-600 dark:text-slate-400">Click to upload or drag and drop</span>
+                            <p class="text-xs text-slate-400 mt-1 font-medium">PNG, JPG, up to 5MB</p>
+                        </div>
+
+                        <!-- State 2: File Selected -->
+                        <div x-show="previewUrl" style="display: none;" class="flex items-center gap-4 text-left relative z-0 bg-white dark:bg-[#111622] rounded-lg p-2 border border-slate-100 dark:border-[#2a3449]">
+                            <div class="w-14 h-14 rounded-md overflow-hidden shrink-0 border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#151b2b]">
+                                <img :src="previewUrl" class="w-full h-full object-cover">
+                            </div>
+                            <div class="flex-grow min-w-0">
+                                <span x-text="fileName" class="text-sm font-bold text-brand-600 dark:text-brand-400 block truncate"></span>
+                                <p class="text-xs text-slate-500 font-medium mt-0.5">Click to change image</p>
+                            </div>
+                            <div class="shrink-0 text-slate-400 group-hover:text-brand-500 transition-colors pr-2">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232l3.536 3.536m-2.036-5.036a2.5 2.5 0 113.536 3.536L6.5 21.036H3v-3.572L16.732 3.732z"/></svg>
+                            </div>
+                        </div>
                     </div>
                     @error('image')<p class="text-red-500 text-xs font-bold mt-1.5">{{ $message }}</p>@enderror
                 </div>

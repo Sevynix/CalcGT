@@ -24,12 +24,12 @@
                     </svg>
                     Back to Dashboard
                 </a>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex flex-wrap items-center gap-2 sm:gap-3">
                     <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="Tackle Box"
-                        class="w-10 h-10 object-contain drop-shadow-sm">
-                    Tackle Box
+                        class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain drop-shadow-sm shrink-0">
+                    <span class="break-words leading-tight">Tackle Box</span>
                     <span
-                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
+                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shadow-sm shrink-0 whitespace-nowrap">Calculator</span>
                 </h1>
                 <p class="text-slate-500 mt-2 max-w-lg">Easily calculate your expected returns from the Tackle Box baits.</p>
 

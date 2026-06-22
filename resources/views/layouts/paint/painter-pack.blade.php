@@ -24,12 +24,12 @@
                     </svg>
                     Back to Dashboard
                 </a>
-                <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center gap-3">
+                <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex flex-wrap items-center gap-2 sm:gap-3">
                     <img src="{{ asset('images/paint/red.png') }}" alt="Painter Pack"
-                        class="w-10 h-10 object-contain drop-shadow-sm">
-                    Painter Pack
+                        class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain drop-shadow-sm shrink-0">
+                    <span class="break-words leading-tight">Painter Pack</span>
                     <span
-                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
+                        class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-[10px] sm:text-xs font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase tracking-wider shadow-sm shrink-0 whitespace-nowrap">Calculator</span>
                 </h1>
                 <p class="text-slate-500 mt-2 max-w-lg">Easily calculate your expected returns from the Painter Pack items.</p>
 
@@ -120,37 +120,28 @@
                     <div class="flex-grow grid grid-cols-2 gap-4">
 
                         <!-- Cost -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Cost
-                            </p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalCost()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Cost</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalCost()"></p>
                         </div>
 
                         <!-- Revenue -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Revenue</p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalRevenue()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Revenue</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalRevenue()"></p>
                         </div>
 
                         <!-- Net Profit -->
-                        <div class="rounded-[20px] p-5 text-white shadow-md flex flex-col justify-center transform transition hover:-translate-y-1"
+                        <div class="rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 text-white shadow-md flex flex-col justify-center transform transition hover:-translate-y-1 overflow-hidden"
                             :class="netProfit > 0 ? 'bg-emerald-500' : (netProfit < 0 ? 'bg-red-500' : 'bg-slate-800')">
-                            <p class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Net
-                                Profit
-                            </p>
-                            <p class="text-[28px] font-extrabold leading-none" x-text="formatNetProfit()"></p>
+                            <p class="text-[11px] sm:text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Net Profit</p>
+                            <p class="text-[20px] sm:text-[28px] font-extrabold leading-tight sm:leading-none break-words" x-text="formatNetProfit()"></p>
                         </div>
 
                         <!-- Margin -->
-                        <div
-                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin
-                            </p>
-                            <p class="text-[28px] font-extrabold leading-none"
+                        <div class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin</p>
+                            <p class="text-[20px] sm:text-[28px] font-extrabold leading-tight sm:leading-none break-words"
                                 :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-slate-800 dark:text-slate-200')"
                                 x-text="profitPercentage"></p>
                         </div>

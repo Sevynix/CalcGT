@@ -120,37 +120,28 @@
                     <div class="flex-grow grid grid-cols-2 gap-4">
 
                         <!-- Cost -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Cost
-                            </p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalCost()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Cost</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalCost()"></p>
                         </div>
 
                         <!-- Revenue -->
-                        <div
-                            class="bg-slate-50 border border-slate-100 rounded-[20px] p-5 flex flex-col justify-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total
-                                Revenue</p>
-                            <p class="text-[24px] font-bold text-slate-800" x-text="formatTotalRevenue()"></p>
+                        <div class="bg-slate-50 border border-slate-100 rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 flex flex-col justify-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Total Revenue</p>
+                            <p class="text-[18px] sm:text-[24px] font-bold text-slate-800 break-words" x-text="formatTotalRevenue()"></p>
                         </div>
 
                         <!-- Net Profit -->
-                        <div class="rounded-[20px] p-5 text-white shadow-md flex flex-col justify-center transform transition hover:-translate-y-1"
+                        <div class="rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 text-white shadow-md flex flex-col justify-center transform transition hover:-translate-y-1 overflow-hidden"
                             :class="netProfit > 0 ? 'bg-emerald-500' : (netProfit < 0 ? 'bg-red-500' : 'bg-slate-800')">
-                            <p class="text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Net
-                                Profit
-                            </p>
-                            <p class="text-[28px] font-extrabold leading-none" x-text="formatNetProfit()"></p>
+                            <p class="text-[11px] sm:text-[12px] font-bold text-white/70 uppercase tracking-widest mb-1.5">Net Profit</p>
+                            <p class="text-[20px] sm:text-[28px] font-extrabold leading-tight sm:leading-none break-words" x-text="formatNetProfit()"></p>
                         </div>
 
                         <!-- Margin -->
-                        <div
-                            class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[20px] p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center">
-                            <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin
-                            </p>
-                            <p class="text-[28px] font-extrabold leading-none"
+                        <div class="bg-white border border-slate-200 dark:border-[#2a3449] rounded-[16px] sm:rounded-[20px] p-4 sm:p-5 shadow-sm flex flex-col justify-center transform transition hover:-translate-y-1 text-center overflow-hidden">
+                            <p class="text-[11px] sm:text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-1.5">Margin</p>
+                            <p class="text-[20px] sm:text-[28px] font-extrabold leading-tight sm:leading-none break-words"
                                 :class="netProfit > 0 ? 'text-emerald-500' : (netProfit < 0 ? 'text-red-500' : 'text-slate-800 dark:text-slate-200')"
                                 x-text="profitPercentage"></p>
                         </div>

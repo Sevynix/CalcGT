@@ -77,11 +77,8 @@
     {{-- Alpine.js (pinned version for reliable caching) --}}
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js" integrity="sha512-ytM6hP1K9BkRTjUQZpxZKFjJ2TvE4QXaK7phVymsm7NimaI5H09TWWW6f2JMbonLp4ftYU6xfwQGoe3C8jta9A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
-    {{-- Google AdSense Verification & Auto Ads --}}
-    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-3028975789015323"
-     crossorigin="anonymous"></script>
 </head>
-<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false, darkMode: localStorage.getItem('gtcalc-dark') === 'true' }" x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); document.getElementById('html-root').classList.toggle('dark', v); })">
+<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false, darkMode: localStorage.getItem('gtcalc-dark') === 'true' }" x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); if(document.startViewTransition) { document.startViewTransition(() => document.getElementById('html-root').classList.toggle('dark', v)); } else { document.getElementById('html-root').classList.toggle('dark', v); } })">
 
     @include('partials.sidebar')
 
@@ -97,19 +94,6 @@
             <div class="min-h-[calc(100vh-8rem)] w-full p-6 md:p-8">
                 @yield('content')
 
-                <!-- Google AdSense: Banner Bawah -->
-                <div class="mt-8 w-full overflow-hidden flex justify-center">
-                    <!-- banner bawah -->
-                    <ins class="adsbygoogle"
-                         style="display:block; width:100%; text-align:center;"
-                         data-ad-client="ca-pub-3028975789015323"
-                         data-ad-slot="2132986110"
-                         data-ad-format="auto"
-                         data-full-width-responsive="true"></ins>
-                    <script>
-                         (adsbygoogle = window.adsbygoogle || []).push({});
-                    </script>
-                </div>
             </div>
             
             @include('partials.footer')

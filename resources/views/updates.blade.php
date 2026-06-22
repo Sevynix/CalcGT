@@ -15,30 +15,30 @@
     </div>
 
     @if($patchNotes->count() > 0)
-        <div class="space-y-6 max-w-3xl mx-auto relative before:absolute before:inset-0 before:ml-6 md:before:ml-8 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-200">
+        <div class="space-y-6 max-w-3xl mx-auto relative before:absolute before:inset-0 before:ml-6 before:-translate-x-px before:h-full before:w-0.5 before:bg-slate-200 dark:before:bg-slate-800">
             @foreach($patchNotes as $index => $note)
                 <div class="relative flex items-start gap-6 group">
                     
                     <!-- Timeline Dot -->
-                    <div class="relative z-10 flex items-center justify-center w-12 h-12 rounded-full border-4 border-white bg-brand-500 text-white shrink-0 shadow-sm mt-1">
+                    <div class="relative z-10 flex items-center justify-center w-12 h-12 rounded-full border-4 border-white dark:border-[#0b0f19] bg-brand-500 text-white shrink-0 shadow-sm mt-1">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
                     </div>
                     
                     <!-- Card Content -->
-                    <div class="flex-1 bg-white p-6 md:p-8 rounded-3xl border border-slate-200/60 shadow-sm transition-all hover:shadow-md hover:border-brand-200">
+                    <div class="flex-1 bg-white dark:bg-[#151b2b] p-6 md:p-8 rounded-3xl border border-slate-200/60 dark:border-slate-700/60 shadow-sm transition-all hover:shadow-md hover:border-brand-200 dark:hover:border-brand-700">
                         <div class="flex items-center gap-3 mb-3 flex-wrap">
                             @if($index === 0)
-                                <span class="bg-brand-100 text-brand-600 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Latest</span>
+                                <span class="bg-brand-100 dark:bg-brand-500/20 text-brand-600 dark:text-brand-400 text-[11px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Latest</span>
                             @endif
                             @if($note->version)
-                                <span class="bg-slate-100 text-slate-600 text-xs font-bold px-3 py-1 rounded-md">{{ $note->version }}</span>
+                                <span class="bg-slate-100 dark:bg-[#1c2438] text-slate-600 dark:text-slate-400 text-xs font-bold px-3 py-1 rounded-md">{{ $note->version }}</span>
                             @endif
                             <span class="text-sm font-bold text-slate-400">{{ $note->created_at->format('M d, Y') }}</span>
                         </div>
                         
-                        <h3 class="text-2xl font-extrabold text-slate-800 mb-4">{{ $note->title }}</h3>
+                        <h3 class="text-2xl font-extrabold text-slate-800 dark:text-slate-100 mb-4">{{ $note->title }}</h3>
                         
-                        <p class="text-slate-600 font-medium leading-relaxed whitespace-pre-wrap">{{ $note->content }}</p>
+                        <p class="text-slate-600 dark:text-slate-300 font-medium leading-relaxed whitespace-pre-wrap">{{ $note->content }}</p>
                     </div>
                 </div>
             @endforeach
