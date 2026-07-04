@@ -316,14 +316,249 @@
 
         <!-- Profit Comparison Analysis -->
         <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 mt-8">
-            <div class="flex items-center gap-4 mb-8">
+            <div class="flex items-start gap-4 mb-8" x-data="{ showHowWorksModal: false, howWorksLang: 'en' }">
                 <div class="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-[#0b0f19] flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
                     <img src="{{ asset('images/items/exclamation.png') }}" alt="Path Analysis" class="w-8 h-8 object-contain drop-shadow-sm">
                 </div>
                 <div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Path Profit Analysis</h2>
-                    <p class="text-[13px] text-slate-500 font-medium">Compare profits across different item combinations.</p>
+                    <p class="text-[13px] text-slate-500 font-medium mt-0.5 mb-2.5">Compare profits across different item combinations.</p>
+                    
+                    <button @click="showHowWorksModal = true" class="btn-guide-hover relative group flex items-center gap-1.5 active:scale-95 w-fit cursor-pointer mt-1">
+                        <span class="btn-guide-dot"></span>
+                        <svg class="btn-guide-icon shrink-0 transition-transform duration-300 group-hover:scale-110" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"></path></svg>
+                        <span>Important Guide</span>
+                    </button>
                 </div>
+
+                <!-- How it works Modal -->
+                <style>
+                    .btn-guide-hover {
+                        font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 9999px; transition: all 0.3s;
+                        background-color: #eff6ff; border: 1px solid #bfdbfe; color: #2563eb; box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+                    }
+                    .btn-guide-icon { width: 16px; height: 16px; color: #3b82f6; transition: color 0.3s; }
+                    .btn-guide-hover:hover { 
+                        background-color: #3b82f6 !important; color: #ffffff !important; border-color: #3b82f6 !important;
+                        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3) !important;
+                    }
+                    .btn-guide-hover:hover .btn-guide-icon { color: #ffffff !important; }
+                    
+                    .dark .btn-guide-hover {
+                        background-color: rgba(59, 130, 246, 0.1); border: 1px solid rgba(59, 130, 246, 0.3); color: #60a5fa;
+                    }
+                    .dark .btn-guide-icon { color: #3b82f6; }
+                    .dark .btn-guide-hover:hover {
+                        background-color: #3b82f6 !important; color: #ffffff !important; border-color: #3b82f6 !important;
+                        box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4) !important;
+                    }
+                    .dark .btn-guide-hover:hover .btn-guide-icon { color: #ffffff !important; }
+                    
+                    .btn-guide-dot {
+                        position: absolute; top: -2px; right: -2px; width: 10px; height: 10px; background-color: #ef4444; border-radius: 9999px; box-shadow: 0 0 0 3px #eff6ff;
+                    }
+                    .dark .btn-guide-dot { box-shadow: 0 0 0 3px #0f172a; }
+                    @keyframes wn-float {
+                        0% { transform: translateY(0px); }
+                        50% { transform: translateY(-8px); }
+                        100% { transform: translateY(0px); }
+                    }
+                    @keyframes wn-float-slow {
+                        0% { transform: translateY(0px); }
+                        50% { transform: translateY(-6px); }
+                        100% { transform: translateY(0px); }
+                    }
+                </style>
+                <template x-teleport="body">
+                    <div x-show="showHowWorksModal" style="display: none;" class="fixed inset-0 z-[100] flex items-center justify-center p-4">
+                        <!-- Backdrop -->
+                        <div x-show="showHowWorksModal" 
+                             x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0" x-transition:enter-end="opacity-100" 
+                             x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100" x-transition:leave-end="opacity-0"
+                             class="fixed inset-0" style="background:rgba(15,23,42,0.75); backdrop-filter:blur(8px);" @click="showHowWorksModal = false"></div>
+                             
+                        <!-- Modal Content -->
+                        <div x-show="showHowWorksModal" 
+                             x-transition:enter="ease-out duration-300" x-transition:enter-start="opacity-0 translate-y-8 scale-95" x-transition:enter-end="opacity-100 translate-y-0 scale-100" 
+                             x-transition:leave="ease-in duration-200" x-transition:leave-start="opacity-100 translate-y-0 scale-100" x-transition:leave-end="opacity-0 translate-y-8 scale-95"
+                             class="relative w-full max-w-xl flex flex-col bg-white dark:bg-[#0f172a]" style="max-width:460px; border-radius:28px; box-shadow:0 25px 50px -12px rgba(0,0,0,0.25); overflow:hidden; max-height:90vh;">
+                            
+                            <!-- Simple Header -->
+                            <div style="padding:24px 24px 20px; background:linear-gradient(135deg, #1e3a8a, #2563eb); text-align:center; position:relative;">
+                                <!-- Close Button -->
+                                <button @click="showHowWorksModal = false" style="position:absolute; top:16px; right:16px; z-index:50; background:rgba(255,255,255,0.1); border:1px solid rgba(255,255,255,0.2); width:30px; height:30px; border-radius:50%; display:flex; align-items:center; justify-content:center; color:#fff; cursor:pointer; transition:all 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.2)'" onmouseout="this.style.background='rgba(255,255,255,0.1)'">
+                                    <svg style="width:14px;height:14px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+                                </button>
+                                
+                                <h3 style="margin:0; font-size:22px; font-weight:800; color:#fff; line-height:1.2; letter-spacing:-0.02em;">
+                                    HOW IT WORKS
+                                </h3>
+                            </div>
+                            
+                            <!-- Body -->
+                            <div style="padding:24px; overflow-y:auto;" class="custom-scrollbar bg-white dark:bg-[#0f172a]">
+                                
+                                <!-- Premium Sliding Language Toggle -->
+                                <style>
+                                    .lang-toggle-wrapper { display: flex; justify-content: center; margin-bottom: 32px; }
+                                    .lang-toggle-container { position: relative; display: flex; width: 260px; padding: 6px; background-color: #f8fafc; border-radius: 16px; border: 1px solid #e2e8f0; box-shadow: inset 0 2px 4px rgba(0,0,0,0.02); }
+                                    .dark .lang-toggle-container { background-color: #0b0f19; border-color: #1c2438; }
+                                    .lang-toggle-slider { position: absolute; top: 6px; bottom: 6px; left: 6px; width: 124px; background-color: #ffffff; border-radius: 10px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); border: 1px solid #f1f5f9; transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1); }
+                                    .dark .lang-toggle-slider { background-color: #1e293b; border-color: #35415a; box-shadow: 0 2px 8px rgba(0,0,0,0.4); }
+                                    .lang-toggle-btn { position: relative; z-index: 10; width: 50%; padding: 8px 0; font-size: 13px; font-weight: 800; letter-spacing: 0.02em; cursor: pointer; background: transparent; border: none; transition: color 0.3s; color: #94a3b8; }
+                                    .lang-toggle-btn.active { color: #1d4ed8; }
+                                    .dark .lang-toggle-btn { color: #64748b; }
+                                    .dark .lang-toggle-btn.active { color: #60a5fa; }
+                                    .lang-toggle-btn:hover:not(.active) { color: #475569; }
+                                    .dark .lang-toggle-btn:hover:not(.active) { color: #94a3b8; }
+                                </style>
+                                <div class="lang-toggle-wrapper">
+                                    <div class="lang-toggle-container">
+                                        <div class="lang-toggle-slider" :style="howWorksLang === 'id' ? 'transform: translateX(124px);' : 'transform: translateX(0);'"></div>
+                                        <button @click="howWorksLang = 'en'" class="lang-toggle-btn" :class="howWorksLang === 'en' ? 'active' : ''">English</button>
+                                        <button @click="howWorksLang = 'id'" class="lang-toggle-btn" :class="howWorksLang === 'id' ? 'active' : ''">Indonesian</button>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content EN -->
+                                <div x-show="howWorksLang === 'en'">
+                                    
+                                    <!-- Section 1 -->
+                                    <div>
+                                        <h4 style="margin:0 0 28px; font-size:11px; font-weight:800; color:#94a3b8; text-transform:uppercase; letter-spacing:0.08em; display:flex; align-items:center; gap:8px;">
+                                            Path Profit Analysis
+                                            <div class="h-px flex-1 bg-slate-200 dark:bg-[#2a3449]"></div>
+                                        </h4>
+                                        <div style="display:flex; flex-direction:column; gap:12px;">
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">1</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">The path profit analysis method works by inputting the price of each item.</p>
+                                            </div>
+
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">2</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">By inputting the item prices, the best method for profit will be calculated and displayed.</p>
+                                            </div>
+
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">3</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Make sure the prices you input match the in-game or Discord prices for accurate results.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Section 2 -->
+                                    <div style="margin-top:48px;">
+                                        <h4 style="margin:0 0 28px; font-size:11px; font-weight:800; color:#94a3b8; text-transform:uppercase; letter-spacing:0.08em; display:flex; align-items:center; gap:8px;">
+                                            System Conversions
+                                            <div class="h-px flex-1 bg-slate-200 dark:bg-[#2a3449]"></div>
+                                        </h4>
+                                        <div style="display:flex; flex-direction:column; gap:12px;">
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">1</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">An average of <strong class="text-slate-900 dark:text-slate-100 font-bold">100 Fireworks</strong> can be used to get <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Placed Summer Surprise</strong>.</p>
+                                            </div>
+                                            
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">2</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><strong class="text-slate-900 dark:text-slate-100 font-bold">20 Summer Surprises</strong> (or Placed) can be destroyed to claim <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Super Summer Surprise</strong>.</p>
+                                            </div>
+                                            
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">3</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><strong class="text-slate-900 dark:text-slate-100 font-bold">5 Surprises</strong> + <strong class="text-slate-900 dark:text-slate-100 font-bold">100 Fireworks</strong> + <strong class="text-slate-900 dark:text-slate-100 font-bold">10 Sand</strong> = <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Summer Artifact Chest</strong>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content ID -->
+                                <div x-show="howWorksLang === 'id'" style="display:none;">
+                                    
+                                    <!-- Section 1 -->
+                                    <div>
+                                        <h4 style="margin:0 0 28px; font-size:11px; font-weight:800; color:#94a3b8; text-transform:uppercase; letter-spacing:0.08em; display:flex; align-items:center; gap:8px;">
+                                            Analisis Path Profit
+                                            <div class="h-px flex-1 bg-slate-200 dark:bg-[#2a3449]"></div>
+                                        </h4>
+                                        <div style="display:flex; flex-direction:column; gap:12px;">
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">1</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Metode path profit analisis ini berfungsi dengan cara memasukkan input harga dari setiap item.</p>
+                                            </div>
+
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">2</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Dengan menginput harga item maka akan muncul metode terbaik untuk mendapatkan profit.</p>
+                                            </div>
+
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">3</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Pastikan harga yang anda input sesuai dengan harga in-game/discord agar hasil lebih akurat dan realistis.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Section 2 -->
+                                    <div style="margin-top:48px;">
+                                        <h4 style="margin:0 0 28px; font-size:11px; font-weight:800; color:#94a3b8; text-transform:uppercase; letter-spacing:0.08em; display:flex; align-items:center; gap:8px;">
+                                            Sistem Konversi
+                                            <div class="h-px flex-1 bg-slate-200 dark:bg-[#2a3449]"></div>
+                                        </h4>
+                                        <div style="display:flex; flex-direction:column; gap:12px;">
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">1</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed">Rata-rata <strong class="text-slate-900 dark:text-slate-100 font-bold">100 Fireworks</strong> dapat digunakan untuk mendapatkan <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Placed Summer Surprise</strong>.</p>
+                                            </div>
+                                            
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">2</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><strong class="text-slate-900 dark:text-slate-100 font-bold">20 Summer Surprises</strong> (atau Placed) dapat dihancurkan dan claim <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Super Summer Surprise</strong>.</p>
+                                            </div>
+                                            
+                                            <div class="flex items-center gap-4 bg-slate-50 dark:bg-[#151b2b] border border-slate-200 dark:border-[#2a3449] rounded-2xl p-4">
+                                                <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 flex items-center justify-center shrink-0 shadow-inner border border-blue-100 dark:border-blue-800/50">
+                                                    <span class="text-[16px] font-extrabold text-blue-600 dark:text-blue-400">3</span>
+                                                </div>
+                                                <p class="text-[13px] text-slate-700 dark:text-slate-300 font-medium leading-relaxed"><strong class="text-slate-900 dark:text-slate-100 font-bold">5 Surprises</strong> + <strong class="text-slate-900 dark:text-slate-100 font-bold">100 Fireworks</strong> + <strong class="text-slate-900 dark:text-slate-100 font-bold">10 Sand</strong> = <strong class="text-slate-900 dark:text-slate-100 font-bold">1 Summer Artifact Chest</strong>.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Footer Button -->
+                                <div style="margin-top:24px;">
+                                    <button @click="showHowWorksModal = false" style="display:flex; align-items:center; justify-content:center; gap:8px; background:linear-gradient(135deg,#2563eb,#1d4ed8); color:#fff; font-size:14px; font-weight:700; padding:14px; border-radius:14px; border:none; cursor:pointer; box-shadow:0 4px 14px rgba(37,99,235,0.35); width:100%; transition:all 0.2s;" onmouseover="this.style.transform='translateY(-2px)'; this.style.boxShadow='0 6px 20px rgba(37,99,235,0.4)';" onmouseout="this.style.transform='none'; this.style.boxShadow='0 4px 14px rgba(37,99,235,0.35)';">
+                                        <svg style="width:18px;height:18px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+                                        <span x-text="howWorksLang === 'en' ? 'Got it, thanks!' : 'Mengerti, terima kasih!'"></span>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </template>
             </div>
 
             <!-- Input Table for ALL items -->
@@ -588,48 +823,7 @@
                 </div>
             </div>
 
-            <!-- How it works card -->
-            <div class="glass-card border border-slate-200 dark:border-[#2a3449] rounded-[24px] overflow-hidden shadow-sm mt-8">
-                <div class="p-6 border-b border-slate-100 dark:border-[#1c2438] bg-slate-50/50 dark:bg-[#151b2b]/40 flex items-center gap-3">
-                    <div class="w-10 h-10 rounded-xl bg-blue-50 dark:bg-blue-900/30 text-blue-500 dark:text-blue-400 flex items-center justify-center shrink-0 border border-blue-100 dark:border-blue-800/50">
-                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h3 class="text-[18px] font-extrabold text-slate-800 dark:text-slate-100 tracking-tight">How System Conversions Work</h3>
-                        <p class="text-[13px] text-slate-500 dark:text-slate-400 font-medium">Understanding the item yields and crafting rules.</p>
-                    </div>
-                </div>
-                <div class="p-6 md:p-8 bg-white dark:bg-transparent">
-                    <ul class="space-y-4">
-                        <li class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-[#1c2438] flex items-center justify-center shrink-0 mt-0.5 text-slate-400 dark:text-slate-500">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                            <p class="text-[14px] text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                An average of <strong class="text-slate-800 dark:text-slate-200">100 Fireworks</strong> can be used to get <strong class="text-slate-800 dark:text-slate-200">1 Placed Summer Surprise</strong>.
-                            </p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-[#1c2438] flex items-center justify-center shrink-0 mt-0.5 text-slate-400 dark:text-slate-500">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                            <p class="text-[14px] text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                <strong class="text-slate-800 dark:text-slate-200">20 Summer Surprises</strong> (or Placed Summer Surprises) can be broken into <strong class="text-slate-800 dark:text-slate-200">1 Super Summer Surprise</strong>.
-                            </p>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <div class="w-6 h-6 rounded-full bg-slate-100 dark:bg-[#1c2438] flex items-center justify-center shrink-0 mt-0.5 text-slate-400 dark:text-slate-500">
-                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M9 5l7 7-7 7"></path></svg>
-                            </div>
-                            <p class="text-[14px] text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
-                                <strong class="text-slate-800 dark:text-slate-200">5 Summer Surprises</strong> + <strong class="text-slate-800 dark:text-slate-200">100 Fireworks</strong> + <strong class="text-slate-800 dark:text-slate-200">10 Sand</strong> = <strong class="text-slate-800 dark:text-slate-200">1 Summer Artifact Chest</strong>.
-                            </p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+
         </div>
 
     </div>
