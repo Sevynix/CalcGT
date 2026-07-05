@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Fishin' Pack")
 @section('meta_description', 'Analyze Fishing Pack returns and optimize your fishing setup in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/fishin-pack.js') }}"></script>
+<script src="{{ asset('js/fishin-pack.js') }}?v=1.0.1"></script>
 @endsection
+

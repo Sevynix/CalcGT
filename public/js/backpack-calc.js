@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('backpackCalculator', () => ({
         currentSlots: 16,
         targetSlots: 396,
@@ -143,3 +143,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

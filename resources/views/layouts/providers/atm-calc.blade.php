@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "ATM Machine Provider Calculator")
 @section('meta_description', "Calculate the return on investment, daily gems, and daily profit for ATM Machines in Growtopia.")
 
@@ -171,5 +171,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/atm-calc.js') }}"></script>
+<script src="{{ asset('js/atm-calc.js') }}?v=1.0.1"></script>
 @endsection
+

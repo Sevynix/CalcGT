@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'Nanoforge Calculator')
 @section('meta_description', 'Plan Nanoforge upgrades and track all material requirements for your Startopia progression in Growtopia.')
 
@@ -267,5 +267,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/nanoforge.js') }}"></script>
+<script src="{{ asset('js/nanoforge.js') }}?v=1.0.1"></script>
 @endsection
+

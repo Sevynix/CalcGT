@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numATMs: null,
         costPerATM: null,
@@ -74,3 +74,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Mad Science Kit")
 @section('meta_description', 'Track your Science Kit openings and calculate expected chemical yields in Growtopia.')
 
@@ -340,5 +340,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/science-kit.js') }}"></script>
+<script src="{{ asset('js/science-kit.js') }}?v=1.0.1"></script>
 @endsection
+

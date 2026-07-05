@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Small Seed Pack Calculator")
 @section('meta_description', 'Calculate Small Seed Pack (SSP) costs, drops, and projected profit margins in Growtopia.')
 
@@ -334,5 +334,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/ssp-pack.js') }}"></script>
+<script src="{{ asset('js/ssp-pack.js') }}?v=1.0.1"></script>
 @endsection
+

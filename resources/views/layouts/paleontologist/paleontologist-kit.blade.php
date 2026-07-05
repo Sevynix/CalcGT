@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Paleontologist's Kit")
 @section('meta_description', 'Calculate costs and expected returns from Paleontologist Kits in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/paleontologist-kit.js') }}"></script>
+<script src="{{ asset('js/paleontologist-kit.js') }}?v=1.0.1"></script>
 @endsection
+

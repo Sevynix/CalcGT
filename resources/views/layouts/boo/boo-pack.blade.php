@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "B.O.O. Training Pack")
 @section('meta_description', 'Analyze B.O.O. Pack drops and track your spooky returns in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/boo-pack.js') }}"></script>
+<script src="{{ asset('js/boo-pack.js') }}?v=1.0.1"></script>
 @endsection
+

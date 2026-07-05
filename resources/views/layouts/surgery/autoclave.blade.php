@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', 'Autoclave Calculator')
 @section('meta_description', 'Calculate Autoclave usage, sterilization costs, and surgery supply requirements for Growtopia\'s MSurg profession.')
 
@@ -273,5 +273,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/autoclave-tools.js') }}"></script>
+<script src="{{ asset('js/autoclave-tools.js') }}?v=1.0.1"></script>
 @endsection
+

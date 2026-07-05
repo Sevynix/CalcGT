@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 0,
         wlCostPerPack: 0,
@@ -193,3 +193,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

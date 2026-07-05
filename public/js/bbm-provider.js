@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 0,
         wlCostPerPack: 0,
@@ -379,7 +379,7 @@ document.addEventListener('alpine:init', () => {
                     if (data.enabledCategories) Object.assign(this.enabledCategories, data.enabledCategories);
                 }
             } catch(e) {}
-            // Save every second �  doesn't detect deep object changes
+            // Save every second —  doesn't detect deep object changes
             setInterval(() => this._save(key), 1000);
         },
         _save(key) {
@@ -543,3 +543,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

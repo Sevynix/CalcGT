@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Easter Crate Calculator")
 @section('meta_description', "Calculate Easter Crate costs, drops, and projected profit by selling magic eggs and golden shards in Growtopia.")
 
@@ -319,5 +319,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/easter-pack.js') }}"></script>
+<script src="{{ asset('js/easter-pack.js') }}?v=1.0.1"></script>
 @endsection
+

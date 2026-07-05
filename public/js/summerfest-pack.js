@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
         gemsInput: 20000,
@@ -338,7 +338,7 @@ document.addEventListener('alpine:init', () => {
                     // ssAfterAC = SS before SSS pool = nPacks - AC*5
                     let ssAfterAC = nPacks - y.ac * 5;
                     if (y.sss > 0) {
-                        // Derive consumed amounts from yield delta — no price logic needed
+                        // Derive consumed amounts from yield delta â€” no price logic needed
                         let consumeSS = ssAfterAC - y.ss;
                         let consumePSS = (y.sss * 20) - consumeSS;
                         let pssProduced = y.pss + consumePSS;
@@ -371,7 +371,7 @@ document.addEventListener('alpine:init', () => {
                     if (y.pss > 0) steps.push(`Use ${y.pss*100} Fireworks to get ${y.pss} Placed Summer Surprise.`);
                 } else if (strategyId === 'bb_sss') {
                     if (y.sss > 0) {
-                        // Derive consumed amounts from yield delta — no price logic needed
+                        // Derive consumed amounts from yield delta â€” no price logic needed
                         let consumeSS = nPacks - y.ss;
                         let consumePSS = (y.sss * 20) - consumeSS;
                         let pssProduced = y.pss + consumePSS;
@@ -502,3 +502,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

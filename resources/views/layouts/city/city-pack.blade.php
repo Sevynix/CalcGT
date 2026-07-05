@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "City Pack")
 @section('meta_description', 'Calculate City Pack costs, drops, and projected profit margins in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/city-pack.js') }}"></script>
+<script src="{{ asset('js/city-pack.js') }}?v=1.0.1"></script>
 @endsection
+

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "St. Patrick's Pack Calculator")
 @section('meta_description', "Calculate St. Patrick's Pack costs, drops, and projected profit margins in Growtopia.")
 
@@ -321,5 +321,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/stpatrick-pack.js') }}"></script>
+<script src="{{ asset('js/stpatrick-pack.js') }}?v=1.0.1"></script>
 @endsection
+

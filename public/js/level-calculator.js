@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('levelCalculator', () => ({
         currentLevel: 0,
         targetLevel: 125,
@@ -153,3 +153,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

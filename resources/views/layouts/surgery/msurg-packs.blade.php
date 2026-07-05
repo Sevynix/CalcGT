@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Master Surgeon's Tool Calculator")
 @section('meta_description', 'Calculate MSurg pack costs, tool quantities, and projected profit margins for Master Surgeon surgery tools in Growtopia.')
 
@@ -336,5 +336,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/surgery-tools.js') }}"></script>
+<script src="{{ asset('js/surgery-tools.js') }}?v=1.0.1"></script>
 @endsection
+

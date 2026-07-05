@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Science Station Provider Calculator")
 @section('meta_description', 'Monitor Science Station chemical outputs and track your harvesting profits as a Growtopia science provider.')
 
@@ -387,5 +387,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/science-provider.js') }}"></script>
+<script src="{{ asset('js/science-provider.js') }}?v=1.0.1"></script>
 @endsection
+

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Level Calculator")
 @section('meta_description', 'Calculate XP requirements and EXP potion usage to reach your desired player level in Growtopia.')
 
@@ -401,5 +401,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/level-calculator.js') }}"></script>
+<script src="{{ asset('js/level-calculator.js') }}?v=1.0.1"></script>
 @endsection
+

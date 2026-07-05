@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "SummerFest Pack Calculator")
 @section('meta_description', 'Calculate SummerFest Pack costs, drops, and projected profit margins in Growtopia.')
 
@@ -836,5 +836,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/summerfest-pack.js') }}"></script>
+<script src="{{ asset('js/summerfest-pack.js') }}?v=1.0.1"></script>
 @endsection
+

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Rare Seed Pack Calculator")
 @section('meta_description', 'Calculate Rare Seed Pack (RSP) costs, drops, and expected profit margins in Growtopia.')
 
@@ -334,6 +334,7 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/rsp-pack.js') }}"></script>
+<script src="{{ asset('js/rsp-pack.js') }}?v=1.0.1"></script>
 @endsection
+
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Guild Level Calculator")
 @section('meta_description', 'Estimate guild XP requirements per level and plan contribution goals for your Growtopia guild.')
 
@@ -213,7 +213,7 @@
                                 <td class="px-4 py-3">
                                     <div class="flex items-center gap-3">
                                         <div class="w-auto px-3 h-8 rounded-full bg-slate-100 dark:bg-[#0b0f19] text-slate-600 dark:text-slate-400 border-transparent dark:border-[#2a3449] font-bold flex items-center justify-center text-xs border border-slate-200 dark:border-[#2a3449]">
-                                            <span x-text="req.levelFrom + ' → ' + req.levelTo"></span>
+                                            <span x-text="req.levelFrom + ' â†’ ' + req.levelTo"></span>
                                         </div>
                                     </div>
                                 </td>
@@ -262,5 +262,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/guild-level.js') }}"></script>
+<script src="{{ asset('js/guild-level.js') }}?v=1.0.1"></script>
 @endsection
+

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Farm Pack")
 @section('meta_description', 'Analyze Farm Pack returns and optimize your farming setup in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/farm-pack.js') }}"></script>
+<script src="{{ asset('js/farm-pack.js') }}?v=1.0.1"></script>
 @endsection
+

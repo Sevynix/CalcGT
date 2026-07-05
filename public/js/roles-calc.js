@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('rolesCalculator', () => ({
         rolesList: [
             { id: 'farmer', name: 'Farmer', type: 'supplier', img: 'farmer.png', color: 'emerald' },
@@ -224,3 +224,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

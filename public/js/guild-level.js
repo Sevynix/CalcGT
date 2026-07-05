@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('guildLevelCalculator', () => ({
         currentLevel: 1,
         targetLevel: 15,
@@ -180,3 +180,4 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+

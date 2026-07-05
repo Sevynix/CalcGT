@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('autoclaveSim', () => ({
         // isFuel tracks what goes into the autoclave
         // isTarget tracks what we calculate profit ON
@@ -91,9 +91,10 @@ document.addEventListener('alpine:init', () => {
                     if (data.numPacks !== undefined) this.numPacks = data.numPacks;
                     if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
                     if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
                 }
             } catch (e) { }
-            // Save every second �  doesn't detect deep object changes
+            // Save every second ï¿½  doesn't detect deep object changes
             setInterval(() => this._save(key), 1000);
         },
         _save(key) {
@@ -102,6 +103,7 @@ document.addEventListener('alpine:init', () => {
                     numPacks: this.numPacks,
                     wlCostPerPack: this.wlCostPerPack,
                     prices: this.prices,
+                    stocks: this.stocks,
                 }));
             } catch (e) { }
         },
@@ -160,3 +162,5 @@ document.addEventListener('alpine:init', () => {
 
     }));
 });
+
+

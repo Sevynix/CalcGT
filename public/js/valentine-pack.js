@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
         gemsInput: 7500,
@@ -32,6 +32,7 @@ document.addEventListener('alpine:init', () => {
                     if (data.gemsInput !== undefined) this.gemsInput = data.gemsInput;
                     if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
                     if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
                     if (data.stocks) Object.assign(this.stocks, data.stocks);
                 }
             } catch (e) { }
@@ -154,3 +155,5 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+
+

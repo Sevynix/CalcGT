@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Valentine's Pack Calculator")
 @section('meta_description', "Calculate Valentine's Goodies costs, drops, and projected profit by selling gbc/golden booty chests margins in Growtopia.")
 
@@ -321,5 +321,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/valentine-pack.js') }}"></script>
+<script src="{{ asset('js/valentine-pack.js') }}?v=1.0.1"></script>
 @endsection
+

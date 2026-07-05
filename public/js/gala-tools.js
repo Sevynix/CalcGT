@@ -48,6 +48,7 @@
                     if (data.numPacks !== undefined) this.numPacks = data.numPacks;
                     if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
                     if (data.prices) Object.assign(this.prices, data.prices);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
                 }
             } catch(e) {}
             // Save every second —  doesn't detect deep object changes
@@ -60,6 +61,7 @@
                     numPacks: this.numPacks,
                     wlCostPerPack: this.wlCostPerPack,
                     prices: this.prices,
+                    stocks: this.stocks,
                 }));
             } catch(e) {}
         },
@@ -132,4 +134,6 @@
         }
     }));
 });
+
+
 

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Firefighter Pack")
 @section('meta_description', 'Simulate Firefighter Pack openings and track your drops and profits in Growtopia.')
 
@@ -309,5 +309,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/firefighter-pack.js') }}"></script>
+<script src="{{ asset('js/firefighter-pack.js') }}?v=1.0.1"></script>
 @endsection
+

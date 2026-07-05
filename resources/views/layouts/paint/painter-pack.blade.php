@@ -1,4 +1,4 @@
-@extends('layouts.app')
+﻿@extends('layouts.app')
 @section('title', "Painter Pack Calculator")
 @section('meta_description', 'Track Painter Pack openings and optimize profit margins in Growtopia.')
 
@@ -308,5 +308,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/painter-pack.js') }}"></script>
+<script src="{{ asset('js/painter-pack.js') }}?v=1.0.1"></script>
 @endsection
+

@@ -1,4 +1,4 @@
-document.addEventListener('alpine:init', () => {
+﻿document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         stocks: {
             worm: null,
@@ -45,10 +45,11 @@ document.addEventListener('alpine:init', () => {
                     if (data.wlCostPerPack !== undefined) this.wlCostPerPack = data.wlCostPerPack;
                     if (data.prices) Object.assign(this.prices, data.prices);
                     if (data.stocks) Object.assign(this.stocks, data.stocks);
+                    if (data.stocks) Object.assign(this.stocks, data.stocks);
                     if (data.enabledCategories) Object.assign(this.enabledCategories, data.enabledCategories);
                 }
             } catch(e) {}
-            // Save every second � $watch doesn't detect deep object changes
+            // Save every second — $watch doesn't detect deep object changes
             setInterval(() => this._save(key), 1000);
         },
         _save(key) {
@@ -109,3 +110,5 @@ document.addEventListener('alpine:init', () => {
         }
     }));
 });
+
+
