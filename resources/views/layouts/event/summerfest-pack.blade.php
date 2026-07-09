@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "SummerFest Pack Calculator")
 @section('meta_description', 'Calculate SummerFest Pack costs, drops, and projected profit margins in Growtopia.')
 
@@ -107,7 +107,7 @@
                             <img src="{{ asset('images/items/gems.png') }}" alt="Gems" class="w-5 h-5 object-contain mr-2" onerror="this.style.display='none'">
                             <input type="number" min="0" step="1000" x-model.number="gemsInput"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
-                                placeholder="20000">
+                                placeholder="25000">
                             <span class="text-slate-500 font-bold text-[16px] ml-2">GEMS</span>
                         </div>
                     </div>

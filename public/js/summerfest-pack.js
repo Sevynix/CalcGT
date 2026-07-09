@@ -1,7 +1,7 @@
-﻿document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
-        gemsInput: 20000,
+        gemsInput: 25000,
         wlCostPerPack: 0,
         stocks: {
             beachBlast: null,
@@ -70,8 +70,8 @@
                 let n = Number(newVal);
                 if (n >= 0) {
                     let currentGems = Number(this.gemsInput);
-                    if (Math.floor(currentGems / 20000) !== n) {
-                        this.gemsInput = n * 20000;
+                    if (Math.floor(currentGems / 25000) !== n) {
+                        this.gemsInput = n * 25000;
                     }
                     this.stocks.beachBlast = n * 1;
                     this.stocks.summerSurprise = n * 1;
@@ -82,7 +82,7 @@
             this.$watch('gemsInput', (newVal) => {
                 let g = Number(newVal);
                 if (g >= 0) {
-                    let n = Math.floor(g / 20000);
+                    let n = Math.floor(g / 25000);
                     if (this.numPacks !== n) {
                         this.numPacks = n;
                     }
@@ -474,7 +474,7 @@
         resetCalculator() {
             try { localStorage.removeItem('gthelp-summerfest-pack'); } catch (e) { }
             this.numPacks = 1;
-            this.gemsInput = 20000;
+            this.gemsInput = 25000;
             this.wlCostPerPack = 0;
             for (let key in this.prices) this.prices[key] = null;
             this.stocks.beachBlast = 1;
