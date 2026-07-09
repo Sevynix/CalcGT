@@ -836,6 +836,6 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/summerfest-pack.js') }}?v=1.0.1"></script>
+<script src="{{ asset('js/summerfest-pack.js') }}?v=1.0.2"></script>
 @endsection
 

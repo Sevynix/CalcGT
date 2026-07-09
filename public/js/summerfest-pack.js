@@ -41,7 +41,7 @@ document.addEventListener('alpine:init', () => {
         comparePrices: { bb: null, ss: null, fw: null, pss: null, sss: null, ac: null, sand: null },
         compareTypes: { bb: 'wl/item', ss: 'wl/item', fw: 'per wl', pss: 'wl/item', sss: 'wl/item', ac: 'wl/item', sand: 'per wl' },
         init() {
-            const key = 'gthelp-summerfest-pack';
+            const key = 'gthelp-summerfest-pack-v2';
             try {
                 const saved = localStorage.getItem(key);
                 if (saved) {
@@ -472,7 +472,7 @@ document.addEventListener('alpine:init', () => {
         },
 
         resetCalculator() {
-            try { localStorage.removeItem('gthelp-summerfest-pack'); } catch (e) { }
+            try { localStorage.removeItem('gthelp-summerfest-pack-v2'); } catch (e) { }
             this.numPacks = 1;
             this.gemsInput = 25000;
             this.wlCostPerPack = 0;
