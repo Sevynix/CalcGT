@@ -1,4 +1,4 @@
-﻿document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
     Alpine.data('rolesCalculator', () => ({
         rolesList: [
             { id: 'farmer', name: 'Farmer', type: 'supplier', img: 'farmer.png', color: 'emerald' },
@@ -102,7 +102,7 @@
 
         getPointsForNextLevel(level) {
             let role = this.getSelectedRole();
-            let base = role.type === 'supplier' ? 1300 : 1150;
+            let base = role.type === 'supplier' ? 1300 : 1500;
             return base * Math.pow(level + 1, 2);
         },
 
