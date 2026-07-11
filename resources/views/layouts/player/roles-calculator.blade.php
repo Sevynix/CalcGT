@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Roles Calculator")
 @section('meta_description', "Plan role progressions, XP requirements, and perk unlock milestones for Growtopia's role system.")
 
@@ -410,6 +410,6 @@
 @endsection
 
 @section('scripts')
-<script src="{{ asset('js/roles-calc.js') }}?v=1.0.1"></script>
+<script src="{{ asset('js/roles-calc.js') }}?v=1.0.2"></script>
 @endsection
 
