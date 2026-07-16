@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Master Surgeon's Tool Calculator")
 @section('meta_description', 'Calculate MSurg pack costs, tool quantities, and projected profit margins for Master Surgeon surgery tools in Growtopia.')
 
@@ -191,7 +191,7 @@
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
-                        <p class="text-[13px] text-slate-500 font-medium">Manually input your stock and set prices to calculate margins.</p>
+                        <p class="text-[13px] text-slate-500 font-medium">Set prices to calculate margins based on the number of packs.</p>
                     </div>
                 </div>
                 <button @click="$store.modal.show('This will clear all prices and stock values.', () => resetTable(), 'table')"
@@ -223,27 +223,30 @@
                             <span class="font-bold text-emerald-600 text-base shrink-0 ml-2" x-text="getItemRevenue(key) + ' WL'"></span>
                         </div>
                         <!-- Inputs row -->
-                        <div class="grid grid-cols-3 gap-2">
+                        <div class="grid grid-cols-3 gap-2 mt-1">
                             <div class="flex flex-col gap-1">
-                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Stock</label>
-                                <input type="number" min="0" x-model.number="stocks[key]"
-                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
-                                    placeholder="0">
+                                <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Total</label>
+                                <div class="bg-slate-50 border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg text-sm flex items-center justify-center h-[38px]">
+                                    <span x-text="(numPacks || 0) * item.count"></span>
+                                </div>
                             </div>
                             <div class="flex flex-col gap-1">
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Price</label>
                                 <input type="number" min="0" step="0.01" x-model.number="prices[key]"
-                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm"
-                                    :placeholder="item.type === 'per wl' ? 'Per WL' : (item.type === '200/?' ? 'WL/200' : 'WL/1')">
+                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-800 text-center font-bold px-2 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition text-sm h-[38px]"
+                                    :placeholder="item.type === 'per wl' ? 'Items/WL' : (item.type === '200/?' ? 'WL/200' : 'WL/Item')">
                             </div>
-                            <div class="flex flex-col gap-1">
+                            <div class="flex flex-col gap-1 relative">
                                 <label class="text-[10px] font-bold text-slate-400 uppercase tracking-wider">Type</label>
                                 <select x-model="item.type"
-                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-1 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-xs">
-                                    <option value="per wl">Per WL</option>
+                                    class="w-full bg-white border border-slate-200 dark:border-[#2a3449] text-slate-600 font-medium px-1.5 py-2 rounded-lg outline-none focus:ring-2 focus:ring-brand-400 transition cursor-pointer text-[13px] appearance-none h-[38px]">
+                                    <option value="per wl">Items/WL</option>
                                     <option value="200/?">WL/200</option>
                                     <option value="wl/item">WL/Item</option>
                                 </select>
+                                <div class="pointer-events-none absolute inset-y-0 right-1 top-4 flex items-center px-1 text-slate-400">
+                                    <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M19 9l-7 7-7-7"></path></svg>
+                                </div>
                             </div>
                         </div>
                     </div>
