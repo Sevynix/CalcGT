@@ -70,7 +70,7 @@ function promoCarousel() {
                     $s2Link = $slot2 ? $slot2->link_url : $defaultLink;
                 @endphp
                 <a @if($s2Link) href="{{ $s2Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
-                    <img src="{{ $s2Image }}" loading="lazy" alt="Slot 2 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                    <img src="{{ $s2Image }}" loading="eager" alt="Slot 2 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
                 </a>
 
                 {{-- Slot 3 (Bottom small) --}}
@@ -79,7 +79,7 @@ function promoCarousel() {
                     $s3Link = $slot3 ? $slot3->link_url : $defaultLink;
                 @endphp
                 <a @if($s3Link) href="{{ $s3Link }}" target="_blank" rel="noopener noreferrer" @endif class="relative rounded-[32px] overflow-hidden shadow-glass border border-slate-200 bg-white group flex-1 w-full flex items-center justify-center aspect-[3/2] block">
-                    <img src="{{ $s3Image }}" loading="lazy" alt="Slot 3 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
+                    <img src="{{ $s3Image }}" loading="eager" alt="Slot 3 Banner" class="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.02] block" draggable="false">
                 </a>
             </div>
         </div>
@@ -112,6 +112,9 @@ function promoCarousel() {
             <button @click="currentCategory = 'event'" :class="currentCategory === 'event' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Event
             </button>
+            <button @click="currentCategory = 'carnival'" :class="currentCategory === 'carnival' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
+                Carnival
+            </button>
             <button @click="currentCategory = 'store'" :class="currentCategory === 'store' ? 'bg-slate-800 dark:bg-brand-600 text-white border-transparent' : 'bg-white dark:bg-[#151b2b] text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-[#1c2438] hover:text-slate-700 dark:hover:text-slate-200 border-slate-200 dark:border-[#2a3449]'" class="px-5 py-2.5 rounded-full transition-all duration-300 whitespace-nowrap shadow-sm border cursor-pointer active:scale-95">
                 Store
             </button>
@@ -120,18 +123,46 @@ function promoCarousel() {
         <!-- Unified Tools Grid -->
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
 
-            <!-- MSurg Tools -->
-            <a href="{{ route('surgery-tools') }}" x-show="currentCategory === 'popular'" style="display:block"
+            <!-- Shatter Crystal -->
+            <a href="{{ route('shatter-crystal') }}" x-show="currentCategory === 'carnival'" style="display:none"
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/carnival/shatter/2246.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="MSurg Tools" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/carnival/shatter/2246.png') }}" alt="Shatter Crystal" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Carnival</span>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Shatter Crystal</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate your profit from harmonizing crystals.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+
+            <!-- MSurg Tools -->
+            <a href="{{ route('surgery-tools') }}" x-show="currentCategory === 'popular'" style="display:block"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img loading="lazy" src="{{ asset('images/surgery/surg_crate.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img loading="lazy" src="{{ asset('images/surgery/surg_crate.png') }}" alt="MSurg Tools" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -152,13 +183,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/startopia/crate.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/startopia/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/startopia/crate.png') }}" alt="Startopia Tools" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/startopia/crate.png') }}" alt="Startopia Tools" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -179,13 +210,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/crime/crate.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/crime/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/crime/crate.png') }}" alt="Crime Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/crime/crate.png') }}" alt="Crime Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -206,13 +237,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/ssp/ssp.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/ssp/ssp.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/ssp/ssp.png') }}" alt="SSP" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/ssp/ssp.png') }}" alt="SSP" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -233,13 +264,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/rsp/2010.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/rsp/2010.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/rsp/2010.png') }}" alt="RSP" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/rsp/2010.png') }}" alt="RSP" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -260,13 +291,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/surgery/autoclave.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/surgery/autoclave.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/surgery/autoclave.png') }}" alt="Autoclave" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -287,13 +318,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/startopia/nanoforge.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Popular Search</span>
                     </div>
@@ -314,13 +345,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/bbm/bbm.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/bbm/bbm.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/bbm/bbm.png') }}" alt="BBM" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/bbm/bbm.png') }}" alt="BBM" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
                     </div>
@@ -341,13 +372,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/science/science_station.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/science/science_station.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
                     </div>
@@ -368,13 +399,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="Tackle Box" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/fishing/fishing_pack/tackle.png') }}" alt="Tackle Box" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
                     </div>
@@ -395,13 +426,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/items/exp_potion.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/items/exp_potion.png') }}" alt="Player Level" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/items/exp_potion.png') }}" alt="Player Level" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Player Tools</span>
                     </div>
@@ -422,13 +453,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/roles/farmer.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/roles/farmer.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Player Tools</span>
                     </div>
@@ -449,13 +480,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/items/backpack_upgrade.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/items/backpack_upgrade.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Upgrades" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Upgrades" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Player Tools</span>
                     </div>
@@ -476,13 +507,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/lock/guild_lock.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/lock/guild_lock.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Level" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Level" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Guild Tools</span>
                     </div>
@@ -503,13 +534,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/fishing/crate.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/fishing/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/fishing/crate.png') }}" alt="Fishing Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/fishing/crate.png') }}" alt="Fishing Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -530,13 +561,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/paint/red.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/paint/red.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/paint/red.png') }}" alt="Painter Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/paint/red.png') }}" alt="Painter Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -557,13 +588,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/city/atm.png') }}" alt="City Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/city/atm.png') }}" alt="City Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -584,13 +615,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/firefighter/house.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/firefighter/house.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/firefighter/house.png') }}" alt="Firefighter Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/firefighter/house.png') }}" alt="Firefighter Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -611,13 +642,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/farm/tractor.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/farm/tractor.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/farm/tractor.png') }}" alt="Farm Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/farm/tractor.png') }}" alt="Farm Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -638,13 +669,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/paleontologist/hammer.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/paleontologist/hammer.png') }}" alt="Paleontologist Kit" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/paleontologist/hammer.png') }}" alt="Paleontologist Kit" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -665,13 +696,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/science/chem/r.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/science/chem/r.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/science/chem/r.png') }}" alt="Science Kit" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/science/chem/r.png') }}" alt="Science Kit" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -692,13 +723,13 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/boo/jar.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/boo/jar.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/boo/jar.png') }}" alt="B.O.O. Pack" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/boo/jar.png') }}" alt="B.O.O. Pack" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Store</span>
                     </div>
@@ -719,12 +750,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/city/atm.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/city/atm.png') }}" alt="ATM" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/city/atm.png') }}" alt="ATM" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
                     </div>
@@ -743,12 +774,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/unicorn/image_2.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/unicorn/image_2.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/unicorn/image_2.png') }}" alt="Awkward Unicorn" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/unicorn/image_2.png') }}" alt="Awkward Unicorn" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Provider</span>
                     </div>
@@ -767,12 +798,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/event/summer/fireworks.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/event/summer/fireworks.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/event/summer/fireworks.png') }}" alt="SummerFest" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/event/summer/fireworks.png') }}" alt="SummerFest" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
                     </div>
@@ -791,12 +822,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="Valentine" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/event/valentine/valentine_card.png') }}" alt="Valentine" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
                     </div>
@@ -815,12 +846,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/event/easter/crate.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/event/easter/crate.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/event/easter/crate.png') }}" alt="Easter" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/event/easter/crate.png') }}" alt="Easter" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
                     </div>
@@ -839,12 +870,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="St Patrick" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/event/st_patrick/Pot_o_gold.png') }}" alt="St Patrick" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
                     </div>
@@ -863,12 +894,12 @@ function promoCarousel() {
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
                 <!-- Blurry Logo -->
                 <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
-                    <img src="{{ asset('images/event/cinco/whistle.png') }}" alt="" class="w-full h-full object-contain">
+                    <img loading="lazy" src="{{ asset('images/event/cinco/whistle.png') }}" alt="" class="w-full h-full object-contain">
                 </div>
                 <div class="relative z-10 flex flex-col flex-1 gap-2">
                     <div class="flex items-start justify-between">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
-                            <img src="{{ asset('images/event/cinco/whistle.png') }}" alt="Cinco" class="h-8 w-8 object-contain">
+                            <img loading="lazy" src="{{ asset('images/event/cinco/whistle.png') }}" alt="Cinco" class="h-8 w-8 object-contain">
                         </div>
                         <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Event</span>
                     </div>

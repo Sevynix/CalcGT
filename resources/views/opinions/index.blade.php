@@ -7,7 +7,7 @@
     <!-- Header -->
     <div class="text-center">
         <h1 class="text-4xl font-extrabold tracking-tight text-slate-900 flex items-center justify-center gap-3">
-            <img src="{{ asset('images/items/megaphone.png') }}" alt="Community"
+            <img loading="lazy" src="{{ asset('images/items/megaphone.png') }}" alt="Community"
                 class="w-12 h-12 object-contain drop-shadow-sm">
             Community Opinions
         </h1>

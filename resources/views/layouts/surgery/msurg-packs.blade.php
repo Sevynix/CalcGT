@@ -25,7 +25,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/roles/surgeon.png') }}" alt="Surg_Role" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/roles/surgeon.png') }}" alt="Surg_Role" class="w-10 h-10 object-contain drop-shadow-sm">
                     Surgery Tools
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
@@ -69,7 +69,7 @@
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/surgery/surg_crate.png') }}" alt="Surg Crate" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/surgery/surg_crate.png') }}" alt="Surg Crate" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
                 </div>
@@ -111,7 +111,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>
@@ -166,7 +166,7 @@
                          :class="enabledCategories[cat] ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-slate-800 hover:border-slate-200 dark:hover:border-slate-600 grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                         
                         <div class="h-10 sm:h-12 w-full flex items-center justify-center mb-1.5">
-                            <img :src="asset(getCategoryStats(cat).icon)" class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
+                            <img loading="lazy" :src="asset(getCategoryStats(cat).icon)" class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
                                  :class="enabledCategories[cat] ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
                         </div>
                         
@@ -187,7 +187,7 @@
             <div class="p-6 border-b border-slate-100 bg-white/40 dark:bg-[#151b2b]/40 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
@@ -215,7 +215,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
-                                    <img :src="asset(item.icon)" :alt="item.name"
+                                    <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                         class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                 </div>
                                 <span class="font-bold text-slate-800 text-sm" x-text="item.name"></span>
@@ -275,7 +275,7 @@
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                            <img :src="asset(item.icon)" :alt="item.name"
+                                            <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                                 class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
                                         <span class="font-bold text-slate-800" x-text="item.name"></span>

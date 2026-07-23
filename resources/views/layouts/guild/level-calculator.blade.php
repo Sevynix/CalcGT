@@ -25,7 +25,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Level" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/lock/guild_lock.png') }}" alt="Guild Level" class="w-10 h-10 object-contain drop-shadow-sm">
                     Guild Calculator
                     <span
                         class="bg-gradient-to-r from-teal-400 to-emerald-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Guild Tools</span>
@@ -55,7 +55,7 @@
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/downarrow.png') }}" alt="Down Arrow" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/downarrow.png') }}" alt="Down Arrow" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Level Settings</h2>
                 </div>
@@ -109,7 +109,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Progression Overview</h2>
                     </div>
@@ -130,13 +130,13 @@
                         <div
                             class="bg-violet-50 dark:bg-violet-900/20 border border-violet-100 dark:border-violet-700/50 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden">
                             <div class="absolute opacity-10 blur-sm right-0 top-0">
-                                <img src="{{ asset('images/lock/guild_lock.png') }}" class="w-24 h-24">
+                                <img loading="lazy" src="{{ asset('images/lock/guild_lock.png') }}" class="w-24 h-24">
                             </div>
                             <p class="text-[13px] font-bold text-violet-500 dark:text-violet-400 uppercase tracking-widest mb-1.5 relative z-10">Total Gems Needed
                             </p>
                             <div class="flex items-center gap-2 relative z-10">
                                 <p class="text-[28px] lg:text-[32px] font-extrabold text-violet-700 dark:text-violet-300 leading-none" x-text="formatNumber(calculateTotalGemsNeeded())"></p>
-                                <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
+                                <img loading="lazy" src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
                             <p class="text-[12px] text-violet-600/70 dark:text-violet-400/70 mt-2 font-medium relative z-10">To reach Level <span x-text="targetLevel"></span></p>
                         </div>
@@ -157,7 +157,7 @@
                             </p>
                             <div class="flex items-center gap-2">
                                 <p class="text-[24px] font-extrabold leading-none text-slate-800" x-text="formatNumber(calculateGemsToNextLevel())"></p>
-                                <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
+                                <img loading="lazy" src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
                             <p class="text-[12px] text-slate-500 mt-2 font-medium">Required for Level <span x-text="Number(currentLevel) + 1"></span> upgrade</p>
                         </div>
@@ -173,7 +173,7 @@
             <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Requirement Breakdown</h2>

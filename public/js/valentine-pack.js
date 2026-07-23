@@ -1,7 +1,7 @@
-﻿document.addEventListener('alpine:init', () => {
+document.addEventListener('alpine:init', () => {
     Alpine.data('calculator', () => ({
         numPacks: 1,
-        gemsInput: 7500,
+        gemsInput: 10000,
         wlCostPerPack: 0,
         stocks: {
             gbc: null,
@@ -16,7 +16,7 @@
             valentineCard: { name: "Valentine's Card", type: 'per wl', icon: 'images/event/valentine/valentine_card.png' },
         },
         init() {
-            const key = 'gthelp-valentine-pack-v2';
+            const key = 'gthelp-valentine-pack-v3';
             try {
                 const saved = localStorage.getItem(key);
                 if (saved) {
@@ -44,8 +44,8 @@
                 let n = Number(newVal);
                 if (n >= 0) {
                     let currentGems = Number(this.gemsInput);
-                    if (Math.floor(currentGems / 7500) !== n) {
-                        this.gemsInput = n * 7500;
+                    if (Math.floor(currentGems / 10000) !== n) {
+                        this.gemsInput = n * 10000;
                     }
                     this.stocks.gbc = n * 5;
                     this.stocks.valentineCard = n * 1;
@@ -55,7 +55,7 @@
             this.$watch('gemsInput', (newVal) => {
                 let g = Number(newVal);
                 if (g >= 0) {
-                    let n = Math.floor(g / 7500);
+                    let n = Math.floor(g / 10000);
                     if (this.numPacks !== n) {
                         this.numPacks = n;
                     }
@@ -133,9 +133,9 @@
             return `${sign}${p.toFixed(1).replace(/\.0$/, '')} WL`;
         },
         resetCalculator() {
-            try { localStorage.removeItem('gthelp-valentine-pack-v2'); } catch (e) { }
+            try { localStorage.removeItem('gthelp-valentine-pack-v3'); } catch (e) { }
             this.numPacks = 1;
-            this.gemsInput = 7500;
+            this.gemsInput = 10000;
             this.wlCostPerPack = 0;
             for (let key in this.prices) this.prices[key] = null;
             this.stocks.gbc = 5;

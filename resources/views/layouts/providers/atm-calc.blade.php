@@ -25,7 +25,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex flex-wrap items-center gap-2 sm:gap-3">
-                    <img src="{{ asset('images/city/atm.png') }}" alt="ATM Machine"
+                    <img loading="lazy" src="{{ asset('images/city/atm.png') }}" alt="ATM Machine"
                         class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain drop-shadow-sm shrink-0">
                     <span class="break-words leading-tight">ATM Machine</span>
                     <span
@@ -67,7 +67,7 @@
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100 flex flex-col justify-center">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/gems.png') }}" alt="Inputs" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/gems.png') }}" alt="Inputs" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Farm Details</h2>
                 </div>
@@ -121,7 +121,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>

@@ -19,12 +19,12 @@
         <div class="relative z-10">
             <div class="flex items-center gap-4 mb-6 flex-wrap">
                 <span class="inline-flex items-center gap-1.5 bg-brand-50 text-brand-600 text-xs font-bold px-3 py-1.5 rounded-xl uppercase tracking-wider border border-brand-100">
-                    <img src="{{ asset('images/items/megaphone.png') }}" alt="Topic" class="w-4 h-4 object-contain">
+                    <img loading="lazy" src="{{ asset('images/items/megaphone.png') }}" alt="Topic" class="w-4 h-4 object-contain">
                     Discussion Topic
                 </span>
                 <div class="flex items-center gap-2 text-sm font-bold text-slate-500">
                     <div class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center border border-slate-200 overflow-hidden">
-                        <img src="{{ asset('images/items/guestbook.png') }}" class="w-4 h-4 opacity-70" alt="Admin">
+                        <img loading="lazy" src="{{ asset('images/items/guestbook.png') }}" class="w-4 h-4 opacity-70" alt="Admin">
                     </div>
                     <span>Posted by Admin on {{ $communityPost->created_at->format('M d, Y') }}</span>
                 </div>
@@ -40,7 +40,7 @@
     <div class="bg-slate-50 rounded-[32px] p-8 md:p-10 border border-slate-200 shadow-sm">
         <div class="flex items-center gap-4 mb-6">
             <div class="w-12 h-12 bg-white rounded-2xl shadow-sm border border-slate-200 flex items-center justify-center shrink-0">
-                <img src="{{ asset('images/items/pencil.png') }}" class="w-7 h-7 object-contain" alt="Write">
+                <img loading="lazy" src="{{ asset('images/items/pencil.png') }}" class="w-7 h-7 object-contain" alt="Write">
             </div>
             <div>
                 <h3 class="text-2xl font-extrabold text-slate-800 tracking-tight">Share Your Opinion</h3>

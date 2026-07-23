@@ -48,7 +48,7 @@
                                     : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                                 
                                 <div class="h-16 w-full flex items-center justify-center mb-2">
-                                    <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation Mark" 
+                                    <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation Mark" 
                                          class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
                                          :class="selectedType === 'bug' ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
                                 </div>
@@ -67,7 +67,7 @@
                                     : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                                 
                                 <div class="h-16 w-full flex items-center justify-center mb-2">
-                                    <img src="{{ asset('images/items/letter.png') }}" alt="Suggestion Letter" 
+                                    <img loading="lazy" src="{{ asset('images/items/letter.png') }}" alt="Suggestion Letter" 
                                          class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
                                          :class="selectedType === 'suggestion' ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
                                 </div>
@@ -114,7 +114,7 @@
                         <!-- State 2: File Selected -->
                         <div x-show="previewUrl" style="display: none;" class="flex items-center gap-4 text-left relative z-0 bg-white dark:bg-[#111622] rounded-lg p-2 border border-slate-100 dark:border-[#2a3449]">
                             <div class="w-14 h-14 rounded-md overflow-hidden shrink-0 border border-slate-100 dark:border-slate-700 bg-slate-50 dark:bg-[#151b2b]">
-                                <img :src="previewUrl" class="w-full h-full object-cover">
+                                <img loading="lazy" :src="previewUrl" class="w-full h-full object-cover">
                             </div>
                             <div class="flex-grow min-w-0">
                                 <span x-text="fileName" class="text-sm font-bold text-brand-600 dark:text-brand-400 block truncate"></span>

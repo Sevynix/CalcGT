@@ -25,7 +25,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Potion" class="w-10 h-10 object-contain drop-shadow-sm">
                     Level Calculator
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Player Tools</span>
@@ -55,7 +55,7 @@
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Settings" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/exp_potion.png') }}" alt="EXP Settings" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Level Settings</h2>
                 </div>
@@ -109,7 +109,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">EXP Overview</h2>
                     </div>
@@ -154,7 +154,7 @@
             <button @click="openGhosts = !openGhosts" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/boo/jar.png') }}" alt="Ghost Jar" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/boo/jar.png') }}" alt="Ghost Jar" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Ghost Capturing Mode</h2>
@@ -189,7 +189,7 @@
                             <div x-show="buffs.charm" class="absolute top-2 right-2 text-brand-500" style="display: none;">
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <img src="{{ asset('images/items/xp/ghost_dragon_charm.png') }}" alt="Ghost Dragon Charm" 
+                            <img loading="lazy" src="{{ asset('images/items/xp/ghost_dragon_charm.png') }}" alt="Ghost Dragon Charm" 
                                 class="w-10 h-10 object-contain mb-2 transition-transform duration-300" 
                                 :class="buffs.charm ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
                             <span class="text-[12px] font-bold text-center leading-tight mb-1" :class="buffs.charm ? 'text-brand-700 dark:text-brand-400' : 'text-slate-600 dark:text-slate-400'">Ghost Charm</span>
@@ -203,7 +203,7 @@
                             <div x-show="buffs.tart" class="absolute top-2 right-2 text-brand-500" style="display: none;">
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <img src="{{ asset('images/items/xp/coconut_tart.png') }}" alt="Coconut Tart" 
+                            <img loading="lazy" src="{{ asset('images/items/xp/coconut_tart.png') }}" alt="Coconut Tart" 
                                 class="w-10 h-10 object-contain mb-2 transition-transform duration-300" 
                                 :class="buffs.tart ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
                             <span class="text-[12px] font-bold text-center leading-tight mb-1" :class="buffs.tart ? 'text-brand-700 dark:text-brand-400' : 'text-slate-600 dark:text-slate-400'">Coconut Tart</span>
@@ -217,7 +217,7 @@
                             <div x-show="buffs.ring" class="absolute top-2 right-2 text-emerald-500" style="display: none;">
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <img src="{{ asset('images/items/xp/ring_of_wisdom.png') }}" alt="Ring of Wisdom" 
+                            <img loading="lazy" src="{{ asset('images/items/xp/ring_of_wisdom.png') }}" alt="Ring of Wisdom" 
                                 class="w-10 h-10 object-contain mb-2 transition-transform duration-300" 
                                 :class="buffs.ring ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
                             <span class="text-[12px] font-bold text-center leading-tight mb-1" :class="buffs.ring ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'">Wisdom Ring</span>
@@ -231,7 +231,7 @@
                             <div x-show="buffs.cookie" class="absolute top-2 right-2 text-emerald-500" style="display: none;">
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <img src="{{ asset('images/items/xp/gingerbread.png') }}" alt="Gingerbread Cookie" 
+                            <img loading="lazy" src="{{ asset('images/items/xp/gingerbread.png') }}" alt="Gingerbread Cookie" 
                                 class="w-10 h-10 object-contain mb-2 transition-transform duration-300" 
                                 :class="buffs.cookie ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
                             <span class="text-[12px] font-bold text-center leading-tight mb-1" :class="buffs.cookie ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'">Gingerbread</span>
@@ -245,7 +245,7 @@
                             <div x-show="buffs.brain" class="absolute top-2 right-2 text-emerald-500" style="display: none;">
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
-                            <img src="{{ asset('images/items/xp/biotronic.png') }}" alt="Biotronic Brain" 
+                            <img loading="lazy" src="{{ asset('images/items/xp/biotronic.png') }}" alt="Biotronic Brain" 
                                 class="w-10 h-10 object-contain mb-2 transition-transform duration-300" 
                                 :class="buffs.brain ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
                             <span class="text-[12px] font-bold text-center leading-tight mb-1" :class="buffs.brain ? 'text-emerald-700 dark:text-emerald-400' : 'text-slate-600 dark:text-slate-400'">Biotronic Brain</span>
@@ -276,7 +276,7 @@
                                     <svg class="w-3.5 h-3.5 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                                 </div>
 
-                                <img :src="lvl > 1 ? '{{ asset('images/items/xp/ances_') }}' + lvl + '.png' : '{{ asset('images/items/xp/ances.png') }}'" 
+                                <img loading="lazy" :src="lvl > 1 ? '{{ asset('images/items/xp/ances_') }}' + lvl + '.png' : '{{ asset('images/items/xp/ances.png') }}'" 
                                     :alt="'Totem Level ' + lvl"
                                     class="w-8 h-8 sm:w-10 sm:h-10 object-contain mb-1.5 sm:mb-2 transition-transform duration-300" 
                                     :class="Number(buffs.totemLevel) === lvl ? 'scale-110 drop-shadow-md' : 'grayscale-[40%] opacity-80'">
@@ -324,7 +324,7 @@
             <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Level Breakdown Table</h2>

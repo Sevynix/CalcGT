@@ -39,6 +39,7 @@
                 ['route' => 'awkward-unicorn',    'label' => 'Awkward Unicorn',    'img' => 'images/unicorn/image_2.png',             'alt' => 'Awkward Unicorn'],
             ],
         ],
+
         [
             'group'  => 'Player Tools',
             'items'  => [
@@ -61,6 +62,12 @@
                 ['route' => 'easter-pack',        'label' => 'Easter Week',        'img' => 'images/event/easter/crate.png', 'alt' => 'Easter'],
                 ['route' => 'cinco-pack',         'label' => 'Cinco De Mayo Week', 'img' => 'images/event/cinco/whistle.png', 'alt' => 'Cinco'],
                 ['route' => 'summerfest-pack',    'label' => 'SummerFest',         'img' => 'images/event/summer/fireworks.png',      'alt' => 'SummerFest'],
+            ],
+        ],
+        [
+            'group'  => 'Carnival',
+            'items'  => [
+                ['route' => 'shatter-crystal',    'label' => 'Shatter Crystal',    'img' => 'images/carnival/shatter/2246.png',       'alt' => 'Shatter Crystal'],
             ],
         ],
         [

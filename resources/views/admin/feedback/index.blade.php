@@ -33,7 +33,7 @@
                             @if($feedback->image_path)
                                 <div class="mt-4">
                                     <a href="{{ asset($feedback->image_path) }}" target="_blank" class="inline-block border border-slate-200 rounded-lg overflow-hidden max-w-[200px] hover:border-brand-500 transition-colors">
-                                        <img src="{{ asset($feedback->image_path) }}" alt="Screenshot attached by user" class="w-full h-auto">
+                                        <img loading="lazy" src="{{ asset($feedback->image_path) }}" alt="Screenshot attached by user" class="w-full h-auto">
                                     </a>
                                 </div>
                             @endif

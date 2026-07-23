@@ -25,7 +25,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/science/science_station.png') }}" alt="Science Station" class="w-10 h-10 object-contain drop-shadow-sm">
                     Science Station Provider
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
@@ -78,7 +78,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Revenue Overview</h2>
                     </div>
@@ -108,7 +108,7 @@
                              :class="selectedCraftItem === recipeKey ? 'border-brand-400 bg-brand-50 dark:bg-brand-500/20 shadow-sm' : 'border-slate-100 dark:border-slate-700 bg-white dark:bg-[#151b2b] hover:border-slate-200 dark:hover:border-[#2a3449] grayscale-[0.8] opacity-70 hover:opacity-100 hover:grayscale-[0.4]'">
                             
                             <div class="h-10 sm:h-12 w-full flex items-center justify-center mb-1.5">
-                                <img :src="asset(recipe.icon)" :alt="recipe.name"
+                                <img loading="lazy" :src="asset(recipe.icon)" :alt="recipe.name"
                                      class="max-h-full max-w-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)] transition-all duration-300"
                                      :class="selectedCraftItem === recipeKey ? 'scale-110 drop-shadow-md' : 'group-hover:scale-105'">
                             </div>
@@ -138,7 +138,7 @@
                         
                         <div class="flex items-center gap-4 mb-5 relative z-10">
                             <div class="w-14 h-14 bg-slate-50 dark:bg-[#111622] border border-slate-100 dark:border-[#2a3449] rounded-2xl flex items-center justify-center p-2.5 shadow-sm">
-                                <img :src="asset(recipes[selectedCraftItem].icon)" :alt="recipes[selectedCraftItem].name" class="w-full h-full object-contain drop-shadow-sm">
+                                <img loading="lazy" :src="asset(recipes[selectedCraftItem].icon)" :alt="recipes[selectedCraftItem].name" class="w-full h-full object-contain drop-shadow-sm">
                             </div>
                             <div>
                                 <h3 class="text-[18px] font-extrabold text-slate-800" x-text="recipes[selectedCraftItem].name"></h3>
@@ -153,7 +153,7 @@
                                 <template x-for="(needed, chem) in recipes[selectedCraftItem]" :key="chem">
                                     <template x-if="needed > 0 && chem !== 'name' && chem !== 'icon' && chem !== 'yield'">
                                         <div class="inline-flex items-center gap-2 bg-white border border-slate-200 dark:border-[#2a3449] shadow-sm rounded-lg py-1.5 px-3" :title="items[chem] ? items[chem].name : (recipes[chem] ? recipes[chem].name : '')">
-                                            <img :src="asset(items[chem] ? items[chem].icon : recipes[chem].icon)" class="w-5 h-5 object-contain">
+                                            <img loading="lazy" :src="asset(items[chem] ? items[chem].icon : recipes[chem].icon)" class="w-5 h-5 object-contain">
                                             <span class="text-[13px] font-bold text-slate-700" x-text="needed + 'x'"></span>
                                         </div>
                                     </template>
@@ -171,7 +171,7 @@
                                 <template x-for="(left, chem) in getLeftoverBaseChemicals(selectedCraftItem)" :key="chem">
                                     <template x-if="left > 0 && items[chem]">
                                         <div class="inline-flex items-center gap-2 bg-white border border-slate-200 dark:border-[#2a3449] shadow-sm rounded-lg py-1 px-2.5" :title="items[chem].name">
-                                            <img :src="asset(items[chem].icon)" class="w-4 h-4 object-contain opacity-70">
+                                            <img loading="lazy" :src="asset(items[chem].icon)" class="w-4 h-4 object-contain opacity-70">
                                             <span class="text-[12px] font-bold text-slate-600" x-text="left"></span>
                                         </div>
                                     </template>
@@ -191,7 +191,7 @@
                                 <p class="text-[32px] font-extrabold text-slate-800 leading-none" x-text="canCraftItem(selectedCraftItem)"></p>
                             </div>
                             <div class="w-14 h-14 bg-emerald-50 dark:bg-emerald-900/30 rounded-2xl flex items-center justify-center shadow-inner border border-emerald-100/50 dark:border-emerald-700/50 shrink-0">
-                                <img :src="asset(recipes[selectedCraftItem].icon)" class="w-8 h-8 object-contain drop-shadow-md">
+                                <img loading="lazy" :src="asset(recipes[selectedCraftItem].icon)" class="w-8 h-8 object-contain drop-shadow-md">
                             </div>
                         </div>
                         
@@ -238,7 +238,7 @@
             <div class="p-6 border-b border-slate-100 bg-white/40 dark:bg-[#151b2b]/40 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
@@ -266,7 +266,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
-                                    <img :src="asset(item.icon)" :alt="item.name"
+                                    <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                         class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                 </div>
                                 <span class="font-bold text-slate-800 text-sm" x-text="item.name"></span>
@@ -323,7 +323,7 @@
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                            <img :src="asset(item.icon)" :alt="item.name"
+                                            <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                                 class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
                                         <span class="font-bold text-slate-800" x-text="item.name"></span>

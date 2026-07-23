@@ -28,7 +28,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl sm:text-3xl md:text-4xl font-extrabold tracking-tight text-slate-900 dark:text-slate-100 flex flex-wrap items-center gap-2 sm:gap-3">
-                    <img src="{{ asset('images/event/summer/fireworks.png') }}" alt="SummerFest"
+                    <img loading="lazy" src="{{ asset('images/event/summer/fireworks.png') }}" alt="SummerFest"
                         class="w-7 h-7 sm:w-8 sm:h-8 md:w-10 md:h-10 object-contain drop-shadow-sm shrink-0">
                     <span class="break-words leading-tight">SummerFest Pack</span>
                     <span
@@ -73,7 +73,7 @@
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/event/summer/beach_blast.png') }}" alt="Beach Blast" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/event/summer/beach_blast.png') }}" alt="Beach Blast" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Pack Details</h2>
                 </div>
@@ -104,7 +104,7 @@
                         <label class="text-slate-600 font-bold text-[15px] mb-2">Total Gems Needed</label>
                         <div
                             class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
-                            <img src="{{ asset('images/items/gems.png') }}" alt="Gems" class="w-5 h-5 object-contain mr-2" onerror="this.style.display='none'">
+                            <img loading="lazy" src="{{ asset('images/items/gems.png') }}" alt="Gems" class="w-5 h-5 object-contain mr-2" onerror="this.style.display='none'">
                             <input type="number" min="0" step="1000" x-model.number="gemsInput"
                                 class="bg-transparent text-slate-800 text-[16px] font-medium outline-none w-full p-0 m-0"
                                 placeholder="25000">
@@ -127,7 +127,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>
@@ -172,7 +172,7 @@
             <div class="p-6 border-b border-slate-100 bg-white/40 dark:bg-[#151b2b]/40 flex flex-wrap justify-between items-center gap-3">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/forsale.png') }}" alt="For Sale" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Sell Price</h2>
@@ -212,7 +212,7 @@
                                     <div class="flex items-center gap-3">
                                         <div
                                             class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                            <img :src="asset(item.icon)" :alt="item.name"
+                                            <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                                 class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                         </div>
                                         <span class="font-bold text-slate-800" x-text="item.name"></span>
@@ -275,7 +275,7 @@
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-3">
                                 <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
-                                    <img :src="asset(item.icon)" :alt="item.name"
+                                    <img loading="lazy" :src="asset(item.icon)" :alt="item.name"
                                         class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                 </div>
                                 <span class="font-bold text-slate-800 text-sm leading-tight" x-text="item.name"></span>
@@ -318,7 +318,7 @@
         <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 mt-8">
             <div class="flex items-start gap-4 mb-8" x-data="{ showHowWorksModal: false, howWorksLang: 'en' }">
                 <div class="w-12 h-12 rounded-2xl bg-slate-50 dark:bg-[#0b0f19] flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                    <img src="{{ asset('images/items/exclamation.png') }}" alt="Path Analysis" class="w-8 h-8 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Path Analysis" class="w-8 h-8 object-contain drop-shadow-sm">
                 </div>
                 <div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Path Profit Analysis</h2>
@@ -579,7 +579,7 @@
                                     <td class="px-4 py-3">
                                         <div class="flex items-center gap-3">
                                             <div class="w-10 h-10 rounded-xl bg-slate-50 shadow-sm border border-slate-100 flex items-center justify-center p-1.5">
-                                                <img :src="asset(pathItems[itemId].icon)" :alt="pathItems[itemId].name" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+                                                <img loading="lazy" :src="asset(pathItems[itemId].icon)" :alt="pathItems[itemId].name" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                             </div>
                                             <span class="font-bold text-slate-800" x-text="pathItems[itemId].name"></span>
                                         </div>
@@ -614,7 +614,7 @@
                             <div class="flex items-center justify-between">
                                 <div class="flex items-center gap-3">
                                     <div class="w-10 h-10 rounded-xl bg-slate-50 shadow-sm border border-slate-100 flex-shrink-0 flex items-center justify-center p-1.5">
-                                        <img :src="asset(pathItems[itemId].icon)" :alt="pathItems[itemId].name" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+                                        <img loading="lazy" :src="asset(pathItems[itemId].icon)" :alt="pathItems[itemId].name" class="w-full h-full object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                     </div>
                                     <span class="font-bold text-slate-800 text-sm leading-tight" x-text="pathItems[itemId].name"></span>
                                 </div>
@@ -747,7 +747,7 @@
                                 <!-- Right Column: Visual Sell Breakdown -->
                                 <div class="xl:col-span-7">
                                     <p class="text-[12px] font-bold text-slate-400 uppercase tracking-widest mb-4 flex items-center gap-2 px-1">
-                                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-4 h-4 object-contain">
+                                        <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-4 h-4 object-contain">
                                         Final Output & Profit Breakdown
                                     </p>
                                     <div class="flex flex-col gap-3">
@@ -764,7 +764,7 @@
                                                              <div class="flex flex-col sm:flex-row items-start sm:items-center gap-1 sm:gap-1.5 shrink-0">
                                                                  <!-- Source Badge -->
                                                                  <div class="flex items-center gap-1.5 px-2 py-1 bg-slate-100 dark:bg-[#0b0f19] rounded-md border border-slate-200 dark:border-[#2a3449] w-fit">
-                                                                     <img :src="asset(item.sourceIcon)" class="w-3.5 h-3.5 sm:w-4 sm:h-4 drop-shadow-sm">
+                                                                     <img loading="lazy" :src="asset(item.sourceIcon)" class="w-3.5 h-3.5 sm:w-4 sm:h-4 drop-shadow-sm">
                                                                      <span class="text-[10px] font-bold text-slate-600 dark:text-slate-400" x-text="item.sourceText"></span>
                                                                  </div>
                                                                  <!-- Desktop Arrow -->
@@ -784,7 +784,7 @@
                                                         <div class="flex items-center gap-2 sm:gap-3 flex-1 min-w-0 mt-0.5 sm:mt-0">
                                                             <!-- Icon -->
                                                             <div class="w-9 h-9 sm:w-10 sm:h-10 rounded-xl bg-slate-50 dark:bg-[#0b0f19] flex items-center justify-center border border-slate-100 dark:border-[#1c2438] shrink-0">
-                                                                <img :src="asset(item.icon)" class="w-6 h-6 sm:w-7 sm:h-7 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
+                                                                <img loading="lazy" :src="asset(item.icon)" class="w-6 h-6 sm:w-7 sm:h-7 object-contain drop-shadow-[0_2px_4px_rgba(0,0,0,0.15)]">
                                                             </div>
                                                             
                                                             <!-- Name and Qty -->

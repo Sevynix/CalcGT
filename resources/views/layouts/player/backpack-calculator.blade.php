@@ -29,7 +29,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Upgrade" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Upgrade" class="w-10 h-10 object-contain drop-shadow-sm">
                     Backpack Calculator
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Player Tools</span>
@@ -59,7 +59,7 @@
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Settings" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/backpack_upgrade.png') }}" alt="Backpack Settings" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Slot Setup</h2>
                 </div>
@@ -103,7 +103,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Upgrade Overview</h2>
                     </div>
@@ -115,7 +115,7 @@
                         <div
                             class="bg-brand-50 dark:bg-brand-900/20 border border-brand-100 dark:border-brand-700/50 rounded-[20px] p-5 flex flex-col justify-center items-center text-center shadow-sm relative overflow-hidden md:col-span-2">
                             <div class="absolute opacity-[0.05] blur-[1px] right-2 top-2">
-                                <img src="{{ asset('images/items/backpack_upgrade.png') }}" class="w-32 h-32 transform rotate-12">
+                                <img loading="lazy" src="{{ asset('images/items/backpack_upgrade.png') }}" class="w-32 h-32 transform rotate-12">
                             </div>
                             <p class="text-[13px] font-bold text-brand-500 dark:text-brand-400 uppercase tracking-widest mb-1.5 relative z-10">Total Gems Needed
                             </p>
@@ -155,7 +155,7 @@
             <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Backpack Upgrade Costs</h2>

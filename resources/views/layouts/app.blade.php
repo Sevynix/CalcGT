@@ -250,13 +250,13 @@
                 {{-- Icon pair --}}
                 <div style="display:flex; align-items:center; justify-content:center; gap:12px; margin-bottom:14px;">
                     <div class="wn-float" style="width:52px; height:52px; border-radius:16px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
-                        <img src="{{ asset('images/items/guestbook.png') }}" alt="Updates" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+                        <img loading="lazy" src="{{ asset('images/items/guestbook.png') }}" alt="Updates" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
                     </div>
                     <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3);"></div>
                     <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.2);"></div>
                     <div style="width:4px; height:4px; border-radius:50%; background:rgba(255,255,255,0.3);"></div>
                     <div class="wn-float-slow" style="width:52px; height:52px; border-radius:16px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; backdrop-filter:blur(4px);">
-                        <img src="{{ asset('images/items/megaphone.png') }}" alt="Community" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
+                        <img loading="lazy" src="{{ asset('images/items/megaphone.png') }}" alt="Community" style="width:32px;height:32px;object-fit:contain;filter:drop-shadow(0 2px 4px rgba(0,0,0,0.2));">
                     </div>
                 </div>
 

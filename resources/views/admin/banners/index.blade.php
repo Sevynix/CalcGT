@@ -127,7 +127,7 @@
                         <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Image Preview</label>
                         <div class="aspect-[3/2] bg-slate-100 rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center">
                             <template x-if="createPreview">
-                                <img :src="createPreview" class="w-full h-full object-cover">
+                                <img loading="lazy" :src="createPreview" class="w-full h-full object-cover">
                             </template>
                             <template x-if="!createPreview">
                                 <span class="text-slate-400 font-bold text-sm">No image selected</span>
@@ -212,7 +212,7 @@
                             <tr class="hover:bg-slate-50/50 transition-colors group" x-show="showRow({{ $banner->position }}, '{{ $statusStr }}')">
                                 <td class="py-3 px-4">
                                     <div class="w-24 h-16 rounded-lg overflow-hidden border border-slate-200 bg-slate-100 relative">
-                                        <img src="{{ asset($banner->image_path) }}" class="w-full h-full object-cover">
+                                        <img loading="lazy" src="{{ asset($banner->image_path) }}" class="w-full h-full object-cover">
                                         @if(!$banner->is_active)
                                             <div class="absolute inset-0 bg-slate-900/50 flex items-center justify-center">
                                                 <span class="text-[8px] font-bold text-white uppercase tracking-wider bg-red-500 px-1.5 py-0.5 rounded">Off</span>
@@ -295,18 +295,18 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-4 bg-slate-50 p-4 md:p-6 rounded-[2.5rem] border border-slate-200/50">
             <!-- Slot 1 (Large) -->
             <div class="md:col-span-2 relative overflow-hidden rounded-[32px] bg-white shadow-sm flex items-center justify-center aspect-[3/2]">
-                <img :src="createSlot == '1' && createPreview ? createPreview : '{{ $slot1 ? asset($slot1->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
+                <img loading="lazy" :src="createSlot == '1' && createPreview ? createPreview : '{{ $slot1 ? asset($slot1->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
             </div>
 
             <div class="md:col-span-1 flex flex-row md:flex-col items-start md:items-stretch gap-3 md:gap-4 w-full h-full">
                 <!-- Slot 2 (Small Top) -->
                 <div class="relative overflow-hidden rounded-[32px] bg-white shadow-sm flex-1 flex items-center justify-center aspect-[3/2]">
-                    <img :src="createSlot == '2' && createPreview ? createPreview : '{{ $slot2 ? asset($slot2->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
+                    <img loading="lazy" :src="createSlot == '2' && createPreview ? createPreview : '{{ $slot2 ? asset($slot2->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
                 </div>
 
                 <!-- Slot 3 (Small Bottom) -->
                 <div class="relative overflow-hidden rounded-[32px] bg-white shadow-sm flex-1 flex items-center justify-center aspect-[3/2]">
-                    <img :src="createSlot == '3' && createPreview ? createPreview : '{{ $slot3 ? asset($slot3->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
+                    <img loading="lazy" :src="createSlot == '3' && createPreview ? createPreview : '{{ $slot3 ? asset($slot3->image_path) : $defaultImage }}'" class="w-full h-full object-cover">
                 </div>
             </div>
         </div>
@@ -522,7 +522,7 @@
 
                 <!-- Cropper Canvas Area -->
                 <div class="bg-slate-950 flex-1 overflow-hidden" style="min-height: 280px; max-height: 440px;">
-                    <img id="cropperImage" src="" alt="Image to crop" style="display: block; max-width: 100%;">
+                    <img loading="lazy" id="cropperImage" src="" alt="Image to crop" style="display: block; max-width: 100%;">
                 </div>
 
                 <!-- Footer -->

@@ -29,7 +29,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/roles/farmer.png') }}" alt="Roles Calculator" class="w-10 h-10 object-contain drop-shadow-sm">
                     Roles Calculator
                     <span
                         class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Player Tools</span>
@@ -73,7 +73,7 @@
                                 <svg class="w-4 h-4 drop-shadow-sm" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
                             </div>
 
-                            <img :src="asset('images/roles/' + role.img)" :alt="role.name"
+                            <img loading="lazy" :src="asset('images/roles/' + role.img)" :alt="role.name"
                                 class="w-12 h-12 object-contain mb-2 transition-transform duration-300 drop-shadow-md" 
                                 :class="selectedRoleId === role.id ? 'scale-110' : 'grayscale-[20%] opacity-80'">
                             
@@ -92,7 +92,7 @@
             <div class="glass-card rounded-[32px] p-8 shadow-sm border border-slate-100 lg:col-span-1 flex flex-col h-full">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/downarrow.png') }}" alt="Down Arrow" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/downarrow.png') }}" alt="Down Arrow" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Setup</h2>
                 </div>
@@ -159,7 +159,7 @@
                     <div class="flex items-center justify-between mb-6">
                         <div class="flex items-center gap-4">
                             <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/exclamation.png') }}" alt="Exclamation" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                             <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Progress Calculation</h2>
                         </div>
@@ -195,7 +195,7 @@
                             <p class="text-[12px] font-bold text-slate-500 uppercase tracking-widest mb-1.5">Daily Gem Cost</p>
                             <div class="flex items-center gap-2">
                                 <p class="text-[24px] font-extrabold leading-none text-slate-700" x-text="formatNumber(getDailyGemCost(Number(questsPerDay)))"></p>
-                                <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
+                                <img loading="lazy" src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
                             <p class="text-[12px] text-slate-500 mt-2 font-medium leading-tight">At <span x-text="questsPerDay"></span> quest(s) per day</p>
                         </div>
@@ -212,7 +212,7 @@
                             <p class="text-[12px] font-bold text-brand-500 dark:text-brand-400 uppercase tracking-widest mb-1.5">Total Gem Cost</p>
                             <div class="flex items-center gap-2">
                                 <p class="text-[24px] font-extrabold leading-none text-brand-700 dark:text-brand-300" x-text="formatNumber(calculateTotalGemCost())"></p>
-                                <img src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
+                                <img loading="lazy" src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
                             <p class="text-[12px] text-brand-600/70 dark:text-brand-400/70 mt-2 font-medium leading-tight">Daily cost Ã— <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
                         </div>
@@ -228,7 +228,7 @@
             <button @click="openBonuses = !openBonuses" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/legendorb.png') }}" alt="Legendary Orb" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/legendorb.png') }}" alt="Legendary Orb" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Active Multipliers</h2>
@@ -258,7 +258,7 @@
                         <label class="relative flex flex-row items-center p-4 bg-white dark:bg-[#151b2b] border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
                             :class="buffs.jack ? 'border-brand-400 bg-brand-50/30 dark:bg-brand-900/20 ring-1 ring-brand-400' : 'border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-[#3a475e] hover:bg-slate-50 dark:hover:bg-[#1c2438]'">
                             <input type="checkbox" x-model="buffs.jack" class="sr-only">
-                            <img src="{{ asset('images/roles/item/jack_hat.png') }}" alt="Jack's Set" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.jack ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <img loading="lazy" src="{{ asset('images/roles/item/jack_hat.png') }}" alt="Jack's Set" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.jack ? 'scale-110' : 'grayscale-[20%] opacity-80'">
                             <div class="flex-grow">
                                 <span class="text-[15px] font-bold block mb-1" :class="buffs.jack ? 'text-brand-700 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'">Jack's Set</span>
                                 <span class="text-[12px] font-medium" :class="buffs.jack ? 'text-brand-600/70 dark:text-brand-400/70' : 'text-slate-500 dark:text-slate-400'">Full Hat, Vest, Jeans, & Shoes</span>
@@ -272,7 +272,7 @@
                         <label class="relative flex flex-row items-center p-4 bg-white dark:bg-[#151b2b] border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
                             :class="buffs.supplier_cape ? 'border-brand-400 bg-brand-50/30 dark:bg-brand-900/20 ring-1 ring-brand-400' : 'border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-[#3a475e] hover:bg-slate-50 dark:hover:bg-[#1c2438]'">
                             <input type="checkbox" x-model="buffs.supplier_cape" class="sr-only">
-                            <img src="{{ asset('images/roles/item/supplier_cape.png') }}" alt="Supplier's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.supplier_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <img loading="lazy" src="{{ asset('images/roles/item/supplier_cape.png') }}" alt="Supplier's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.supplier_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
                             <div class="flex-grow">
                                 <span class="text-[15px] font-bold block mb-1" :class="buffs.supplier_cape ? 'text-brand-700 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'">Supplier's Cape</span>
                                 <span class="text-[12px] font-medium" :class="buffs.supplier_cape ? 'text-brand-600/70 dark:text-brand-400/70' : 'text-slate-500 dark:text-slate-400'">+5% for Supplier quests</span>
@@ -286,7 +286,7 @@
                         <label class="relative flex flex-row items-center p-4 bg-white dark:bg-[#151b2b] border cursor-pointer transition-all shadow-sm rounded-2xl overflow-hidden group"
                             :class="buffs.crafter_cape ? 'border-brand-400 bg-brand-50/30 dark:bg-brand-900/20 ring-1 ring-brand-400' : 'border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-[#3a475e] hover:bg-slate-50 dark:hover:bg-[#1c2438]'">
                             <input type="checkbox" x-model="buffs.crafter_cape" class="sr-only">
-                            <img src="{{ asset('images/roles/item/crafter_cape.png') }}" alt="Crafter's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.crafter_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
+                            <img loading="lazy" src="{{ asset('images/roles/item/crafter_cape.png') }}" alt="Crafter's Cape" class="w-10 h-10 object-contain mr-4 drop-shadow-sm transition-transform duration-300 group-hover:scale-110" :class="buffs.crafter_cape ? 'scale-110' : 'grayscale-[20%] opacity-80'">
                             <div class="flex-grow">
                                 <span class="text-[15px] font-bold block mb-1" :class="buffs.crafter_cape ? 'text-brand-700 dark:text-brand-400' : 'text-slate-800 dark:text-slate-200'">Crafter's Cape</span>
                                 <span class="text-[12px] font-medium" :class="buffs.crafter_cape ? 'text-brand-600/70 dark:text-brand-400/70' : 'text-slate-500 dark:text-slate-400'">+5% for Crafter quests</span>
@@ -307,7 +307,7 @@
             <button @click="openTable = !openTable" class="w-full flex items-center justify-between p-6 lg:px-8 bg-white/40 dark:bg-[#151b2b]/40 hover:bg-white/60 dark:hover:bg-[#151b2b]/60 transition-colors text-left focus:outline-none">
                 <div class="flex items-center gap-4">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/items/scroll.png') }}" alt="Scroll Bulletin" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <div>
                         <h2 class="text-[18px] lg:text-[20px] font-extrabold text-slate-800 tracking-tight">Progression Breakdown</h2>

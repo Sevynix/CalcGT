@@ -23,7 +23,7 @@
                     Back to Dashboard
                 </a>
                 <h1 class="text-2xl md:text-4xl font-extrabold tracking-tight text-slate-900 flex items-center flex-wrap gap-3">
-                    <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-10 h-10 object-contain drop-shadow-sm">
+                    <img loading="lazy" src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-10 h-10 object-contain drop-shadow-sm">
                     Nanoforge
                     <span class="bg-gradient-to-r from-brand-400 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider shadow-sm">Calculator</span>
                 </h1>
@@ -59,7 +59,7 @@
             <div class="glass-card rounded-[32px] p-8 lg:col-span-1 shadow-sm border border-slate-100">
                 <div class="flex items-center gap-4 mb-8">
                     <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                     <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Nanoforge Cycles</h2>
                 </div>
@@ -86,7 +86,7 @@
                     <!-- Header -->
                     <div class="flex items-center gap-4 mb-6">
                         <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]">
-                        <img src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" src="{{ asset('images/lock/worldlock.png') }}" alt="WL" class="w-8 h-8 object-contain drop-shadow-sm">
                     </div>
                         <h2 class="text-[22px] font-extrabold text-slate-800 tracking-tight">Profit Overview</h2>
                     </div>
@@ -129,7 +129,7 @@
         <!-- FUEL BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]"><img src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm"></div> 1. Select Fuel Tools
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]"><img loading="lazy" src="{{ asset('images/startopia/nanoforge.png') }}" alt="Nanoforge" class="w-8 h-8 object-contain drop-shadow-sm"></div> 1. Select Fuel Tools
             </h2>
             <p class="text-sm text-slate-500 mb-6">Click the tools below to mark them as Nanoforge Fuel. Selected tools will show inputs for Quantity & Price.</p>
 
@@ -141,7 +141,7 @@
                         :class="tool.isTarget ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isFuel ? 'ring-2 ring-brand-400 border-brand-400 bg-brand-50 dark:bg-brand-500/20 hover:scale-105' : 'bg-white border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-slate-500 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isTarget"
                         :title="tool.isTarget ? 'Selected as Target' : tool.name">
-                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain drop-shadow-sm">
+                        <img loading="lazy" :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain drop-shadow-sm">
                     </button>
                 </template>
             </div>
@@ -155,7 +155,7 @@
                         
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
                             <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 dark:border-[#2a3449] flex items-center justify-center p-1.5 shrink-0">
-                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain">
+                                <img loading="lazy" :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
                         </div>
@@ -189,7 +189,7 @@
         <!-- TARGET BOX -->
         <div class="glass-card bg-white rounded-[24px] p-6 shadow-sm border border-slate-100">
             <h2 class="text-xl font-bold text-slate-800 mb-1 flex items-center gap-2">
-                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]"><img src="{{ asset('images/items/forsale.png') }}" alt="For sale Sign" class="w-8 h-8 object-contain drop-shadow-sm"></div> 2. Select Target Tools
+                <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200 dark:border-[#2a3449]"><img loading="lazy" src="{{ asset('images/items/forsale.png') }}" alt="For sale Sign" class="w-8 h-8 object-contain drop-shadow-sm"></div> 2. Select Target Tools
             </h2>
             <p class="text-sm text-slate-500 mb-4">Click the rare tools you want to sell. They will evaluate their compound yield directly from the Fuel tools above.</p>
 
@@ -212,7 +212,7 @@
                         :class="tool.isFuel ? 'opacity-30 grayscale cursor-not-allowed' : (tool.isTarget ? 'ring-2 ring-emerald-400 border-emerald-400 bg-emerald-50 dark:bg-emerald-500/20 hover:scale-105' : 'bg-white border-slate-200 dark:border-[#2a3449] hover:border-slate-300 dark:hover:border-slate-500 opacity-60 grayscale hover:grayscale-0 hover:opacity-100 hover:scale-105')"
                         :disabled="tool.isFuel"
                         :title="tool.isFuel ? 'Selected as Fuel' : tool.name">
-                        <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain">
+                        <img loading="lazy" :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-8 h-8 object-contain">
                         <!-- Little Yield Badge Preview inside icon -->
                         <span x-show="getFinalCount(index) > 0" class="absolute -top-2 -right-2 bg-emerald-500 text-white text-[11px] font-bold px-2 py-[2px] rounded-full shadow-md z-10" x-transition.scale x-text="getFinalCount(index)"></span>
                     </button>
@@ -228,7 +228,7 @@
 
                         <div class="flex items-center gap-3 w-40 shrink-0 select-none">
                             <div class="w-10 h-10 rounded-xl bg-white shadow-sm border border-slate-200 dark:border-[#2a3449] flex items-center justify-center p-1.5 shrink-0">
-                                <img :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain mb-0">
+                                <img loading="lazy" :src="getAssetPath(tool.name)" onerror="this.src='/images/startopia/nanoforge.png'" class="w-full h-full object-contain mb-0">
                             </div>
                             <span class="font-bold text-slate-700 text-sm leading-tight" x-text="tool.name"></span>
                         </div>
