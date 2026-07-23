@@ -77,7 +77,7 @@
 
                 <div class="space-y-6">
                     <div class="flex flex-col">
-                        <label class="text-slate-600 font-bold text-[15px] mb-2">Number of Packs (7.5k Gems)</label>
+                        <label class="text-slate-600 font-bold text-[15px] mb-2">Number of Packs (10k Gems)</label>
                         <div
                             class="flex items-center bg-white border border-slate-200 dark:border-[#2a3449] rounded-xl px-3 py-2.5 shadow-sm focus-within:border-brand-400 focus-within:ring-2 focus-within:ring-brand-100 transition-all w-full">
                             <input type="number" min="0" x-model.number="numPacks"
