@@ -44,7 +44,7 @@ document.addEventListener('alpine:init', () => {
             crystalShardNecklace:  { name: 'Crystal Shard Necklace',   img: '6820', qty: 1, type: 'wl/item', recipe: { red:0, green:3, blue:0, white:2, black:0 } },
 
             // ── Blocks & Decor ────────────────────────────────────────────
-            crystalTree:           { name: 'Crystal Tree',             img: '2272', qty: 3,  type: 'wl/item', recipe: { red:0, green:3, blue:2, white:0, black:0 } },
+            crystalTree:           { name: 'Crystal Tree',             img: '2272', qty: 3,  type: 'wl/item', recipe: { red:0, green:2, blue:3, white:0, black:0 } },
             crystalSpikes:         { name: 'Crystal Spikes',           img: '2276', qty: 5,  type: 'wl/item', recipe: { red:2, green:3, blue:0, white:0, black:0 } },
             crystalClock:          { name: 'Crystal Clock',            img: '2252', qty: 1,  type: 'wl/item', recipe: { red:0, green:1, blue:2, white:2, black:0 } },
             crystalGate:           { name: 'Crystal Gate',             img: '2274', qty: 1,  type: 'wl/item', recipe: { red:3, green:1, blue:0, white:1, black:0 } },
