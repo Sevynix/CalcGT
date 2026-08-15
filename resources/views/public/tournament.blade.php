@@ -151,7 +151,7 @@ html.dark .tl-row.even .tl-label {
 
 /* Mobile Responsiveness */
 @media (max-width: 768px) {
-    .timeline::before { left: 20px; transform: none; }
+    .timeline::before { left: 40px; transform: translateX(-50%); }
     .tl-row, .tl-row.even { flex-direction: column; align-items: flex-start; padding-left: 45px; margin-bottom: 40px; }
     .tl-center, .tl-row.even .tl-center { left: 20px; top: 0; transform: translateX(-50%); }
     .tl-label, .tl-row.even .tl-label { position: relative; bottom: auto; top: auto; margin-bottom: 4px !important; }
@@ -194,7 +194,7 @@ html.dark .tl-row.even .tl-label {
 
         @if($competitions->isEmpty())
             <div class="text-center p-12 bg-white dark:bg-slate-800/80 border border-dashed border-slate-200 dark:border-slate-700/80 rounded-3xl max-w-md mx-auto">
-                <div class="text-5xl mb-4"><img src="{{ asset('images/items/exclamation.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></div>
+                <div class="mb-4 flex justify-center"><img src="{{ asset('images/items/exclamation.png') }}" class="w-16 h-16 object-contain drop-shadow-md" alt="Exclamation"></div>
                 <h3 class="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Belum Ada Event</h3>
                 <p class="text-slate-500 dark:text-slate-400 text-sm">Nantikan pengumuman event selanjutnya!</p>
             </div>

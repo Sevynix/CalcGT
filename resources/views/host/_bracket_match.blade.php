@@ -3,7 +3,6 @@
     $b       = $match['participant_b'] ?? null;
     $winner  = $match['winner'] ?? null;
     $isBye   = $match['is_bye'] ?? false;
-    $locked  = $match['locked'] ?? false;
     $nodeId  = $match['id'];
     $hasWinner = !is_null($winner);
 
@@ -12,10 +11,7 @@
     $statusClass = '';
     $isReady = false;
 
-    if ($locked) {
-        $statusText = '<svg class="w-4 h-4 inline-block translate-y-[-1px] text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg> Terkunci';
-        $statusClass = 'status-locked';
-    } elseif ($hasWinner) {
+    if ($hasWinner) {
         $statusText = 'Selesai';
         $statusClass = 'status-completed';
     } elseif ($a && $b && !$isBye) {
@@ -47,7 +43,7 @@
         }
     }
 @endphp
-<div class="match-card {{ $locked ? 'locked' : '' }} {{ $isReady ? 'ready-glow' : '' }} {{ isset($isVisualBye) && $isVisualBye ? 'is-bye-card' : '' }} {{ ($match['is_if_necessary'] ?? false) ? 'match-if-necessary' : '' }}">
+<div class="match-card {{ $isReady ? 'ready-glow' : '' }} {{ isset($isVisualBye) && $isVisualBye ? 'is-bye-card' : '' }}">
     @if(!isset($isVisualBye) || !$isVisualBye)
         @if(!isset($isSeeding) || !$isSeeding)
             <div class="match-status {{ $statusClass }}">

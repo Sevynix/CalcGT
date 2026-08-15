@@ -77,7 +77,7 @@
     
     @stack('styles')
 </head>
-<body class="min-h-screen text-slate-800 dark:text-slate-200 font-sans antialiased"
+<body class="min-h-screen flex flex-col text-slate-800 dark:text-slate-200 font-sans antialiased"
       x-data="{ darkMode: localStorage.getItem('gtcalc-dark') === 'true' }"
       x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); if(document.startViewTransition) { document.startViewTransition(() => document.getElementById('html-root').classList.toggle('dark', v)); } else { document.getElementById('html-root').classList.toggle('dark', v); } })">
 
@@ -145,9 +145,12 @@
     </div>
 
     <!-- Main Content -->
-    <main class="max-w-6xl mx-auto p-6 md:p-8">
+    <main class="flex-1 w-full flex flex-col">
+        <div class="flex-1 w-full max-w-6xl mx-auto p-6 md:p-8">
+            @yield('content')
+        </div>
 
-        @yield('content')
+        @include('partials.footer')
     </main>
 
     <!-- ======================== -->

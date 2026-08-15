@@ -180,7 +180,6 @@
     border-color: rgba(56,189,248,.3);
     box-shadow: 0 6px 20px rgba(0,0,0,.5), 0 0 0 1px var(--br-azure-xlight);
 }
-.match-card.locked { opacity: .4; pointer-events: none; }
 
 /* ── Status Bar ───────────────────────────────────────────── */
 .match-status {
@@ -202,11 +201,6 @@
     background: var(--br-azure-xlight);
     color: var(--br-azure);
     border-bottom-color: rgba(56,189,248,.15);
-}
-.match-status.status-locked {
-    background: rgba(248,113,113,.07);
-    color: var(--br-red);
-    border-bottom-color: rgba(248,113,113,.15);
 }
 .match-card.ready-glow { border-color: rgba(251,146,60,.3); }
 
@@ -396,6 +390,32 @@
     font-weight: 700; 
     color: var(--br-text-dim); 
     letter-spacing: 0.5px;
+}
+
+@media (max-width: 768px) {
+    .winner-banner {
+        flex-direction: column;
+        padding: 24px 20px;
+        gap: 12px;
+    }
+    .winner-avatar-trophy {
+        flex-shrink: 0;
+    }
+    .winner-content {
+        text-align: center;
+    }
+    .winner-banner h2 {
+        font-size: 24px;
+    }
+    /* Shrink bracket for mobile */
+    .round-col { min-width: 130px; }
+    .participant { padding: 5px 8px; font-size: 10px; }
+    .match-status { padding: 3px 6px; font-size: 8px; }
+    .round-header { font-size: 9px; height: 24px; padding: 3px 8px; }
+    .match-card { margin: 3px 0; border-radius: 7px; }
+    .status-badge { font-size: 9px; padding: 3px 8px; gap: 4px; white-space: nowrap; letter-spacing: 0; }
+    .status-badge img { width: 10px !important; height: 10px !important; }
+    .status-badge::before { width: 10px !important; height: 10px !important; }
 }
 
 /* Animations */

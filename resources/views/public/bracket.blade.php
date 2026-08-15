@@ -155,7 +155,41 @@
                 @elseif($bracket1['bracket_type'] === 'ffa')
                     @include('host._ffa_grid', ['data' => $bracket1, 'competition' => $competition, 'isPublic' => true])
                 @else
-                    @include('host._single_elim', ['data' => $bracket1, 'competition' => $competition, 'isPublic' => true])
+                    @php
+                        $isImperfect = false;
+                        $rnds = $bracket1['rounds'] ?? [];
+                        
+                        $firstKey = !empty($rnds) ? array_key_first($rnds) : null;
+                        $r1Count = $firstKey !== null ? count($rnds[$firstKey]) : 0;
+                        $isSplit = $r1Count >= 4;
+                        $maxRounds = 0;
+                        foreach($rnds as $rnd => $matches) {
+                            if (count($matches) > 0) $maxRounds = max($maxRounds, $rnd);
+                        }
+                        $hasCenter = count($rnds[$maxRounds] ?? []) == 1;
+
+                        // if ($isSplit && !$hasCenter) {
+                        //     $isImperfect = true;
+                        // }
+
+                        if (!$isImperfect) {
+                            foreach ($rnds as $rnd => $matches) {
+                                if ($rnd > 1) {
+                                    $prevCount = count($rnds[$rnd - 1] ?? []);
+                                    $currCount = count($matches);
+                                    if ($prevCount > 0 && $currCount > 0 && $currCount != $prevCount / 2) {
+                                        $isImperfect = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    @endphp
+                    @if($isImperfect)
+                        @include('host._single_elim_svg', ['data' => $bracket1, 'competition' => $competition, 'isPublic' => true])
+                    @else
+                        @include('host._single_elim', ['data' => $bracket1, 'competition' => $competition, 'isPublic' => true])
+                    @endif
                 @endif
             </div>
         </div>
@@ -173,7 +207,41 @@
                 @elseif($bracket2['bracket_type'] === 'ffa')
                     @include('host._ffa_grid', ['data' => $bracket2, 'competition' => $competition, 'isPublic' => true])
                 @else
-                    @include('host._single_elim', ['data' => $bracket2, 'competition' => $competition, 'isPublic' => true])
+                    @php
+                        $isImperfect = false;
+                        $rnds = $bracket2['rounds'] ?? [];
+                        
+                        $firstKey = !empty($rnds) ? array_key_first($rnds) : null;
+                        $r1Count = $firstKey !== null ? count($rnds[$firstKey]) : 0;
+                        $isSplit = $r1Count >= 4;
+                        $maxRounds = 0;
+                        foreach($rnds as $rnd => $matches) {
+                            if (count($matches) > 0) $maxRounds = max($maxRounds, $rnd);
+                        }
+                        $hasCenter = count($rnds[$maxRounds] ?? []) == 1;
+
+                        // if ($isSplit && !$hasCenter) {
+                        //     $isImperfect = true;
+                        // }
+
+                        if (!$isImperfect) {
+                            foreach ($rnds as $rnd => $matches) {
+                                if ($rnd > 1) {
+                                    $prevCount = count($rnds[$rnd - 1] ?? []);
+                                    $currCount = count($matches);
+                                    if ($prevCount > 0 && $currCount > 0 && $currCount != $prevCount / 2) {
+                                        $isImperfect = true;
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                    @endphp
+                    @if($isImperfect)
+                        @include('host._single_elim_svg', ['data' => $bracket2, 'competition' => $competition, 'isPublic' => true])
+                    @else
+                        @include('host._single_elim', ['data' => $bracket2, 'competition' => $competition, 'isPublic' => true])
+                    @endif
                 @endif
             </div>
         </div>

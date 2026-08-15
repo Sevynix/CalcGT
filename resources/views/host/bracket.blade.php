@@ -90,11 +90,6 @@
 .slot-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 .slot-empty { color: var(--muted); font-style: italic; font-weight: 400; }
 
-.match-locked { opacity:.55; pointer-events:none; }
-.match-bye { opacity:.7; }
-.match-if-necessary { border-style: dashed; opacity:.7; }
-.match-if-necessary .match-slot { cursor:default; }
-
 .round-label { font-size:11px; color:var(--muted); text-align:center; margin-bottom:8px; font-weight:700; text-transform:uppercase; }
 
 /* ── Bracket columns layout ────────────────────────────────── */
@@ -214,21 +209,13 @@
 
     <div class="phase-section">
         <div class="phase-header">
-            <div>
-                @if($phase->survivor_count)
-                    <span style="font-size:12px;color:var(--muted);">Top {{ $phase->survivor_count }} lolos</span>
-                @endif
-            </div>
+            <div></div>
             <span class="status-badge s-{{ $data['status'] }}">{{ $data['status'] === 'finished' ? 'Selesai' : ($data['status'] === 'ongoing' ? 'Berlangsung' : 'Menunggu') }}</span>
         </div>
 
         <div class="phase-body">
 
-            @if($data['status'] === 'pending')
-                <div class="alert alert-info" style="margin-bottom:16px;">
-                    ⏳ <strong>Fase Belum Dimulai:</strong> Selesaikan seluruh pertandingan pada fase sebelumnya terlebih dahulu untuk memilih semifinalis dan memulai fase ini.
-                </div>
-            @endif
+
 
 
 
@@ -240,7 +227,43 @@
             @elseif($data['bracket_type'] === 'ffa')
                 @include('host._ffa_grid', ['data' => $data, 'competition' => $competition, 'isPublic' => false, 'bracketType' => $data['bracket_type'], 'isSeeding' => $phase->status === 'seeding'])
             @else
-                @include('host._single_elim', ['data' => $data, 'competition' => $competition, 'isPublic' => false, 'bracketType' => $data['bracket_type'], 'isSeeding' => $phase->status === 'seeding'])
+                @php
+                    $isImperfect = false;
+                    $rnds = $data['rounds'] ?? [];
+
+                    // Check if it's a split bracket without a center final
+                    $firstKey = !empty($rnds) ? array_key_first($rnds) : null;
+                    $r1Count = $firstKey !== null ? count($rnds[$firstKey]) : 0;
+                    $isSplit = $r1Count >= 4;
+                    $maxRounds = 0;
+                    foreach($rnds as $rnd => $matches) {
+                        if (count($matches) > 0) $maxRounds = max($maxRounds, $rnd);
+                    }
+                    $hasCenter = count($rnds[$maxRounds] ?? []) == 1;
+
+                    // if ($isSplit && !$hasCenter) {
+                    //     $isImperfect = true;
+                    // }
+
+                    // Also check for drop-down rounds
+                    if (!$isImperfect) {
+                        foreach ($rnds as $rnd => $matches) {
+                            if ($rnd > 1) {
+                                $prevCount = count($rnds[$rnd - 1] ?? []);
+                                $currCount = count($matches);
+                                if ($prevCount > 0 && $currCount > 0 && $currCount != $prevCount / 2) {
+                                    $isImperfect = true;
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                @endphp
+                @if($isImperfect)
+                    @include('host._single_elim_svg', ['data' => $data, 'competition' => $competition, 'isPublic' => false, 'bracketType' => $data['bracket_type'], 'isSeeding' => $phase->status === 'seeding'])
+                @else
+                    @include('host._single_elim', ['data' => $data, 'competition' => $competition, 'isPublic' => false, 'bracketType' => $data['bracket_type'], 'isSeeding' => $phase->status === 'seeding'])
+                @endif
             @endif
 
         </div>
@@ -449,7 +472,7 @@ function submitWinner(winner) {
         if (data.error) {
             showCustomErrorModal('Pemenang Tidak Bisa Dikoreksi', data.error);
         } else {
-            if (data.is_completed) {
+            if (data.is_tournament_completed) {
                 sessionStorage.setItem('bracketScrollY', 0);
                 sessionStorage.setItem('bracketScrollX', 0);
             } else {

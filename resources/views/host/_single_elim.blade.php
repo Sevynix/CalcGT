@@ -24,19 +24,6 @@
     }
 @endphp
 
-<style>
-    /* Bypassing browser cache: Force hide converge lines on final columns */
-    .bracket-wrap .bracket-grid .round-col.final-col .match-wrapper::after,
-    .bracket-wrap .bracket-grid .round-col.final-col .match-wrapper::before,
-    div.bracket-grid > div.round-col.final-col > div.round-matches > div.match-wrapper::after,
-    div.bracket-grid > div.round-col.final-col > div.round-matches > div.match-wrapper::before {
-        display: none !important;
-        opacity: 0 !important;
-        border: none !important;
-        background: transparent !important;
-    }
-</style>
-
 <div class="bracket-wrap" style="padding-top:10px; overflow-x: auto;">
     <div class="bracket-grid" style="display: flex; justify-content: space-between; width: 100%; min-width: max-content;">
         @if(!$isSplit)

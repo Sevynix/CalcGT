@@ -208,11 +208,25 @@ class BracketController extends Controller
             }
         }
 
+        $isPhaseFinished = $node->phase->fresh()->status === 'finished';
+        $isTournamentCompleted = false;
+        
+        if ($isPhaseFinished) {
+            $format  = $competition->bracket_format;
+            $options = \App\Services\Bracket\FixedBracketOptionsResolver::getOption($competition->slot_count, $format);
+            $totalPhases = $options ? count($options['phases']) : 0;
+            
+            if ($node->phase->phase_order == $totalPhases) {
+                $isTournamentCompleted = true;
+            }
+        }
+
         return response()->json([
-            'success'         => true,
-            'message'         => "Pemenang: {$request->winner}",
-            'can_start_next'  => false, // Always false now since we auto-started it
-            'is_completed'    => $node->phase->fresh()->status === 'finished',
+            'success'                 => true,
+            'message'                 => "Pemenang: {$request->winner}",
+            'can_start_next'          => false, // Always false now since we auto-started it
+            'is_completed'            => $isPhaseFinished,
+            'is_tournament_completed' => $isTournamentCompleted,
         ]);
     }
 
