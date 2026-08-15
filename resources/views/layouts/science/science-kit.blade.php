@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Mad Science Kit")
 @section('meta_description', 'Track your Science Kit openings and calculate expected chemical yields in Growtopia.')
 

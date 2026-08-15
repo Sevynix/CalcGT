@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "City Pack")
 @section('meta_description', 'Calculate City Pack costs, drops, and projected profit margins in Growtopia.')
 

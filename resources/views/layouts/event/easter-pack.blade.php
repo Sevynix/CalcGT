@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Easter Crate Calculator")
 @section('meta_description', "Calculate Easter Crate costs, drops, and projected profit by selling magic eggs and golden shards in Growtopia.")
 

@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Science Station Provider Calculator")
 @section('meta_description', 'Monitor Science Station chemical outputs and track your harvesting profits as a Growtopia science provider.')
 

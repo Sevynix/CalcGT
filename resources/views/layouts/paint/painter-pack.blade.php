@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Painter Pack Calculator")
 @section('meta_description', 'Track Painter Pack openings and optimize profit margins in Growtopia.')
 

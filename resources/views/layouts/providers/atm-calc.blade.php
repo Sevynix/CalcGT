@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "ATM Machine Provider Calculator")
 @section('meta_description', "Calculate the return on investment, daily gems, and daily profit for ATM Machines in Growtopia.")
 

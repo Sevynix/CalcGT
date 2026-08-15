@@ -257,7 +257,7 @@
                                     <button type="button" data-banner="{{ $banner->toJson() }}" @click.prevent="openEditModal(JSON.parse($event.currentTarget.dataset.banner))" class="text-slate-500 hover:text-blue-600 p-2 rounded-lg hover:bg-slate-100 transition-colors" title="Edit Rental">
                                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
                                     </button>
-                                    <form action="{{ route('admin.banners.destroy', $banner->id) }}" method="POST" class="inline-block" onsubmit="return confirm('Are you sure you want to permanently delete this scheduled rental?');">
+                                    <form action="{{ route('admin.banners.destroy', $banner->id) }}" method="POST" class="inline-block" @submit.prevent="$store.modal.show('Are you sure you want to permanently delete this scheduled rental?', () => $el.submit(), 'Confirm Delete', 'Yes, Delete', 'danger')">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="text-red-500 hover:text-red-700 p-2 rounded-lg hover:bg-red-50 transition-colors" title="Delete Rental">
@@ -626,7 +626,7 @@
                 const file = event.target.files[0];
                 if (!file) return;
 
-                // GIFs can't be cropped (canvas loses animation) — pass through directly
+                // GIFs can't be cropped (canvas loses animation) - pass through directly
                 if (file.type === 'image/gif') {
                     const previewUrl = URL.createObjectURL(file);
                     if (source === 'create') this.createPreview = previewUrl;
@@ -788,3 +788,4 @@
     });
 </script>
 @endsection
+

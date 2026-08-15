@@ -214,7 +214,7 @@
                                 <p class="text-[24px] font-extrabold leading-none text-brand-700 dark:text-brand-300" x-text="formatNumber(calculateTotalGemCost())"></p>
                                 <img loading="lazy" src="{{ asset('images/items/gems.png') }}" class="w-7 h-7 lg:w-8 lg:h-8 object-contain drop-shadow-sm" alt="Gems">
                             </div>
-                            <p class="text-[12px] text-brand-600/70 dark:text-brand-400/70 mt-2 font-medium leading-tight">Daily cost Ã— <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
+                            <p class="text-[12px] text-brand-600/70 dark:text-brand-400/70 mt-2 font-medium leading-tight">Daily cost Ã- <span x-text="formatNumber(calculateTotalDaysNeeded())"></span> days</p>
                         </div>
 
                     </div>
@@ -412,4 +412,5 @@
 @section('scripts')
 <script src="{{ asset('js/roles-calc.js') }}?v=1.0.2"></script>
 @endsection
+
 

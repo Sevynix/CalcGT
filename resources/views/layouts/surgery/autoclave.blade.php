@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', 'Autoclave Calculator')
 @section('meta_description', 'Calculate Autoclave usage, sterilization costs, and surgery supply requirements for Growtopia\'s MSurg profession.')
 

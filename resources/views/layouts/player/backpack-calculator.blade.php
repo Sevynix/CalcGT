@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Backpack Calculator")
 @section('meta_description', 'Track backpack upgrade gem costs and inventory expansion milestones for your Growtopia character.')
 

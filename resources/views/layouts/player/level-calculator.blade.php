@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Level Calculator")
 @section('meta_description', 'Calculate XP requirements and EXP potion usage to reach your desired player level in Growtopia.')
 

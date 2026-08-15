@@ -3,10 +3,10 @@
     Used by both the mobile drawer and the desktop sidebar to avoid duplication.
 
     Props (passed via @include):
-      $linkClass   — CSS classes for each <a> element
-      $labelClass  — CSS classes for the label <span>
-      $showLabel   — true/false, whether to render the label text
-      $onClickAttr — optional Alpine @click attribute string (for mobile close)
+      $linkClass   - CSS classes for each <a> element
+      $labelClass  - CSS classes for the label <span>
+      $showLabel   - true/false, whether to render the label text
+      $onClickAttr - optional Alpine @click attribute string (for mobile close)
 --}}
 
 @php
@@ -130,3 +130,4 @@
         @endif
     @endforeach
 @endforeach
+

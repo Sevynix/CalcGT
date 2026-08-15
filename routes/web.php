@@ -2,6 +2,9 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\AuthController;
+use App\Http\Controllers\Admin as AdminControllers;
+use App\Http\Controllers\Host;
+use App\Http\Controllers\Public as PublicControllers;
 
 // Sitemap
 Route::get('/sitemap.xml', function () {
@@ -104,6 +107,67 @@ Route::get('/opinions', [\App\Http\Controllers\CommunityOpinionController::class
 Route::get('/opinions/{communityPost}', [\App\Http\Controllers\CommunityOpinionController::class, 'show'])->name('opinions.show');
 Route::post('/opinions/{communityPost}/submit', [\App\Http\Controllers\CommunityOpinionController::class, 'store'])->middleware('throttle:3,5')->name('opinions.store');
 
+// ─── PUBLIC: Tournament ────────────────────────────────────────────────────
+Route::prefix('tournament')->name('tournament.')->group(function () {
+    Route::get('/', [PublicControllers\TournamentController::class, 'index'])->name('index');
+    Route::get('/{tournament}', [PublicControllers\TournamentController::class, 'show'])->name('show');
+    Route::post('/{competition}/register', [PublicControllers\RegistrationController::class, 'store'])->name('register');
+    Route::get('/{competition}/bracket', [PublicControllers\BracketController::class, 'data'])->name('bracket.data');
+    Route::get('/{competition}/bracket/view', [PublicControllers\BracketController::class, 'show'])->name('bracket.show');
+});
+
+// Named route aliases for backward compat used in views
+Route::get('/tournament', [PublicControllers\TournamentController::class, 'index'])->name('home');
+Route::get('/tournaments-list', [PublicControllers\TournamentController::class, 'index'])->name('tournament.index');
+Route::get('/tournament/{tournament}', [PublicControllers\TournamentController::class, 'show'])->name('public.tournament.show');
+Route::get('/tournament/{competition}/bracket/view', [PublicControllers\BracketController::class, 'show'])->name('public.bracket.show');
+
+// ─── HOST PANEL ─────────────────────────────────────────────────────────────
+Route::prefix('host')->name('host.')->group(function () {
+    Route::get('/login', [Host\AuthController::class, 'showForm'])->name('login');
+    Route::post('/login', [Host\AuthController::class, 'authenticate'])->name('authenticate');
+    Route::post('/logout', [Host\AuthController::class, 'logout'])->name('logout');
+
+    Route::middleware(\App\Http\Middleware\HostMiddleware::class)->group(function () {
+        Route::get('/timeline', [Host\CompetitionController::class, 'index'])->name('timeline');
+
+        Route::post('/competitions/{competition}/reveal', [Host\CompetitionController::class, 'reveal'])->name('competitions.reveal');
+        Route::post('/competitions/{competition}/open-registration', [Host\CompetitionController::class, 'openRegistration'])->name('competitions.open-registration');
+        Route::post('/competitions/{competition}/seed-users', [Host\CompetitionController::class, 'seedUsers'])->name('competitions.seed-users');
+        Route::post('/competitions/{competition}/close-registration', [Host\CompetitionController::class, 'closeRegistration'])->name('competitions.close-registration');
+        Route::post('/competitions/{competition}/start-no-bracket', [Host\CompetitionController::class, 'startNoBracket'])->name('competitions.start-no-bracket');
+        Route::post('/competitions/{competition}/finish', [Host\CompetitionController::class, 'finish'])->name('competitions.finish');
+
+        Route::get('/competitions/{competition}/spin', [Host\SpinWheelController::class, 'show'])->name('spin.show');
+        Route::post('/competitions/{competition}/spin/draw', [Host\SpinWheelController::class, 'spin'])->name('spin.draw');
+        Route::post('/competitions/{competition}/spin/draw-all', [Host\SpinWheelController::class, 'spinAll'])->name('spin.draw-all');
+        Route::post('/competitions/{competition}/spin/accept-spin', [Host\SpinWheelController::class, 'acceptSpin'])->name('spin.accept-spin');
+        Route::post('/competitions/{competition}/spin/add-manual', [Host\SpinWheelController::class, 'addManual'])->name('spin.add-manual');
+        Route::post('/competitions/{competition}/spin/remove-selected', [Host\SpinWheelController::class, 'removeSelected'])->name('spin.remove-selected');
+        Route::post('/competitions/{competition}/spin/reset', [Host\SpinWheelController::class, 'reset'])->name('spin.reset');
+        Route::post('/competitions/{competition}/spin/generate-bracket', [Host\SpinWheelController::class, 'generateBracket'])->name('spin.generate-bracket');
+
+        Route::get('/competitions/{competition}/manual-participants', [Host\ParticipantController::class, 'manage'])->name('manual-participants.manage');
+        Route::post('/competitions/{competition}/manual-participants', [Host\ParticipantController::class, 'add'])->name('manual-participants.add');
+        Route::delete('/competitions/{competition}/manual-participants/{participant}', [Host\ParticipantController::class, 'remove'])->name('manual-participants.remove');
+        Route::post('/competitions/{competition}/manual-participants/generate-bracket', [Host\ParticipantController::class, 'generateBracket'])->name('manual-participants.generate-bracket');
+
+        Route::get('/competitions/{competition}/bracket', [Host\BracketController::class, 'show'])->name('bracket');
+        Route::post('/competitions/{competition}/bracket/next-phase', [Host\BracketController::class, 'startNextPhase'])->name('bracket.next-phase');
+        Route::post('/competitions/{competition}/bracket/lock-seeding', [Host\BracketController::class, 'lockSeeding'])->name('bracket.lock-seeding');
+        Route::post('/competitions/{competition}/bracket/quick-seed-ul6', [Host\BracketController::class, 'quickSeedUpperLower6'])->name('bracket.quick-seed-ul6');
+
+        Route::get('/competitions/{competition}/ffa', [Host\BracketController::class, 'showFfa'])->name('ffa.show');
+        Route::post('/competitions/{competition}/ffa/finalize', [Host\BracketController::class, 'finalizeFfa'])->name('ffa.finalize');
+        Route::post('/ffa-result/{result}/toggle', [Host\BracketController::class, 'toggleFfaPassed'])->name('ffa.toggle');
+
+        Route::post('/bracket-node/{node}/assign-participant', [Host\BracketController::class, 'assignParticipant'])->name('bracket.assign-participant');
+        Route::post('/bracket-node/{node}/set-winner', [Host\BracketController::class, 'setWinner'])->name('bracket.set-winner');
+        Route::post('/bracket-node/{node}/correct-winner', [Host\BracketController::class, 'correctWinner'])->name('bracket.correct-winner');
+        Route::post('/bracket-node/{node}/reset-match', [Host\BracketController::class, 'resetMatch'])->name('bracket.reset-match');
+    });
+});
+
 // Admin Auth Routes
 Route::get('/admin', [AuthController::class, 'showLoginForm'])->name('admin.login');
 Route::post('/admin/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('admin.login.submit');
@@ -137,4 +201,22 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Settings
     Route::get('/settings/whats-new', [\App\Http\Controllers\Admin\SettingController::class, 'editWhatsNew'])->name('settings.whats-new');
     Route::post('/settings/whats-new', [\App\Http\Controllers\Admin\SettingController::class, 'updateWhatsNew'])->name('settings.whats-new.update');
+
+    // ─── Tournament Management ───────────────────────────────────────────────
+    Route::resource('tournaments', AdminControllers\TournamentController::class)
+        ->except(['index'])
+        ->names('tournaments');
+    Route::get('tournaments', [AdminControllers\TournamentController::class, 'index'])->name('tournaments.index');
+    Route::post('tournaments/{tournament}/toggle-visibility', [AdminControllers\TournamentController::class, 'toggleVisibility'])->name('tournaments.toggle-visibility');
+
+    Route::post('tournaments/{tournament}/competitions', [AdminControllers\CompetitionController::class, 'store'])->name('competitions.store');
+    Route::get('tournaments/{tournament}/competitions/{competition}/edit', [AdminControllers\CompetitionController::class, 'edit'])->name('competitions.edit');
+    Route::put('tournaments/{tournament}/competitions/{competition}', [AdminControllers\CompetitionController::class, 'update'])->name('competitions.update');
+    Route::delete('tournaments/{tournament}/competitions/{competition}', [AdminControllers\CompetitionController::class, 'destroy'])->name('competitions.destroy');
+
+    Route::post('tournaments/{tournament}/host-key/generate', [AdminControllers\HostKeyController::class, 'generate'])->name('host-key.generate');
+    Route::post('tournaments/{tournament}/host-key/{hostKey}/revoke', [AdminControllers\HostKeyController::class, 'revoke'])->name('host-key.revoke');
+
+    Route::post('bracket/{node}/unlock', [AdminControllers\BracketOverrideController::class, 'unlock'])->name('bracket.unlock');
+    Route::post('bracket/{node}/force-winner', [AdminControllers\BracketOverrideController::class, 'forceWinner'])->name('bracket.force-winner');
 });

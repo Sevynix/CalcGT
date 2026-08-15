@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Galactic Goodies Calculator")
 @section('meta_description', 'Startopia Galactic tools and calculators for managing your space station in Growtopia.')
 

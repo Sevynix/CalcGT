@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Farm Pack")
 @section('meta_description', 'Analyze Farm Pack returns and optimize your farming setup in Growtopia.')
 

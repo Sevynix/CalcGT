@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Fishin' Pack")
 @section('meta_description', 'Analyze Fishing Pack returns and optimize your fishing setup in Growtopia.')
 

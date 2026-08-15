@@ -14,19 +14,19 @@
     <link rel="canonical" href="{{ str_replace('://growtopiacalculator.com', '://www.growtopiacalculator.com', url()->current()) }}">
 
     {{-- Meta Description (per-page or default) --}}
-    <meta name="description" content="@yield('meta_description', 'Growtopia Calculator — Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
+    <meta name="description" content="@yield('meta_description', 'Growtopia Calculator - Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
 
     {{-- Open Graph / Social Sharing --}}
     <meta property="og:type"        content="website">
     <meta property="og:site_name"   content="Growtopia Calculator">
-    <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') — Growtopia Calculator">
+    <meta property="og:title"       content="@yield('title', 'Growtopia Calculator') - Growtopia Calculator">
     <meta property="og:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players. Track profits, manage packs, and optimize your farming strategy.')">
     <meta property="og:url"         content="{{ str_replace('://growtopiacalculator.com', '://www.growtopiacalculator.com', url()->current()) }}">
     <meta property="og:image"       content="{{ asset('images/logofix.png') }}">
 
     {{-- Twitter Card --}}
     <meta name="twitter:card"        content="summary">
-    <meta name="twitter:title"       content="@yield('title', 'Growtopia Calculator') — Growtopia Calculator">
+    <meta name="twitter:title"       content="@yield('title', 'Growtopia Calculator') - Growtopia Calculator">
     <meta name="twitter:description" content="@yield('meta_description', 'Free calculators and tools for Growtopia players.')">
     <meta name="twitter:image"       content="{{ asset('images/logofix.png') }}">
 
@@ -47,13 +47,23 @@
             Alpine.store('modal', {
                 open: false,
                 message: '',
-                type: 'reset', // 'reset' | 'table'
+                title: 'Konfirmasi',
+                confirmText: 'Ya',
+                type: 'danger', // 'danger' | 'warning' | 'reset' | 'table'
                 _action: null,
-                show(message, action, type = 'reset') {
-                    this.message  = message;
-                    this._action  = action;
-                    this.type     = type;
-                    this.open     = true;
+                show(message, action, arg3 = 'Konfirmasi', confirmText = 'Ya', type = 'danger') {
+                    if (arg3 === 'table' || arg3 === 'reset') {
+                        this.type = arg3;
+                        this.title = arg3 === 'table' ? 'Reset Table' : 'Reset All';
+                        this.confirmText = arg3 === 'table' ? 'Yes, Reset Table' : 'Yes, Reset All';
+                    } else {
+                        this.title       = arg3;
+                        this.confirmText = confirmText;
+                        this.type        = type;
+                    }
+                    this.message     = message;
+                    this._action     = action;
+                    this.open        = true;
                 },
                 confirm() {
                     if (this._action) this._action();
@@ -139,7 +149,7 @@
 
             <!-- Text -->
             <div>
-                <h3 class="text-xl font-extrabold text-slate-800 mb-1" x-text="$store.modal.type === 'table' ? 'Reset Table' : 'Reset All'"></h3>
+                <h3 class="text-xl font-extrabold text-slate-800 mb-1" x-text="$store.modal.title"></h3>
                 <p class="text-slate-500 text-sm font-medium" x-text="$store.modal.message"></p>
             </div>
 
@@ -148,12 +158,12 @@
                 <button
                     @click="$store.modal.cancel()"
                     class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-3 rounded-2xl transition active:scale-95 text-sm"
-                >Cancel</button>
+                >Batal</button>
                 <button
                     @click="$store.modal.confirm()"
                     class="flex-1 font-bold px-4 py-3 rounded-2xl transition active:scale-95 text-sm text-white shadow-md"
-                    :class="$store.modal.type === 'table' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-500 hover:bg-red-600'"
-                    x-text="$store.modal.type === 'table' ? 'Yes, Reset Table' : 'Yes, Reset All'"
+                    :class="$store.modal.type === 'warning' || $store.modal.type === 'table' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-500 hover:bg-red-600'"
+                    x-text="$store.modal.confirmText"
                 ></button>
             </div>
         </div>
@@ -171,3 +181,4 @@
     @yield('scripts')
 </body>
 </html>
+

@@ -75,7 +75,7 @@
                                                 </button>
                                             </form>
                                         @endif
-                                        <form action="{{ route('admin.community-opinions.destroy', $opinion->id) }}" method="POST" class="w-full" onsubmit="return confirm('Are you sure you want to delete this opinion?');">
+                                        <form action="{{ route('admin.community-opinions.destroy', $opinion->id) }}" method="POST" class="w-full" @submit.prevent="$store.modal.show('Are you sure you want to delete this opinion?', () => $el.submit(), 'Confirm Delete', 'Yes, Delete', 'danger')">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="w-full bg-red-50 hover:bg-red-100 text-red-600 font-bold py-2 px-4 rounded-xl transition-colors text-xs flex items-center justify-center gap-1.5">

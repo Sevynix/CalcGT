@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Guild Level Calculator")
 @section('meta_description', 'Estimate guild XP requirements per level and plan contribution goals for your Growtopia guild.')
 

@@ -7,7 +7,7 @@
     <!-- Admin Header (Hidden in client report) -->
     <div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-4 client-hide">
         <div>
-            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome Back, Admin! 👋</h1>
+            <h1 class="text-3xl font-extrabold text-slate-900 tracking-tight">Welcome Back, Admin! <img src="{{ asset('images/items/guestbook.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></h1>
             <p class="text-slate-500 font-medium mt-1">Here is a complete analysis of your site's performance.</p>
         </div>
         

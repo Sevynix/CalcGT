@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Pinata Value Pack Calculator")
 @section('meta_description', "Calculate Pinata Value Pack costs, drops, and projected profit margins in Growtopia.")
 

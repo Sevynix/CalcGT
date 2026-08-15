@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', 'Nanoforge Calculator')
 @section('meta_description', 'Plan Nanoforge upgrades and track all material requirements for your Startopia progression in Growtopia.')
 

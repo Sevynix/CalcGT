@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Awkward Friendly Unicorn Provider Calculator")
 @section('meta_description', 'Calculate Awkward Friendly Unicorn drops and track your provider profits in Growtopia.')
 

@@ -72,7 +72,7 @@
                                 </div>
                             </form>
 
-                            <form action="{{ route('admin.feedback.destroy', $feedback->id) }}" method="POST" class="mt-2 text-right" onsubmit="return confirm('Are you sure you want to delete this feedback?');">
+                            <form action="{{ route('admin.feedback.destroy', $feedback->id) }}" method="POST" class="mt-2 text-right" @submit.prevent="$store.modal.show('Are you sure you want to delete this feedback?', () => $el.submit(), 'Confirm Delete', 'Yes, Delete', 'danger')">
                                 @csrf
                                 @method('DELETE')
                                 <button type="submit" class="text-xs font-bold text-red-500 hover:text-red-700 transition-colors">Delete Permanently</button>

@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
 
     {{-- Favicon --}}
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon.png') }}">
@@ -55,13 +56,23 @@
             Alpine.store('modal', {
                 open: false,
                 message: '',
-                type: 'reset', // 'reset' | 'table'
+                title: 'Konfirmasi',
+                confirmText: 'Ya',
+                type: 'danger', // 'danger' | 'warning' | 'reset' | 'table'
                 _action: null,
-                show(message, action, type = 'reset') {
-                    this.message  = message;
-                    this._action  = action;
-                    this.type     = type;
-                    this.open     = true;
+                show(message, action, arg3 = 'Konfirmasi', confirmText = 'Ya', type = 'danger') {
+                    if (arg3 === 'table' || arg3 === 'reset') {
+                        this.type = arg3;
+                        this.title = arg3 === 'table' ? 'Reset Table' : 'Reset All';
+                        this.confirmText = arg3 === 'table' ? 'Yes, Reset Table' : 'Yes, Reset All';
+                    } else {
+                        this.title       = arg3;
+                        this.confirmText = confirmText;
+                        this.type        = type;
+                    }
+                    this.message     = message;
+                    this._action     = action;
+                    this.open        = true;
                 },
                 confirm() {
                     if (this._action) this._action();
@@ -77,8 +88,9 @@
     {{-- Alpine.js (pinned version for reliable caching) --}}
     <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/3.14.1/cdn.min.js" integrity="sha512-ytM6hP1K9BkRTjUQZpxZKFjJ2TvE4QXaK7phVymsm7NimaI5H09TWWW6f2JMbonLp4ftYU6xfwQGoe3C8jta9A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
+    @stack('styles')
 </head>
-<body class="min-h-screen bg-[#f8fafc] text-slate-800 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false, darkMode: localStorage.getItem('gtcalc-dark') === 'true' }" x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); if(document.startViewTransition) { document.startViewTransition(() => document.getElementById('html-root').classList.toggle('dark', v)); } else { document.getElementById('html-root').classList.toggle('dark', v); } })">
+<body class="min-h-screen text-slate-800 dark:text-slate-200 flex font-sans antialiased" x-data="{ sidebarOpen: true, mobileNavOpen: false, darkMode: localStorage.getItem('gtcalc-dark') === 'true' }" x-init="$watch('darkMode', v => { localStorage.setItem('gtcalc-dark', v); if(document.startViewTransition) { document.startViewTransition(() => document.getElementById('html-root').classList.toggle('dark', v)); } else { document.getElementById('html-root').classList.toggle('dark', v); } })">
 
     @include('partials.sidebar')
 
@@ -147,7 +159,7 @@
 
             <!-- Text -->
             <div>
-                <h3 class="text-xl font-extrabold text-slate-800 mb-1" x-text="$store.modal.type === 'table' ? 'Reset Table' : 'Reset All'"></h3>
+                <h3 class="text-xl font-extrabold text-slate-800 mb-1" x-text="$store.modal.title"></h3>
                 <p class="text-slate-500 text-sm font-medium" x-text="$store.modal.message"></p>
             </div>
 
@@ -156,12 +168,12 @@
                 <button
                     @click="$store.modal.cancel()"
                     class="flex-1 bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold px-4 py-3 rounded-2xl transition active:scale-95 text-sm"
-                >Cancel</button>
+                >Batal</button>
                 <button
                     @click="$store.modal.confirm()"
                     class="flex-1 font-bold px-4 py-3 rounded-2xl transition active:scale-95 text-sm text-white shadow-md"
-                    :class="$store.modal.type === 'table' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-500 hover:bg-red-600'"
-                    x-text="$store.modal.type === 'table' ? 'Yes, Reset Table' : 'Yes, Reset All'"
+                    :class="$store.modal.type === 'warning' || $store.modal.type === 'table' ? 'bg-amber-500 hover:bg-amber-600' : 'bg-red-500 hover:bg-red-600'"
+                    x-text="$store.modal.confirmText"
                 ></button>
             </div>
         </div>
@@ -243,8 +255,8 @@
                 <div style="position:absolute; bottom:-16px; left:-16px; width:80px; height:80px; border-radius:50%; background:rgba(14,89,195,0.18);"></div>
 
                 {{-- Floating sparkle dots --}}
-                <span class="wn-spin" style="position:absolute; top:14px; left:20px; font-size:18px; opacity:0.7;">✦</span>
-                <span class="wn-float-slow" style="position:absolute; top:10px; right:30px; font-size:13px; opacity:0.6;">✦</span>
+                <span class="wn-spin" style="position:absolute; top:14px; left:20px; font-size:18px; opacity:0.7;"><img src="{{ asset('images/items/gems.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></span>
+                <span class="wn-float-slow" style="position:absolute; top:10px; right:30px; font-size:13px; opacity:0.6;"><img src="{{ asset('images/items/gems.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></span>
                 <span class="wn-float" style="position:absolute; bottom:18px; right:18px; font-size:10px; opacity:0.5; color:#93c5fd;">●</span>
 
                 {{-- Icon pair --}}
@@ -263,7 +275,7 @@
                 {{-- Badge --}}
                 <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:99px; padding:3px 10px; margin-bottom:8px;">
                     <span class="wn-ping" style="width:6px; height:6px; border-radius:50%; background:#86efac; display:inline-block;"></span>
-                    <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); letter-spacing:0.08em; text-transform:uppercase;">What's New ✨</span>
+                    <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); letter-spacing:0.08em; text-transform:uppercase;">What's New <img src="{{ asset('images/items/gems.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></span>
                 </div>
 
                 {{-- Headline --}}
@@ -366,6 +378,7 @@
     </script>
     @endif
 
+    @stack('scripts')
 </body>
 </html>
 

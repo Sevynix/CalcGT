@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "St. Patrick's Pack Calculator")
 @section('meta_description', "Calculate St. Patrick's Pack costs, drops, and projected profit margins in Growtopia.")
 

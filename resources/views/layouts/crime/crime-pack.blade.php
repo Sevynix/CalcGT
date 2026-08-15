@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Crime Wave Pack Calculator")
 @section('meta_description', 'Calculate Crime Pack costs, drops, and projected profit margins in Growtopia.')
 

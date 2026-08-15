@@ -49,7 +49,7 @@
                         <a href="{{ route('admin.community-posts.edit', $post->id) }}" class="bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold py-2 px-4 rounded-xl transition-colors text-sm">
                             Edit
                         </a>
-                        <form action="{{ route('admin.community-posts.destroy', $post->id) }}" method="POST" onsubmit="return confirm('Are you sure you want to delete this topic? This will also delete all user opinions associated with it.');">
+                        <form action="{{ route('admin.community-posts.destroy', $post->id) }}" method="POST" @submit.prevent="$store.modal.show('Are you sure you want to delete this topic? This will also delete all user opinions associated with it.', () => $el.submit(), 'Confirm Delete', 'Yes, Delete', 'danger')">
                             @csrf
                             @method('DELETE')
                             <button type="submit" class="bg-red-50 hover:bg-red-100 text-red-600 font-bold py-2 px-4 rounded-xl transition-colors text-sm">

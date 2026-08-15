@@ -1,4 +1,4 @@
-﻿@extends('layouts.app')
+@extends('layouts.app')
 @section('title', "Small Seed Pack Calculator")
 @section('meta_description', 'Calculate Small Seed Pack (SSP) costs, drops, and projected profit margins in Growtopia.')
 
