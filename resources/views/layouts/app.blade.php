@@ -275,7 +275,7 @@
                 {{-- Badge --}}
                 <div style="display:inline-flex; align-items:center; gap:5px; background:rgba(255,255,255,0.12); border:1px solid rgba(255,255,255,0.2); border-radius:99px; padding:3px 10px; margin-bottom:8px;">
                     <span class="wn-ping" style="width:6px; height:6px; border-radius:50%; background:#86efac; display:inline-block;"></span>
-                    <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); letter-spacing:0.08em; text-transform:uppercase;">What's New <img src="{{ asset('images/items/gems.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></span>
+                    <span style="font-size:10px; font-weight:700; color:rgba(255,255,255,0.85); letter-spacing:0.08em; text-transform:uppercase;">What's New <img src="{{ asset('images/items/lock/bgl.png') }}" class="w-4 h-4 inline-block object-contain translate-y-[-2px]" alt=""></span>
                 </div>
 
                 {{-- Headline --}}

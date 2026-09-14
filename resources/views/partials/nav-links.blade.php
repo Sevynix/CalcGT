@@ -55,6 +55,13 @@
             ],
         ],
         [
+            'group'  => 'Carnival',
+            'items'  => [
+                ['route' => 'shatter-crystal',    'label' => 'Shatter Crystal',          'img' => 'images/carnival/shatter/2246.png',       'alt' => 'Shatter Crystal'],
+                ['route' => 'fish-training',      'label' => 'Fish Training',            'img' => 'images/fishTraining/trainingPort.png',    'alt' => 'Fish Training'],
+            ],
+        ],
+        [
             'group'  => 'Event',
             'items'  => [
                 ['route' => 'valentine-pack',     'label' => 'Valentine\'s Week',  'img' => 'images/event/valentine/valentine_card.png', 'alt' => 'Valentine'],
@@ -62,13 +69,6 @@
                 ['route' => 'easter-pack',        'label' => 'Easter Week',        'img' => 'images/event/easter/crate.png', 'alt' => 'Easter'],
                 ['route' => 'cinco-pack',         'label' => 'Cinco De Mayo Week', 'img' => 'images/event/cinco/whistle.png', 'alt' => 'Cinco'],
                 ['route' => 'summerfest-pack',    'label' => 'SummerFest',         'img' => 'images/event/summer/fireworks.png',      'alt' => 'SummerFest'],
-            ],
-        ],
-        [
-            'group'  => 'Carnival',
-            'items'  => [
-                ['route' => 'shatter-crystal',    'label' => 'Shatter Crystal',          'img' => 'images/carnival/shatter/2246.png',       'alt' => 'Shatter Crystal'],
-                ['route' => 'fish-training',      'label' => 'Fish Training',            'img' => 'images/fishTraining/trainingPort.png',    'alt' => 'Fish Training'],
             ],
         ],
         [
