@@ -67,7 +67,8 @@
         [
             'group'  => 'Carnival',
             'items'  => [
-                ['route' => 'shatter-crystal',    'label' => 'Shatter Crystal',    'img' => 'images/carnival/shatter/2246.png',       'alt' => 'Shatter Crystal'],
+                ['route' => 'shatter-crystal',    'label' => 'Shatter Crystal',          'img' => 'images/carnival/shatter/2246.png',       'alt' => 'Shatter Crystal'],
+                ['route' => 'fish-training',      'label' => 'Fish Training',            'img' => 'images/fishTraining/trainingPort.png',    'alt' => 'Fish Training'],
             ],
         ],
         [

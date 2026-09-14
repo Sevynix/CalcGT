@@ -151,6 +151,35 @@ function promoCarousel() {
                 </div>
             </a>
 
+            <!-- Fish & Crab Training -->
+            <a href="{{ route('fish-training') }}" x-show="currentCategory === 'carnival'" style="display:none"
+               class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
+                <!-- Blurry Logo -->
+                <div class="absolute -right-6 top-1/2 -translate-y-1/2 w-48 h-48 opacity-[0.15] blur-[8px] group-hover:opacity-25 pointer-events-none">
+                    <img loading="lazy" src="{{ asset('images/fishTraining/trainingPort.png') }}" alt="" class="w-full h-full object-contain">
+                </div>
+                
+                <div class="relative z-10 flex flex-col flex-1 gap-2">
+                    <div class="flex items-start justify-between">
+                        <div class="w-12 h-12 rounded-2xl bg-slate-50 flex items-center justify-center shrink-0 shadow-inner border border-slate-200">
+                            <img loading="lazy" src="{{ asset('images/fishTraining/trainingPort.png') }}" alt="Fish Training" class="h-8 w-8 object-contain">
+                        </div>
+                        <span class="bg-slate-100 text-slate-800 text-[9px] font-black uppercase tracking-widest px-2.5 py-1 rounded-full border border-slate-200 shadow-sm">Carnival</span>
+                    </div>
+                    
+                    <div class="mt-3">
+                        <h2 class="text-lg font-black text-slate-800 tracking-tight">Fish Training</h2>
+                        <p class="text-[13px] text-slate-500 font-medium leading-relaxed mt-1 max-w-[90%]">Calculate profit from training perfect fish and crabs to max level.</p>
+                    </div>
+                    
+                    <div class="flex items-center justify-between text-slate-800 font-bold text-sm pt-4 mt-auto">
+                        <span>Open Tool</span>
+                        <svg class="w-4 h-4 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                    </div>
+                </div>
+            </a>
+
+
             <!-- MSurg Tools -->
             <a href="{{ route('surgery-tools') }}" x-show="currentCategory === 'popular'" style="display:block"
                class="group relative flex flex-col rounded-3xl overflow-hidden border border-slate-200/60 shadow-sm hover:shadow-xl hover:-translate-y-1.5 transition-all duration-300 bg-white min-h-[160px] p-5">
