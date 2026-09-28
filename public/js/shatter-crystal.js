@@ -12,6 +12,9 @@ document.addEventListener('alpine:init', () => {
         selectedCraftItem: null,
         numCrafts: 1,
 
+        // ─── Shatter Crystal Quest price (optional) ───────────────────────
+        questPrice: 0,
+
         // ─── Item Database ────────────────────────────────────────────────
         // Each item has: name, img (filename without .png), qty, type, recipe
         // type: 'wl/item' | 'per wl' | '200/?'
@@ -87,6 +90,7 @@ document.addEventListener('alpine:init', () => {
                     }
                     if (data.selectedCraftItem !== undefined) this.selectedCraftItem = data.selectedCraftItem;
                     if (data.numCrafts !== undefined) this.numCrafts = data.numCrafts;
+                    if (data.questPrice !== undefined) this.questPrice = data.questPrice;
                 }
             } catch(e) {}
             setInterval(() => this._save(key), 1000);
@@ -101,6 +105,7 @@ document.addEventListener('alpine:init', () => {
                     items: this.items,
                     selectedCraftItem: this.selectedCraftItem,
                     numCrafts: this.numCrafts,
+                    questPrice: this.questPrice,
                 }));
             } catch(e) {}
         },
@@ -154,10 +159,11 @@ document.addEventListener('alpine:init', () => {
 
         get netProfit() {
             if (!this.selectedCraftItem) return 0;
-            const n    = this.numCrafts || 1;
-            const rev  = this.getItemRevenue(this.selectedCraftItem, n);
-            const cost = this.getItemCost(this.selectedCraftItem) * n;
-            return parseFloat((rev - cost).toFixed(2));
+            const n          = this.numCrafts || 1;
+            const rev        = this.getItemRevenue(this.selectedCraftItem, n);
+            const questRev   = n * (parseFloat(this.questPrice) || 0);
+            const cost       = this.getItemCost(this.selectedCraftItem) * n;
+            return parseFloat((rev + questRev - cost).toFixed(2));
         },
 
         get profitPercentage() {
@@ -166,8 +172,15 @@ document.addEventListener('alpine:init', () => {
             const cost = this.getItemCost(this.selectedCraftItem) * n;
             if (cost === 0) return this.netProfit > 0 ? '+100.0%' : '+0.0%';
             const pct  = (this.netProfit / cost) * 100;
-            const sign = pct > 0 ? '+' : '';
+            const sign = pct >= 0 ? '+' : '';
             return `${sign}${pct.toFixed(1)}%`;
+        },
+
+        // ─── Quest Revenue (for display) ─────────────────────────────────
+        get questRevenue() {
+            if (!this.selectedCraftItem) return 0;
+            const n = this.numCrafts || 1;
+            return n * (parseFloat(this.questPrice) || 0);
         },
 
         // ─── Formatters ───────────────────────────────────────────────────
@@ -193,6 +206,7 @@ document.addEventListener('alpine:init', () => {
             this.prices = {};
             this.selectedCraftItem = null;
             this.numCrafts = 1;
+            this.questPrice = 0;
             for (let key in this.items) {
                 this.items[key].type = 'wl/item';
             }

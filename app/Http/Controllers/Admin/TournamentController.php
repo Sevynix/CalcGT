@@ -29,14 +29,24 @@ class TournamentController extends Controller
         $request->validate([
             'name'         => 'required|string|max:255',
             'description'  => 'nullable|string',
+            'discord_url'  => 'nullable|string|max:500',
             'status'       => 'required|in:draft,test_drive,active,finished',
             'banner_image' => 'nullable|image|max:10240',
             'banner_aspect_ratio' => 'required|in:3:2,16:9',
         ]);
 
+        $discordUrl = null;
+        if ($request->filled('discord_url')) {
+            $discordUrl = trim($request->discord_url);
+            if (!preg_match('#^https?://#i', $discordUrl)) {
+                $discordUrl = 'https://' . $discordUrl;
+            }
+        }
+
         $data = [
             'name'        => $request->name,
             'description' => $request->description,
+            'discord_url' => $discordUrl,
             'status'      => $request->status,
             'banner_aspect_ratio' => $request->banner_aspect_ratio,
             'is_visible'  => false,
@@ -71,13 +81,23 @@ class TournamentController extends Controller
         $request->validate([
             'name'         => 'required|string|max:255',
             'description'  => 'nullable|string',
+            'discord_url'  => 'nullable|string|max:500',
             'status'       => 'required|in:draft,test_drive,active,finished',
             'banner_image' => 'nullable|image|max:10240',
             'banner_aspect_ratio' => 'required|in:3:2,16:9',
             'remove_banner'=> 'nullable|boolean',
         ]);
 
+        $discordUrl = null;
+        if ($request->filled('discord_url')) {
+            $discordUrl = trim($request->discord_url);
+            if (!preg_match('#^https?://#i', $discordUrl)) {
+                $discordUrl = 'https://' . $discordUrl;
+            }
+        }
+
         $data = $request->only('name', 'description', 'status', 'banner_aspect_ratio');
+        $data['discord_url'] = $discordUrl;
 
         if ($request->has('remove_banner') && $request->remove_banner) {
             if ($tournament->banner_path) {

@@ -11,6 +11,7 @@ class Tournament extends Model
     protected $fillable = [
         'name',
         'description',
+        'discord_url',
         'banner_path',
         'banner_aspect_ratio',
         'status',

@@ -36,6 +36,23 @@
                     class="w-full bg-slate-50 border border-slate-200 text-slate-900 px-4 py-3 rounded-xl focus:ring-2 focus:ring-brand-500/20 focus:border-brand-500 transition-colors font-medium resize-none">{{ old('description') }}</textarea>
             </div>
 
+            <!-- Discord URL Field -->
+            <div class="space-y-2">
+                <label class="block text-sm font-bold text-slate-700">Discord URL <span class="text-slate-400 font-normal">(Opsional)</span></label>
+                <div class="flex items-center bg-slate-50 border border-slate-200 rounded-xl overflow-hidden focus-within:ring-2 focus-within:ring-brand-500/20 focus-within:border-brand-500 transition-colors">
+                    <div class="pl-4 pr-2 flex items-center shrink-0">
+                        <svg class="w-5 h-5" viewBox="0 0 16 16" fill="#5865F2" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M13.545 2.907a13.227 13.227 0 0 0-3.257-1.011.05.05 0 0 0-.052.025c-.141.25-.297.577-.406.833a12.19 12.19 0 0 0-3.658 0 8.258 8.258 0 0 0-.412-.833.051.051 0 0 0-.052-.025c-1.125.194-2.22.534-3.257 1.011a.041.041 0 0 0-.021.018C.356 6.024-.213 9.047.066 12.032c.001.014.01.028.021.037a13.276 13.276 0 0 0 3.995 2.02.05.05 0 0 0 .056-.019c.308-.42.582-.863.818-1.329a.05.05 0 0 0-.01-.059.051.051 0 0 0-.018-.011 8.875 8.875 0 0 1-1.248-.595.05.05 0 0 1-.02-.066.051.051 0 0 1 .015-.019c.084-.063.168-.129.248-.195a.05.05 0 0 1 .051-.007c2.619 1.196 5.454 1.196 8.041 0a.052.052 0 0 1 .053.007c.08.066.164.132.248.195a.051.051 0 0 1-.004.085 8.254 8.254 0 0 1-1.249.594.05.05 0 0 0-.03.03.052.052 0 0 0 .003.041c.24.465.515.909.817 1.329a.05.05 0 0 0 .056.019 13.235 13.235 0 0 0 4.001-2.02.049.049 0 0 0 .021-.037c.334-3.451-.559-6.449-2.366-9.106a.034.034 0 0 0-.02-.019Zm-8.198 7.307c-.789 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.45.73 1.438 1.613 0 .888-.637 1.612-1.438 1.612Zm5.316 0c-.788 0-1.438-.724-1.438-1.612 0-.889.637-1.613 1.438-1.613.807 0 1.451.73 1.438 1.613 0 .888-.631 1.612-1.438 1.612Z"/>
+                        </svg>
+                    </div>
+                    <input type="text" name="discord_url" value="{{ old('discord_url') }}"
+                        placeholder="https://discord.gg/..."
+                        class="flex-1 bg-transparent text-slate-900 py-3 pr-4 outline-none font-medium">
+                </div>
+                <p class="text-xs text-slate-400">Jika diisi, tombol Discord akan muncul di halaman timeline event. Kosongkan untuk menyembunyikan.</p>
+                @error('discord_url')<p class="text-red-500 text-xs mt-1 font-medium">{{ $message }}</p>@enderror
+            </div>
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <!-- Status Field -->
                 <div class="space-y-2">
