@@ -334,5 +334,5 @@
         return path.startsWith('/') ? path : '/' + path;
     }
 </script>
-<script src="{{ asset('js/shatter-crystal.js') }}?v=4.1.0"></script>
+<script src="{{ asset('js/shatter-crystal.js') }}?v={{ filemtime(public_path('js/shatter-crystal.js')) }}"></script>
 @endsection
